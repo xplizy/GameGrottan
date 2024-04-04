@@ -1,3 +1,8 @@
+body {
+    background-color: black;
+    color: white; /* Om du vill ändra textfärgen till vitt för att kontrastera bättre med den svarta bakgrunden */
+}
+
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
@@ -97,6 +102,7 @@ a, .btn-link {
     .loading-progress-text:after {
         content: var(--blazor-load-percentage-text, "Loading");
     }
+
 
 code {
     color: #c02d76;

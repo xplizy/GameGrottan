@@ -7,7 +7,7 @@ namespace MajornaGameStore.DataAccess.Sql.Repositories;
 public abstract class RepositoryBase<TEntity, TId>(MajornaDbContext context) : IService<TEntity, TId> 
     where TEntity : class
 {
-    private readonly MajornaDbContext _context = context;
+    protected readonly MajornaDbContext _context = context;
 
     public async Task<ICollection<TEntity>> GetAllAsync()
     {

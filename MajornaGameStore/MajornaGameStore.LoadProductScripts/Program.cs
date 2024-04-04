@@ -1,38 +1,109 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using System.Text.Json;
+using MajornaGameStore.DataAccess.Entities;
+using MajornaGameStore.DataAccess.Sql;
+using MajornaGameStore.DataAccess.Sql.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 Console.WriteLine("Hello, World!");
 
 string jsonFilePath = @"C:\Users\Josep\source\repos\iths-majornagaming\MajornaGameStore\MajornaGameStore.LoadProductScripts\applist.json"; 
 
-// Read JSON data from file
 string jsonString = File.ReadAllText(jsonFilePath);
 
-var jsonObjects = JsonSerializer.Deserialize<List<Rootobject>>(jsonString);
+JsonSerializerOptions options = new JsonSerializerOptions
+{
+    PropertyNameCaseInsensitive = true // This flag is necessary for case-insensitive matching
+};
 
+var jsonObjects = JsonSerializer.Deserialize<List<Dictionary<string, Root>>>(jsonString, options);
+
+var connectionString =
+    "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=MajornaDb;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
+
+
+var optionsBuilder = new DbContextOptionsBuilder<MajornaDbContext>().UseSqlServer(connectionString);
+
+var context = new MajornaDbContext(optionsBuilder.Options);
+
+var productRepo = new ProductRepository(context);
+var typeRepo = new TypeRepository(context);
+
+var products = new List<Product>();
 foreach (var jsonObject in jsonObjects)
 {
-    Console.WriteLine(jsonObject._10.data.about_the_game);
+    
+    var product = new Product();
+    var type = new ProductType();
+    var developers = new List<Developer>();
+    var publishers = new List<Publisher>();
+    var screenshots = new List<Screenshot>();
+    var tags = new List<Tag>();
+    foreach (var root in jsonObject)
+    {
+        if (root.Value.Data.metacritic.score > 70)
+        {
+            return;
+        }
+        product.Name = root.Value.Data.name;
+        product.Price = root.Value.Data.price_overview.final;
+        product.Description = root.Value.Data.short_description;
+        product.Languages = root.Value.Data.supported_languages;
+        product.ImageLink = root.Value.Data.header_image;
+        product.ReleaseDate = DateTime.Parse(root.Value.Data.release_date.date);
+        product.PcRequirements = root.Value.Data.pc_requirements.minimum;
+
+        if(root.Value.Data.required_age is not null)
+            product.AgeRating = int.Parse(root.Value.Data.required_age.ToString()!);
+
+        //Kolla om typen finns
+        var typeName = root.Value.Data.type;
+        var typeFromDb = await typeRepo.GetByNameAsync(typeName);
+        //om den finns, hämta och lägg till den
+
+        if (typeFromDb is not null)
+        {
+            product.ProductTypeID = typeFromDb.Id;
+        }
+        else
+        {
+            //annars skapa den och lägg till
+            var newProdType = new ProductType()
+            {
+                Name = typeName
+            };
+            var newlyAddedType = await typeRepo.AddAsync(newProdType);
+            product.ProductTypeID = newProdType.Id;
+        }
+
+
+
+        //kom ihåg att uppdatera produkttypens lista efter att produkten är tillagd
+
+
+    }
 }
 
-public class Rootobject
+class Root
 {
-    public _10 _10 { get; set; } = new();
+    public bool Success { get; set; }
+    public Data Data { get; set; } = new();
 }
 
-public class _10
+class Person
 {
-    public bool success { get; set; }
-    public Data data { get; set; } = new();
+    public string Name { get; set; }
 }
+
+
 
 public class Data
 {
     public string type { get; set; }
-    public string name { get; set; }
+    public string name { get; set; } = string.Empty;
     public int steam_appid { get; set; }
-    public int required_age { get; set; }
+    public object? required_age { get; set; }
     public bool is_free { get; set; }
     public string detailed_description { get; set; }
     public string about_the_game { get; set; }
@@ -42,26 +113,25 @@ public class Data
     public string capsule_image { get; set; }
     public string capsule_imagev5 { get; set; }
     public object website { get; set; }
-    public Pc_Requirements pc_requirements { get; set; }
-    public Mac_Requirements mac_requirements { get; set; }
-    public Linux_Requirements linux_requirements { get; set; }
+    public Pc_Requirements pc_requirements { get; set; } = new();
+    
     public string[] developers { get; set; }
     public string[] publishers { get; set; }
-    public Price_Overview price_overview { get; set; }
+    public Price_Overview price_overview { get; set; } = new();
     public int[] packages { get; set; }
-    public Package_Groups[] package_groups { get; set; }
-    public Platforms platforms { get; set; }
-    public Metacritic metacritic { get; set; }
+    //public Package_Groups[] package_groups { get; set; } 
+    public Platforms platforms { get; set; } = new();
+    public Metacritic metacritic { get; set; } = new();
     public Category[] categories { get; set; }
     public Genre[] genres { get; set; }
     public Screenshot[] screenshots { get; set; }
-    public Recommendations recommendations { get; set; }
-    public Release_Date release_date { get; set; }
-    public Support_Info support_info { get; set; }
+    public Recommendations recommendations { get; set; } = new();
+    public Release_Date release_date { get; set; } = new();
+    public Support_Info support_info { get; set; } = new();
     public string background { get; set; }
     public string background_raw { get; set; }
-    public Content_Descriptors content_descriptors { get; set; }
-    public Ratings ratings { get; set; }
+    public Content_Descriptors content_descriptors { get; set; } = new();
+    public Ratings ratings { get; set; } = new();
 }
 
 public class Pc_Requirements
@@ -72,6 +142,7 @@ public class Pc_Requirements
 public class Mac_Requirements
 {
     public string minimum { get; set; }
+    
 }
 
 public class Linux_Requirements
@@ -127,7 +198,7 @@ public class Content_Descriptors
 
 public class Ratings
 {
-    public Usk usk { get; set; }
+    public Usk usk { get; set; } = new();   
 }
 
 public class Usk

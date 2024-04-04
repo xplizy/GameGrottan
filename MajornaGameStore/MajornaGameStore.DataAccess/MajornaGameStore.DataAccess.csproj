@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Mongo\" />
-    <Folder Include="Sql\Repositories\" />
   </ItemGroup>
 
   <ItemGroup>

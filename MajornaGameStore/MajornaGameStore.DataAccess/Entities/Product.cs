@@ -12,7 +12,6 @@ public class Product : EntityBase<int>
     public string Languages { get; set; }
     public string ImageLink { get; set; }
     public string PcRequirements { get; set; }
-    public string MacRequirements { get; set; }
     public DateTime ReleaseDate { get; set; }
     public ICollection<Developer> Developers { get; set; }
     public ICollection<Publisher> Publishers { get; set; }

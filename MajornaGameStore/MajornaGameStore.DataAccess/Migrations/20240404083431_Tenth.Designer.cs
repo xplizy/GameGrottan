@@ -4,6 +4,7 @@ using MajornaGameStore.DataAccess.Sql;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MajornaGameStore.DataAccess.Migrations
 {
     [DbContext(typeof(MajornaDbContext))]
-    partial class MajornaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240404083431_Tenth")]
+    partial class Tenth
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,28 +24,6 @@ namespace MajornaGameStore.DataAccess.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("MajornaGameStore.DataAccess.Entities.Developer", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("Developer");
-                });
 
             modelBuilder.Entity("MajornaGameStore.DataAccess.Entities.Discount", b =>
                 {
@@ -130,6 +111,10 @@ namespace MajornaGameStore.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Developers")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("DiscountID")
                         .HasColumnType("int");
 
@@ -159,6 +144,10 @@ namespace MajornaGameStore.DataAccess.Migrations
                     b.Property<int>("ProductTypeID")
                         .HasColumnType("int");
 
+                    b.Property<string>("Publishers")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("ReleaseDate")
                         .HasColumnType("datetime2");
 
@@ -186,28 +175,6 @@ namespace MajornaGameStore.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ProductTypes");
-                });
-
-            modelBuilder.Entity("MajornaGameStore.DataAccess.Entities.Publisher", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("Publisher");
                 });
 
             modelBuilder.Entity("MajornaGameStore.DataAccess.Entities.Review", b =>
@@ -493,13 +460,6 @@ namespace MajornaGameStore.DataAccess.Migrations
                     b.ToTable("ProductTag");
                 });
 
-            modelBuilder.Entity("MajornaGameStore.DataAccess.Entities.Developer", b =>
-                {
-                    b.HasOne("MajornaGameStore.DataAccess.Entities.Product", null)
-                        .WithMany("Developers")
-                        .HasForeignKey("ProductId");
-                });
-
             modelBuilder.Entity("MajornaGameStore.DataAccess.Entities.Event", b =>
                 {
                     b.HasOne("MajornaGameStore.DataAccess.Entities.EventType", null)
@@ -522,13 +482,6 @@ namespace MajornaGameStore.DataAccess.Migrations
                         .HasForeignKey("ProductTypeID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("MajornaGameStore.DataAccess.Entities.Publisher", b =>
-                {
-                    b.HasOne("MajornaGameStore.DataAccess.Entities.Product", null)
-                        .WithMany("Publishers")
-                        .HasForeignKey("ProductId");
                 });
 
             modelBuilder.Entity("MajornaGameStore.DataAccess.Entities.Review", b =>
@@ -631,10 +584,6 @@ namespace MajornaGameStore.DataAccess.Migrations
 
             modelBuilder.Entity("MajornaGameStore.DataAccess.Entities.Product", b =>
                 {
-                    b.Navigation("Developers");
-
-                    b.Navigation("Publishers");
-
                     b.Navigation("Reviews");
 
                     b.Navigation("Screenshots");

@@ -19,4 +19,6 @@ public class Product : EntityBase<int>
     public ICollection<Screenshot> Screenshots { get; set; }
     public ICollection<Tag> Tags { get; set; }
     public ICollection<Review> Reviews { get; set; }
+
+    public int AgeRating { get; set; }
 }

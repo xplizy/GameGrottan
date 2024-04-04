@@ -8,6 +8,7 @@ public class Product : EntityBase<int>
     public double  Price { get; set; }
     public int ProductTypeID { get; set; }
     public int DiscountID { get; set; }
+    public string Description { get; set; }
     public ICollection<Tag> Tags { get; set; }
     public ICollection<Review> Reviews { get; set; }
 }

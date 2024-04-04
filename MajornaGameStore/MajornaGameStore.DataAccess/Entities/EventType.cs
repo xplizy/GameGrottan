@@ -4,4 +4,6 @@ public class EventType : EntityBase<int>
 {
     public string Name { get; set; }
 
+    public ICollection<Event> Events { get; set; }
+
 }

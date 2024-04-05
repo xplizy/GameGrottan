@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using System.Text.Json;
+using System.Threading.Channels;
 using MajornaGameStore.DataAccess.Entities;
 using MajornaGameStore.DataAccess.Sql;
 using MajornaGameStore.DataAccess.Sql.Repositories;
@@ -8,7 +9,8 @@ using Microsoft.EntityFrameworkCore;
 
 Console.WriteLine("Hello, World!");
 
-string jsonFilePath = @"C:\Users\Josep\source\repos\iths-majornagaming\MajornaGameStore\MajornaGameStore.LoadProductScripts\applist.json"; 
+string relativePathJson = "applist.json";
+string jsonFilePath = Path.GetFullPath(relativePathJson);
 
 string jsonString = File.ReadAllText(jsonFilePath);
 
@@ -18,9 +20,14 @@ JsonSerializerOptions options = new JsonSerializerOptions
 };
 
 var jsonObjects = JsonSerializer.Deserialize<List<Dictionary<string, Root>>>(jsonString, options);
+Console.WriteLine($"Found {jsonObjects.Count} products in jsonFile.");
 
-var connectionString =
-    "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=MajornaDb;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
+string relativePathConnectionString = "connectionstring.txt";
+string fullPathConnectionString = Path.GetFullPath(relativePathConnectionString);
+
+Console.WriteLine("Connecting to database.");
+
+var connectionString = File.ReadAllText(fullPathConnectionString);
 
 
 var optionsBuilder = new DbContextOptionsBuilder<MajornaDbContext>().UseSqlServer(connectionString);
@@ -29,42 +36,48 @@ var context = new MajornaDbContext(optionsBuilder.Options);
 
 var productRepo = new ProductRepository(context);
 var typeRepo = new TypeRepository(context);
-
+var developerRepo = new DeveloperRepository(context);
+var publisherRepo = new PublisherRepository(context);
+var screenshotRepo = new ScreenshotRepository(context);
+var tagRepo = new TagRepository(context);
+Console.WriteLine("Connected successfully to database.");
 var products = new List<Product>();
 foreach (var jsonObject in jsonObjects)
 {
     
-    var product = new Product();
-    var type = new ProductType();
+    var newProduct = new Product();
     var developers = new List<Developer>();
     var publishers = new List<Publisher>();
-    var screenshots = new List<Screenshot>();
+    var screenshots = new List<MajornaGameStore.DataAccess.Entities.Screenshot>();
+    var type = new ProductType();
     var tags = new List<Tag>();
     foreach (var root in jsonObject)
     {
-        if (root.Value.Data.metacritic.score > 70)
+        Console.WriteLine($"Proccessing {root.Value.Data.name}");
+        if (root.Value.Data.metacritic.score < 70)
         {
-            return;
+            break;
         }
-        product.Name = root.Value.Data.name;
-        product.Price = root.Value.Data.price_overview.final;
-        product.Description = root.Value.Data.short_description;
-        product.Languages = root.Value.Data.supported_languages;
-        product.ImageLink = root.Value.Data.header_image;
-        product.ReleaseDate = DateTime.Parse(root.Value.Data.release_date.date);
-        product.PcRequirements = root.Value.Data.pc_requirements.minimum;
+        newProduct.Name = root.Value.Data.name;
+        newProduct.Price = root.Value.Data.price_overview.final;
+        newProduct.Description = root.Value.Data.short_description;
+        newProduct.Languages = root.Value.Data.supported_languages;
+        newProduct.ImageLink = root.Value.Data.header_image;
+        newProduct.ReleaseDate = DateTime.Parse(root.Value.Data.release_date.date);
+        newProduct.PcRequirements = root.Value.Data.pc_requirements.minimum;
 
         if(root.Value.Data.required_age is not null)
-            product.AgeRating = int.Parse(root.Value.Data.required_age.ToString()!);
+            newProduct.AgeRating = int.Parse(root.Value.Data.required_age.ToString()!);
 
         //Kolla om typen finns
         var typeName = root.Value.Data.type;
         var typeFromDb = await typeRepo.GetByNameAsync(typeName);
-        //om den finns, hämta och lägg till den
 
+        //om den finns, hämta och lägg till den
         if (typeFromDb is not null)
         {
-            product.ProductTypeID = typeFromDb.Id;
+            newProduct.ProductTypeId = typeFromDb.Id;
+            type = typeFromDb;
         }
         else
         {
@@ -74,13 +87,106 @@ foreach (var jsonObject in jsonObjects)
                 Name = typeName
             };
             var newlyAddedType = await typeRepo.AddAsync(newProdType);
-            product.ProductTypeID = newProdType.Id;
+            type = newlyAddedType;
+            newProduct.ProductTypeId = newProdType.Id;
         }
 
+        foreach (var category in root.Value.Data.categories)
+        {
+            //kolla om tagen redan finns i vår db
+            var tagFromDb = await tagRepo.GetByNameAsync(category.description);
+            //om den finns lägg till den från db
+            if (tagFromDb is not null)
+            {
+                tags.Add(tagFromDb);
+            }
+            else
+            {
+                //annars skapa, lägg till i db och lägg till i produkten
+                var newTag = new Tag
+                {
+                    Name = category.description
+                };
+                var newlyAddedTagFromDb = await tagRepo.AddAsync(newTag);
+                tags.Add(newlyAddedTagFromDb);
 
+            }
+
+        }
+        newProduct.Tags = tags;
+
+        foreach (var developerName in root.Value.Data.developers)
+        {
+            //kolla om developern redan finns i vår db
+            var developerFromDb = await developerRepo.GetByNameAsync(developerName);
+            //om den finns lägg till den från db
+            if (developerFromDb is not null)
+            {
+                developers.Add(developerFromDb);
+            }
+            else
+            {
+                //annars skapa, lägg till i db och lägg till i produkten
+                var newDeveloper = new Developer
+                {
+                    Name = developerName
+                };
+                var newlyAddedDevFromDb = await developerRepo.AddAsync(newDeveloper);
+                developers.Add(newlyAddedDevFromDb);
+
+            }
+
+        }
+        newProduct.Developers = developers;
+
+        foreach (var publisherName in root.Value.Data.publishers)
+        {
+            //kolla om publishern redan finns i vår db
+            var publisherFromDb = await publisherRepo.GetByNameAsync(publisherName);
+            //om den finns lägg till den från db
+            if (publisherFromDb is not null)
+            {
+                publishers.Add(publisherFromDb);
+            }
+            else
+            {
+                //annars skapa, lägg till i db och lägg till i produkten
+                var newPublisher = new Publisher()
+                {
+                    Name = publisherName
+                };
+                var newlyAddedPublisherFromDb = await publisherRepo.AddAsync(newPublisher);
+                publishers.Add(newlyAddedPublisherFromDb);
+
+            }
+
+        }
+        newProduct.Publishers = publishers;
+
+
+        Console.WriteLine($"Attempting to add {newProduct.Name} to DB");
+        var newlyAddedProductFromDb = await productRepo.AddAsync(newProduct);
+        Console.WriteLine($"Successfully added {newlyAddedProductFromDb.Name}. Returned with ID: {newlyAddedProductFromDb.Id}");
+
+        Console.WriteLine("Adding screenshots.");
+        foreach (var screenshot in root.Value.Data.screenshots)
+        {
+            var newScreenshot = new MajornaGameStore.DataAccess.Entities.Screenshot()
+            {
+                Path = screenshot.path_full,
+                ProductId = newProduct.Id
+            };
+            var newlyAddedScreenshotFromDb = await screenshotRepo.AddAsync(newScreenshot);
+            //screenshots.Add(newlyAddedScreenshotFromDb);
+        }
+
+        Console.WriteLine("Successfully added screenshots.");
+        
+        //newProduct.Screenshots = screenshots;
 
         //kom ihåg att uppdatera produkttypens lista efter att produkten är tillagd
-
+        //type.Products.Add(newProduct);
+        //await typeRepo.UpdateAsync(type);
 
     }
 }

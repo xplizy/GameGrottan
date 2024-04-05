@@ -6,8 +6,8 @@ public class Product : EntityBase<int>
 {
     public string Name { get; set; }
     public double  Price { get; set; }
-    public int ProductTypeID { get; set; }
-    public int DiscountID { get; set; }
+    public int ProductTypeId { get; set; }
+    public int DiscountId { get; set; } = 1;
     public string Description { get; set; }
     public string Languages { get; set; }
     public string ImageLink { get; set; }

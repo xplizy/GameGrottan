@@ -13,8 +13,8 @@ public class ProductRepository(MajornaDbContext context) : RepositoryBase<Produc
 
         product.Name = entity.Name;
         product.Price = entity.Price;
-        product.ProductTypeID = entity.ProductTypeID;
-        product.DiscountID = entity.DiscountID;
+        product.ProductTypeId = entity.ProductTypeId;
+        product.DiscountId = entity.DiscountId;
         product.Description = entity.Description;
         product.Languages = entity.Languages;
         product.ImageLink = entity.ImageLink;

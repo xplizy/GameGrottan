@@ -1,4 +1,8 @@
+using MajornaGameStore.Api.Extensions;
+using MajornaGameStore.DataAccess.Services;
 using MajornaGameStore.DataAccess.Sql;
+using MajornaGameStore.DataAccess.Sql.Repositories;
+using MajornaGameStore.Shared.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,12 +12,23 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var connectionString = builder.Configuration.GetConnectionString("majornaDb");
+var connectionString = builder.Configuration.GetConnectionString("majornaDbCloud");
 
 builder.Services.AddDbContext<MajornaDbContext>(
     options =>
         options.UseSqlServer(connectionString));
 
+builder.Services.AddScoped<MajornaDbContext>();
+
+builder.Services
+    .AddScoped<IProductRepository, ProductRepository>()
+    .AddScoped<ITypeRepository, TypeRepository>()
+    .AddScoped<DeveloperRepository>()
+    .AddScoped<PublisherRepository>()
+    .AddScoped<ScreenshotRepository>()
+    .AddScoped<ITagRepository, TagRepository>();
+
+builder.Services.AddScoped<ProductService>();
 
 var app = builder.Build();
 
@@ -25,6 +40,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.MapLoadProductEndPoints();
+app.MapProductEndPoints();
 
 var summaries = new[]
 {

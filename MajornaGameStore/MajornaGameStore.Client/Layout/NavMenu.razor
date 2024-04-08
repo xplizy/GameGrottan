@@ -11,30 +11,44 @@
     </div>
 </div>
 
-<div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
-    <nav class="flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Hem
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="products">
-                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Produkter
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="eventandlan">
-                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Event/LAN
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="about">
-                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Om oss
-            </NavLink>
-        </div>
-    </nav>
-</div>
+<style>
+    .nav-link {
+        font-family: "Press Start 2P";
+    }
+</style>
+<header>
+    <div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
+        <nav class="flex-column">
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                    <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Hem
+                </NavLink>
+            </div>
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="products">
+                    <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Produkter
+                </NavLink>
+            </div>
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="eventandlan">
+                    <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Event/LAN
+                </NavLink>
+            </div>
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="about">
+                    <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Om oss
+                </NavLink>
+            </div>
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="Cart">
+                    <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Kundvagn
+                </NavLink>
+
+            </div>
+        </nav>
+    </div>
+</header>
+
 
 @code {
     private bool collapseNavMenu = true;

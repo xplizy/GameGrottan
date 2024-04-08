@@ -12,4 +12,7 @@ public class MajornaDbContext(DbContextOptions<MajornaDbContext> options) : Iden
     public DbSet<Product> Products { get; set; } = null!;
     public DbSet<ProductType> ProductTypes { get; set; } = null!;
     public DbSet<Tag> Tags { get; set; } = null!;
+    public DbSet<Publisher> Publishers { get; set; } = null!;
+    public DbSet<Developer> Developers { get; set; } = null!;
+    public DbSet<Screenshot> Screenshots { get; set; } = null!;
 }

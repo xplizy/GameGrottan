@@ -4,6 +4,7 @@ using MajornaGameStore.DataAccess.Sql;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MajornaGameStore.DataAccess.Migrations
 {
     [DbContext(typeof(MajornaDbContext))]
-    partial class MajornaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240404092226_AddedAgeRating")]
+    partial class AddedAgeRating
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,21 +24,6 @@ namespace MajornaGameStore.DataAccess.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("DeveloperProduct", b =>
-                {
-                    b.Property<int>("DevelopersId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductsId")
-                        .HasColumnType("int");
-
-                    b.HasKey("DevelopersId", "ProductsId");
-
-                    b.HasIndex("ProductsId");
-
-                    b.ToTable("DeveloperProduct");
-                });
 
             modelBuilder.Entity("MajornaGameStore.DataAccess.Entities.Developer", b =>
                 {
@@ -49,9 +37,14 @@ namespace MajornaGameStore.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Developers");
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Developer");
                 });
 
             modelBuilder.Entity("MajornaGameStore.DataAccess.Entities.Discount", b =>
@@ -104,14 +97,9 @@ namespace MajornaGameStore.DataAccess.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("EventTypeId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Events");
                 });
@@ -148,7 +136,7 @@ namespace MajornaGameStore.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("DiscountId")
+                    b.Property<int>("DiscountID")
                         .HasColumnType("int");
 
                     b.Property<string>("ImageLink")
@@ -156,6 +144,10 @@ namespace MajornaGameStore.DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Languages")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MacRequirements")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -170,7 +162,7 @@ namespace MajornaGameStore.DataAccess.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
-                    b.Property<int>("ProductTypeId")
+                    b.Property<int>("ProductTypeID")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("ReleaseDate")
@@ -178,9 +170,9 @@ namespace MajornaGameStore.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DiscountId");
+                    b.HasIndex("DiscountID");
 
-                    b.HasIndex("ProductTypeId");
+                    b.HasIndex("ProductTypeID");
 
                     b.ToTable("Products");
                 });
@@ -214,9 +206,14 @@ namespace MajornaGameStore.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Publishers");
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Publisher");
                 });
 
             modelBuilder.Entity("MajornaGameStore.DataAccess.Entities.Review", b =>
@@ -262,14 +259,14 @@ namespace MajornaGameStore.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ProductId")
+                    b.Property<int?>("ProductId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("Screenshots");
+                    b.ToTable("Screenshot");
                 });
 
             modelBuilder.Entity("MajornaGameStore.DataAccess.Entities.Tag", b =>
@@ -487,21 +484,6 @@ namespace MajornaGameStore.DataAccess.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("ProductPublisher", b =>
-                {
-                    b.Property<int>("ProductsId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PublishersId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ProductsId", "PublishersId");
-
-                    b.HasIndex("PublishersId");
-
-                    b.ToTable("ProductPublisher");
-                });
-
             modelBuilder.Entity("ProductTag", b =>
                 {
                     b.Property<int>("ProductsId")
@@ -517,19 +499,11 @@ namespace MajornaGameStore.DataAccess.Migrations
                     b.ToTable("ProductTag");
                 });
 
-            modelBuilder.Entity("DeveloperProduct", b =>
+            modelBuilder.Entity("MajornaGameStore.DataAccess.Entities.Developer", b =>
                 {
-                    b.HasOne("MajornaGameStore.DataAccess.Entities.Developer", null)
-                        .WithMany()
-                        .HasForeignKey("DevelopersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("MajornaGameStore.DataAccess.Entities.Product", null)
-                        .WithMany()
-                        .HasForeignKey("ProductsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany("Developers")
+                        .HasForeignKey("ProductId");
                 });
 
             modelBuilder.Entity("MajornaGameStore.DataAccess.Entities.Event", b =>
@@ -539,25 +513,28 @@ namespace MajornaGameStore.DataAccess.Migrations
                         .HasForeignKey("EventTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("MajornaGameStore.DataAccess.Entities.User", null)
-                        .WithMany("Events")
-                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("MajornaGameStore.DataAccess.Entities.Product", b =>
                 {
                     b.HasOne("MajornaGameStore.DataAccess.Entities.Discount", null)
                         .WithMany("Products")
-                        .HasForeignKey("DiscountId")
+                        .HasForeignKey("DiscountID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("MajornaGameStore.DataAccess.Entities.ProductType", null)
                         .WithMany("Products")
-                        .HasForeignKey("ProductTypeId")
+                        .HasForeignKey("ProductTypeID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("MajornaGameStore.DataAccess.Entities.Publisher", b =>
+                {
+                    b.HasOne("MajornaGameStore.DataAccess.Entities.Product", null)
+                        .WithMany("Publishers")
+                        .HasForeignKey("ProductId");
                 });
 
             modelBuilder.Entity("MajornaGameStore.DataAccess.Entities.Review", b =>
@@ -579,9 +556,7 @@ namespace MajornaGameStore.DataAccess.Migrations
                 {
                     b.HasOne("MajornaGameStore.DataAccess.Entities.Product", null)
                         .WithMany("Screenshots")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProductId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -635,21 +610,6 @@ namespace MajornaGameStore.DataAccess.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("ProductPublisher", b =>
-                {
-                    b.HasOne("MajornaGameStore.DataAccess.Entities.Product", null)
-                        .WithMany()
-                        .HasForeignKey("ProductsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MajornaGameStore.DataAccess.Entities.Publisher", null)
-                        .WithMany()
-                        .HasForeignKey("PublishersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("ProductTag", b =>
                 {
                     b.HasOne("MajornaGameStore.DataAccess.Entities.Product", null)
@@ -677,6 +637,10 @@ namespace MajornaGameStore.DataAccess.Migrations
 
             modelBuilder.Entity("MajornaGameStore.DataAccess.Entities.Product", b =>
                 {
+                    b.Navigation("Developers");
+
+                    b.Navigation("Publishers");
+
                     b.Navigation("Reviews");
 
                     b.Navigation("Screenshots");
@@ -689,8 +653,6 @@ namespace MajornaGameStore.DataAccess.Migrations
 
             modelBuilder.Entity("MajornaGameStore.DataAccess.Entities.User", b =>
                 {
-                    b.Navigation("Events");
-
                     b.Navigation("Reviews");
                 });
 #pragma warning restore 612, 618

@@ -4,6 +4,7 @@ using MajornaGameStore.DataAccess.Sql;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MajornaGameStore.DataAccess.Migrations
 {
     [DbContext(typeof(MajornaDbContext))]
-    partial class MajornaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240405080124_UpdatedTablesRelatedToProduct")]
+    partial class UpdatedTablesRelatedToProduct
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -104,14 +107,9 @@ namespace MajornaGameStore.DataAccess.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("EventTypeId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Events");
                 });
@@ -539,10 +537,6 @@ namespace MajornaGameStore.DataAccess.Migrations
                         .HasForeignKey("EventTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("MajornaGameStore.DataAccess.Entities.User", null)
-                        .WithMany("Events")
-                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("MajornaGameStore.DataAccess.Entities.Product", b =>
@@ -689,8 +683,6 @@ namespace MajornaGameStore.DataAccess.Migrations
 
             modelBuilder.Entity("MajornaGameStore.DataAccess.Entities.User", b =>
                 {
-                    b.Navigation("Events");
-
                     b.Navigation("Reviews");
                 });
 #pragma warning restore 612, 618

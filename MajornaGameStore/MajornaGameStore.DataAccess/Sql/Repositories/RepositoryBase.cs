@@ -7,7 +7,7 @@ namespace MajornaGameStore.DataAccess.Sql.Repositories;
 public abstract class RepositoryBase<TEntity, TId>(MajornaDbContext context) : IService<TEntity, TId> 
     where TEntity : class
 {
-    private readonly MajornaDbContext _context = context;
+    protected readonly MajornaDbContext _context = context;
 
     public async Task<ICollection<TEntity>> GetAllAsync()
     {
@@ -19,14 +19,6 @@ public abstract class RepositoryBase<TEntity, TId>(MajornaDbContext context) : I
         return await _context.Set<TEntity>().FindAsync(id);
     }
 
-    //public async Task<Order> AddAsync(Order entity)
-    //{
-    //    await _context.Orders.AddAsync(entity);
-    //    await _context.SaveChangesAsync(); //kan ej spara
-
-    //    await _context.Entry(entity).ReloadAsync();
-    //    return entity;
-    //}
 
     public async Task<TEntity> AddAsync(TEntity entity)
     {
@@ -50,4 +42,6 @@ public abstract class RepositoryBase<TEntity, TId>(MajornaDbContext context) : I
             await _context.SaveChangesAsync();
         }
     }
+
+
 }

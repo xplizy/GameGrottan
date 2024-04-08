@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="BlazorIcons.Core" Version="2.0.0" />
     <PackageReference Include="Blazorise.Icons.FontAwesome" Version="1.5.1" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.1" PrivateAssets="all" />
@@ -24,6 +25,18 @@
     <Resource Include="wwwroot\Images\MAJORNA-LAN.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\Cart.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Pages\Cart.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MajornaGameStore.DataAccess\MajornaGameStore.DataAccess.csproj" />
   </ItemGroup>
 
 </Project>

@@ -3,6 +3,7 @@
 using System.Text.Json;
 using System.Threading.Channels;
 using MajornaGameStore.DataAccess.Entities;
+using MajornaGameStore.DataAccess.Services;
 using MajornaGameStore.DataAccess.Sql;
 using MajornaGameStore.DataAccess.Sql.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -28,8 +29,11 @@ string fullPathConnectionString = Path.GetFullPath(relativePathConnectionString)
 Console.WriteLine("Connecting to database.");
 
 var connectionString = File.ReadAllText(fullPathConnectionString);
+//var connectionString =
+//        @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=MajornaDb;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
 
-
+Console.WriteLine(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=MajornaDb;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
+Console.WriteLine(connectionString);
 var optionsBuilder = new DbContextOptionsBuilder<MajornaDbContext>().UseSqlServer(connectionString);
 
 var context = new MajornaDbContext(optionsBuilder.Options);

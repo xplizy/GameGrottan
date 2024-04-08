@@ -21,4 +21,8 @@
     <ProjectReference Include="..\MajornaGameStore.DataAccess\MajornaGameStore.DataAccess.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Extensions\" />
+  </ItemGroup>
+
 </Project>

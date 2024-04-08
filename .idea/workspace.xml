@@ -7,7 +7,6 @@
     <list default="true" id="1fc2e9b2-3ddd-496c-8412-af154a3c5fab" name="Changes" comment="Added Test folder">
       <change beforePath="$PROJECT_DIR$/MajornaGameStore/MajornaGameStore.sln" beforeDir="false" afterPath="$PROJECT_DIR$/MajornaGameStore/MajornaGameStore.sln" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MajornaGameStore/Test/resource.robot" beforeDir="false" afterPath="$PROJECT_DIR$/MajornaGameStore/Test/resource.robot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MajornaGameStore/Test/test.robot" beforeDir="false" afterPath="$PROJECT_DIR$/MajornaGameStore/Test/test.robot" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +32,6 @@
     "Robot Framework.run [Access Product Page].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Dev",
     "last_opened_file_path": "C:/Users/amrim/Desktop",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -58,7 +56,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1712567887861</updated>
-      <workItem from="1712567889011" duration="4728000" />
+      <workItem from="1712567889011" duration="5482000" />
     </task>
     <task id="LOCAL-00001" summary="Added Test folder">
       <option name="closed" value="true" />

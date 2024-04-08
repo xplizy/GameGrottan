@@ -8,14 +8,12 @@ public class ProductRepository(MajornaDbContext context) : RepositoryBase<Produc
 {
     public async Task<ICollection<Product>> GetByTagIdAsync(int tagId)
     {
-        //var productsByTag = _context.Products.Include(
-        //    p => p.Tags.Where(t => t.Id == tagId));
-
         var productsByTag = _context.Products
             .Where(p => p.Tags.Any(t => t.Id == tagId));
 
         return await productsByTag.ToListAsync();
     }
+
 
     public override async Task UpdateAsync(Product entity)
     {

@@ -2,7 +2,7 @@
 
 namespace MajornaGameStore.DataAccess.Services;
 
-public class ServiceBase<TMainType, TId>(IService<TMainType, TId> mainRepository) : IService<TMainType, TId>
+public class ServiceBase<TMainType, TId>(IService<TMainType, TId> mainRepository) : IService<TMainType, TId> where TMainType : class
 {
     protected readonly IService<TMainType, TId> MainRepository = mainRepository;
     public async Task<ICollection<TMainType>> GetAllAsync()
@@ -10,23 +10,33 @@ public class ServiceBase<TMainType, TId>(IService<TMainType, TId> mainRepository
         return await MainRepository.GetAllAsync();
     }
 
-    public Task<TMainType?> GetByIdAsync(TId id)
+    public async Task<TMainType?> GetByIdAsync(TId id)
     {
-        throw new NotImplementedException();
+        //TODO: undersök varför detta inte fungerar
+        var entity = await MainRepository.GetByIdAsync(id);
+
+        if (entity is null)
+        {
+            return null;
+        }
+
+        return entity;
     }
 
-    public Task<TMainType> AddAsync(TMainType entity)
+    public async Task<TMainType> AddAsync(TMainType entity)
     {
-        throw new NotImplementedException();
+        var entityReturnedWithId = await MainRepository.AddAsync(entity);
+
+        return entityReturnedWithId;
     }
 
-    public Task UpdateAsync(TMainType entity)
+    public async Task UpdateAsync(TMainType entity)
     {
-        throw new NotImplementedException();
+        await MainRepository.UpdateAsync(entity);
     }
 
-    public Task DeleteAsync(TId id)
+    public async Task DeleteAsync(TId id)
     {
-        throw new NotImplementedException();
+        await MainRepository.DeleteAsync(id);
     }
 }

@@ -26,9 +26,14 @@ builder.Services
     .AddScoped<DeveloperRepository>()
     .AddScoped<PublisherRepository>()
     .AddScoped<ScreenshotRepository>()
-    .AddScoped<ITagRepository, TagRepository>();
+    .AddScoped<ITagRepository, TagRepository>()
+    .AddScoped<IDiscountRepository, DiscountRepository>();
 
-builder.Services.AddScoped<ProductService>();
+builder.Services
+    .AddScoped<ProductService>()
+    .AddScoped<DiscountService>()
+    .AddScoped<TagService>()
+    .AddScoped<ProductTypeService>();
 
 var app = builder.Build();
 
@@ -41,7 +46,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapLoadProductEndPoints();
+//app.MapLoadProductEndPoints();
 app.MapProductEndPoints();
 
 var summaries = new[]

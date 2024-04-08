@@ -4,7 +4,7 @@ using MajornaGameStore.Shared.Interfaces;
 
 namespace MajornaGameStore.DataAccess.Services;
 
-public class TagService(ITagRepository repository) : ServiceBase<Tag, int>(repository)
+public class ProductTypeService(ITypeRepository typeRepository) : ServiceBase<ProductType, int>(typeRepository)
 {
     
 }

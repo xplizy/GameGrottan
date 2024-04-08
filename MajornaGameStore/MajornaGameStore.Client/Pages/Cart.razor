@@ -1,0 +1,66 @@
+﻿@page "/Cart"
+@using MajornaGameStore.DataAccess.Entities
+@using MajornaGameStore.Shared.Dtos
+<h3>Cart</h3>
+
+
+@if (cartItems == null || cartItems.Count <= 0)
+{
+    <span>Du har inga produkter i din Cart</span>
+}
+else
+{
+    <div>
+        @foreach (var item in cartItems)
+        {
+            <div class="item-container">
+                <div class="item-image-wrapper"><img src="Images/GameCovers/@item.Image" class="item-image" width="200" height="200" /></div>
+                <div class="item-name">
+                    <h5><a>@item.Name</a></h5>
+                    <button class="btn-delete" @onclick="@(() => DeleteFromCart(item))">
+                        Ta Bort
+                    </button>
+                    <EditForm Model="item">
+                        <InputNumber id="quantity" EnableMinMax="true" Min="1" @bind-Value="item.Quantity"
+                                     class="form-control" style="width: 70px" />
+                    </EditForm>
+                </div>
+                <div class="item-price">Sek @(item.Price * item.Quantity)</div>
+            </div>
+        }
+        <div class="item-price" style="text-align: right; padding-right: 40px">
+            Totalt: Sek @cartItems.Sum(item => item.Price * item.Quantity)
+        </div>
+        <div>
+            <button class="btn-clear" @onclick="@(() => ClearCart())">
+                Töm Korg
+            </button>
+        </div>
+        
+    </div>
+}
+  
+  
+
+
+@code {
+    List<CartItemDto> cartItems = new List<CartItemDto>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        cartItems.Add(new CartItemDto() { Name = "Elden Ring", Price = 600, Image = "Elden.jpg" });
+        cartItems.Add(new CartItemDto() { Name = "Sekiro: Shadows Die Twice", Price = 600, Image = "Sekiro.jpg" });
+        cartItems.Add(new CartItemDto() { Name = "Niklas Adventure: Tjohoo", Price = 700, Image = "NiklasA.jpg" });
+    }
+
+    private async Task DeleteFromCart(CartItemDto item)
+    {
+        cartItems.Remove(item);
+    }
+
+    private async Task ClearCart()
+    {
+        cartItems.Clear();
+    }
+
+}

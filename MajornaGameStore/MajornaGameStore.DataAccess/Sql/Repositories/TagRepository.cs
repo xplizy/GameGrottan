@@ -1,9 +1,10 @@
 ﻿using MajornaGameStore.DataAccess.Entities;
+using MajornaGameStore.Shared.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace MajornaGameStore.DataAccess.Sql.Repositories;
 
-public class TagRepository(MajornaDbContext context) : RepositoryBase<Tag, int>(context)
+public class TagRepository(MajornaDbContext context) : RepositoryBase<Tag, int>(context), ITagRepository
 {
     public override async Task UpdateAsync(Tag entity)
     {

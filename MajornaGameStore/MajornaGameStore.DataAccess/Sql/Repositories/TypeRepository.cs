@@ -1,9 +1,11 @@
 ﻿using MajornaGameStore.DataAccess.Entities;
+using MajornaGameStore.Shared.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace MajornaGameStore.DataAccess.Sql.Repositories;
 
-public class TypeRepository(MajornaDbContext context) : RepositoryBase<ProductType, int>(context)
+public class TypeRepository(MajornaDbContext context) 
+    : RepositoryBase<ProductType, int>(context), ITypeRepository
 {
     public override async Task UpdateAsync(ProductType entity)
     {

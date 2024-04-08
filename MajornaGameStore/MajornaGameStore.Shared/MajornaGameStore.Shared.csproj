@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <PackageReference Include="Blazorise.Icons.FontAwesome" Version="1.5.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.3" />
+    <PackageReference Include="MongoDB.Driver" Version="2.24.0" />
   </ItemGroup>
 
   <ItemGroup>

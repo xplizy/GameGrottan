@@ -1,9 +1,19 @@
 ﻿using MajornaGameStore.DataAccess.Entities;
+using MajornaGameStore.Shared.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace MajornaGameStore.DataAccess.Sql.Repositories;
 
-public class ProductRepository(MajornaDbContext context) : RepositoryBase<Product, int>(context)
+public class ProductRepository(MajornaDbContext context) : RepositoryBase<Product, int>(context), IProductRepository
 {
+    public async Task<ICollection<Product>> GetByTagIdAsync(int tagId)
+    {
+        var productsByTag = _context.Products.Include(
+            p => p.Tags.Where(t => t.Id == tagId));
+
+        return await productsByTag.ToListAsync();
+    }
+
     public override async Task UpdateAsync(Product entity)
     {
         var product = await _context.Products.FindAsync(entity.Id);

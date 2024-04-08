@@ -8,5 +8,5 @@ public class Event : EntityBase<int>
     public int EventTypeId { get; set; }
     public DateTime EventStart { get; set; }
     public DateTime EventEnd { get; set; }
-
+    public ICollection<User> Users { get; set; }
 }

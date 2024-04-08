@@ -36,4 +36,6 @@ public class ProductService(IProductRepository repository, ITypeRepository typeR
 
         return products;
     }
+
+    
 }

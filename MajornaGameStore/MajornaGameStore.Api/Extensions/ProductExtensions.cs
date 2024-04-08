@@ -11,6 +11,7 @@ public static class ProductExtensions
         var group = app.MapGroup("/products");
 
         group.MapGet("/", GetAllProductsAsync);
+        group.MapGet("/{id}", GetProductByIdAsync);
         return app;
     }
 
@@ -18,5 +19,15 @@ public static class ProductExtensions
     {
         var products = await productService.GetAllAsync();
         return Results.Ok(products);
+    }
+
+    public static async Task<IResult> GetProductByIdAsync(ProductService productService, int id)
+    {
+        var product = await productService.GetByIdAsync(id);
+
+        if (product is null)
+            return Results.NotFound();
+
+        return Results.Ok(product);
     }
 }

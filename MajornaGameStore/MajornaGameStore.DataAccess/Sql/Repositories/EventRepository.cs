@@ -5,12 +5,12 @@ namespace MajornaGameStore.DataAccess.Sql.Repositories;
 public class EventRepository(MajornaDbContext context) : RepositoryBase<Event, int>(context)
 {
     private readonly MajornaDbContext _context = context;
-    public override async Task UpdateAsync(Event entity)
+    public override async Task<bool> UpdateAsync(Event entity)
     {
         var eventFromDb = await _context.Events.FindAsync(entity.Id);
 
         if (eventFromDb is null)
-            return;
+            return false;
 
         eventFromDb.Name = entity.Name;
         eventFromDb.Description = entity.Description;
@@ -21,5 +21,6 @@ public class EventRepository(MajornaDbContext context) : RepositoryBase<Event, i
         eventFromDb.Users = entity.Users;
 
         await _context.SaveChangesAsync();
+        return true;
     }
 }

@@ -1,18 +1,20 @@
 ﻿using MajornaGameStore.DataAccess.Entities;
+using MajornaGameStore.Shared.Interfaces;
 
 namespace MajornaGameStore.DataAccess.Sql.Repositories;
 
-public class ScreenshotRepository(MajornaDbContext context) : RepositoryBase<Screenshot, int>(context)
+public class ScreenshotRepository(MajornaDbContext context) : RepositoryBase<Screenshot, int>(context), IScreenshotRepository
 {
-    public override async Task UpdateAsync(Screenshot entity)
+    public override async Task<bool> UpdateAsync(Screenshot entity)
     {
         var screenshot = await _context.Screenshots.FindAsync(entity.Id);
 
         if (screenshot is null)
-            return;
+            return false;
 
         screenshot.Path = entity.Path;
 
         await _context.SaveChangesAsync();
+        return true;
     }
 }

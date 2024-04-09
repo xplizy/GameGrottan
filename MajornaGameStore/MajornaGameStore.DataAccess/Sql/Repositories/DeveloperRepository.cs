@@ -1,21 +1,22 @@
 ﻿using MajornaGameStore.DataAccess.Entities;
+using MajornaGameStore.Shared.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace MajornaGameStore.DataAccess.Sql.Repositories;
 
-public class DeveloperRepository(MajornaDbContext context) : RepositoryBase<Developer, int>(context)
+public class DeveloperRepository(MajornaDbContext context) : RepositoryBase<Developer, int>(context), IDeveloperRepository
 {
-    public override async Task UpdateAsync(Developer entity)
+    public override async Task<bool> UpdateAsync(Developer entity)
     {
         var developer = await _context.Developers.FindAsync(entity.Id);
 
         if (developer is null)
-            return;
+            return false;
 
         developer.Name = entity.Name;
         
-
         await _context.SaveChangesAsync();
+        return false;
     }
     public async Task<Developer?> GetByNameAsync(string name)
     {

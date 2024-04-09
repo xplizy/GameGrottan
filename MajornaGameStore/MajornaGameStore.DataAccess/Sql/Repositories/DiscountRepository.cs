@@ -14,12 +14,12 @@ public class DiscountRepository(MajornaDbContext context) : RepositoryBase<Disco
         return await discounts.ToListAsync();
     }
 
-    public override async Task UpdateAsync(Discount entity)
+    public override async Task<bool> UpdateAsync(Discount entity)
     {
         var discount = await _context.Discounts.FindAsync(entity.Id);
 
         if (discount is null)
-            return;
+            return false;
 
         discount.DiscountPercentage = entity.DiscountPercentage;
         discount.Products = entity.Products;
@@ -27,5 +27,6 @@ public class DiscountRepository(MajornaDbContext context) : RepositoryBase<Disco
         discount.DiscountEnd = entity.DiscountEnd;
 
         await _context.SaveChangesAsync();
+        return true;
     }
 }

@@ -31,16 +31,18 @@ public abstract class RepositoryBase<TEntity, TId>(MajornaDbContext context) : I
     }
 
     //Needs to be implemented in each child class
-    public abstract Task UpdateAsync(TEntity entity);
+    public abstract Task<bool> UpdateAsync(TEntity entity);
 
-    public virtual async Task DeleteAsync(TId id)
+    public virtual async Task<bool> DeleteAsync(TId id)
     {
         var entity = await _context.Set<TEntity>().FindAsync(id);
-        if (entity is not null)
+        if (entity is null)
         {
-            _context.Set<TEntity>().Remove(entity);
-            await _context.SaveChangesAsync();
+            return false;
         }
+        _context.Set<TEntity>().Remove(entity);
+        await _context.SaveChangesAsync();
+        return true;
     }
 
 

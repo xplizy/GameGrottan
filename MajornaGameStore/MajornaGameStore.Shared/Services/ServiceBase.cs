@@ -29,13 +29,16 @@ public class ServiceBase<TMainType, TId>(IService<TMainType, TId> mainRepository
         return entityReturnedWithId;
     }
 
-    public async Task UpdateAsync(TMainType entity)
+    public async Task<bool> UpdateAsync(TMainType entity)
     {
-        await MainRepository.UpdateAsync(entity);
+        var entityExists = await MainRepository.UpdateAsync(entity);
+
+        return entityExists;
     }
 
-    public async Task DeleteAsync(TId id)
+    public async Task<bool> DeleteAsync(TId id)
     {
-        await MainRepository.DeleteAsync(id);
+        var entityExists = await MainRepository.DeleteAsync(id);
+        return entityExists;
     }
 }

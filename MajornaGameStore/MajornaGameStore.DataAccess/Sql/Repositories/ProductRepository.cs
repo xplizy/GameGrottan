@@ -15,12 +15,12 @@ public class ProductRepository(MajornaDbContext context) : RepositoryBase<Produc
     }
 
 
-    public override async Task UpdateAsync(Product entity)
+    public override async Task<bool> UpdateAsync(Product entity)
     {
         var product = await _context.Products.FindAsync(entity.Id);
 
         if (product is null)
-            return;
+            return false;
 
         product.Name = entity.Name;
         product.Price = entity.Price;
@@ -39,5 +39,7 @@ public class ProductRepository(MajornaDbContext context) : RepositoryBase<Produc
         product.AgeRating = entity.AgeRating;
 
         await _context.SaveChangesAsync();
+
+        return true;
     }
 }

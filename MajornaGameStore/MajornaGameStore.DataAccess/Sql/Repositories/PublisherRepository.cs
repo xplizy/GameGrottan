@@ -5,16 +5,18 @@ namespace MajornaGameStore.DataAccess.Sql.Repositories;
 
 public class PublisherRepository(MajornaDbContext context) : RepositoryBase<Publisher, int>(context)
 {
-    public override async Task UpdateAsync(Publisher entity)
+    public override async Task<bool> UpdateAsync(Publisher entity)
     {
         var publisher = await _context.Publishers.FindAsync(entity.Id);
 
         if (publisher is null)
-            return;
+            return false;
 
         publisher.Name = entity.Name;
 
         await _context.SaveChangesAsync();
+
+        return true;
     }
 
     public async Task<Publisher?> GetByNameAsync(string name)

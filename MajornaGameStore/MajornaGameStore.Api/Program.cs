@@ -1,4 +1,5 @@
 using MajornaGameStore.Api.Extensions;
+using MajornaGameStore.DataAccess.Entities;
 using MajornaGameStore.DataAccess.Services;
 using MajornaGameStore.DataAccess.Sql;
 using MajornaGameStore.DataAccess.Sql.Repositories;
@@ -28,7 +29,8 @@ builder.Services
     .AddScoped<IScreenshotRepository, ScreenshotRepository>()
     .AddScoped<ITagRepository, TagRepository>()
     .AddScoped<IDiscountRepository, DiscountRepository>()
-    .AddScoped<IEventRepository, EventRepository>();
+    .AddScoped<IEventRepository, EventRepository>()
+    .AddScoped<IEventTypeRepository, EventTypeRepository>();
 
 builder.Services
     .AddScoped<ProductService>()
@@ -40,7 +42,8 @@ builder.Services
     .AddScoped<DeveloperService>()
     .AddScoped<PublisherService>()
     .AddScoped<ScreenshotService>()
-    .AddScoped<TagService>();
+    .AddScoped<TagService>()
+    .AddScoped<EventTypeService>();
 
 var app = builder.Build();
 
@@ -56,6 +59,7 @@ app.UseHttpsRedirection();
 //app.MapLoadProductEndPoints();
 app.MapProductEndPoints();
 app.MapEventEndPoints();
+app.MapEventTypeEndPoints();
 
 var summaries = new[]
 {

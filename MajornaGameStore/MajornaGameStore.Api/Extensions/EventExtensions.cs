@@ -51,25 +51,14 @@ public static class EventExtensions
 
     public static async Task<IResult> AddEvent(EventService eventService, Event entity)
     {
-        var events2 = await eventService.GetAllAsync();
+        var newEvent = await eventService.AddAsync(entity);
 
-        var events = eventService.AddAsync(entity);
-
-        if (events2.Any(e => e.Id == events.Id))
-        {
-            return Results.BadRequest();
-        }
-
-        return Results.Ok(events);
+        return Results.Ok(newEvent);
     }
 
     public static async Task<IResult> DeleteEvent(EventService eventService, int id)
     {
-        var events = eventService.DeleteAsync(id);
-
-        if (events is null)
-            return Results.NotFound();
-
+        var events = await eventService.DeleteAsync(id);
         return Results.Ok();
 
 

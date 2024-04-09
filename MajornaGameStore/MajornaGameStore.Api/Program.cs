@@ -6,6 +6,10 @@ using MajornaGameStore.DataAccess.Sql.Repositories;
 using MajornaGameStore.Shared.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Stripe;
+using DiscountService = MajornaGameStore.DataAccess.Services.DiscountService;
+using EventService = MajornaGameStore.DataAccess.Services.EventService;
+using ProductService = MajornaGameStore.DataAccess.Services.ProductService;
+using ReviewService = MajornaGameStore.DataAccess.Services.ReviewService;
 
 var builder = WebApplication.CreateBuilder(args);
 

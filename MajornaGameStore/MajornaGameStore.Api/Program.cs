@@ -30,7 +30,7 @@ builder.Services
     .AddScoped<ITagRepository, TagRepository>()
     .AddScoped<IDiscountRepository, DiscountRepository>()
     .AddScoped<IEventRepository, EventRepository>()
-    .AddScoped<IEventRepository, EventRepository>()
+    .AddScoped<IEventTypeRepository, EventTypeRepository>()
     .AddScoped<IReviewRepository, ReviewRepository>();
 
 builder.Services
@@ -44,8 +44,11 @@ builder.Services
     .AddScoped<PublisherService>()
     .AddScoped<ScreenshotService>()
     .AddScoped<TagService>()
-    .AddScoped<EventTypeService>()
-    .AddScoped<ReviewRepository>();
+<<<<<<<<< Temporary merge branch 1
+    .AddScoped<ReviewService>();
+=========
+    .AddScoped<EventTypeService>();
+>>>>>>>>> Temporary merge branch 2
 
 var app = builder.Build();
 

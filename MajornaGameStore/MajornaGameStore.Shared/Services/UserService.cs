@@ -2,7 +2,7 @@
 
 namespace MajornaGameStore.DataAccess.Services;
 
-public class UserService(UserRepository repository) : ServiceBase<User, string>(repository)
+public class UserService(IUserRepository repository) : ServiceBase<User, string>(repository)
 {
     
 }

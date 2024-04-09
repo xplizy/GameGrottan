@@ -3,7 +3,7 @@
 
 namespace MajornaGameStore.DataAccess.Services;
 
-public class DeveloperService(DeveloperRepository repository) : ServiceBase<Developer, int>(repository)
+public class DeveloperService(IDeveloperRepository repository) : ServiceBase<Developer, int>(repository)
 {
     
 }

@@ -11,7 +11,7 @@ public static class ProductMapper
         PublisherService pubService,
         ScreenshotService scrshotService,
         TagService tagService,
-        Review reviewService)
+        ReviewService reviewService)
     {
         //Developers
         var developers = new List<Developer>();
@@ -45,7 +45,8 @@ public static class ProductMapper
         var reviews = new List<Review>();
         foreach (var reviewIds in dto.ReviewIds)
         {
-            var review = await reviewService.
+            var review = await reviewService.GetByIdAsync(reviewIds);
+            reviews.Add(review!);
         }
 
         var entity = new Product
@@ -60,8 +61,15 @@ public static class ProductMapper
             PcRequirements = dto.PcRequirements,
             ReleaseDate = dto.ReleaseDate,
             AgeRating = dto.AgeRating,
+            Developers = developers,
+            Publishers = publishers,
+            Screenshots = screenshots,
+            Tags = tags,
+            Reviews = reviews
 
         };
+
+        return entity;
     }
 
     public static async Task<ProductDto> MapToDtoAsync(Product entity)

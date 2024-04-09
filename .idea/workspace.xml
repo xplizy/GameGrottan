@@ -14,6 +14,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Dev" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -56,6 +61,7 @@
       <option name="presentableId" value="Default" />
       <updated>1712567887861</updated>
       <workItem from="1712567889011" duration="5482000" />
+      <workItem from="1712672279540" duration="19000" />
     </task>
     <task id="LOCAL-00001" summary="Added Test folder">
       <option name="closed" value="true" />

@@ -13,12 +13,12 @@ public class ProductService(IProductRepository repository,
     private readonly ITypeRepository _typeRepository = typeRepository;
     private readonly ITagRepository _tagRepository = tagRepository;
     private readonly IDiscountRepository _discountRepository = discountRepository;
-    public async Task<ICollection<Product>> GetAllProductsByTypeAsync(int productTypeId)
+    public async Task<ICollection<Product>?> GetAllProductsByTypeIdAsync(int productTypeId)
     {
         var doesTypeExist = await _typeRepository.GetByIdAsync(productTypeId);
 
         if (doesTypeExist is null)
-            return new List<Product>();
+            return null;
 
         var products = await MainRepository.GetAllAsync();
         var productsByType =  products
@@ -29,12 +29,12 @@ public class ProductService(IProductRepository repository,
         return productsByType;
     }
 
-    public async Task<ICollection<Product>> GetAllProductsByTag(int tagId)
+    public async Task<ICollection<Product>?> GetAllProductsByTagId(int tagId)
     {
         var doesTagExist = await _tagRepository.GetByIdAsync(tagId);
 
-        if(doesTagExist is null)
-            return new List<Product>();
+        if (doesTagExist is null)
+            return null;
 
         var products = await _productRepository.GetByTagIdAsync(tagId);
 
@@ -60,12 +60,12 @@ public class ProductService(IProductRepository repository,
         return products;
     }
 
-    public async Task<ICollection<Product>> GetProductsByDiscountId(int discountId)
+    public async Task<ICollection<Product>?> GetProductsByDiscountId(int discountId)
     {
         var doesIdExist = await _discountRepository.GetByIdAsync(discountId);
 
         if (doesIdExist is null)
-            return new List<Product>();
+            return null;
 
         var products = await MainRepository.GetAllAsync();
         var productsByDiscountId = products

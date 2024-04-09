@@ -12,7 +12,6 @@ public class ServiceBase<TMainType, TId>(IService<TMainType, TId> mainRepository
 
     public async Task<TMainType?> GetByIdAsync(TId id)
     {
-        //TODO: undersök varför detta inte fungerar
         var entity = await MainRepository.GetByIdAsync(id);
 
         if (entity is null)

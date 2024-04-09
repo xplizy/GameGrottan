@@ -1,9 +1,9 @@
 ﻿using MajornaGameStore.DataAccess.Entities;
-using MajornaGameStore.DataAccess.Sql.Repositories;
+using MajornaGameStore.Shared.Interfaces;
 
 namespace MajornaGameStore.DataAccess.Services;
 
-public class EventTypeService(EventTypeRepository repository) : ServiceBase<EventType, int>(repository)
+public class EventTypeService(IEventTypeRepository repository) : ServiceBase<EventType, int>(repository)
 {
     
 }

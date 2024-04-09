@@ -3,7 +3,7 @@ using MajornaGameStore.DataAccess.Sql.Repositories;
 
 namespace MajornaGameStore.DataAccess.Services;
 
-public class ScreenshotService(ScreenshotRepository repository) : ServiceBase<Screenshot, int>(repository)
+public class ScreenshotService(IScreenshotRepository repository) : ServiceBase<Screenshot, int>(repository)
 {
     
 }

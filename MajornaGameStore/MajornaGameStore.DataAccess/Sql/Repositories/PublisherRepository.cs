@@ -1,9 +1,10 @@
 ﻿using MajornaGameStore.DataAccess.Entities;
+using MajornaGameStore.Shared.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace MajornaGameStore.DataAccess.Sql.Repositories;
 
-public class PublisherRepository(MajornaDbContext context) : RepositoryBase<Publisher, int>(context)
+public class PublisherRepository(MajornaDbContext context) : RepositoryBase<Publisher, int>(context), IPublisherRepository
 {
     public override async Task<bool> UpdateAsync(Publisher entity)
     {

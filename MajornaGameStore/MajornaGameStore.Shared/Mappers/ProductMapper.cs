@@ -6,7 +6,7 @@ namespace MajornaGameStore.Shared.Mappers;
 
 public static class ProductMapper
 {
-    public static async Task<Product> MapToEntityAsync(ProductDto dto,
+    public static async Task<Product> MapToEntityAsync(this ProductDto dto,
         DeveloperService devService,
         PublisherService pubService,
         ScreenshotService scrshotService,
@@ -51,6 +51,7 @@ public static class ProductMapper
 
         var entity = new Product
         {
+            Id = dto.Id,
             Name = dto.Name,
             Price = dto.Price,
             ProductTypeId = dto.ProductTypeId,
@@ -72,7 +73,7 @@ public static class ProductMapper
         return entity;
     }
 
-    public static async Task<ProductDto> MapToDtoAsync(Product entity)
+    public static async Task<ProductDto> MapToDtoAsync(this Product entity)
     {
         //Developers
         var developerIds = new List<int>();
@@ -106,6 +107,7 @@ public static class ProductMapper
         }
         var dto = new ProductDto
         {
+            Id = entity.Id,
             Name = entity.Name,
             Price = entity.Price,
             ProductTypeId = entity.ProductTypeId,

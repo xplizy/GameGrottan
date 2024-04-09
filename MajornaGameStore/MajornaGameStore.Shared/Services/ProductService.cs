@@ -1,4 +1,5 @@
 ﻿using MajornaGameStore.DataAccess.Entities;
+using MajornaGameStore.Shared.Dtos;
 using MajornaGameStore.Shared.Interfaces;
 
 namespace MajornaGameStore.DataAccess.Services;

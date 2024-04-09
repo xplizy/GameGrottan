@@ -28,7 +28,8 @@ builder.Services
     .AddScoped<IScreenshotRepository, ScreenshotRepository>()
     .AddScoped<ITagRepository, TagRepository>()
     .AddScoped<IDiscountRepository, DiscountRepository>()
-    .AddScoped<IEventRepository, EventRepository>();
+    .AddScoped<IEventRepository, EventRepository>()
+    .AddScoped<IReviewRepository, ReviewRepository>();
 
 builder.Services
     .AddScoped<ProductService>()
@@ -40,7 +41,8 @@ builder.Services
     .AddScoped<DeveloperService>()
     .AddScoped<PublisherService>()
     .AddScoped<ScreenshotService>()
-    .AddScoped<TagService>();
+    .AddScoped<TagService>()
+    .AddScoped<ReviewService>();
 
 var app = builder.Build();
 

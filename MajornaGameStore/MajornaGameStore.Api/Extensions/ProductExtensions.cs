@@ -3,6 +3,8 @@ using MajornaGameStore.DataAccess.Sql.Repositories;
 using MajornaGameStore.Shared.Interfaces;
 using System;
 using MajornaGameStore.DataAccess.Entities;
+using MajornaGameStore.Shared.Dtos;
+using MajornaGameStore.Shared.Mappers;
 
 namespace MajornaGameStore.Api.Extensions;
 
@@ -36,8 +38,15 @@ public static class ProductExtensions
         return Results.Ok();
     }
 
-    public static async Task<IResult> UpdateProductAsync(ProductService productService, Product product)
+    public static async Task<IResult> UpdateProductAsync(ProductService productService, 
+        DeveloperService developerService,
+        PublisherService publisherService,
+        ScreenshotService screenshotService,
+        TagService tagService,
+        ReviewService reviewService,
+        ProductDto productDto)
     {
+        var product = await productDto.MapToEntityAsync(developerService, publisherService, screenshotService, tagService, reviewService);
         var entityExists = await productService.UpdateAsync(product);
 
         if (entityExists == false)
@@ -48,25 +57,46 @@ public static class ProductExtensions
         return Results.Ok();
     }
 
-    public static async Task<IResult> AddProductAsync(ProductService productService, Product newProduct)
+    public static async Task<IResult> AddProductAsync(ProductService productService,
+        DeveloperService developerService,
+        PublisherService publisherService,
+        ScreenshotService screenshotService,
+        TagService tagService,
+        ReviewService reviewService,
+        ProductDto newProductDto)
     {
+        var newProduct = await newProductDto.MapToEntityAsync(developerService, publisherService, screenshotService,
+            tagService, reviewService);
         var newlyAddedProduct = await productService.AddAsync(newProduct);
 
-        return Results.Ok(newlyAddedProduct);
+        return Results.Ok(await newlyAddedProduct.MapToDtoAsync());
     }
 
     public static async Task<IResult> GetProductsByDiscountId(ProductService productService, int discountId)
     {
         var products = await productService.GetProductsByDiscountId(discountId);
+
         if (products is null)
             return Results.NotFound($"Discount with id {discountId} does not exist");
 
-        return Results.Ok(products);
+        var productDtos = new List<ProductDto>();
+        foreach (var product in products)
+        {
+            var dto = await product.MapToDtoAsync();
+        }
+
+        return Results.Ok(productDtos);
     }
     public static async Task<IResult> GetAllProductsWithDiscountsAsync(ProductService productService)
     {
         var products = await productService.GetAllProductsWithDiscounts();
-        return Results.Ok(products);
+
+        var productDtos = new List<ProductDto>();
+        foreach (var product in products)
+        {
+            var dto = await product.MapToDtoAsync();
+        }
+        return Results.Ok(productDtos);
     }
     public static async Task<IResult> GetProductsByTagIdAsync(ProductService productService, int tagId)
     {
@@ -74,7 +104,12 @@ public static class ProductExtensions
         if (products is null)
             return Results.NotFound($"Product tag with id {tagId} does not exist");
 
-        return Results.Ok(products);
+        var productDtos = new List<ProductDto>();
+        foreach (var product in products)
+        {
+            var dto = await product.MapToDtoAsync();
+        }
+        return Results.Ok(productDtos);
     }
     public static async Task<IResult> GetProductsByTypeIdAsync(ProductService productService, int typeId)
     {
@@ -82,12 +117,25 @@ public static class ProductExtensions
         if (products is null)
             return Results.NotFound($"Product type with id {typeId} does not exist");
 
-        return Results.Ok(products);
+        var productDtos = new List<ProductDto>();
+        foreach (var product in products)
+        {
+            var dto = await product.MapToDtoAsync();
+        }
+        return Results.Ok(productDtos);
     }
     public static async Task<IResult> GetAllProductsAsync(ProductService productService)
     {
         var products = await productService.GetAllAsync();
-        return Results.Ok(products);
+
+        var productDtos = new List<ProductDto>();
+        foreach (var product in products)
+        {
+            var dto = await product.MapToDtoAsync();
+            productDtos.Add(dto);
+        }
+        return Results.Ok(productDtos);
+
     }
     public static async Task<IResult> GetProductByIdAsync(ProductService productService, int id)
     {
@@ -96,6 +144,6 @@ public static class ProductExtensions
         if (product is null)
             return Results.NotFound($"Product with id {id} does not exist.");
 
-        return Results.Ok(product);
+        return Results.Ok(await product.MapToDtoAsync());
     }
 }

@@ -5,6 +5,7 @@ using MajornaGameStore.DataAccess.Sql;
 using MajornaGameStore.DataAccess.Sql.Repositories;
 using MajornaGameStore.Shared.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Stripe;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -48,6 +49,32 @@ builder.Services
     .AddScoped<EventTypeService>();
 
 
+StripeConfiguration.ApiKey = builder.Configuration["Stripe:SecretKey"];
+
+//add cors for no errors later on
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(builder =>
+    {
+        builder.AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
+
+builder.Services.AddRouting(options => options.LowercaseUrls = true);
+builder.Services.AddControllers();
+
+//StripeConfiguration.ApiKey = "sk_test_51P1o0CALQne3zawOR30h5V9cqOtm7GK7l4t5HA6jHdVlkg8tyBiiqzjmUI6prlXhArha19lUxUq3jEBp9Ro531nH00bgxGxZqv";
+
+//var options = new PaymentIntentCreateOptions
+//{
+//    Amount = 500,
+//    Currency = "gbp",
+//    PaymentMethod = "pm_card_se",
+//};
+//var service = new PaymentIntentService();
+//service.Create(options);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -56,6 +83,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+//enligt instruktioner so that asp.net can activate these services
+app.UseCors();
+app.UseRouting();
+app.MapControllers();
 
 app.UseHttpsRedirection();
 

@@ -1,8 +1,9 @@
 ﻿using MajornaGameStore.DataAccess.Entities;
+using MajornaGameStore.Shared.Interfaces;
 
 namespace MajornaGameStore.DataAccess.Sql.Repositories;
 
-public class EventTypeRepository(MajornaDbContext context) : RepositoryBase<EventType, int>(context)
+public class EventTypeRepository(MajornaDbContext context) : RepositoryBase<EventType, int>(context), IEventTypeRepository
 {
     public override async Task<bool> UpdateAsync(EventType entity)
     {

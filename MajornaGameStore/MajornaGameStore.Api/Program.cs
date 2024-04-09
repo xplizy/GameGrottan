@@ -23,17 +23,24 @@ builder.Services.AddScoped<MajornaDbContext>();
 builder.Services
     .AddScoped<IProductRepository, ProductRepository>()
     .AddScoped<ITypeRepository, TypeRepository>()
-    .AddScoped<DeveloperRepository>()
-    .AddScoped<PublisherRepository>()
-    .AddScoped<ScreenshotRepository>()
+    .AddScoped<IDeveloperRepository, DeveloperRepository>()
+    .AddScoped<IPublisherRepository, PublisherRepository>()
+    .AddScoped<IScreenshotRepository, ScreenshotRepository>()
     .AddScoped<ITagRepository, TagRepository>()
-    .AddScoped<IDiscountRepository, DiscountRepository>();
+    .AddScoped<IDiscountRepository, DiscountRepository>()
+    .AddScoped<IEventRepository, EventRepository>();
 
 builder.Services
     .AddScoped<ProductService>()
     .AddScoped<DiscountService>()
     .AddScoped<TagService>()
-    .AddScoped<ProductTypeService>();
+    .AddScoped<ProductTypeService>()
+    .AddScoped<EventService>()
+    .AddScoped<ProductTypeService>()
+    .AddScoped<DeveloperService>()
+    .AddScoped<PublisherService>()
+    .AddScoped<ScreenshotService>()
+    .AddScoped<TagService>();
 
 var app = builder.Build();
 

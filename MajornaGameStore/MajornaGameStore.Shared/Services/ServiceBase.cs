@@ -1,7 +1,7 @@
-﻿using MajornaGameStore.Shared.Interfaces;
+﻿
+using MajornaGameStore.Shared.Interfaces;
 
 namespace MajornaGameStore.DataAccess.Services;
-
 public class ServiceBase<TMainType, TId>(IService<TMainType, TId> mainRepository) : IService<TMainType, TId> where TMainType : class
 {
     protected readonly IService<TMainType, TId> MainRepository = mainRepository;
@@ -29,6 +29,7 @@ public class ServiceBase<TMainType, TId>(IService<TMainType, TId> mainRepository
         return entityReturnedWithId;
     }
 
+    
     public async Task<bool> UpdateAsync(TMainType entity)
     {
         var entityExists = await MainRepository.UpdateAsync(entity);

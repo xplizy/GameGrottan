@@ -44,11 +44,9 @@ builder.Services
     .AddScoped<PublisherService>()
     .AddScoped<ScreenshotService>()
     .AddScoped<TagService>()
-<<<<<<<<< Temporary merge branch 1
-    .AddScoped<ReviewService>();
-=========
+    .AddScoped<ReviewService>()
     .AddScoped<EventTypeService>();
->>>>>>>>> Temporary merge branch 2
+
 
 var app = builder.Build();
 

@@ -48,6 +48,7 @@ app.UseHttpsRedirection();
 
 //app.MapLoadProductEndPoints();
 app.MapProductEndPoints();
+app.MapEventEndPoints();
 
 var summaries = new[]
 {

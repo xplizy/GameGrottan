@@ -1,4 +1,5 @@
-﻿using MajornaGameStore.DataAccess.Services;
+﻿using MajornaGameStore.DataAccess.Entities;
+using MajornaGameStore.DataAccess.Services;
 using Microsoft.Identity.Client;
 
 namespace MajornaGameStore.Api.Extensions;
@@ -13,6 +14,8 @@ public static class EventExtensions
         group.MapGet("/", GetAllEventsAsync);
         group.MapGet("/{id}", GetEventsByIdAsync);
         group.MapPut("/{id}", UpdateEvent);
+        group.MapPost("/events", AddEvent);
+        group.MapDelete("/{id}", DeleteEvent);
         return app;
     }
 
@@ -36,13 +39,39 @@ public static class EventExtensions
 
     }
 
-    public static async Task<IResult> UpdateEvent(EventService eventService, int id)
+    public static async Task<IResult> UpdateEvent(EventService eventService, Event entity)
     {
-        var events = await eventService.UpdateAsync();
+        var events = await eventService.UpdateAsync(entity);
+
+        if (events is false)
+            return Results.NotFound();
+
+        return Results.Ok(events);
+    }
+
+    public static async Task<IResult> AddEvent(EventService eventService, Event entity)
+    {
+        var events2 = await eventService.GetAllAsync();
+
+        var events = eventService.AddAsync(entity);
+
+        if (events2.Any(e => e.Id == events.Id))
+        {
+            return Results.BadRequest();
+        }
+
+        return Results.Ok(events);
+    }
+
+    public static async Task<IResult> DeleteEvent(EventService eventService, int id)
+    {
+        var events = eventService.DeleteAsync(id);
 
         if (events is null)
             return Results.NotFound();
 
-        return Results.Ok(events);
+        return Results.Ok();
+
+
     }
 }

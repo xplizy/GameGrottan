@@ -1,6 +1,6 @@
 ﻿namespace MajornaGameStore.Client.Services;
 
-public class ProductService
+public class ClientProductService
 {
     
 }

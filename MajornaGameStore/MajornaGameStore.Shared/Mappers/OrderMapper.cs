@@ -6,32 +6,31 @@ namespace MajornaGameStore.Shared.Mappers;
 
 public static class OrderMapper
 {
-    public static OrderDto MapToDtoAsync(this Order entity)
+    public static async Task<OrderDto> MapToDtoAsync(this Order entity)
     {
-        var productQuantityIds = new List<ObjectId>();
-        foreach (var productQuantity in entity.ProductQuantities)
-        {
-            productQuantityIds.Add(productQuantity.Id);
-        }
-        var eventQuantityIds = new List<ObjectId>();
-        foreach (var eventQuantity in entity.EventQuantities)
-        {
-            productQuantityIds.Add(eventQuantity.Id);
-        }
-
+        
         var dto = new OrderDto
         {
             Id = entity.Id.ToString(),
             UserId = entity.UserId,
             DateOfOrder = entity.DateOfOrder,
-            ProductQuantityIds = productQuantityIds,
-            EventQuantityIds = eventQuantityIds
+            ProductQuantities = entity.ProductQuantities,
+            EventQuantities = entity.EventQuantities
         };
         return dto;
     }
 
     public static Order MapToEntityAsync(this OrderDto dto)
     {
-        throw new NotImplementedException();
+        var entity = new Order
+        {
+            Id = ObjectId.Parse(dto.Id),
+            UserId = dto.UserId,
+            DateOfOrder = dto.DateOfOrder,
+            ProductQuantities = dto.ProductQuantities,
+            EventQuantities = dto.EventQuantities
+        };
+
+        return entity;
     }
 }

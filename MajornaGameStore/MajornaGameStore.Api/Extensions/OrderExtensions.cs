@@ -1,5 +1,7 @@
 ﻿using MajornaGameStore.DataAccess.Entities;
 using MajornaGameStore.DataAccess.Services;
+using MajornaGameStore.Shared.Dtos;
+using MajornaGameStore.Shared.Mappers;
 using MongoDB.Bson;
 
 namespace MajornaGameStore.Api.Extensions;
@@ -21,7 +23,14 @@ public static class OrderExtensions
     {
         var orders = await orderService.GetAllAsync();
 
-        return Results.Ok(orders);
+        var orderDtos = new List<OrderDto>();
+        foreach (var order in orders)
+        {
+            var dto = await order.MapToDtoAsync();
+            orderDtos.Add(dto);
+        }
+
+        return Results.Ok(orderDtos);
     }
 
     public static async Task<IResult> GetOrderByIdAsync(OrderService orderService, string id)
@@ -39,7 +48,7 @@ public static class OrderExtensions
     {
         var newlyAddedOrder = await orderService.AddAsync(newOrder);
 
-        return Results.Ok(newlyAddedOrder);
+        return Results.Ok(await newlyAddedOrder.MapToDtoAsync());
     }
 
 

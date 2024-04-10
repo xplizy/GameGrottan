@@ -15,4 +15,5 @@ public class MajornaDbContext(DbContextOptions<MajornaDbContext> options) : Iden
     public DbSet<Publisher> Publishers { get; set; } = null!;
     public DbSet<Developer> Developers { get; set; } = null!;
     public DbSet<Screenshot> Screenshots { get; set; } = null!;
+    public DbSet<Review> Reviews { get; set; } = null!;
 }

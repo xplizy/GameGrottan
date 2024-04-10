@@ -18,7 +18,10 @@ Access Product Page
     Then I can see the Product Page
 
 View Products in Cart
-    Given
+    Given Open the browser
+    When I am able to see Cart
+    And I click on Cart
+    Then I can see the Products in the cart
 
 
 

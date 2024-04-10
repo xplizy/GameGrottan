@@ -9,18 +9,18 @@ public abstract class RepositoryBase<TEntity, TId>(MajornaDbContext context) : I
 {
     protected readonly MajornaDbContext _context = context;
 
-    public async Task<ICollection<TEntity>> GetAllAsync()
+    public virtual async Task<ICollection<TEntity>> GetAllAsync()
     {
         return await _context.Set<TEntity>().ToListAsync();
     }
 
-    public async Task<TEntity?> GetByIdAsync(TId id)
+    public virtual async Task<TEntity?> GetByIdAsync(TId id)
     {
         return await _context.Set<TEntity>().FindAsync(id);
     }
 
 
-    public async Task<TEntity> AddAsync(TEntity entity)
+    public virtual async Task<TEntity> AddAsync(TEntity entity)
     {
         await _context.Set<TEntity>().AddAsync(entity);
         await _context.SaveChangesAsync();
@@ -31,16 +31,18 @@ public abstract class RepositoryBase<TEntity, TId>(MajornaDbContext context) : I
     }
 
     //Needs to be implemented in each child class
-    public abstract Task UpdateAsync(TEntity entity);
+    public abstract Task<bool> UpdateAsync(TEntity entity);
 
-    public async Task DeleteAsync(TId id)
+    public virtual async Task<bool> DeleteAsync(TId id)
     {
         var entity = await _context.Set<TEntity>().FindAsync(id);
-        if (entity is not null)
+        if (entity is null)
         {
-            _context.Set<TEntity>().Remove(entity);
-            await _context.SaveChangesAsync();
+            return false;
         }
+        _context.Set<TEntity>().Remove(entity);
+        await _context.SaveChangesAsync();
+        return true;
     }
 
 

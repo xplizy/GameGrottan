@@ -4,7 +4,7 @@ using MongoDB.Driver;
 
 namespace MajornaGameStore.DataAccess.Mongo;
 
-public class MongoRepositoryBase<TEntity> 
+public class MongoRepositoryBase<TEntity> : IMongoRepositoryBase<TEntity>
 {
     protected const string ConnectionsString = "mongdodb://localhost:27017";
     protected const string DataBaseName = "MajornaOrderDb";
@@ -12,6 +12,7 @@ public class MongoRepositoryBase<TEntity>
     //These are here for reference only
     protected const string OrderCollection = "Orders";
     protected const string ProductQuantityCollection = "ProductQuantity";
+    protected const string EventQuantityCollection = "EventQuantity";
 
     protected IMongoCollection<T> ConnectToMongo<T>(string collectionName)
     {
@@ -51,7 +52,7 @@ public class MongoRepositoryBase<TEntity>
         return entity;
     }
 
-    public async Task UpdateAsync(TEntity entity, ObjectId id, string collectionName)
+    public async Task<bool> UpdateAsync(TEntity entity, ObjectId id, string collectionName)
     {
         var quizCollection = ConnectToMongo<TEntity>(collectionName);
 
@@ -60,14 +61,18 @@ public class MongoRepositoryBase<TEntity>
         var replaceOptions = new ReplaceOptions { IsUpsert = true };
 
         await quizCollection.ReplaceOneAsync(filter, entity, replaceOptions);
+
+        return true;
     }
 
-    public async Task DeleteAsync(ObjectId id, string collectionName)
+    public async Task<bool> DeleteAsync(ObjectId id, string collectionName)
     {
         var quizCollection = ConnectToMongo<TEntity>(collectionName);
 
         var filter = Builders<TEntity>.Filter.Eq("Id", id);
 
         await quizCollection.DeleteOneAsync(filter);
+
+        return true;
     }
 }

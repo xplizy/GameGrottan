@@ -1,5 +1,6 @@
 using MajornaGameStore.Api.Extensions;
 using MajornaGameStore.DataAccess.Entities;
+using MajornaGameStore.DataAccess.Mongo;
 using MajornaGameStore.DataAccess.Services;
 using MajornaGameStore.DataAccess.Sql;
 using MajornaGameStore.DataAccess.Sql.Repositories;
@@ -36,7 +37,8 @@ builder.Services
     .AddScoped<IDiscountRepository, DiscountRepository>()
     .AddScoped<IEventRepository, EventRepository>()
     .AddScoped<IEventTypeRepository, EventTypeRepository>()
-    .AddScoped<IReviewRepository, ReviewRepository>();
+    .AddScoped<IReviewRepository, ReviewRepository>()
+    .AddScoped<IOrderRepository, OrderRepository>();
 
 builder.Services
     .AddScoped<ProductService>()
@@ -50,7 +52,8 @@ builder.Services
     .AddScoped<ScreenshotService>()
     .AddScoped<TagService>()
     .AddScoped<ReviewService>()
-    .AddScoped<EventTypeService>();
+    .AddScoped<EventTypeService>()
+    .AddScoped<IOrderService, OrderService>();
 
 
 StripeConfiguration.ApiKey = builder.Configuration["Stripe:SecretKey"];
@@ -99,30 +102,6 @@ app.UseHttpsRedirection();
 app.MapProductEndPoints();
 app.MapEventEndPoints();
 app.MapEventTypeEndPoints();
-
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast = Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast")
-.WithOpenApi();
+app.MapOrderEndPoints();
 
 app.Run();
-
-internal record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}

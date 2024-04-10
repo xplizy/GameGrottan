@@ -7,30 +7,43 @@ namespace MajornaGameStore.DataAccess.Services;
 public class OrderService(IOrderRepository orderRepository) : IOrderService
 {
     protected const string OrderCollection = "Orders";
+    private readonly IOrderRepository _orderRepository;
 
-
-    public Task<ICollection<Order>> GetAllAsync()
+    public async Task<ICollection<Order>> GetAllAsync()
     {
-        throw new NotImplementedException();
+        return await _orderRepository.GetAllAsync(OrderCollection);
     }
 
-    public Task<Order?> GetByIdAsync(ObjectId id)
+    public async Task<Order?> GetByIdAsync(ObjectId id)
     {
-        throw new NotImplementedException();
+        var order = await _orderRepository.GetByIdAsync(id, OrderCollection);
+
+        if (order is null)
+            return null;
+
+        return order;
     }
 
-    public Task<Order> AddAsync(Order entity)
+    public async Task<Order> AddAsync(Order entity)
     {
-        throw new NotImplementedException();
+        var orderReturnedWithId = await _orderRepository.AddAsync(entity, OrderCollection);
+
+        return orderReturnedWithId;
     }
 
-    public Task<bool> UpdateAsync(Order entity)
+    public async Task<bool> UpdateAsync(Order entity)
     {
-        throw new NotImplementedException();
+        var orderExists =
+            await _orderRepository.UpdateAsync(entity, entity.Id, OrderCollection);
+
+        return orderExists;
     }
 
-    public Task<bool> DeleteAsync(ObjectId id)
+    public async Task<bool> DeleteAsync(ObjectId id)
     {
-        throw new NotImplementedException();
+        var orderExists =
+            await _orderRepository.DeleteAsync(id, OrderCollection);
+
+        return orderExists;
     }
 }

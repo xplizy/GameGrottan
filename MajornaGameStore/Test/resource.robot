@@ -21,6 +21,11 @@ Open the browser
     [Tags]      VG_Test1_browser
     Open Browser    https://localhost:7207/   chrome
     Wait Until Page Contains    Välkommen till Majorna Gaming
+    
+I can see the landing page
+    [Documentation]     Browser
+    [Tags]      VG_Test1_browser
+    
 
 I am able to see Products
     [Documentation]     Browser

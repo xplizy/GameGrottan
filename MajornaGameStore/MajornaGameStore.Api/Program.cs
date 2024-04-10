@@ -38,7 +38,7 @@ builder.Services
     .AddScoped<IEventRepository, EventRepository>()
     .AddScoped<IEventTypeRepository, EventTypeRepository>()
     .AddScoped<IReviewRepository, ReviewRepository>()
-    .AddScoped<IOrderRepository, OrderRepository>();
+   /* .AddScoped<IOrderRepository, OrderRepository>()*/;
 
 builder.Services
     .AddScoped<ProductService>()
@@ -53,10 +53,10 @@ builder.Services
     .AddScoped<TagService>()
     .AddScoped<ReviewService>()
     .AddScoped<EventTypeService>()
-    .AddScoped<IOrderService, OrderService>();
+/*    .AddScoped<OrderService>()*/;
 
 
-StripeConfiguration.ApiKey = builder.Configuration["Stripe:SecretKey"];
+//StripeConfiguration.ApiKey = builder.Configuration["Stripe:SecretKey"];
 
 //add cors for no errors later on
 builder.Services.AddCors(options =>
@@ -102,6 +102,6 @@ app.UseHttpsRedirection();
 app.MapProductEndPoints();
 app.MapEventEndPoints();
 app.MapEventTypeEndPoints();
-app.MapOrderEndPoints();
+//app.MapOrderEndPoints();
 
 app.Run();

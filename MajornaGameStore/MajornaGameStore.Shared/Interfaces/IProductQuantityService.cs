@@ -3,7 +3,7 @@ using MongoDB.Bson;
 
 namespace MajornaGameStore.Shared.Interfaces;
 
-public interface IProductQuantityService : IService<Product, ObjectId>
+public interface IProductQuantityService : IService<ProductQuantity, ObjectId>
 {
 
 }

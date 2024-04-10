@@ -2,47 +2,41 @@
 @using MajornaGameStore.Shared.Dtos
 @using System.Formats.Tar
 @using MajornaGameStore.Client.Services
+@using MajornaGameStore.Shared.Interfaces
+@using MajornaGameStore.Shared.Models.ViewModels
 @inject ICartService CartService
+@inject ProductViewModel ViewModel
 <PageTitle>Products</PageTitle>
 
-<div class="row" style="display: flex; flex-wrap: wrap;">
-    @foreach (var item in cartItems)
-    {
-        <div class="col-md-3" style="flex: 0 0 25%;">
-            <div class="item-container">
-                <div class="item-image-wrapper"><img src="Images/GameCovers/@item.Image" class="item-image" style="width: 200px; height: 200px;"/></div>
-                <div class="item-name">
-                    <h5><a>@item.Name</a></h5>
-                    <button class="btn-add" @onclick="@(() => AddToCart(item))">
-                        Lägg Till I Kundvagn
-                    </button>
-                </div>
+<Virtualize Items="ViewModel.Models">
+    <div class="col-md-3" style="flex: 0 0 25%;">
+        <div class="item-container">
+            <div class="item-image-wrapper"><img src="@context.ImageLink" class="item-image" style="width: 200px; height: 200px;"/></div>
+            <div class="item-name">
+                <h5><a>@context.Name</a></h5>
+                @* <button class="btn-add" @onclick="@(() => AddToCart(item))">
+                    Lägg Till I Kundvagn
+                </button> *@
             </div>
-            
-            <div class="item-price">Sek @(item.Price)</div>
         </div>
-    }
+            
+        @* <div class="item-price">Sek @(item.Price)</div> *@
+    </div>
+</Virtualize>
 
-</div>
+
 
 @code
 {
-    List<CartItemDto> cartItems = new List<CartItemDto>();
-
-    protected override async Task OnInitializedAsync()
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        cartItems.Add(new CartItemDto() { Name = "Elden Ring", Price = 600, Image = "Elden.jpg" });
-        cartItems.Add(new CartItemDto() { Name = "Sekiro: Shadows Die Twice", Price = 600, Image = "Sekiro.jpg" });
-        cartItems.Add(new CartItemDto() { Name = "Niklas Adventure: Tjohoo", Price = 700, Image = "NiklasA.jpg" });
-
-        cartItems.Add(new CartItemDto() { Name = "Rlden Eing", Price = 500, Image = "Elden.jpg" });
-        cartItems.Add(new CartItemDto() { Name = "Sekiro: Shadows Live Twice", Price = 699, Image = "Sekiro.jpg" });
-        cartItems.Add(new CartItemDto() { Name = "Niklas Combat Evolved: Tjohoo", Price = 700, Image = "NiklasA.jpg" });
+        await ViewModel.OnInit();
+        StateHasChanged();
     }
 
-    private async Task AddToCart(CartItemDto item)
-    {
-        await CartService.AddItemToCartAsync(item);
-    }
+    // private async Task AddToCart(CartItemDto item)
+    // {
+    //     await CartService.AddItemToCartAsync(item);
+    // }
 
 }

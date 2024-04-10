@@ -17,13 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{6EEA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MajornaGameStore.LoadProductScripts", "MajornaGameStore.LoadProductScripts\MajornaGameStore.LoadProductScripts.csproj", "{1C176A52-C4CD-4679-A608-0A93CC7FC11E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SandBox", "SandBox\SandBox.csproj", "{DCD4C861-015C-4568-9613-F707BEFB672B}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{6562F670-4B9D-42FD-9AD4-CD0F05E56290}"
-	ProjectSection(SolutionItems) = preProject
-		Test\resource.robot = Test\resource.robot
-		Test\test.robot = Test\test.robot
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

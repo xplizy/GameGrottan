@@ -1,3 +1,5 @@
+@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
+
 body {
     background-color: black;
     color: white; /* Om du vill ändra textfärgen till vitt för att kontrastera bättre med den svarta bakgrunden */
@@ -5,6 +7,8 @@ body {
 
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    height: 100vh;
+    /*max-height: 100vh;*/
 }
 
 h1:focus {

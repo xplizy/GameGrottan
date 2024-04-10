@@ -6,7 +6,7 @@ namespace MajornaGameStore.DataAccess.Mongo;
 
 public class MongoRepositoryBase<TEntity> : IMongoRepositoryBase<TEntity>
 {
-    protected const string ConnectionsString = "mongdodb://localhost:27017";
+    protected const string ConnectionsString = "mongodb://localhost:27017/";
     protected const string DataBaseName = "MajornaOrderDb";
 
     //These are here for reference only

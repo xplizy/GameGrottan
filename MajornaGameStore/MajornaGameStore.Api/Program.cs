@@ -5,12 +5,14 @@ using MajornaGameStore.DataAccess.Services;
 using MajornaGameStore.DataAccess.Sql;
 using MajornaGameStore.DataAccess.Sql.Repositories;
 using MajornaGameStore.Shared.Interfaces;
+using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.EntityFrameworkCore;
 using Stripe;
 using DiscountService = MajornaGameStore.DataAccess.Services.DiscountService;
 using EventService = MajornaGameStore.DataAccess.Services.EventService;
 using ProductService = MajornaGameStore.DataAccess.Services.ProductService;
 using ReviewService = MajornaGameStore.DataAccess.Services.ReviewService;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -38,7 +40,8 @@ builder.Services
     .AddScoped<IEventRepository, EventRepository>()
     .AddScoped<IEventTypeRepository, EventTypeRepository>()
     .AddScoped<IReviewRepository, ReviewRepository>()
-   /* .AddScoped<IOrderRepository, OrderRepository>()*/;
+    .AddScoped<IEventTypeRepository, EventTypeRepository>()
+    .AddScoped<IOrderRepository, OrderRepository>();
 
 builder.Services
     .AddScoped<ProductService>()
@@ -53,10 +56,11 @@ builder.Services
     .AddScoped<TagService>()
     .AddScoped<ReviewService>()
     .AddScoped<EventTypeService>()
-/*    .AddScoped<OrderService>()*/;
+    .AddScoped<OrderService>();
 
 
-//StripeConfiguration.ApiKey = builder.Configuration["Stripe:SecretKey"];
+StripeConfiguration.ApiKey = builder.Configuration["Stripe:SecretKey"];
+
 
 //add cors for no errors later on
 builder.Services.AddCors(options =>
@@ -70,18 +74,9 @@ builder.Services.AddCors(options =>
 });
 
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
-builder.Services.AddControllers();
+//builder.Services.AddControllers();
 
-//StripeConfiguration.ApiKey = "sk_test_51P1o0CALQne3zawOR30h5V9cqOtm7GK7l4t5HA6jHdVlkg8tyBiiqzjmUI6prlXhArha19lUxUq3jEBp9Ro531nH00bgxGxZqv";
 
-//var options = new PaymentIntentCreateOptions
-//{
-//    Amount = 500,
-//    Currency = "gbp",
-//    PaymentMethod = "pm_card_se",
-//};
-//var service = new PaymentIntentService();
-//service.Create(options);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -94,7 +89,7 @@ if (app.Environment.IsDevelopment())
 //enligt instruktioner so that asp.net can activate these services
 app.UseCors();
 app.UseRouting();
-app.MapControllers();
+
 
 app.UseHttpsRedirection();
 
@@ -102,6 +97,7 @@ app.UseHttpsRedirection();
 app.MapProductEndPoints();
 app.MapEventEndPoints();
 app.MapEventTypeEndPoints();
-//app.MapOrderEndPoints();
+app.MapOrderEndPoints();
+//app.MapControllers();
 
 app.Run();

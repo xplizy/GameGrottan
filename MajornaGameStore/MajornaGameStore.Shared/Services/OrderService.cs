@@ -7,7 +7,7 @@ namespace MajornaGameStore.DataAccess.Services;
 public class OrderService(IOrderRepository orderRepository) : IOrderService
 {
     protected const string OrderCollection = "Orders";
-    private readonly IOrderRepository _orderRepository;
+    private readonly IOrderRepository _orderRepository = orderRepository;
 
     public async Task<ICollection<Order>> GetAllAsync()
     {

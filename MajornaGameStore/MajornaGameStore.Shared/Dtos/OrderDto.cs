@@ -5,7 +5,7 @@ namespace MajornaGameStore.Shared.Dtos;
 
 public class OrderDto
 {
-    public ObjectId Id { get; set; }
+    public string Id { get; set; }
     public string UserId { get; set; } = "Anonymous";
     public ICollection<ObjectId> ProductQuantityIds { get; set; }
     public ICollection<ObjectId> EventQuantityIds { get; set; }

@@ -21,7 +21,7 @@ public static class OrderMapper
 
         var dto = new OrderDto
         {
-            Id = entity.Id,
+            Id = entity.Id.ToString(),
             UserId = entity.UserId,
             DateOfOrder = entity.DateOfOrder,
             ProductQuantityIds = productQuantityIds,

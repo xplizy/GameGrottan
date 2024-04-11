@@ -4,7 +4,6 @@
 @using MajornaGameStore.Client.Services
 @using MajornaGameStore.Shared.Interfaces
 @using MajornaGameStore.Shared.Models.ViewModels
-@inject ICartService CartService
 @inject ProductViewModel ViewModel
 <PageTitle>Products</PageTitle>
 
@@ -22,13 +21,13 @@ else
                 <div class="item-image-wrapper"><img src="@context.ImageLink" class="item-image" style="width: 200px; height: 200px;"/></div>
                 <div class="item-name">
                     <h5><a>@context.Name</a></h5>
-                    @* <button class="btn-add" @onclick="@(() => AddToCart(item))">
+                    <button class="btn-add" @onclick="@(() => ViewModel.AddToCartAsync(context, 1))">
                         Lägg Till I Kundvagn
-                    </button> *@
+                    </button>
                 </div>
             </div>
                 
-            @* <div class="item-price">Sek @(item.Price)</div> *@
+            <div class="item-price">Sek @(context.Price)</div>
         </div>
     </Virtualize>
 }
@@ -40,9 +39,12 @@ else
     bool _contentLoading = true;
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        await ViewModel.OnInit();
-        _contentLoading = false;
-        StateHasChanged();
+        if (firstRender)
+        {
+            await ViewModel.OnInit();
+            _contentLoading = false;
+            StateHasChanged();
+        }
     }
 
     // private async Task AddToCart(CartItemDto item)

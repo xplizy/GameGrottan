@@ -1,5 +1,5 @@
 ﻿using MajornaGameStore.DataAccess.Entities;
-using MajornaGameStore.Shared.Interfaces;
+using MajornaGameStore.Shared.Interfaces.RepositoryInterfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace MajornaGameStore.DataAccess.Sql.Repositories;

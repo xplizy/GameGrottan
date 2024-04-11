@@ -1,6 +1,6 @@
 ﻿using MajornaGameStore.DataAccess.Entities;
 using MajornaGameStore.Shared.Dtos;
-using MajornaGameStore.Shared.Interfaces;
+using MajornaGameStore.Shared.Interfaces.RepositoryInterfaces;
 
 namespace MajornaGameStore.DataAccess.Services;
 

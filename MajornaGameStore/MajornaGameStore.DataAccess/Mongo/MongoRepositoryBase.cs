@@ -1,4 +1,4 @@
-﻿using MajornaGameStore.Shared.Interfaces;
+﻿using MajornaGameStore.Shared.Interfaces.RepositoryInterfaces;
 using MongoDB.Bson;
 using MongoDB.Driver;
 

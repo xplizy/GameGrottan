@@ -2,7 +2,7 @@
 
 public record CreateRequest
 {
-    public class CheckoutProductRequest
+    public record CheckoutProductRequest
     {
         public double Price { get; set; }
 
@@ -12,7 +12,7 @@ public record CreateRequest
     }
 
     //SKAPA EN betalningssession med produkter i varukorgen
-    public class CreatePaymentRequest
+    public record CreatePaymentRequest
     {
         public List<CheckoutProductRequest> Products { get; set; } = new();
 

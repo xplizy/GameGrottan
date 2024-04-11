@@ -14,7 +14,13 @@ public class ProductViewModel(IClientProductService productService, IClientCartS
         {
             if (item is CartProductDto)
             {
-                (CartProductDto)item.
+                CartProductDto cartProduct = (CartProductDto)item;
+
+                if (cartProduct.ProductId == product.Id)
+                {
+                    item.Quantity += quantity;
+                    return;
+                }
             }
         }
 
@@ -24,7 +30,9 @@ public class ProductViewModel(IClientProductService productService, IClientCartS
             Name = product.Name,
             Price = product.Price,
             ProductId = product.Id,
-            Quantity = 1
+            Quantity = quantity
         };
+
+        await cartService.AddAsync(cartItem);
     }
 }

@@ -25,7 +25,8 @@ else
         </Virtualize>
         <li class="list-group-item-dark">
             <p>Totalt: Sek @ViewModel.Models.Sum(item => item.Price * item.Quantity)</p>
-            <button class="btn btn-sucess" @onclick="async () =>  await ViewModel.GoToPayment()">Gå till betalning</button>
+            <button class="btn btn-sucess" @onclick="async () => await GoToPayment() ">Gå till betalning</button>
+            <p>@_checkoutString</p>
 
         </li>
     </ul>
@@ -37,25 +38,22 @@ else
 @code {
 
     bool _pageLoading = true;
+    string _checkoutString = string.Empty;
+    async Task GoToPayment()
+    {
+        _checkoutString = await ViewModel.GoToPayment();
+    }
 
-    // async Task RemoveFromCart(ICartItem itemToRemove)
+    // protected override async Task OnAfterRenderAsync(bool firstRender)
     // {
-    //     if (itemToRemove is CartProductDto product)
+    //     if (firstRender)
     //     {
-    //         ViewModel.RemoveFromCart()
+    //         await ViewModel.OnInit();
+    //         _pageLoading = false;
+    //         StateHasChanged();
+
     //     }
     // }
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            await ViewModel.OnInit();
-            _pageLoading = false;
-            StateHasChanged();
-
-        }
-    }
 
    
 

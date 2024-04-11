@@ -16,7 +16,7 @@ public record CheckoutProductRequest
 //SKAPA EN betalningssession med produkter i varukorgen
 public class CreatePaymentRequest
 {
-    public List<ICartItem> Products { get; set; } = new();
+    public List<CartProductDto> Products { get; set; } = new();
 
     public int Quantity { get; set; }
 

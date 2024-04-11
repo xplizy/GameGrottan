@@ -18,9 +18,26 @@ public class CartViewModel(IClientCartService cartService, IPaymentHttpClient pa
 
     }
 
-    public async Task GoToPayment()
+    public async Task<string> GoToPayment()
     {
         var paymentRequest = new CreatePaymentRequest();
-        paymentRequest.Products = Models;
+        paymentRequest.Products = new List<CartProductDto>
+        {
+            new CartProductDto
+            {
+                Name = "Joe game",
+                Price = 99.9,
+                Quantity = 2
+            },
+            new CartProductDto
+            {
+                Name = "Vivvy Game",
+                Price = 100,
+                Quantity = 3
+            }
+        };
+        var checkoutUrl = await _paymentHttpClient.CreatePayment(paymentRequest);
+
+        return checkoutUrl;
     }
 }

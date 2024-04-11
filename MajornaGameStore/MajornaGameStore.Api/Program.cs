@@ -1,10 +1,12 @@
 using MajornaGameStore.Api.Extensions;
+using MajornaGameStore.Api.Stripe;
 using MajornaGameStore.DataAccess.Entities;
 using MajornaGameStore.DataAccess.Mongo;
 using MajornaGameStore.DataAccess.Services;
 using MajornaGameStore.DataAccess.Sql;
 using MajornaGameStore.DataAccess.Sql.Repositories;
 using MajornaGameStore.Shared.Interfaces.RepositoryInterfaces;
+using MajornaGameStore.Shared.Interfaces.ServiceInterfaces;
 using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.EntityFrameworkCore;
 using Stripe;
@@ -56,8 +58,11 @@ builder.Services
     .AddScoped<TagService>()
     .AddScoped<ReviewService>()
     .AddScoped<EventTypeService>()
-    .AddScoped<OrderService>();
+.AddScoped<OrderService>();
 
+builder.Services.AddOptions<StripeConfig>().BindConfiguration(nameof(StripeConfig));
+
+builder.Services.AddScoped<MajornaGameStore.Api.Stripe.StripeClient>();
 
 //StripeConfiguration.ApiKey = builder.Configuration["Stripe:SecretKey"];
 
@@ -87,8 +92,8 @@ if (app.Environment.IsDevelopment())
 }
 
 //enligt instruktioner so that asp.net can activate these services
-app.UseCors();
-app.UseRouting();
+//app.UseCors();
+//app.UseRouting();
 
 
 app.UseHttpsRedirection();
@@ -98,6 +103,7 @@ app.MapProductEndPoints();
 app.MapEventEndPoints();
 app.MapEventTypeEndPoints();
 app.MapOrderEndPoints();
+app.MapPaymentsEndPoints();
 //app.MapControllers();
 
 app.Run();

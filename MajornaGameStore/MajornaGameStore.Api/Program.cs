@@ -59,19 +59,19 @@ builder.Services
     .AddScoped<OrderService>();
 
 
-StripeConfiguration.ApiKey = builder.Configuration["Stripe:SecretKey"];
+//StripeConfiguration.ApiKey = builder.Configuration["Stripe:SecretKey"];
 
 
-//add cors for no errors later on
-builder.Services.AddCors(options =>
-{
-    options.AddDefaultPolicy(builder =>
-    {
-        builder.AllowAnyOrigin()
-            .AllowAnyHeader()
-            .AllowAnyMethod();
-    });
-});
+////add cors for no errors later on
+//builder.Services.AddCors(options =>
+//{
+//    options.AddDefaultPolicy(builder =>
+//    {
+//        builder.AllowAnyOrigin()
+//            .AllowAnyHeader()
+//            .AllowAnyMethod();
+//    });
+//});
 
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 //builder.Services.AddControllers();

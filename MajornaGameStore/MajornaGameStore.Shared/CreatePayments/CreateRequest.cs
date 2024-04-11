@@ -1,6 +1,6 @@
 ﻿namespace MajornaGameStore.Shared.CreatePayments;
 
-public class CreateRequest
+public record CreateRequest
 {
     public class CheckoutProductRequest
     {

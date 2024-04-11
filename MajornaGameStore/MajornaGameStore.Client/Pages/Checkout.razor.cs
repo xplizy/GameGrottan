@@ -33,15 +33,15 @@ namespace MajornaGameStore.Client.Pages
         //    _database = database;
         //}
 
-        protected override async Task OnInitializedAsync()
-        {
-            _products = await HttpClient.GetFromJsonAsync<List<Product>>($"{DevApiBaseAddress}/products");
+        //protected override async Task OnInitializedAsync()
+        //{
+        //    _products = await HttpClient.GetFromJsonAsync<List<Product>>($"{DevApiBaseAddress}/products");
 
-            if (_products is not null)
-            {
-                _productChunksOf4 = _products.Chunk(4);
-            }
-        }
+        //    if (_products is not null)
+        //    {
+        //        _productChunksOf4 = _products.Chunk(4);
+        //    }
+        //}
 
         private async Task OnClickBtnBuyNowAsync(Product product)
         {

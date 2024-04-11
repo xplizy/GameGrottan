@@ -20,6 +20,7 @@ public static class StripeExtension
         var group = app.MapGroup("/payments");
 
         group.MapPost("/", CreateOnePayment);
+        //TODO: ADD MApPost for WebHooks after sprint 1
 
         return app;
     }
@@ -27,15 +28,14 @@ public static class StripeExtension
     private static async Task<IResult> CreateOnePayment(CreateRequest.CreatePaymentRequest request, StripeClient client)
     {
         var checkoutUrl = await client.Checkout(request);
-        //var checkoutUrl = await client.Checkout(request);
 
-        var ok = new CreateRequest.CreatePaymentRequest()
+        var ok = new CreateResponse()
         {
             CheckoutUrl = checkoutUrl
         };
 
         return Results.Ok(ok);
-
-
     }
+
+    
 }

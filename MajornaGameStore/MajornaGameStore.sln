@@ -19,7 +19,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MajornaGameStore.LoadProduc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SandBox", "SandBox\SandBox.csproj", "{DCD4C861-015C-4568-9613-F707BEFB672B}"
 EndProject
+<<<<<<< HEAD
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{E54BD34F-BF77-45D1-9D67-33446064F413}"
+=======
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{6562F670-4B9D-42FD-9AD4-CD0F05E56290}"
+>>>>>>> Dev-Test
 	ProjectSection(SolutionItems) = preProject
 		Test\resource.robot = Test\resource.robot
 		Test\test.robot = Test\test.robot

@@ -4,10 +4,12 @@ Documentation    test for Majorna Gaming Store
 Library    SeleniumLibrary
 Suite Setup     setup
 
-
-
-
 *** Test Cases ***
+
+Verify Blazorapp running
+    Open Browser        browser=${BROWSER}      options=${BROWSER_OPTIONS}
+    Go To   ${url}
+    Wait Until Page Contains    Välkommen till Majorna Gaming
 
 
 Access Product Page
@@ -22,6 +24,17 @@ View Products in Cart
     When I am able to see Cart
     And I click on Cart
     Then I can see the Products in the cart
+
+Checking the product quantity
+    [Documentation]    Checking the product quantity by increasing the value
+    [Tags]    product quantity
+
+    Given open the browser
+    When I Click On Cart
+    Then Select the product to increase the quantity
+    #And I can increase the product quantity
+    #Then I can decrease the product quantity
+
 
 
 

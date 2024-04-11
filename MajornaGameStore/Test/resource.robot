@@ -49,6 +49,11 @@ I can see the Product Page
     [Documentation]     Browser
     [Tags]      Products
     Wait Until Page Contains    Produkter
+
+I will be able to see the list of available products
+    [Documentation]     Browser
+    [Tags]      Products
+
     
 I am able to see Cart
     [Documentation]     Browser

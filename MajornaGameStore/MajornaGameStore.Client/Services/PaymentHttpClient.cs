@@ -4,7 +4,7 @@ using MajornaGameStore.Shared.Dtos;
 using MajornaGameStore.Shared.Interfaces.ServiceInterfaces.ClientSide;
 using Microsoft.AspNetCore.Components.Routing;
 
-namespace MajornaGameStore.Client.Pages;
+namespace MajornaGameStore.Client.Services;
 
 //Detta är en service
 public class PaymentHttpClient : IPaymentHttpClient
@@ -19,7 +19,7 @@ public class PaymentHttpClient : IPaymentHttpClient
     public async Task<string> CreatePayment(CreatePaymentRequest request)
     {
         var response = await _httpClient.PostAsJsonAsync($"/payments", request);
-        
+
         if (!response.IsSuccessStatusCode)
         {
             return null;

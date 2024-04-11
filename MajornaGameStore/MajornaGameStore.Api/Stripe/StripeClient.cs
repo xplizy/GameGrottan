@@ -35,7 +35,7 @@ public class StripeClient
             //UNIQUE product on EACH line
             LineItems = request.Products.Select(product => new SessionLineItemOptions
             {
-                Quantity = 1,
+                Quantity = product.Quantity,
                 PriceData = new SessionLineItemPriceDataOptions()
                 {
                     Currency = "sek",

@@ -5,6 +5,7 @@
 @using MajornaGameStore.Shared.Interfaces.ServiceInterfaces.ClientSide
 @using MajornaGameStore.Shared.Models.ViewModels
 @using Microsoft.EntityFrameworkCore.Infrastructure
+@inject NavigationManager NavManager
 @inject CartViewModel ViewModel
 
 <h3>Kundvagn</h3>
@@ -42,6 +43,7 @@ else
     async Task GoToPayment()
     {
         _checkoutString = await ViewModel.GoToPayment();
+        NavManager.NavigateTo(_checkoutString);
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)

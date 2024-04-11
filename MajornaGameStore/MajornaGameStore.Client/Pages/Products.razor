@@ -24,7 +24,7 @@ else
                     @*<button class="btn-add" @onclick="@(() => AddToCart(item))">
                 Lägg Till I Kundvagn
                 </button> *@
-                    <button class="btn-add" @onclick="@(() => ViewModel.AddToCartAsync(context, 1))">
+                    <button class="btn-add" @onclick="@(async () => await ViewModel.AddToCartAsync(context, 1))">
                         Lägg Till I Kundvagn
                     </button>
                 </div>
@@ -50,9 +50,6 @@ else
         }
     }
 
-    // private async Task AddToCart(CartItemDto item)
-    // {
-    //     await CartService.AddItemToCartAsync(item);
-    // }
+
 
 }

@@ -1,7 +1,6 @@
 using Blazorise;
 using Blazorise.Icons.FontAwesome;
 using MajornaGameStore.Client;
-using MajornaGameStore.Client.Pages;
 using MajornaGameStore.Client.Services;
 using MajornaGameStore.Shared.Interfaces.ServiceInterfaces.ClientSide;
 using MajornaGameStore.Shared.Models.ViewModels;

@@ -4,7 +4,7 @@ using MajornaGameStore.Shared.Interfaces.ServiceInterfaces.ClientSide;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 namespace MajornaGameStore.Shared.Models.ViewModels;
 
-public class CartViewModel(IClientCartService cartService, IPaymentHttpClient paymentHttpClient) : ViewModelBase<ICartItem, string>(cartService)
+public class CartViewModel(IClientCartService cartService, IPaymentHttpClient paymentHttpClient) : ViewModelBase<CartItemDto, string>(cartService)
 {
     private readonly IClientCartService _cartService = cartService;
     private readonly IPaymentHttpClient _paymentHttpClient = paymentHttpClient;
@@ -21,25 +21,12 @@ public class CartViewModel(IClientCartService cartService, IPaymentHttpClient pa
     public async Task<string> GoToPayment()
     {
         var paymentRequest = new CreatePaymentRequest();
-        paymentRequest.Products = new List<CartProductDto>
-        {
-            new CartProductDto
-            {
-                Name = "Joe game",
-                Price = 99.9,
-                Quantity = 2
-            },
-            new CartProductDto
-            {
-                Name = "Vivvy Game",
-                Price = 100,
-                Quantity = 3
-            }
-        };
-        paymentRequest.CancelRedirectUrl = "http://www.google.se";
-        paymentRequest.SuccessRedirectUrl = "http://www.bing.com";
+        paymentRequest.Products = Models;
+        paymentRequest.CancelRedirectUrl = "https://localhost:7207/checkout";
+        paymentRequest.SuccessRedirectUrl = "https://localhost:7207/fail";
         var checkoutUrl = await _paymentHttpClient.CreatePayment(paymentRequest);
 
+        Models.Clear();
         return checkoutUrl;
     }
 }

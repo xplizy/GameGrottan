@@ -25,7 +25,7 @@ public static class StripeExtension
         return app;
     }
 
-    private static async Task<IResult> CreateOnePayment(CreateRequest.CreatePaymentRequest request, StripeClient client)
+    private static async Task<IResult> CreateOnePayment(CreatePaymentRequest request, StripeClient client)
     {
         var checkoutUrl = await client.Checkout(request);
 

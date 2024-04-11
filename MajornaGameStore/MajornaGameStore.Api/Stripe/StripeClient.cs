@@ -18,7 +18,7 @@ public class StripeClient
         StripeConfiguration.ApiKey = _stripeConfig.SecretKey;
     }
 
-    public async Task<string> Checkout(CreateRequest.CreatePaymentRequest request)
+    public async Task<string> Checkout(CreatePaymentRequest request)
     {
         var options = new SessionCreateOptions()
         {
@@ -42,8 +42,7 @@ public class StripeClient
                     UnitAmount = (long)Math.Round(product.Price),
                     ProductData = new SessionLineItemPriceDataProductDataOptions
                     {
-                        Name = product.Name,
-                        Description = product.Description
+                        Name = product.Name
                     }
                 }
             }).ToList()

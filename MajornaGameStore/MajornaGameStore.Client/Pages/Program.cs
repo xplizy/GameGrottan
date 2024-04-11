@@ -1,6 +1,7 @@
 using Blazorise;
 using Blazorise.Icons.FontAwesome;
 using MajornaGameStore.Client;
+using MajornaGameStore.Client.Pages;
 using MajornaGameStore.Client.Services;
 using MajornaGameStore.Shared.Interfaces.ServiceInterfaces.ClientSide;
 using MajornaGameStore.Shared.Models.ViewModels;
@@ -20,7 +21,7 @@ builder.Services
     .AddScoped<CartViewModel>();
 
 //TODO: Lägg till éfter 1345 Create HTTP client to make a call to backend
-//builder.Services.AddScoped<PaymentHttpClient>();
+builder.Services.AddScoped<PaymentHttpClient>();
 
 builder.Services
     .AddSingleton<IClientCartService, ClientCartService>()

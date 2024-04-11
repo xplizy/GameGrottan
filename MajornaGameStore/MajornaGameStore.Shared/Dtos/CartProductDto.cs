@@ -10,4 +10,5 @@ public class CartProductDto : ICartItem
     public int Quantity { get; set; }
     public string Image { get; set; }
     public int ProductId { get; set; }
+
 }

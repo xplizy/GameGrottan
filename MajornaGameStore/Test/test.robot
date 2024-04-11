@@ -19,6 +19,12 @@ Access Product Page
     And I click on Products
     Then I can see the Product Page
 
+Add product into the cart directly
+
+    Given Open The Browser
+    When I click on Products
+    And I can add product to cart directly
+
 View Products in Cart
     Given Open the browser
     When I am able to see Cart

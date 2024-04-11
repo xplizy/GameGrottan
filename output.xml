@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< HEAD
-<robot generator="Robot 7.0 (Python 3.12.1 on win32)" generated="2024-04-11T09:56:01.059253" rpa="false" schemaversion="5">
-=======
-<robot generator="Robot 7.0 (Python 3.12.1 on win32)" generated="2024-04-11T11:14:31.947795" rpa="false" schemaversion="5">
->>>>>>> Dev-Test
+<robot generator="Robot 7.0 (Python 3.12.1 on win32)" generated="2024-04-11T13:42:42.067263" rpa="false" schemaversion="5">
 <suite id="s1" name="Iths-Majornagaming6" source="C:\Users\ls930499\source\repos\iths-majornagaming6">
 <suite id="s1-s1" name="MajornaGameStore" source="C:\Users\ls930499\source\repos\iths-majornagaming6\MajornaGameStore">
 <suite id="s1-s1-s1" name="Test" source="C:\Users\ls930499\source\repos\iths-majornagaming6\MajornaGameStore\Test">
@@ -12,265 +8,88 @@
 <kw name="Set Selenium Speed" owner="SeleniumLibrary">
 <arg>1</arg>
 <doc>Sets the delay that is waited after each Selenium command.</doc>
-<<<<<<< HEAD
-<status status="PASS" start="2024-04-11T09:56:01.468553" elapsed="0.000000"/>
+<status status="PASS" start="2024-04-11T13:42:42.490760" elapsed="0.000000"/>
 </kw>
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-04-11T09:56:01.469601" level="INFO">Opening browser 'Chrome' to base url 'None'.</msg>
-<arg>browser=Chrome</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-04-11T09:56:01.469601" elapsed="1.781504"/>
-</kw>
-<kw name="Go To" owner="SeleniumLibrary">
-<msg time="2024-04-11T09:56:03.252108" level="INFO">Opening url 'https://localhost:7207/'</msg>
-<arg>${url}</arg>
-<doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="PASS" start="2024-04-11T09:56:03.251105" elapsed="3.968034"/>
-</kw>
-<status status="PASS" start="2024-04-11T09:56:01.467465" elapsed="5.751674"/>
-=======
-<status status="PASS" start="2024-04-11T11:14:32.323403" elapsed="0.000540"/>
-</kw>
-<kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-04-11T11:14:32.324907" level="INFO">Opening browser 'headlesschrome' to base url 'None'.</msg>
+<msg time="2024-04-11T13:42:42.491762" level="INFO">Opening browser 'headlesschrome' to base url 'None'.</msg>
 <arg>browser=${BROWSER}</arg>
 <arg>options=${BROWSER_OPTIONS}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-04-11T11:14:32.324405" elapsed="2.913489"/>
+<status status="PASS" start="2024-04-11T13:42:42.491762" elapsed="4.876796"/>
 </kw>
 <kw name="Go To" owner="SeleniumLibrary">
-<msg time="2024-04-11T11:14:35.238969" level="INFO">Opening url 'https://localhost:7207/'</msg>
+<msg time="2024-04-11T13:42:47.369561" level="INFO">Opening url 'https://localhost:7207/'</msg>
 <arg>${url}</arg>
 <doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="PASS" start="2024-04-11T11:14:35.238969" elapsed="7.784689"/>
+<status status="PASS" start="2024-04-11T13:42:47.369561" elapsed="6.496349"/>
 </kw>
-<status status="PASS" start="2024-04-11T11:14:32.322902" elapsed="10.701829"/>
->>>>>>> Dev-Test
+<status status="PASS" start="2024-04-11T13:42:42.489756" elapsed="11.376154"/>
 </kw>
-<test id="s1-s1-s1-s1-t1" name="View Products in Cart" line="22">
+<test id="s1-s1-s1-s1-t1" name="Access Product Page" line="15">
 <kw name="Given Open the browser" owner="resource">
 <kw name="Open Browser" owner="SeleniumLibrary">
-<<<<<<< HEAD
-<msg time="2024-04-11T09:56:07.221108" level="INFO">Opening browser 'chrome' to base url 'https://localhost:7207/'.</msg>
-<arg>https://localhost:7207/</arg>
-<arg>chrome</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-04-11T09:56:07.220605" elapsed="5.130736"/>
-</kw>
-<kw name="Maximize Browser Window" owner="SeleniumLibrary">
-<doc>Maximizes current browser window.</doc>
-<status status="PASS" start="2024-04-11T09:56:12.351341" elapsed="1.288855"/>
-=======
-<msg time="2024-04-11T11:14:43.026844" level="INFO">Opening browser 'headlesschrome' to base url 'None'.</msg>
+<msg time="2024-04-11T13:42:53.867913" level="INFO">Opening browser 'headlesschrome' to base url 'None'.</msg>
 <arg>browser=${BROWSER}</arg>
 <arg>options=${BROWSER_OPTIONS}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-04-11T11:14:43.026844" elapsed="2.451958"/>
+<status status="PASS" start="2024-04-11T13:42:53.867913" elapsed="2.862330"/>
 </kw>
 <kw name="Go To" owner="SeleniumLibrary">
-<msg time="2024-04-11T11:14:45.478802" level="INFO">Opening url 'https://localhost:7207/'</msg>
+<msg time="2024-04-11T13:42:56.731246" level="INFO">Opening url 'https://localhost:7207/'</msg>
 <arg>${url}</arg>
 <doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="PASS" start="2024-04-11T11:14:45.478802" elapsed="8.035754"/>
->>>>>>> Dev-Test
+<status status="PASS" start="2024-04-11T13:42:56.731246" elapsed="7.703590"/>
 </kw>
 <kw name="Wait Until Page Contains" owner="SeleniumLibrary">
 <arg>Välkommen till Majorna Gaming</arg>
 <doc>Waits until ``text`` appears on the current page.</doc>
-<<<<<<< HEAD
-<status status="PASS" start="2024-04-11T09:56:13.641373" elapsed="1.405083"/>
+<status status="PASS" start="2024-04-11T13:43:04.434836" elapsed="1.871809"/>
 </kw>
 <tag>VG_Test1_browser</tag>
 <doc>Browser</doc>
-<status status="PASS" start="2024-04-11T09:56:07.220164" elapsed="7.826292"/>
-=======
-<status status="PASS" start="2024-04-11T11:14:53.514556" elapsed="1.022998"/>
+<status status="PASS" start="2024-04-11T13:42:53.866911" elapsed="12.439734"/>
 </kw>
-<tag>VG_Test1_browser</tag>
-<doc>Browser</doc>
-<status status="PASS" start="2024-04-11T11:14:43.026819" elapsed="11.510735"/>
->>>>>>> Dev-Test
-</kw>
-<kw name="When I am able to see Cart" owner="resource">
+<kw name="When I am able to see Products" owner="resource">
 <kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
-<arg>//a[normalize-space()='Kundvagn']</arg>
+<arg>//a[normalize-space()='Produkter']</arg>
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
-<<<<<<< HEAD
-<status status="PASS" start="2024-04-11T09:56:15.049949" elapsed="1.048086"/>
+<status status="PASS" start="2024-04-11T13:43:06.307647" elapsed="1.014609"/>
 </kw>
-<tag>Cart</tag>
+<tag>Products</tag>
 <doc>Browser</doc>
-<status status="PASS" start="2024-04-11T09:56:15.048785" elapsed="1.049250"/>
-=======
-<status status="PASS" start="2024-04-11T11:14:54.540562" elapsed="1.018368"/>
+<status status="PASS" start="2024-04-11T13:43:06.307647" elapsed="1.014609"/>
 </kw>
-<tag>Cart</tag>
-<doc>Browser</doc>
-<status status="PASS" start="2024-04-11T11:14:54.540562" elapsed="1.018368"/>
->>>>>>> Dev-Test
-</kw>
-<kw name="Then I click on Cart" owner="resource">
+<kw name="And I click on Products" owner="resource">
 <kw name="Click Element" owner="SeleniumLibrary">
-<<<<<<< HEAD
-<msg time="2024-04-11T09:56:16.102918" level="INFO">Clicking element '//a[normalize-space()='Kundvagn']'.</msg>
-<msg time="2024-04-11T09:56:19.546214" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
-<msg time="2024-04-11T09:56:19.546716" level="FAIL">ElementClickInterceptedException: Message: element click intercepted: Element is not clickable at point (150, 612)
-  (Session info: chrome=123.0.6312.107)
-Stacktrace:
-	GetHandleVerifier [0x00007FF6FB047032+63090]
-	(No symbol) [0x00007FF6FAFB2C82]
-	(No symbol) [0x00007FF6FAE4EC65]
-	(No symbol) [0x00007FF6FAE9BB34]
-	(No symbol) [0x00007FF6FAE99954]
-	(No symbol) [0x00007FF6FAE97164]
-	(No symbol) [0x00007FF6FAE95EF9]
-	(No symbol) [0x00007FF6FAE8A708]
-	(No symbol) [0x00007FF6FAEB6FDA]
-	(No symbol) [0x00007FF6FAE8A00A]
-	(No symbol) [0x00007FF6FAEB71F0]
-	(No symbol) [0x00007FF6FAED3412]
-	(No symbol) [0x00007FF6FAEB6D83]
-	(No symbol) [0x00007FF6FAE883A8]
-	(No symbol) [0x00007FF6FAE89441]
-	GetHandleVerifier [0x00007FF6FB4425AD+4238317]
-	GetHandleVerifier [0x00007FF6FB47F70D+4488525]
-	GetHandleVerifier [0x00007FF6FB4779EF+4456495]
-	GetHandleVerifier [0x00007FF6FB120576+953270]
-	(No symbol) [0x00007FF6FAFBE54F]
-	(No symbol) [0x00007FF6FAFB9224]
-	(No symbol) [0x00007FF6FAFB935B]
-	(No symbol) [0x00007FF6FAFA9B94]
-	BaseThreadInitThunk [0x00007FFB64B82784+20]
-	RtlUserThreadStart [0x00007FFB669E0C31+33]
-</msg>
-<arg>//a[normalize-space()='Kundvagn']</arg>
+<msg time="2024-04-11T13:43:07.323257" level="INFO">Clicking element '//a[normalize-space()='Produkter']'.</msg>
+<arg>//a[normalize-space()='Produkter']</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="FAIL" start="2024-04-11T09:56:16.101830" elapsed="3.686079">ElementClickInterceptedException: Message: element click intercepted: Element is not clickable at point (150, 612)
-  (Session info: chrome=123.0.6312.107)
-Stacktrace:
-	GetHandleVerifier [0x00007FF6FB047032+63090]
-	(No symbol) [0x00007FF6FAFB2C82]
-	(No symbol) [0x00007FF6FAE4EC65]
-	(No symbol) [0x00007FF6FAE9BB34]
-	(No symbol) [0x00007FF6FAE99954]
-	(No symbol) [0x00007FF6FAE97164]
-	(No symbol) [0x00007FF6FAE95EF9]
-	(No symbol) [0x00007FF6FAE8A708]
-	(No symbol) [0x00007FF6FAEB6FDA]
-	(No symbol) [0x00007FF6FAE8A00A]
-	(No symbol) [0x00007FF6FAEB71F0]
-	(No symbol) [0x00007FF6FAED3412]
-	(No symbol) [0x00007FF6FAEB6D83]
-	(No symbol) [0x00007FF6FAE883A8]
-	(No symbol) [0x00007FF6FAE89441]
-	GetHandleVerifier [0x00007FF6FB4425AD+4238317]
-	GetHandleVerifier [0x00007FF6FB47F70D+4488525]
-	GetHandleVerifier [0x00007FF6FB4779EF+4456495]
-	GetHandleVerifier [0x00007FF6FB120576+953270]
-	(No symbol) [0x00007FF6FAFBE54F]
-	(No symbol) [0x00007FF6FAFB9224]
-	(No symbol) [0x00007FF6FAFB935B]
-	(No symbol) [0x00007FF6FAFA9B94]
-	BaseThreadInitThunk [0x00007FFB64B82784+20]
-	RtlUserThreadStart [0x00007FFB669E0C31+33]
-</status>
+<status status="PASS" start="2024-04-11T13:43:07.323257" elapsed="2.224457"/>
 </kw>
-<tag>Cart</tag>
+<tag>Products</tag>
 <doc>Browser</doc>
-<status status="FAIL" start="2024-04-11T09:56:16.100318" elapsed="3.688638">ElementClickInterceptedException: Message: element click intercepted: Element is not clickable at point (150, 612)
-  (Session info: chrome=123.0.6312.107)
-Stacktrace:
-	GetHandleVerifier [0x00007FF6FB047032+63090]
-	(No symbol) [0x00007FF6FAFB2C82]
-	(No symbol) [0x00007FF6FAE4EC65]
-	(No symbol) [0x00007FF6FAE9BB34]
-	(No symbol) [0x00007FF6FAE99954]
-	(No symbol) [0x00007FF6FAE97164]
-	(No symbol) [0x00007FF6FAE95EF9]
-	(No symbol) [0x00007FF6FAE8A708]
-	(No symbol) [0x00007FF6FAEB6FDA]
-	(No symbol) [0x00007FF6FAE8A00A]
-	(No symbol) [0x00007FF6FAEB71F0]
-	(No symbol) [0x00007FF6FAED3412]
-	(No symbol) [0x00007FF6FAEB6D83]
-	(No symbol) [0x00007FF6FAE883A8]
-	(No symbol) [0x00007FF6FAE89441]
-	GetHandleVerifier [0x00007FF6FB4425AD+4238317]
-	GetHandleVerifier [0x00007FF6FB47F70D+4488525]
-	GetHandleVerifier [0x00007FF6FB4779EF+4456495]
-	GetHandleVerifier [0x00007FF6FB120576+953270]
-	(No symbol) [0x00007FF6FAFBE54F]
-	(No symbol) [0x00007FF6FAFB9224]
-	(No symbol) [0x00007FF6FAFB935B]
-	(No symbol) [0x00007FF6FAFA9B94]
-	BaseThreadInitThunk [0x00007FFB64B82784+20]
-	RtlUserThreadStart [0x00007FFB669E0C31+33]
-</status>
+<status status="PASS" start="2024-04-11T13:43:07.322757" elapsed="2.224957"/>
 </kw>
-<kw name="Then I can see the Products in the cart" owner="resource">
-<tag>Cart</tag>
+<kw name="Then I can see the Product Page" owner="resource">
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Produkter</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2024-04-11T13:43:09.548717" elapsed="1.012436"/>
+</kw>
+<tag>Products</tag>
 <doc>Browser</doc>
-<status status="NOT RUN" start="2024-04-11T09:56:19.790010" elapsed="0.000000"/>
+<status status="PASS" start="2024-04-11T13:43:09.548717" elapsed="1.012436"/>
 </kw>
-<status status="FAIL" start="2024-04-11T09:56:07.219139" elapsed="12.570871">ElementClickInterceptedException: Message: element click intercepted: Element is not clickable at point (150, 612)
-  (Session info: chrome=123.0.6312.107)
-Stacktrace:
-	GetHandleVerifier [0x00007FF6FB047032+63090]
-	(No symbol) [0x00007FF6FAFB2C82]
-	(No symbol) [0x00007FF6FAE4EC65]
-	(No symbol) [0x00007FF6FAE9BB34]
-	(No symbol) [0x00007FF6FAE99954]
-	(No symbol) [0x00007FF6FAE97164]
-	(No symbol) [0x00007FF6FAE95EF9]
-	(No symbol) [0x00007FF6FAE8A708]
-	(No symbol) [0x00007FF6FAEB6FDA]
-	(No symbol) [0x00007FF6FAE8A00A]
-	(No symbol) [0x00007FF6FAEB71F0]
-	(No symbol) [0x00007FF6FAED3412]
-	(No symbol) [0x00007FF6FAEB6D83]
-	(No symbol) [0x00007FF6FAE883A8]
-	(No symbol) [0x00007FF6FAE89441]
-	GetHandleVerifier [0x00007FF6FB4425AD+4238317]
-	GetHandleVerifier [0x00007FF6FB47F70D+4488525]
-	GetHandleVerifier [0x00007FF6FB4779EF+4456495]
-	GetHandleVerifier [0x00007FF6FB120576+953270]
-	(No symbol) [0x00007FF6FAFBE54F]
-	(No symbol) [0x00007FF6FAFB9224]
-	(No symbol) [0x00007FF6FAFB935B]
-	(No symbol) [0x00007FF6FAFA9B94]
-	BaseThreadInitThunk [0x00007FFB64B82784+20]
-	RtlUserThreadStart [0x00007FFB669E0C31+33]
-</status>
+<status status="PASS" start="2024-04-11T13:42:53.865910" elapsed="16.699755"/>
 </test>
 <doc>test for Majorna Gaming Store</doc>
-<status status="FAIL" start="2024-04-11T09:56:01.095380" elapsed="18.696726"/>
+<status status="PASS" start="2024-04-11T13:42:42.104435" elapsed="28.464238"/>
 </suite>
-<status status="FAIL" start="2024-04-11T09:56:01.094280" elapsed="18.700117"/>
+<status status="PASS" start="2024-04-11T13:42:42.099421" elapsed="28.473765"/>
 </suite>
-<status status="FAIL" start="2024-04-11T09:56:01.092147" elapsed="18.703282"/>
+<status status="PASS" start="2024-04-11T13:42:42.096414" elapsed="28.487299"/>
 </suite>
-<status status="FAIL" start="2024-04-11T09:56:01.061353" elapsed="18.735108"/>
-=======
-<msg time="2024-04-11T11:14:55.560434" level="INFO">Clicking element '//a[normalize-space()='Kundvagn']'.</msg>
-<arg>//a[normalize-space()='Kundvagn']</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-04-11T11:14:55.559971" elapsed="2.188713"/>
-</kw>
-<tag>Cart</tag>
-<doc>Browser</doc>
-<status status="PASS" start="2024-04-11T11:14:55.559431" elapsed="2.189253"/>
-</kw>
-<status status="PASS" start="2024-04-11T11:14:43.024731" elapsed="14.723953"/>
-</test>
-<doc>test for Majorna Gaming Store</doc>
-<status status="PASS" start="2024-04-11T11:14:31.982831" elapsed="25.766898"/>
-</suite>
-<status status="PASS" start="2024-04-11T11:14:31.980736" elapsed="25.770029"/>
-</suite>
-<status status="PASS" start="2024-04-11T11:14:31.978622" elapsed="25.773190"/>
-</suite>
-<status status="PASS" start="2024-04-11T11:14:31.950943" elapsed="25.801904"/>
->>>>>>> Dev-Test
+<status status="PASS" start="2024-04-11T13:42:42.070272" elapsed="28.526977"/>
 </suite>
 <statistics>
 <total>

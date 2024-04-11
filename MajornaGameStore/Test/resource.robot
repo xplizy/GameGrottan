@@ -49,6 +49,11 @@ I can see the Product Page
     [Documentation]     Browser
     [Tags]      Products
     Wait Until Page Contains    Produkter
+
+I can add product to cart directly
+    [Documentation]     Browser
+    [Tags]      Products
+    
     
 I am able to see Cart
     [Documentation]     Browser

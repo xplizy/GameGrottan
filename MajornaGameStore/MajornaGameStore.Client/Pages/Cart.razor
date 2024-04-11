@@ -21,6 +21,9 @@ else
             <li class="list-group-item-dark">
                 <p>@context.Quantity x @context.Name (@context.Price SEK) - @(context.Price * context.Quantity)</p>
                 <button class="btn btn-danger" @onclick="async () => await ViewModel.RemoveFromCart(context.Id)">Remove</button>
+                    <InputNumber id="quantity" @bind-Value="context.Quantity"
+                                 class="form-control" style="width: 70px" Enableminmax="true" Min="1" />
+               
             </li>
         </Virtualize>
         <li class="list-group-item-dark">

@@ -23,7 +23,7 @@ namespace MajornaGameStore.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> CheckoutOrder([FromBody] Product product, [FromServices] IServiceProvider sp)
+        public async Task<ActionResult> CheckoutOrder([FromBody] Product product, [FromServices] IServer server)
         {
             //TODO: kanske ändra senare pga ostrukturerad sätt att store the url of customer
             var referer = Request.Headers.Referer;
@@ -31,7 +31,6 @@ namespace MajornaGameStore.Api.Controllers
 
             // Build the URL to which the customer will be redirected after paying.
             //TODO: koppla till mongodb, just nu kopplat till andra dbcontext
-            var server = sp.GetRequiredService<IServer>();
 
             var serverAddressesFeature = server.Features.Get<IServerAddressesFeature>();
 

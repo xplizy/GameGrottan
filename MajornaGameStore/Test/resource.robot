@@ -24,10 +24,15 @@ Open the browser
     Maximize Browser Window    
     Wait Until Page Contains    Välkommen till Majorna Gaming
     
-I can see the landing page
+I can see the address on landing page
     [Documentation]     Browser
     [Tags]      VG_Test1_browser
-    Wait Until Page Contains Element    
+    Wait Until Page Contains Element    //span[contains(text(),'GameGrottan Majorna')]
+
+I can see the layout on landing page
+    [Documentation]     Browser
+    [Tags]      VG_Test1_browser
+    Wait Until Page Contains Element    //div[@class='Logo']//img
 
 
 I am able to see Products

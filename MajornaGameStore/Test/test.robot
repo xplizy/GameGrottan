@@ -8,8 +8,8 @@ Suite Setup     setup
 
 Access landing page
     Given Open The Browser
-    #When I can access the landing page
-    #Then I can see the layouts on page
+    When I can see the address on landing page
+    Then I Can See The Layout On Landing Page
 
 
 Access Product Page

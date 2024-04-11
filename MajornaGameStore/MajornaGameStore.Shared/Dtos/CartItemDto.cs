@@ -11,5 +11,5 @@ public class CartItemDto
 
     [Required, MinLength(1)] public int Quantity { get; set; } = 1;
 
-    public string Image { get; set; } 
+    public string Image { get; set; }
 }

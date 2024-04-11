@@ -5,13 +5,20 @@
   </component>
   <component name="ChangeListManager">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <list default="true" id="1fc2e9b2-3ddd-496c-8412-af154a3c5fab" name="Changes" comment="Added Test folder">
+=======
+    <list default="true" id="ff1d339c-ede3-419c-a164-7a22027b490e" name="Changes" comment="">
+>>>>>>> Dev-Test-Jeevitha
 =======
     <list default="true" id="ff1d339c-ede3-419c-a164-7a22027b490e" name="Changes" comment="">
 >>>>>>> Dev-Test-Jeevitha
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MajornaGameStore/Test/resource.robot" beforeDir="false" afterPath="$PROJECT_DIR$/MajornaGameStore/Test/resource.robot" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MajornaGameStore/Test/test.robot" beforeDir="false" afterPath="$PROJECT_DIR$/MajornaGameStore/Test/test.robot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log.html" beforeDir="false" afterPath="$PROJECT_DIR$/log.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output.xml" beforeDir="false" afterPath="$PROJECT_DIR$/output.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/report.html" beforeDir="false" afterPath="$PROJECT_DIR$/report.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,9 +37,12 @@
     <option name="stateVersion" value="1" />
   </component>
 <<<<<<< HEAD
+<<<<<<< HEAD
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="QODANA_PROBLEMS_VIEW_TAB" />
   </component>
+=======
+>>>>>>> Dev-Test-Jeevitha
 =======
 >>>>>>> Dev-Test-Jeevitha
   <component name="ProjectColorInfo">{
@@ -46,6 +56,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
 <<<<<<< HEAD
+<<<<<<< HEAD
     "Robot Framework.run [Access Product Page].executor": "Run",
     "Robot Framework.run [Log in with positive scenario hamidtest].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
@@ -53,7 +64,10 @@
     "git-widget-placeholder": "Dev-Test-Amrita",
     "last_opened_file_path": "C:/Users/amrim/source/repos/iths-majornagaming",
 =======
+=======
+>>>>>>> Dev-Test-Jeevitha
     "Robot.Access Product Page.executor": "Run",
+    "Robot.Access landing page.executor": "Run",
     "Robot.Adding update quantity.executor": "Run",
     "Robot.Checking the product quantity.executor": "Run",
     "Robot.View Products in Cart.executor": "Run",
@@ -61,6 +75,9 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "Dev-Test-Jeevitha",
     "last_opened_file_path": "C:/Users/ls930499/PycharmProjects/Robotframework-seleniumPractice",
+<<<<<<< HEAD
+>>>>>>> Dev-Test-Jeevitha
+=======
 >>>>>>> Dev-Test-Jeevitha
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -88,6 +105,29 @@
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="robot.run" />
       <option name="PARAMETERS" value="--test &quot;iths-majornagaming6.MajornaGameStore.Test.test.Access Product Page&quot; ." />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="true" />
+      <option name="MODULE_MODE" value="true" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Access landing page" type="RobotRunConfiguration" factoryName="RobotRunConfiguration" temporary="true">
+      <module name="iths-majornagaming6" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\ls930499\AppData\Local\Programs\Python\Python312\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="robot.run" />
+      <option name="PARAMETERS" value="--test &quot;iths-majornagaming6.MajornaGameStore.Test.test.Access landing page&quot; ." />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="true" />
       <option name="MODULE_MODE" value="true" />
@@ -167,8 +207,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Robot.View Products in Cart" />
-        <item itemvalue="Robot.Checking the product quantity" />
         <item itemvalue="Robot.Access Product Page" />
+        <item itemvalue="Robot.Access landing page" />
+        <item itemvalue="Robot.Checking the product quantity" />
         <item itemvalue="Robot.Adding update quantity" />
       </list>
     </recent_temporary>
@@ -190,6 +231,7 @@
       <updated>1712567887861</updated>
       <workItem from="1712567889011" duration="5482000" />
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
       <workItem from="1712671758573" duration="1343000" />
@@ -197,6 +239,11 @@
 =======
       <workItem from="1712672279540" duration="19000" />
       <workItem from="1712722124752" duration="14387000" />
+>>>>>>> Dev-Test-Jeevitha
+=======
+      <workItem from="1712672279540" duration="19000" />
+      <workItem from="1712722124752" duration="14387000" />
+      <workItem from="1712806998745" duration="1747000" />
 >>>>>>> Dev-Test-Jeevitha
     </task>
     <task id="LOCAL-00001" summary="Added Test folder">
@@ -213,6 +260,7 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< Updated upstream
 </project>
@@ -231,11 +279,18 @@
 </project>
 >>>>>>> Stashed changes
 =======
+=======
+>>>>>>> Dev-Test-Jeevitha
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/iths_majornagaming6$View_Products_in_Cart.coverage" NAME="View Products in Cart Coverage Results" MODIFIED="1712753438448" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/iths_majornagaming6$Access_Product_Page.coverage" NAME="Access Product Page Coverage Results" MODIFIED="1712752387370" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/iths_majornagaming6$View_Products_in_Cart.coverage" NAME="View Products in Cart Coverage Results" MODIFIED="1712810147669" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/iths_majornagaming6$Access_Product_Page.coverage" NAME="Access Product Page Coverage Results" MODIFIED="1712810111446" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/iths_majornagaming6$Adding_update_quantity.coverage" NAME="Adding update quantity Coverage Results" MODIFIED="1712749509719" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/iths_majornagaming6$Checking_the_product_quantity.coverage" NAME="Checking the product quantity Coverage Results" MODIFIED="1712752724682" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/iths_majornagaming6$Access_landing_page.coverage" NAME="Access landing page Coverage Results" MODIFIED="1712810071417" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
+<<<<<<< HEAD
+</project>
+>>>>>>> Dev-Test-Jeevitha
+=======
 </project>
 >>>>>>> Dev-Test-Jeevitha

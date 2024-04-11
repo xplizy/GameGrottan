@@ -7,7 +7,7 @@ Library     Collections
 *** Variables ***
 
 ${url}      https://localhost:7207/
-${BROWSER}      headlesschrome
+${BROWSER}      chrome
 ${BROWSER_OPTIONS}  add_argument("--no-sandbox"); add_argument("window-size=1920,1080")
 
 
@@ -49,6 +49,14 @@ I can see the Product Page
     [Documentation]     Browser
     [Tags]      Products
     Wait Until Page Contains    Produkter
+
+Verify Product List Is Visible
+    [Documentation]     Browser
+    [Tags]      Products
+    Wait Until Page Contains Element    css=.item-container     20s
+    Element Should Be Visible    css=.item-container
+    Close Browser
+
     
 I am able to see Cart
     [Documentation]     Browser
@@ -77,6 +85,26 @@ Select the product to increase the quantity
     #[Tags]      shopping cart
     #Click Button    //div[2]//form[1]//input[1]
     #Select From List By Index    //div[2]//form[1]//input[1]    2
+
+
+I am able to see the landing page with Welcome message
+    [Documentation]     Browser
+    [Tags]      Home Page
+    Wait Until Page Contains    Välkommen till Majorna Gaming
+
+I am able to see the logo
+    [Documentation]     Browser
+    [Tags]      Home Page
+    Wait Until Page Contains Element    //img[@alt='Majorna Gaming Logo']
+
+I can see the links
+    [Documentation]     Browser
+    [Tags]      Home Page
+    Wait Until Page Contains Element    //a[@class='nav-link active']
+
+
+
+
 
 
 

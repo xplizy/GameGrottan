@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.0 (Python 3.12.1 on win32)" generated="2024-04-10T14:50:39.748322" rpa="false" schemaversion="5">
+<robot generator="Robot 7.0 (Python 3.12.1 on win32)" generated="2024-04-11T06:35:48.986959" rpa="false" schemaversion="5">
 <suite id="s1" name="Iths-Majornagaming6" source="C:\Users\ls930499\source\repos\iths-majornagaming6">
 <suite id="s1-s1" name="MajornaGameStore" source="C:\Users\ls930499\source\repos\iths-majornagaming6\MajornaGameStore">
 <suite id="s1-s1-s1" name="Test" source="C:\Users\ls930499\source\repos\iths-majornagaming6\MajornaGameStore\Test">
@@ -8,82 +8,194 @@
 <kw name="Set Selenium Speed" owner="SeleniumLibrary">
 <arg>1</arg>
 <doc>Sets the delay that is waited after each Selenium command.</doc>
-<status status="PASS" start="2024-04-10T14:50:40.253792" elapsed="0.001002"/>
+<status status="PASS" start="2024-04-11T06:35:49.533716" elapsed="0.000000"/>
 </kw>
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-04-10T14:50:40.254794" level="INFO">Opening browser 'Chrome' to base url 'None'.</msg>
+<msg time="2024-04-11T06:35:49.534745" level="INFO">Opening browser 'Chrome' to base url 'None'.</msg>
 <arg>browser=Chrome</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-04-10T14:50:40.254794" elapsed="3.438553"/>
+<status status="PASS" start="2024-04-11T06:35:49.534745" elapsed="1.395261"/>
 </kw>
 <kw name="Go To" owner="SeleniumLibrary">
-<msg time="2024-04-10T14:50:43.693347" level="INFO">Opening url 'https://localhost:7207/'</msg>
+<msg time="2024-04-11T06:35:50.930029" level="INFO">Opening url 'https://localhost:7207/'</msg>
 <arg>${url}</arg>
 <doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="PASS" start="2024-04-10T14:50:43.693347" elapsed="10.480990"/>
+<status status="PASS" start="2024-04-11T06:35:50.930029" elapsed="3.977883"/>
 </kw>
-<status status="PASS" start="2024-04-10T14:50:40.252790" elapsed="13.921547"/>
+<status status="PASS" start="2024-04-11T06:35:49.532686" elapsed="5.375226"/>
 </kw>
 <test id="s1-s1-s1-s1-t1" name="View Products in Cart" line="22">
 <kw name="Given Open the browser" owner="resource">
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-04-10T14:50:54.176342" level="INFO">Opening browser 'chrome' to base url 'https://localhost:7207/'.</msg>
+<msg time="2024-04-11T06:35:54.910366" level="INFO">Opening browser 'chrome' to base url 'https://localhost:7207/'.</msg>
 <arg>https://localhost:7207/</arg>
 <arg>chrome</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-04-10T14:50:54.176342" elapsed="10.181459"/>
+<status status="PASS" start="2024-04-11T06:35:54.910366" elapsed="2.828986"/>
 </kw>
 <kw name="Maximize Browser Window" owner="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" start="2024-04-10T14:51:04.357801" elapsed="1.112802"/>
+<status status="PASS" start="2024-04-11T06:35:57.739855" elapsed="2.630378"/>
 </kw>
 <kw name="Wait Until Page Contains" owner="SeleniumLibrary">
 <arg>Välkommen till Majorna Gaming</arg>
 <doc>Waits until ``text`` appears on the current page.</doc>
-<status status="PASS" start="2024-04-10T14:51:05.470603" elapsed="1.052191"/>
+<status status="PASS" start="2024-04-11T06:36:00.370233" elapsed="1.019011"/>
 </kw>
 <tag>VG_Test1_browser</tag>
 <doc>Browser</doc>
-<status status="PASS" start="2024-04-10T14:50:54.175340" elapsed="12.347454"/>
+<status status="PASS" start="2024-04-11T06:35:54.909361" elapsed="6.479883"/>
 </kw>
 <kw name="When I am able to see Cart" owner="resource">
 <kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
 <arg>//a[normalize-space()='Kundvagn']</arg>
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="PASS" start="2024-04-10T14:51:06.523798" elapsed="1.015507"/>
+<status status="PASS" start="2024-04-11T06:36:01.391389" elapsed="1.031498"/>
 </kw>
 <tag>Cart</tag>
 <doc>Browser</doc>
-<status status="PASS" start="2024-04-10T14:51:06.523798" elapsed="1.015507"/>
+<status status="PASS" start="2024-04-11T06:36:01.391355" elapsed="1.031532"/>
 </kw>
 <kw name="And I click on Cart" owner="resource">
-<kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2024-04-10T14:51:07.540798" level="INFO">Clicking button '//a[normalize-space()='Kundvagn']'.</msg>
-<msg time="2024-04-10T14:51:12.756708" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-11.png"&gt;&lt;img src="selenium-screenshot-11.png" width="800px"&gt;&lt;/a&gt;</msg>
-<msg time="2024-04-10T14:51:12.756708" level="FAIL">Button with locator '//a[normalize-space()='Kundvagn']' not found.</msg>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2024-04-11T06:36:02.427908" level="INFO">Clicking element '//a[normalize-space()='Kundvagn']'.</msg>
+<msg time="2024-04-11T06:36:05.795485" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2024-04-11T06:36:05.796616" level="FAIL">ElementClickInterceptedException: Message: element click intercepted: Element is not clickable at point (150, 618)
+  (Session info: chrome=123.0.6312.107)
+Stacktrace:
+	GetHandleVerifier [0x00007FF636947032+63090]
+	(No symbol) [0x00007FF6368B2C82]
+	(No symbol) [0x00007FF63674EC65]
+	(No symbol) [0x00007FF63679BB34]
+	(No symbol) [0x00007FF636799954]
+	(No symbol) [0x00007FF636797164]
+	(No symbol) [0x00007FF636795EF9]
+	(No symbol) [0x00007FF63678A708]
+	(No symbol) [0x00007FF6367B6FDA]
+	(No symbol) [0x00007FF63678A00A]
+	(No symbol) [0x00007FF6367B71F0]
+	(No symbol) [0x00007FF6367D3412]
+	(No symbol) [0x00007FF6367B6D83]
+	(No symbol) [0x00007FF6367883A8]
+	(No symbol) [0x00007FF636789441]
+	GetHandleVerifier [0x00007FF636D425AD+4238317]
+	GetHandleVerifier [0x00007FF636D7F70D+4488525]
+	GetHandleVerifier [0x00007FF636D779EF+4456495]
+	GetHandleVerifier [0x00007FF636A20576+953270]
+	(No symbol) [0x00007FF6368BE54F]
+	(No symbol) [0x00007FF6368B9224]
+	(No symbol) [0x00007FF6368B935B]
+	(No symbol) [0x00007FF6368A9B94]
+	BaseThreadInitThunk [0x00007FFB64B82784+20]
+	RtlUserThreadStart [0x00007FFB669E0C31+33]
+</msg>
 <arg>//a[normalize-space()='Kundvagn']</arg>
-<doc>Clicks the button identified by ``locator``.</doc>
-<status status="FAIL" start="2024-04-10T14:51:07.540798" elapsed="5.329180">Button with locator '//a[normalize-space()='Kundvagn']' not found.</status>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="FAIL" start="2024-04-11T06:36:02.427007" elapsed="3.597788">ElementClickInterceptedException: Message: element click intercepted: Element is not clickable at point (150, 618)
+  (Session info: chrome=123.0.6312.107)
+Stacktrace:
+	GetHandleVerifier [0x00007FF636947032+63090]
+	(No symbol) [0x00007FF6368B2C82]
+	(No symbol) [0x00007FF63674EC65]
+	(No symbol) [0x00007FF63679BB34]
+	(No symbol) [0x00007FF636799954]
+	(No symbol) [0x00007FF636797164]
+	(No symbol) [0x00007FF636795EF9]
+	(No symbol) [0x00007FF63678A708]
+	(No symbol) [0x00007FF6367B6FDA]
+	(No symbol) [0x00007FF63678A00A]
+	(No symbol) [0x00007FF6367B71F0]
+	(No symbol) [0x00007FF6367D3412]
+	(No symbol) [0x00007FF6367B6D83]
+	(No symbol) [0x00007FF6367883A8]
+	(No symbol) [0x00007FF636789441]
+	GetHandleVerifier [0x00007FF636D425AD+4238317]
+	GetHandleVerifier [0x00007FF636D7F70D+4488525]
+	GetHandleVerifier [0x00007FF636D779EF+4456495]
+	GetHandleVerifier [0x00007FF636A20576+953270]
+	(No symbol) [0x00007FF6368BE54F]
+	(No symbol) [0x00007FF6368B9224]
+	(No symbol) [0x00007FF6368B935B]
+	(No symbol) [0x00007FF6368A9B94]
+	BaseThreadInitThunk [0x00007FFB64B82784+20]
+	RtlUserThreadStart [0x00007FFB669E0C31+33]
+</status>
 </kw>
 <tag>Cart</tag>
 <doc>Browser</doc>
-<status status="FAIL" start="2024-04-10T14:51:07.540298" elapsed="5.330682">Button with locator '//a[normalize-space()='Kundvagn']' not found.</status>
+<status status="FAIL" start="2024-04-11T06:36:02.425525" elapsed="3.599270">ElementClickInterceptedException: Message: element click intercepted: Element is not clickable at point (150, 618)
+  (Session info: chrome=123.0.6312.107)
+Stacktrace:
+	GetHandleVerifier [0x00007FF636947032+63090]
+	(No symbol) [0x00007FF6368B2C82]
+	(No symbol) [0x00007FF63674EC65]
+	(No symbol) [0x00007FF63679BB34]
+	(No symbol) [0x00007FF636799954]
+	(No symbol) [0x00007FF636797164]
+	(No symbol) [0x00007FF636795EF9]
+	(No symbol) [0x00007FF63678A708]
+	(No symbol) [0x00007FF6367B6FDA]
+	(No symbol) [0x00007FF63678A00A]
+	(No symbol) [0x00007FF6367B71F0]
+	(No symbol) [0x00007FF6367D3412]
+	(No symbol) [0x00007FF6367B6D83]
+	(No symbol) [0x00007FF6367883A8]
+	(No symbol) [0x00007FF636789441]
+	GetHandleVerifier [0x00007FF636D425AD+4238317]
+	GetHandleVerifier [0x00007FF636D7F70D+4488525]
+	GetHandleVerifier [0x00007FF636D779EF+4456495]
+	GetHandleVerifier [0x00007FF636A20576+953270]
+	(No symbol) [0x00007FF6368BE54F]
+	(No symbol) [0x00007FF6368B9224]
+	(No symbol) [0x00007FF6368B935B]
+	(No symbol) [0x00007FF6368A9B94]
+	BaseThreadInitThunk [0x00007FFB64B82784+20]
+	RtlUserThreadStart [0x00007FFB669E0C31+33]
+</status>
 </kw>
 <kw name="Then I can see the Products in the cart" owner="resource">
 <tag>Cart</tag>
 <doc>Browser</doc>
-<status status="NOT RUN" start="2024-04-10T14:51:12.886021" elapsed="0.000000"/>
+<status status="NOT RUN" start="2024-04-11T06:36:06.025860" elapsed="0.000000"/>
 </kw>
-<status status="FAIL" start="2024-04-10T14:50:54.174337" elapsed="18.716697">Button with locator '//a[normalize-space()='Kundvagn']' not found.</status>
+<status status="FAIL" start="2024-04-11T06:35:54.907912" elapsed="11.117948">ElementClickInterceptedException: Message: element click intercepted: Element is not clickable at point (150, 618)
+  (Session info: chrome=123.0.6312.107)
+Stacktrace:
+	GetHandleVerifier [0x00007FF636947032+63090]
+	(No symbol) [0x00007FF6368B2C82]
+	(No symbol) [0x00007FF63674EC65]
+	(No symbol) [0x00007FF63679BB34]
+	(No symbol) [0x00007FF636799954]
+	(No symbol) [0x00007FF636797164]
+	(No symbol) [0x00007FF636795EF9]
+	(No symbol) [0x00007FF63678A708]
+	(No symbol) [0x00007FF6367B6FDA]
+	(No symbol) [0x00007FF63678A00A]
+	(No symbol) [0x00007FF6367B71F0]
+	(No symbol) [0x00007FF6367D3412]
+	(No symbol) [0x00007FF6367B6D83]
+	(No symbol) [0x00007FF6367883A8]
+	(No symbol) [0x00007FF636789441]
+	GetHandleVerifier [0x00007FF636D425AD+4238317]
+	GetHandleVerifier [0x00007FF636D7F70D+4488525]
+	GetHandleVerifier [0x00007FF636D779EF+4456495]
+	GetHandleVerifier [0x00007FF636A20576+953270]
+	(No symbol) [0x00007FF6368BE54F]
+	(No symbol) [0x00007FF6368B9224]
+	(No symbol) [0x00007FF6368B935B]
+	(No symbol) [0x00007FF6368A9B94]
+	BaseThreadInitThunk [0x00007FFB64B82784+20]
+	RtlUserThreadStart [0x00007FFB669E0C31+33]
+</status>
 </test>
 <doc>test for Majorna Gaming Store</doc>
-<status status="FAIL" start="2024-04-10T14:50:39.807267" elapsed="33.086775"/>
+<status status="FAIL" start="2024-04-11T06:35:49.019853" elapsed="17.008107"/>
 </suite>
-<status status="FAIL" start="2024-04-10T14:50:39.805261" elapsed="33.096802"/>
+<status status="FAIL" start="2024-04-11T06:35:49.018362" elapsed="17.010641"/>
 </suite>
-<status status="FAIL" start="2024-04-10T14:50:39.803256" elapsed="33.101254"/>
+<status status="FAIL" start="2024-04-11T06:35:49.016330" elapsed="17.013707"/>
 </suite>
-<status status="FAIL" start="2024-04-10T14:50:39.752333" elapsed="33.154182"/>
+<status status="FAIL" start="2024-04-11T06:35:48.990160" elapsed="17.040943"/>
 </suite>
 <statistics>
 <total>

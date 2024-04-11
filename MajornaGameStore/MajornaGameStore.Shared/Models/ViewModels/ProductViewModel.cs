@@ -1,5 +1,5 @@
 ﻿using MajornaGameStore.Shared.Dtos;
-using MajornaGameStore.Shared.Interfaces;
+using MajornaGameStore.Shared.Interfaces.ServiceInterfaces;
 
 namespace MajornaGameStore.Shared.Models.ViewModels;
 

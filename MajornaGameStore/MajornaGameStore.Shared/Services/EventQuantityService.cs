@@ -1,5 +1,6 @@
 ﻿using MajornaGameStore.DataAccess.Entities;
-using MajornaGameStore.Shared.Interfaces;
+using MajornaGameStore.Shared.Interfaces.RepositoryInterfaces;
+using MajornaGameStore.Shared.Interfaces.ServiceInterfaces;
 using MongoDB.Bson;
 using SharpCompress.Common;
 

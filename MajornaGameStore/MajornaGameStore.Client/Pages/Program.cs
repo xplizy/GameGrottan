@@ -2,7 +2,7 @@ using Blazorise;
 using Blazorise.Icons.FontAwesome;
 using MajornaGameStore.Client;
 using MajornaGameStore.Client.Services;
-using MajornaGameStore.Shared.Interfaces;
+using MajornaGameStore.Shared.Interfaces.ServiceInterfaces;
 using MajornaGameStore.Shared.Models.ViewModels;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;

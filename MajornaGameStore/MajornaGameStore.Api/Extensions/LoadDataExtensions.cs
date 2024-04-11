@@ -1,7 +1,7 @@
 ﻿using MajornaGameStore.DataAccess.Entities;
 using System.Text.Json;
 using MajornaGameStore.DataAccess.Sql.Repositories;
-using MajornaGameStore.Shared.Interfaces;
+using MajornaGameStore.Shared.Interfaces.RepositoryInterfaces;
 
 namespace MajornaGameStore.Api.Extensions;
 

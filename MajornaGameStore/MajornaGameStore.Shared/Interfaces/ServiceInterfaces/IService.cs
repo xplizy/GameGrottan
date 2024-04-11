@@ -1,4 +1,4 @@
-﻿namespace MajornaGameStore.Shared.Interfaces;
+﻿namespace MajornaGameStore.Shared.Interfaces.ServiceInterfaces;
 
 public interface IService<TEntity, TId>
 {

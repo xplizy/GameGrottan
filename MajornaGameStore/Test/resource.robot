@@ -53,7 +53,7 @@ I can see the Product Page
 I can add product to cart directly
     [Documentation]     Browser
     [Tags]      Products
-    
+    Wait Until Page Contains Element    
     
 I am able to see Cart
     [Documentation]     Browser

@@ -2,7 +2,7 @@
 
 namespace MajornaGameStore.Shared.Interfaces.ServiceInterfaces.ClientSide;
 
-public interface IClientCartService : IService<ICartItem, string>
+public interface IClientCartService : IService<CartItemDto, string>
 {
     
 }

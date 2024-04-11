@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="ff1d339c-ede3-419c-a164-7a22027b490e" name="Changes" comment="">
+=======
+    <list default="true" id="1fc2e9b2-3ddd-496c-8412-af154a3c5fab" name="Changes" comment="Added Test folder">
+>>>>>>> Dev
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MajornaGameStore/Test/resource.robot" beforeDir="false" afterPath="$PROJECT_DIR$/MajornaGameStore/Test/resource.robot" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MajornaGameStore/Test/test.robot" beforeDir="false" afterPath="$PROJECT_DIR$/MajornaGameStore/Test/test.robot" afterDir="false" />
@@ -25,6 +29,12 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+<<<<<<< HEAD
+=======
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="QODANA_PROBLEMS_VIEW_TAB" />
+  </component>
+>>>>>>> Dev
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -35,6 +45,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+<<<<<<< HEAD
     "Robot.Access Product Page.executor": "Run",
     "Robot.Adding update quantity.executor": "Run",
     "Robot.Checking the product quantity.executor": "Run",
@@ -43,6 +54,14 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "Dev-Test-Jeevitha",
     "last_opened_file_path": "C:/Users/ls930499/PycharmProjects/Robotframework-seleniumPractice",
+=======
+    "Robot Framework.run [Access Product Page].executor": "Run",
+    "Robot Framework.run [Log in with positive scenario hamidtest].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "Dev-Test-Amrita",
+    "last_opened_file_path": "C:/Users/amrim/source/repos/iths-majornagaming",
+>>>>>>> Dev
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -170,8 +189,15 @@
       <option name="presentableId" value="Default" />
       <updated>1712567887861</updated>
       <workItem from="1712567889011" duration="5482000" />
+<<<<<<< HEAD
       <workItem from="1712672279540" duration="19000" />
       <workItem from="1712722124752" duration="14387000" />
+=======
+<<<<<<< Updated upstream
+=======
+      <workItem from="1712671758573" duration="1343000" />
+>>>>>>> Stashed changes
+>>>>>>> Dev
     </task>
     <task id="LOCAL-00001" summary="Added Test folder">
       <option name="closed" value="true" />
@@ -187,6 +213,7 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+<<<<<<< HEAD
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/iths_majornagaming6$View_Products_in_Cart.coverage" NAME="View Products in Cart Coverage Results" MODIFIED="1712753438448" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/iths_majornagaming6$Access_Product_Page.coverage" NAME="Access Product Page Coverage Results" MODIFIED="1712752387370" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -194,3 +221,21 @@
     <SUITE FILE_PATH="coverage/iths_majornagaming6$Checking_the_product_quantity.coverage" NAME="Checking the product quantity Coverage Results" MODIFIED="1712752724682" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
+=======
+<<<<<<< Updated upstream
+</project>
+=======
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
+>>>>>>> Stashed changes
+>>>>>>> Dev

@@ -1,6 +1,6 @@
 ﻿using System.Net.Http.Json;
 using MajornaGameStore.Shared.Dtos;
-using MajornaGameStore.Shared.Interfaces.ServiceInterfaces;
+using MajornaGameStore.Shared.Interfaces.ServiceInterfaces.ClientSide;
 
 namespace MajornaGameStore.Client.Services;
 

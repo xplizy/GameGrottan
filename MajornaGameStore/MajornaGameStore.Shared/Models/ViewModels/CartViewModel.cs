@@ -10,7 +10,9 @@ public class CartViewModel(IClientCartService cartService) : ViewModelBase<ICart
     public async Task RemoveFromCart(string id)
     {
         await _cartService.DeleteAsync(id);
-        var itemFromCart = Models.First(i => i.Id == id);
-        Models.Remove(itemFromCart);
+
+        var itemFromCart = Models.Find(i => i.Id == id);
+        Models.Remove(itemFromCart!);
+
     }
 }

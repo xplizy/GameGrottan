@@ -16,13 +16,16 @@
 }
 else
 {
-    <ul class="list-group">
+    <ul class="list-group-">
         <Virtualize Items="ViewModel.Models">
-            <li class="list-group-item">
+            <li class="list-group-item-dark">
                 <p>@context.Quantity x @context.Name (@context.Price SEK) - @(context.Price * context.Quantity)</p>
                 <button class="btn btn-danger" @onclick="async () => await ViewModel.RemoveFromCart(context.Id)">Remove</button>
             </li>
         </Virtualize>
+        <li class="list-group-item-dark">
+            <p>Totalt: Sek @ViewModel.Models.Sum(item => item.Price * item.Quantity)</p>
+        </li>
     </ul>
 }
   
@@ -33,6 +36,13 @@ else
 
     bool _pageLoading = true;
 
+    // async Task RemoveFromCart(ICartItem itemToRemove)
+    // {
+    //     if (itemToRemove is CartProductDto product)
+    //     {
+    //         ViewModel.RemoveFromCart()
+    //     }
+    // }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {

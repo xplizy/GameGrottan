@@ -6,7 +6,11 @@ namespace MajornaGameStore.Client.Services;
 
 public class ClientCartService : IClientCartService
 {
+
     public List<ICartItem> Cart { get; set; } = new();
+
+    //TODO: Update this service in sprint 2. IdGenerator will not be needed
+    public string IdGenerator { get; set; } = string.Empty;
     public async Task<ICollection<ICartItem>> GetAllAsync()
     {
         return Cart.ToList();
@@ -19,6 +23,15 @@ public class ClientCartService : IClientCartService
 
     public async Task<ICartItem> AddAsync(ICartItem entity)
     {
+        var r = new Random();
+        var randomId = string.Empty;
+
+        for (int i = 0; i < 10; i++)
+        {
+            var randomNumber = r.Next(9);
+            randomId += randomNumber.ToString();
+        }
+        entity.Id = randomId;
         Cart.Add(entity);
         return entity;
     }

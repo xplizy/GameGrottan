@@ -9,6 +9,10 @@ Suite Setup     setup
 
 *** Test Cases ***
 
+Verify Blazorapp running
+    Open Browser        browser=${BROWSER}      options=${BROWSER_OPTIONS}
+    Go To   ${url}
+    Wait Until Page Contains    Välkommen till Majorna Gaming
 
 Access Product Page
 

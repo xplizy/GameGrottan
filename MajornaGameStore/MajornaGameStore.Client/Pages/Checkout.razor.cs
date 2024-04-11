@@ -45,22 +45,6 @@ namespace MajornaGameStore.Client.Pages
 
         private async Task OnClickBtnBuyNowAsync(Product product)
         {
-            //try
-            //{
-            //    var response = await HttpClient.PostAsJsonAsync($"{DevApiBaseAddress}/checkout", product);
-            //    response.EnsureSuccessStatusCode();
-            //    var responseBody = await response.Content.ReadAsStringAsync();
-
-            //    var checkoutOrderResponse = JsonConvert.DeserializeObject<CheckoutOrderResponse>(responseBody);
-
-            //    // Opens up Stripe.
-            //    await JsRuntime.InvokeVoidAsync("checkout", checkoutOrderResponse.PubKey, checkoutOrderResponse.SessionId);
-            //}
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine($"An error occurred during deserialization: {ex.Message}");
-            //    throw; // Rethrow the exception to propagate it further if necessary
-            //}
 
             var response = await HttpClient.PostAsJsonAsync($"{DevApiBaseAddress}/checkout", product);
 

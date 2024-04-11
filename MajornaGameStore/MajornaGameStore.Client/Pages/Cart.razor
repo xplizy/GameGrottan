@@ -25,6 +25,8 @@ else
         </Virtualize>
         <li class="list-group-item-dark">
             <p>Totalt: Sek @ViewModel.Models.Sum(item => item.Price * item.Quantity)</p>
+            <button class="btn btn-sucess" @onclick="() => ">Gå till betalning</button>
+
         </li>
     </ul>
 }

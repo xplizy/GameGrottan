@@ -4,7 +4,7 @@ using MajornaGameStore.DataAccess.Mongo;
 using MajornaGameStore.DataAccess.Services;
 using MajornaGameStore.DataAccess.Sql;
 using MajornaGameStore.DataAccess.Sql.Repositories;
-using MajornaGameStore.Shared.Interfaces;
+using MajornaGameStore.Shared.Interfaces.RepositoryInterfaces;
 using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.EntityFrameworkCore;
 using Stripe;

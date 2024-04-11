@@ -2,7 +2,7 @@
 using MongoDB.Driver.Core.Configuration;
 using MongoDB.Driver;
 
-namespace MajornaGameStore.Shared.Interfaces;
+namespace MajornaGameStore.Shared.Interfaces.RepositoryInterfaces;
 
 public interface IMongoRepositoryBase<TEntity>
 {

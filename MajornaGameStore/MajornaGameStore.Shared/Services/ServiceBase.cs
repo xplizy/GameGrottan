@@ -1,5 +1,4 @@
-﻿
-using MajornaGameStore.Shared.Interfaces;
+﻿using MajornaGameStore.Shared.Interfaces.ServiceInterfaces;
 
 namespace MajornaGameStore.DataAccess.Services;
 public class ServiceBase<TMainType, TId>(IService<TMainType, TId> mainRepository) : IService<TMainType, TId> where TMainType : class

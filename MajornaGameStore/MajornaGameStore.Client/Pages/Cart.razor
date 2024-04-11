@@ -2,7 +2,10 @@
 @using MajornaGameStore.DataAccess.Entities
 @using MajornaGameStore.Shared.Dtos
 @using MajornaGameStore.Client.Services
+@using MajornaGameStore.Shared.Interfaces.ServiceInterfaces.ClientSide
 @using MajornaGameStore.Shared.Models.ViewModels
+@using Microsoft.EntityFrameworkCore.Infrastructure
+
 
 @inject CartViewModel ViewModel
 <h3>Cart</h3>
@@ -20,28 +23,55 @@ else
     else
     {
         @* <ul class="list-group">
-            <Virtualize Items="ViewModel.Models">
-                <li class="list-group-item">
-                    <p>@context.ProductQuantities</p>
-                </li>
-            </Virtualize>
-        </ul>
-        
-        <div>
-            @foreach (var item in CartService.CartItems)
+            
+            
+            @foreach (var item in ViewModel.Models)
             {
+                <li class="list-group-item">
+                    <p>@item.Quantity x @item.Name (@item.Price SEK) - @(item.Price * item.Quantity) SEK</p>
+                    <button type="button" @onclick="@(() => RemoveFromCart(item.Id))">
+                        Ta Bort
+                    </button>
+                </li>
+            }
+            <li class="list-group-item">
+                <div class="item-price" style="text-align: right; padding-right: 40px">
+                    Totalt: Sek @ViewModel.Models.Sum(item => item.Price * item.Quantity)
+                </div>
                 
+            </li>
+        </ul> *@
+
+        <div>
+            @foreach (var item in ViewModel.Models)
+            {
+                <div class="item-container">
+                    <div class="item-image-wrapper"><img src="Images/GameCovers/@item.Image" class="item-image" width="200" height="200" /></div>
+                    <div class="item-name">
+                        <h5><a>@item.Name</a></h5>
+                        <button class="btn-delete" @onclick="@(() => DeleteFromCart(item))">
+                            Ta Bort
+                        </button>
+                        <EditForm Model="item">
+                            <InputNumber id="quantity" EnableMinMax="true" Min="1" @bind-Value="item.Quantity"
+                                         class="form-control" style="width: 70px" />
+                        </EditForm>
+                    </div>
+                    <div class="item-price">Sek @(item.Price * item.Quantity)</div>
+                </div>
             }
             <div class="item-price" style="text-align: right; padding-right: 40px">
-                Totalt: Sek @CartService.CartItems.Sum(item => item.Price * item.Quantity)
+                @* Totalt: Sek @CartService.CartItems.Sum(item => item.Price * item.Quantity) *@
             </div>
             <div>
-                <button class="btn-clear" @onclick="@(() => ClearCart())">
+                @* <button class="btn-clear" @onclick="@(() => ClearCart())">
                     Töm Korg
-                </button>
+                </button> *@
             </div>
         
-        </div> *@
+        </div>
+        
+        
     }
 }
 
@@ -51,6 +81,7 @@ else
 
 
 @code {
+    
 
     bool _contentLoading = true;
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -59,6 +90,27 @@ else
         _contentLoading = false;
         StateHasChanged();
     }
+
+    // void Test()
+    // {
+
+    // }
+    // void RemoveFromCart(string id)
+    // {
+    //      ViewModel.RemoveFromCart(id);
+    //     StateHasChanged();
+    // }
+
+    private async Task DeleteFromCart(ICartItem item)
+    {
+        ViewModel.Models.Remove(item);
+        StateHasChanged();
+    }
+
+    // private async Task ClearCart()
+    // {
+    //     CartService.CartItems.Clear();
+    // }
 
 
 }

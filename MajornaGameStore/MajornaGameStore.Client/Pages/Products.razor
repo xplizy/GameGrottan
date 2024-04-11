@@ -39,9 +39,12 @@ else
     bool _contentLoading = true;
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        await ViewModel.OnInit();
-        _contentLoading = false;
-        StateHasChanged();
+        if (firstRender)
+        {
+            await ViewModel.OnInit();
+            _contentLoading = false;
+            StateHasChanged();
+        }
     }
 
     // private async Task AddToCart(CartItemDto item)

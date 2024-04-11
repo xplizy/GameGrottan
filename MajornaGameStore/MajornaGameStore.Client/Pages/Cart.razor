@@ -5,112 +5,49 @@
 @using MajornaGameStore.Shared.Interfaces.ServiceInterfaces.ClientSide
 @using MajornaGameStore.Shared.Models.ViewModels
 @using Microsoft.EntityFrameworkCore.Infrastructure
-
-
 @inject CartViewModel ViewModel
-<h3>Cart</h3>
 
-@if (_contentLoading)
+<h3>Kundvagn</h3>
+
+
+@if (_pageLoading)
 {
-    <p>Sidan laddar..</p>
+    <p>Laddar...</p>
 }
 else
 {
-    @if (ViewModel.Models is null || ViewModel.Models.Count == 0)
-    {
-        <p>Du har inga produkter i din Cart</p>
-    }
-    else
-    {
-        @* <ul class="list-group">
-            
-            
-            @foreach (var item in ViewModel.Models)
-            {
-                <li class="list-group-item">
-                    <p>@item.Quantity x @item.Name (@item.Price SEK) - @(item.Price * item.Quantity) SEK</p>
-                    <button type="button" @onclick="@(() => RemoveFromCart(item.Id))">
-                        Ta Bort
-                    </button>
-                </li>
-            }
+    <ul class="list-group">
+        <Virtualize Items="ViewModel.Models">
             <li class="list-group-item">
-                <div class="item-price" style="text-align: right; padding-right: 40px">
-                    Totalt: Sek @ViewModel.Models.Sum(item => item.Price * item.Quantity)
-                </div>
-                
+                <p>@context.Quantity x @context.Name (@context.Price SEK) - @(context.Price * context.Quantity)</p>
+                <button class="btn btn-danger" @onclick="async () => await ViewModel.RemoveFromCart(context.Id)">Remove</button>
             </li>
-        </ul> *@
-
-        <div>
-            @foreach (var item in ViewModel.Models)
-            {
-                <div class="item-container">
-                    <div class="item-image-wrapper"><img src="Images/GameCovers/@item.Image" class="item-image" width="200" height="200" /></div>
-                    <div class="item-name">
-                        <h5><a>@item.Name</a></h5>
-                        <button class="btn-delete" @onclick="@(() => DeleteFromCart(item))">
-                            Ta Bort
-                        </button>
-                        <EditForm Model="item">
-                            <InputNumber id="quantity" EnableMinMax="true" Min="1" @bind-Value="item.Quantity"
-                                         class="form-control" style="width: 70px" />
-                        </EditForm>
-                    </div>
-                    <div class="item-price">Sek @(item.Price * item.Quantity)</div>
-                </div>
-            }
-            <div class="item-price" style="text-align: right; padding-right: 40px">
-                @* Totalt: Sek @CartService.CartItems.Sum(item => item.Price * item.Quantity) *@
-            </div>
-            <div>
-                @* <button class="btn-clear" @onclick="@(() => ClearCart())">
-                    Töm Korg
-                </button> *@
-            </div>
-        
-        </div>
-        
-        
-    }
+        </Virtualize>
+    </ul>
 }
-
-
   
   
 
 
 @code {
-    
 
-    bool _contentLoading = true;
+    bool _pageLoading = true;
+
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        await ViewModel.OnInit();
-        _contentLoading = false;
-        StateHasChanged();
+        if (firstRender)
+        {
+            await ViewModel.OnInit();
+            _pageLoading = false;
+            StateHasChanged();
+
+        }
     }
 
-    // void Test()
-    // {
+   
 
-    // }
-    // void RemoveFromCart(string id)
-    // {
-    //      ViewModel.RemoveFromCart(id);
-    //     StateHasChanged();
-    // }
-
-    private async Task DeleteFromCart(ICartItem item)
-    {
-        ViewModel.Models.Remove(item);
-        StateHasChanged();
-    }
-
-    // private async Task ClearCart()
-    // {
-    //     CartService.CartItems.Clear();
-    // }
-
+    bool _contentLoading = true;
+    
 
 }

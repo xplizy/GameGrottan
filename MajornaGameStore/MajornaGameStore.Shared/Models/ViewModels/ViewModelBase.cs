@@ -1,9 +1,9 @@
-﻿using MajornaGameStore.Shared.Interfaces;
+﻿using MajornaGameStore.Shared.Interfaces.ServiceInterfaces;
 
 namespace MajornaGameStore.Shared.Models.ViewModels;
 
 
-    public class ViewModelBase<T, TId>(IService<T, TId> service) where T : class
+public class ViewModelBase<T, TId>(IService<T, TId> service) where T : class
     {
         public List<T> Models { get; set; } = new();
 

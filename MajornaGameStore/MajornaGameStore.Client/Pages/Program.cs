@@ -2,7 +2,7 @@ using Blazorise;
 using Blazorise.Icons.FontAwesome;
 using MajornaGameStore.Client;
 using MajornaGameStore.Client.Services;
-using MajornaGameStore.Shared.Interfaces;
+using MajornaGameStore.Shared.Interfaces.ServiceInterfaces.ClientSide;
 using MajornaGameStore.Shared.Models.ViewModels;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
@@ -15,10 +15,12 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:7190") });
 
-builder.Services.AddScoped<ProductViewModel>();
+builder.Services
+    .AddScoped<ProductViewModel>()
+    .AddScoped<CartViewModel>();
 
 builder.Services
-    .AddSingleton<ICartService, CartService>()
+    .AddSingleton<IClientCartService, ClientCartService>()
     .AddScoped<IClientProductService, ClientProductService>();
 
 

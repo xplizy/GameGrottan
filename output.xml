@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <robot generator="Robot 7.0 (Python 3.12.1 on win32)" generated="2024-04-11T09:56:01.059253" rpa="false" schemaversion="5">
+=======
+<robot generator="Robot 7.0 (Python 3.12.1 on win32)" generated="2024-04-11T11:14:31.947795" rpa="false" schemaversion="5">
+>>>>>>> Dev-Test
 <suite id="s1" name="Iths-Majornagaming6" source="C:\Users\ls930499\source\repos\iths-majornagaming6">
 <suite id="s1-s1" name="MajornaGameStore" source="C:\Users\ls930499\source\repos\iths-majornagaming6\MajornaGameStore">
 <suite id="s1-s1-s1" name="Test" source="C:\Users\ls930499\source\repos\iths-majornagaming6\MajornaGameStore\Test">
@@ -8,6 +12,7 @@
 <kw name="Set Selenium Speed" owner="SeleniumLibrary">
 <arg>1</arg>
 <doc>Sets the delay that is waited after each Selenium command.</doc>
+<<<<<<< HEAD
 <status status="PASS" start="2024-04-11T09:56:01.468553" elapsed="0.000000"/>
 </kw>
 <kw name="Open Browser" owner="SeleniumLibrary">
@@ -23,10 +28,29 @@
 <status status="PASS" start="2024-04-11T09:56:03.251105" elapsed="3.968034"/>
 </kw>
 <status status="PASS" start="2024-04-11T09:56:01.467465" elapsed="5.751674"/>
+=======
+<status status="PASS" start="2024-04-11T11:14:32.323403" elapsed="0.000540"/>
+</kw>
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-04-11T11:14:32.324907" level="INFO">Opening browser 'headlesschrome' to base url 'None'.</msg>
+<arg>browser=${BROWSER}</arg>
+<arg>options=${BROWSER_OPTIONS}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-04-11T11:14:32.324405" elapsed="2.913489"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2024-04-11T11:14:35.238969" level="INFO">Opening url 'https://localhost:7207/'</msg>
+<arg>${url}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2024-04-11T11:14:35.238969" elapsed="7.784689"/>
+</kw>
+<status status="PASS" start="2024-04-11T11:14:32.322902" elapsed="10.701829"/>
+>>>>>>> Dev-Test
 </kw>
 <test id="s1-s1-s1-s1-t1" name="View Products in Cart" line="22">
 <kw name="Given Open the browser" owner="resource">
 <kw name="Open Browser" owner="SeleniumLibrary">
+<<<<<<< HEAD
 <msg time="2024-04-11T09:56:07.221108" level="INFO">Opening browser 'chrome' to base url 'https://localhost:7207/'.</msg>
 <arg>https://localhost:7207/</arg>
 <arg>chrome</arg>
@@ -36,28 +60,58 @@
 <kw name="Maximize Browser Window" owner="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
 <status status="PASS" start="2024-04-11T09:56:12.351341" elapsed="1.288855"/>
+=======
+<msg time="2024-04-11T11:14:43.026844" level="INFO">Opening browser 'headlesschrome' to base url 'None'.</msg>
+<arg>browser=${BROWSER}</arg>
+<arg>options=${BROWSER_OPTIONS}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-04-11T11:14:43.026844" elapsed="2.451958"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2024-04-11T11:14:45.478802" level="INFO">Opening url 'https://localhost:7207/'</msg>
+<arg>${url}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2024-04-11T11:14:45.478802" elapsed="8.035754"/>
+>>>>>>> Dev-Test
 </kw>
 <kw name="Wait Until Page Contains" owner="SeleniumLibrary">
 <arg>Välkommen till Majorna Gaming</arg>
 <doc>Waits until ``text`` appears on the current page.</doc>
+<<<<<<< HEAD
 <status status="PASS" start="2024-04-11T09:56:13.641373" elapsed="1.405083"/>
 </kw>
 <tag>VG_Test1_browser</tag>
 <doc>Browser</doc>
 <status status="PASS" start="2024-04-11T09:56:07.220164" elapsed="7.826292"/>
+=======
+<status status="PASS" start="2024-04-11T11:14:53.514556" elapsed="1.022998"/>
+</kw>
+<tag>VG_Test1_browser</tag>
+<doc>Browser</doc>
+<status status="PASS" start="2024-04-11T11:14:43.026819" elapsed="11.510735"/>
+>>>>>>> Dev-Test
 </kw>
 <kw name="When I am able to see Cart" owner="resource">
 <kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
 <arg>//a[normalize-space()='Kundvagn']</arg>
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
+<<<<<<< HEAD
 <status status="PASS" start="2024-04-11T09:56:15.049949" elapsed="1.048086"/>
 </kw>
 <tag>Cart</tag>
 <doc>Browser</doc>
 <status status="PASS" start="2024-04-11T09:56:15.048785" elapsed="1.049250"/>
+=======
+<status status="PASS" start="2024-04-11T11:14:54.540562" elapsed="1.018368"/>
 </kw>
-<kw name="And I click on Cart" owner="resource">
+<tag>Cart</tag>
+<doc>Browser</doc>
+<status status="PASS" start="2024-04-11T11:14:54.540562" elapsed="1.018368"/>
+>>>>>>> Dev-Test
+</kw>
+<kw name="Then I click on Cart" owner="resource">
 <kw name="Click Element" owner="SeleniumLibrary">
+<<<<<<< HEAD
 <msg time="2024-04-11T09:56:16.102918" level="INFO">Clicking element '//a[normalize-space()='Kundvagn']'.</msg>
 <msg time="2024-04-11T09:56:19.546214" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
 <msg time="2024-04-11T09:56:19.546716" level="FAIL">ElementClickInterceptedException: Message: element click intercepted: Element is not clickable at point (150, 612)
@@ -196,18 +250,39 @@ Stacktrace:
 <status status="FAIL" start="2024-04-11T09:56:01.092147" elapsed="18.703282"/>
 </suite>
 <status status="FAIL" start="2024-04-11T09:56:01.061353" elapsed="18.735108"/>
+=======
+<msg time="2024-04-11T11:14:55.560434" level="INFO">Clicking element '//a[normalize-space()='Kundvagn']'.</msg>
+<arg>//a[normalize-space()='Kundvagn']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2024-04-11T11:14:55.559971" elapsed="2.188713"/>
+</kw>
+<tag>Cart</tag>
+<doc>Browser</doc>
+<status status="PASS" start="2024-04-11T11:14:55.559431" elapsed="2.189253"/>
+</kw>
+<status status="PASS" start="2024-04-11T11:14:43.024731" elapsed="14.723953"/>
+</test>
+<doc>test for Majorna Gaming Store</doc>
+<status status="PASS" start="2024-04-11T11:14:31.982831" elapsed="25.766898"/>
+</suite>
+<status status="PASS" start="2024-04-11T11:14:31.980736" elapsed="25.770029"/>
+</suite>
+<status status="PASS" start="2024-04-11T11:14:31.978622" elapsed="25.773190"/>
+</suite>
+<status status="PASS" start="2024-04-11T11:14:31.950943" elapsed="25.801904"/>
+>>>>>>> Dev-Test
 </suite>
 <statistics>
 <total>
-<stat pass="0" fail="1" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="0" fail="1" skip="0" id="s1" name="Iths-Majornagaming6">Iths-Majornagaming6</stat>
-<stat pass="0" fail="1" skip="0" id="s1-s1" name="MajornaGameStore">Iths-Majornagaming6.MajornaGameStore</stat>
-<stat pass="0" fail="1" skip="0" id="s1-s1-s1" name="Test">Iths-Majornagaming6.MajornaGameStore.Test</stat>
-<stat pass="0" fail="1" skip="0" id="s1-s1-s1-s1" name="Test">Iths-Majornagaming6.MajornaGameStore.Test.Test</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="Iths-Majornagaming6">Iths-Majornagaming6</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="MajornaGameStore">Iths-Majornagaming6.MajornaGameStore</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1-s1" name="Test">Iths-Majornagaming6.MajornaGameStore.Test</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1-s1-s1" name="Test">Iths-Majornagaming6.MajornaGameStore.Test.Test</stat>
 </suite>
 </statistics>
 <errors>

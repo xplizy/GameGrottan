@@ -5,23 +5,23 @@ Library    XML
 Library     Collections
 
 *** Variables ***
-${username}    amrimukh2@gmail.com
-${password}     Infotiv
-${password2}     myData
+
 ${url}      https://localhost:7207/
+${BROWSER}      headlesschrome
+${BROWSER_OPTIONS}  add_argument("--no-sandbox"); add_argument("window-size=1920,1080")
 
 
 *** Keywords ***
 setup
     Set Selenium Speed    1    #används för att styra hastighet
-    Open Browser    browser=Chrome
+    Open Browser    browser=${BROWSER}  options=${BROWSER_OPTIONS}
     Go To   ${url}
 
 Open the browser
     [Documentation]     Browser
     [Tags]      VG_Test1_browser
-    Open Browser    https://localhost:7207/   chrome
-    Maximize Browser Window    
+    Open Browser    browser=${BROWSER}  options=${BROWSER_OPTIONS}
+    Go To   ${url}
     Wait Until Page Contains    Välkommen till Majorna Gaming
     
 I can see the address on landing page

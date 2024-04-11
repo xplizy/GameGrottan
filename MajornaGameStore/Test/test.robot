@@ -6,10 +6,10 @@ Suite Setup     setup
 
 *** Test Cases ***
 
-Access landing page
-    Given Open The Browser
-    When I can see the address on landing page
-    Then I Can See The Layout On Landing Page
+Verify Blazorapp running
+    Open Browser        browser=${BROWSER}      options=${BROWSER_OPTIONS}
+    Go To   ${url}
+    Wait Until Page Contains    Välkommen till Majorna Gaming
 
 
 Access Product Page

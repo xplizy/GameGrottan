@@ -4,7 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="ff1d339c-ede3-419c-a164-7a22027b490e" name="Changes" comment="" />
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+    <list default="true" id="1fc2e9b2-3ddd-496c-8412-af154a3c5fab" name="Changes" comment="Added Test folder">
+=======
+    <list default="true" id="ff1d339c-ede3-419c-a164-7a22027b490e" name="Changes" comment="">
+>>>>>>> Dev-Test-Jeevitha
+=======
+    <list default="true" id="ff1d339c-ede3-419c-a164-7a22027b490e" name="Changes" comment="">
+>>>>>>> Dev-Test-Jeevitha
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MajornaGameStore/Test/resource.robot" beforeDir="false" afterPath="$PROJECT_DIR$/MajornaGameStore/Test/resource.robot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MajornaGameStore/Test/test.robot" beforeDir="false" afterPath="$PROJECT_DIR$/MajornaGameStore/Test/test.robot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log.html" beforeDir="false" afterPath="$PROJECT_DIR$/log.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output.xml" beforeDir="false" afterPath="$PROJECT_DIR$/output.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/report.html" beforeDir="false" afterPath="$PROJECT_DIR$/report.html" afterDir="false" />
+    </list>
+>>>>>>> Dev-Test
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,6 +40,15 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+<<<<<<< HEAD
+<<<<<<< HEAD
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="QODANA_PROBLEMS_VIEW_TAB" />
+  </component>
+=======
+>>>>>>> Dev-Test-Jeevitha
+=======
+>>>>>>> Dev-Test-Jeevitha
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -29,6 +57,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Robot.Access Product Page.executor&quot;: &quot;Run&quot;,
@@ -47,6 +76,41 @@
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+=======
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+<<<<<<< HEAD
+<<<<<<< HEAD
+    "Robot Framework.run [Access Product Page].executor": "Run",
+    "Robot Framework.run [Log in with positive scenario hamidtest].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "Dev-Test-Amrita",
+    "last_opened_file_path": "C:/Users/amrim/source/repos/iths-majornagaming",
+=======
+=======
+>>>>>>> Dev-Test-Jeevitha
+    "Robot.Access Product Page.executor": "Run",
+    "Robot.Access landing page.executor": "Run",
+    "Robot.Adding update quantity.executor": "Run",
+    "Robot.Checking the product quantity.executor": "Run",
+    "Robot.View Products in Cart.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "Dev-Test-Jeevitha",
+    "last_opened_file_path": "C:/Users/ls930499/PycharmProjects/Robotframework-seleniumPractice",
+<<<<<<< HEAD
+>>>>>>> Dev-Test-Jeevitha
+=======
+>>>>>>> Dev-Test-Jeevitha
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
+    "vue.rearranger.settings.migration": "true"
+>>>>>>> Dev-Test
   }
 }</component>
   <component name="RunManager" selected="Robot.View Products in Cart">
@@ -191,9 +255,25 @@
       <option name="presentableId" value="Default" />
       <updated>1712567887861</updated>
       <workItem from="1712567889011" duration="5482000" />
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< Updated upstream
+=======
+      <workItem from="1712671758573" duration="1343000" />
+>>>>>>> Stashed changes
+=======
       <workItem from="1712672279540" duration="19000" />
       <workItem from="1712722124752" duration="14387000" />
+>>>>>>> Dev-Test-Jeevitha
+=======
+      <workItem from="1712672279540" duration="19000" />
+      <workItem from="1712722124752" duration="14387000" />
+<<<<<<< HEAD
       <workItem from="1712806998745" duration="2992000" />
+=======
+      <workItem from="1712806998745" duration="1747000" />
+>>>>>>> Dev-Test-Jeevitha
+>>>>>>> Dev-Test
     </task>
     <task id="LOCAL-00001" summary="Added Test folder">
       <option name="closed" value="true" />
@@ -209,6 +289,27 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< Updated upstream
+</project>
+=======
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
+>>>>>>> Stashed changes
+=======
+=======
+>>>>>>> Dev-Test-Jeevitha
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/iths_majornagaming6$View_Products_in_Cart.coverage" NAME="View Products in Cart Coverage Results" MODIFIED="1712826870978" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/iths_majornagaming6$Access_Product_Page.coverage" NAME="Access Product Page Coverage Results" MODIFIED="1712822122829" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -216,4 +317,9 @@
     <SUITE FILE_PATH="coverage/iths_majornagaming6$Checking_the_product_quantity.coverage" NAME="Checking the product quantity Coverage Results" MODIFIED="1712752724682" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/iths_majornagaming6$Access_landing_page.coverage" NAME="Access landing page Coverage Results" MODIFIED="1712810071417" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
+<<<<<<< HEAD
 </project>
+>>>>>>> Dev-Test-Jeevitha
+=======
+</project>
+>>>>>>> Dev-Test-Jeevitha

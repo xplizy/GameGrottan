@@ -21,7 +21,7 @@ builder.Services
     .AddScoped<CartViewModel>();
 
 //TODO: Lägg till éfter 1345 Create HTTP client to make a call to backend
-builder.Services.AddScoped<PaymentHttpClient>();
+builder.Services.AddScoped<IPaymentHttpClient, PaymentHttpClient>();
 
 builder.Services
     .AddSingleton<IClientCartService, ClientCartService>()

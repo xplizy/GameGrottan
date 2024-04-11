@@ -68,15 +68,15 @@ builder.Services.AddScoped<MajornaGameStore.Api.Stripe.StripeClient>();
 
 
 ////add cors for no errors later on
-//builder.Services.AddCors(options =>
-//{
-//    options.AddDefaultPolicy(builder =>
-//    {
-//        builder.AllowAnyOrigin()
-//            .AllowAnyHeader()
-//            .AllowAnyMethod();
-//    });
-//});
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(builder =>
+    {
+        builder.AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
 
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 //builder.Services.AddControllers();
@@ -92,7 +92,7 @@ if (app.Environment.IsDevelopment())
 }
 
 //enligt instruktioner so that asp.net can activate these services
-//app.UseCors();
+app.UseCors();
 //app.UseRouting();
 
 

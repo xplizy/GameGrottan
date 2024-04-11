@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Components.Routing;
 
 namespace MajornaGameStore.Client.Pages;
 
+//Detta är en service
 public class PaymentHttpClient : IPaymentHttpClient
 {
     private readonly HttpClient _httpClient;

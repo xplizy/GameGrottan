@@ -36,6 +36,8 @@ public class CartViewModel(IClientCartService cartService, IPaymentHttpClient pa
                 Quantity = 3
             }
         };
+        paymentRequest.CancelRedirectUrl = "http://www.google.se";
+        paymentRequest.SuccessRedirectUrl = "http://www.bing.com";
         var checkoutUrl = await _paymentHttpClient.CreatePayment(paymentRequest);
 
         return checkoutUrl;

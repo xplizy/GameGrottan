@@ -44,16 +44,16 @@ else
         _checkoutString = await ViewModel.GoToPayment();
     }
 
-    // protected override async Task OnAfterRenderAsync(bool firstRender)
-    // {
-    //     if (firstRender)
-    //     {
-    //         await ViewModel.OnInit();
-    //         _pageLoading = false;
-    //         StateHasChanged();
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await ViewModel.OnInit();
+            _pageLoading = false;
+            StateHasChanged();
 
-    //     }
-    // }
+        }
+    }
 
    
 

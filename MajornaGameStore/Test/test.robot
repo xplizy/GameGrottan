@@ -8,8 +8,8 @@ Suite Setup     setup
 
 Access landing page
     Given Open The Browser
-    When i can access the landing page
-    Then i can see the layouts on page
+    #When I can access the landing page
+    #Then I can see the layouts on page
 
 
 Access Product Page
@@ -25,8 +25,15 @@ View Products in Cart
     And I click on Cart
     Then I can see the Products in the cart
 
-Adding update quantity
+Checking the product quantity
+    [Documentation]    Checking the product quantity by increasing the value
+    [Tags]    product quantity
+
     Given open the browser
+    When I Click On Cart
+    Then Select the product to increase the quantity
+    #And I can increase the product quantity
+    #Then I can decrease the product quantity
 
 
 

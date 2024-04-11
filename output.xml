@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0 (Python 3.12.1 on win32)" generated="2024-04-10T14:50:39.748322" rpa="false" schemaversion="5">
+<suite id="s1" name="Iths-Majornagaming6" source="C:\Users\ls930499\source\repos\iths-majornagaming6">
+<suite id="s1-s1" name="MajornaGameStore" source="C:\Users\ls930499\source\repos\iths-majornagaming6\MajornaGameStore">
+<suite id="s1-s1-s1" name="Test" source="C:\Users\ls930499\source\repos\iths-majornagaming6\MajornaGameStore\Test">
+<suite id="s1-s1-s1-s1" name="Test" source="C:\Users\ls930499\source\repos\iths-majornagaming6\MajornaGameStore\Test\test.robot">
+<kw name="setup" owner="resource" type="SETUP">
+<kw name="Set Selenium Speed" owner="SeleniumLibrary">
+<arg>1</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="PASS" start="2024-04-10T14:50:40.253792" elapsed="0.001002"/>
+</kw>
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-04-10T14:50:40.254794" level="INFO">Opening browser 'Chrome' to base url 'None'.</msg>
+<arg>browser=Chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-04-10T14:50:40.254794" elapsed="3.438553"/>
+</kw>
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2024-04-10T14:50:43.693347" level="INFO">Opening url 'https://localhost:7207/'</msg>
+<arg>${url}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2024-04-10T14:50:43.693347" elapsed="10.480990"/>
+</kw>
+<status status="PASS" start="2024-04-10T14:50:40.252790" elapsed="13.921547"/>
+</kw>
+<test id="s1-s1-s1-s1-t1" name="View Products in Cart" line="22">
+<kw name="Given Open the browser" owner="resource">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-04-10T14:50:54.176342" level="INFO">Opening browser 'chrome' to base url 'https://localhost:7207/'.</msg>
+<arg>https://localhost:7207/</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-04-10T14:50:54.176342" elapsed="10.181459"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2024-04-10T14:51:04.357801" elapsed="1.112802"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Välkommen till Majorna Gaming</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2024-04-10T14:51:05.470603" elapsed="1.052191"/>
+</kw>
+<tag>VG_Test1_browser</tag>
+<doc>Browser</doc>
+<status status="PASS" start="2024-04-10T14:50:54.175340" elapsed="12.347454"/>
+</kw>
+<kw name="When I am able to see Cart" owner="resource">
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>//a[normalize-space()='Kundvagn']</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2024-04-10T14:51:06.523798" elapsed="1.015507"/>
+</kw>
+<tag>Cart</tag>
+<doc>Browser</doc>
+<status status="PASS" start="2024-04-10T14:51:06.523798" elapsed="1.015507"/>
+</kw>
+<kw name="And I click on Cart" owner="resource">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2024-04-10T14:51:07.540798" level="INFO">Clicking button '//a[normalize-space()='Kundvagn']'.</msg>
+<msg time="2024-04-10T14:51:12.756708" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-11.png"&gt;&lt;img src="selenium-screenshot-11.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2024-04-10T14:51:12.756708" level="FAIL">Button with locator '//a[normalize-space()='Kundvagn']' not found.</msg>
+<arg>//a[normalize-space()='Kundvagn']</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="FAIL" start="2024-04-10T14:51:07.540798" elapsed="5.329180">Button with locator '//a[normalize-space()='Kundvagn']' not found.</status>
+</kw>
+<tag>Cart</tag>
+<doc>Browser</doc>
+<status status="FAIL" start="2024-04-10T14:51:07.540298" elapsed="5.330682">Button with locator '//a[normalize-space()='Kundvagn']' not found.</status>
+</kw>
+<kw name="Then I can see the Products in the cart" owner="resource">
+<tag>Cart</tag>
+<doc>Browser</doc>
+<status status="NOT RUN" start="2024-04-10T14:51:12.886021" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2024-04-10T14:50:54.174337" elapsed="18.716697">Button with locator '//a[normalize-space()='Kundvagn']' not found.</status>
+</test>
+<doc>test for Majorna Gaming Store</doc>
+<status status="FAIL" start="2024-04-10T14:50:39.807267" elapsed="33.086775"/>
+</suite>
+<status status="FAIL" start="2024-04-10T14:50:39.805261" elapsed="33.096802"/>
+</suite>
+<status status="FAIL" start="2024-04-10T14:50:39.803256" elapsed="33.101254"/>
+</suite>
+<status status="FAIL" start="2024-04-10T14:50:39.752333" elapsed="33.154182"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Iths-Majornagaming6">Iths-Majornagaming6</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s1" name="MajornaGameStore">Iths-Majornagaming6.MajornaGameStore</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s1-s1" name="Test">Iths-Majornagaming6.MajornaGameStore.Test</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s1-s1-s1" name="Test">Iths-Majornagaming6.MajornaGameStore.Test.Test</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

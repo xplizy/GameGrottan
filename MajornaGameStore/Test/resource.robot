@@ -1,4 +1,5 @@
 *** Settings ***
+Documentation    test for Majorna Gaming Store
 Library    SeleniumLibrary
 Library    XML
 Library     Collections
@@ -20,12 +21,14 @@ Open the browser
     [Documentation]     Browser
     [Tags]      VG_Test1_browser
     Open Browser    https://localhost:7207/   chrome
+    Maximize Browser Window    
     Wait Until Page Contains    Välkommen till Majorna Gaming
     
 I can see the landing page
     [Documentation]     Browser
     [Tags]      VG_Test1_browser
-    
+    Wait Until Page Contains Element    
+
 
 I am able to see Products
     [Documentation]     Browser
@@ -50,12 +53,32 @@ I am able to see Cart
 I click on Cart
     [Documentation]     Browser
     [Tags]      Cart
-    Click Element    //a[normalize-space()='Kundvagn']
+    Click Element        //a[normalize-space()='Kundvagn']
 
 I can see the Products in the cart
     [Documentation]     Browser
     [Tags]      Cart
     Wait Until Page Contains    Elden Ring
+
+Select the product to increase the quantity
+    [Documentation]     Browser
+    [Tags]      shopping cart
+    Wait Until Element Is Visible    //a[normalize-space()='Elden Ring']
+    Click Element    id=quantity
+    #Select From List By Index    //div[2]//form[1]//input[1]   7
+    
+#Select the product to decrease the quantity
+    #[Documentation]     Browser
+    #[Tags]      shopping cart
+    #Click Button    //div[2]//form[1]//input[1]
+    #Select From List By Index    //div[2]//form[1]//input[1]    2
+
+
+
+    
+
+
+
 
 
 

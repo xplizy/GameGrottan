@@ -22,8 +22,8 @@ public class CartViewModel(IClientCartService cartService, IPaymentHttpClient pa
     {
         var paymentRequest = new CreatePaymentRequest();
         paymentRequest.Products = Models;
-        paymentRequest.CancelRedirectUrl = "https://localhost:7207/checkout";
-        paymentRequest.SuccessRedirectUrl = "https://localhost:7207/fail";
+        paymentRequest.CancelRedirectUrl = "https://localhost:7207/fail";
+        paymentRequest.SuccessRedirectUrl = "https://localhost:7207/checkout";
         var checkoutUrl = await _paymentHttpClient.CreatePayment(paymentRequest);
 
         Models.Clear();

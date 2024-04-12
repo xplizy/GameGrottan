@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< HEAD
-<robot generator="Robot 7.0 (Python 3.12.1 on win32)" generated="2024-04-12T04:03:48.937112" rpa="false" schemaversion="5">
-=======
-<robot generator="Robot 7.0 (Python 3.12.1 on win32)" generated="2024-04-12T04:15:15.831640" rpa="false" schemaversion="5">
->>>>>>> Dev-Test
+<robot generator="Robot 7.0 (Python 3.12.1 on win32)" generated="2024-04-12T04:30:34.342482" rpa="false" schemaversion="5">
 <suite id="s1" name="Iths-Majornagaming6" source="C:\Users\ls930499\source\repos\iths-majornagaming6">
 <suite id="s1-s1" name="MajornaGameStore" source="C:\Users\ls930499\source\repos\iths-majornagaming6\MajornaGameStore">
 <suite id="s1-s1-s1" name="Test" source="C:\Users\ls930499\source\repos\iths-majornagaming6\MajornaGameStore\Test">
@@ -12,380 +8,74 @@
 <kw name="Set Selenium Speed" owner="SeleniumLibrary">
 <arg>1</arg>
 <doc>Sets the delay that is waited after each Selenium command.</doc>
-<<<<<<< HEAD
-<status status="PASS" start="2024-04-12T04:03:49.421618" elapsed="0.000541"/>
+<status status="PASS" start="2024-04-12T04:30:36.755937" elapsed="0.004011"/>
 </kw>
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-04-12T04:03:49.423122" level="INFO">Opening browser 'headless chrome' to base url 'None'.</msg>
+<msg time="2024-04-12T04:30:36.764961" level="INFO">Opening browser 'headlesschrome' to base url 'None'.</msg>
 <arg>browser=${BROWSER}</arg>
 <arg>options=${BROWSER_OPTIONS}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-04-12T04:03:49.422621" elapsed="1.975486"/>
+<status status="PASS" start="2024-04-12T04:30:36.762493" elapsed="5.938492"/>
 </kw>
 <kw name="Go To" owner="SeleniumLibrary">
-<msg time="2024-04-12T04:03:51.398553" level="INFO">Opening url 'https://localhost:7207/'</msg>
-<msg time="2024-04-12T04:03:55.622428" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-9.png"&gt;&lt;img src="selenium-screenshot-9.png" width="800px"&gt;&lt;/a&gt;</msg>
-<msg time="2024-04-12T04:03:55.622428" level="FAIL">WebDriverException: Message: unknown error: net::ERR_CONNECTION_REFUSED
-  (Session info: chrome=123.0.6312.107)
-Stacktrace:
-	GetHandleVerifier [0x00007FF64AF17032+63090]
-	(No symbol) [0x00007FF64AE82C82]
-	(No symbol) [0x00007FF64AD1EC65]
-	(No symbol) [0x00007FF64AD1AC1A]
-	(No symbol) [0x00007FF64AD0D514]
-	(No symbol) [0x00007FF64AD0E8F8]
-	(No symbol) [0x00007FF64AD0D7FF]
-	(No symbol) [0x00007FF64AD0D104]
-	(No symbol) [0x00007FF64AD0D021]
-	(No symbol) [0x00007FF64AD0B0A8]
-	(No symbol) [0x00007FF64AD0B8BC]
-	(No symbol) [0x00007FF64AD214AD]
-	(No symbol) [0x00007FF64ADA3D67]
-	(No symbol) [0x00007FF64AD86FDA]
-	(No symbol) [0x00007FF64ADA3412]
-	(No symbol) [0x00007FF64AD86D83]
-	(No symbol) [0x00007FF64AD583A8]
-	(No symbol) [0x00007FF64AD59441]
-	GetHandleVerifier [0x00007FF64B3125AD+4238317]
-	GetHandleVerifier [0x00007FF64B34F70D+4488525]
-	GetHandleVerifier [0x00007FF64B3479EF+4456495]
-	GetHandleVerifier [0x00007FF64AFF0576+953270]
-	(No symbol) [0x00007FF64AE8E54F]
-	(No symbol) [0x00007FF64AE89224]
-	(No symbol) [0x00007FF64AE8935B]
-	(No symbol) [0x00007FF64AE79B94]
-	BaseThreadInitThunk [0x00007FFB64B82784+20]
-	RtlUserThreadStart [0x00007FFB669E0C31+33]
-</msg>
+<msg time="2024-04-12T04:30:42.701435" level="INFO">Opening url 'https://localhost:7207/'</msg>
 <arg>${url}</arg>
 <doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="FAIL" start="2024-04-12T04:03:51.398553" elapsed="4.307014">WebDriverException: Message: unknown error: net::ERR_CONNECTION_REFUSED
-  (Session info: chrome=123.0.6312.107)
-Stacktrace:
-	GetHandleVerifier [0x00007FF64AF17032+63090]
-	(No symbol) [0x00007FF64AE82C82]
-	(No symbol) [0x00007FF64AD1EC65]
-	(No symbol) [0x00007FF64AD1AC1A]
-	(No symbol) [0x00007FF64AD0D514]
-	(No symbol) [0x00007FF64AD0E8F8]
-	(No symbol) [0x00007FF64AD0D7FF]
-	(No symbol) [0x00007FF64AD0D104]
-	(No symbol) [0x00007FF64AD0D021]
-	(No symbol) [0x00007FF64AD0B0A8]
-	(No symbol) [0x00007FF64AD0B8BC]
-	(No symbol) [0x00007FF64AD214AD]
-	(No symbol) [0x00007FF64ADA3D67]
-	(No symbol) [0x00007FF64AD86FDA]
-	(No symbol) [0x00007FF64ADA3412]
-	(No symbol) [0x00007FF64AD86D83]
-	(No symbol) [0x00007FF64AD583A8]
-	(No symbol) [0x00007FF64AD59441]
-	GetHandleVerifier [0x00007FF64B3125AD+4238317]
-	GetHandleVerifier [0x00007FF64B34F70D+4488525]
-	GetHandleVerifier [0x00007FF64B3479EF+4456495]
-	GetHandleVerifier [0x00007FF64AFF0576+953270]
-	(No symbol) [0x00007FF64AE8E54F]
-	(No symbol) [0x00007FF64AE89224]
-	(No symbol) [0x00007FF64AE8935B]
-	(No symbol) [0x00007FF64AE79B94]
-	BaseThreadInitThunk [0x00007FFB64B82784+20]
-	RtlUserThreadStart [0x00007FFB669E0C31+33]
-</status>
+<status status="PASS" start="2024-04-12T04:30:42.700985" elapsed="101.158331"/>
 </kw>
-<status status="FAIL" start="2024-04-12T04:03:49.419613" elapsed="6.285954">WebDriverException: Message: unknown error: net::ERR_CONNECTION_REFUSED
-  (Session info: chrome=123.0.6312.107)
-Stacktrace:
-	GetHandleVerifier [0x00007FF64AF17032+63090]
-	(No symbol) [0x00007FF64AE82C82]
-	(No symbol) [0x00007FF64AD1EC65]
-	(No symbol) [0x00007FF64AD1AC1A]
-	(No symbol) [0x00007FF64AD0D514]
-	(No symbol) [0x00007FF64AD0E8F8]
-	(No symbol) [0x00007FF64AD0D7FF]
-	(No symbol) [0x00007FF64AD0D104]
-	(No symbol) [0x00007FF64AD0D021]
-	(No symbol) [0x00007FF64AD0B0A8]
-	(No symbol) [0x00007FF64AD0B8BC]
-	(No symbol) [0x00007FF64AD214AD]
-	(No symbol) [0x00007FF64ADA3D67]
-	(No symbol) [0x00007FF64AD86FDA]
-	(No symbol) [0x00007FF64ADA3412]
-	(No symbol) [0x00007FF64AD86D83]
-	(No symbol) [0x00007FF64AD583A8]
-	(No symbol) [0x00007FF64AD59441]
-	GetHandleVerifier [0x00007FF64B3125AD+4238317]
-	GetHandleVerifier [0x00007FF64B34F70D+4488525]
-	GetHandleVerifier [0x00007FF64B3479EF+4456495]
-	GetHandleVerifier [0x00007FF64AFF0576+953270]
-	(No symbol) [0x00007FF64AE8E54F]
-	(No symbol) [0x00007FF64AE89224]
-	(No symbol) [0x00007FF64AE8935B]
-	(No symbol) [0x00007FF64AE79B94]
-	BaseThreadInitThunk [0x00007FFB64B82784+20]
-	RtlUserThreadStart [0x00007FFB669E0C31+33]
-</status>
+<status status="PASS" start="2024-04-12T04:30:36.737387" elapsed="107.122430"/>
 </kw>
-<test id="s1-s1-s1-s1-t1" name="Add product into the cart directly" line="22">
-<status status="FAIL" start="2024-04-12T04:03:55.705567" elapsed="0.001042">Parent suite setup failed:
-WebDriverException: Message: unknown error: net::ERR_CONNECTION_REFUSED
-  (Session info: chrome=123.0.6312.107)
-Stacktrace:
-	GetHandleVerifier [0x00007FF64AF17032+63090]
-	(No symbol) [0x00007FF64AE82C82]
-	(No symbol) [0x00007FF64AD1EC65]
-	(No symbol) [0x00007FF64AD1AC1A]
-	(No symbol) [0x00007FF64AD0D514]
-	(No symbol) [0x00007FF64AD0E8F8]
-	(No symbol) [0x00007FF64AD0D7FF]
-	(No symbol) [0x00007FF64AD0D104]
-	(No symbol) [0x00007FF64AD0D021]
-	(No symbol) [0x00007FF64AD0B0A8]
-	(No symbol) [0x00007FF64AD0B8BC]
-	(No symbol) [0x00007FF64AD214AD]
-	(No symbol) [0x00007FF64ADA3D67]
-	(No symbol) [0x00007FF64AD86FDA]
-	(No symbol) [0x00007FF64ADA3412]
-	(No symbol) [0x00007FF64AD86D83]
-	(No symbol) [0x00007FF64AD583A8]
-	(No symbol) [0x00007FF64AD59441]
-	GetHandleVerifier [0x00007FF64B3125AD+4238317]
-	GetHandleVerifier [0x00007FF64B34F70D+4488525]
-	GetHandleVerifier [0x00007FF64B3479EF+4456495]
-	GetHandleVerifier [0x00007FF64AFF0576+953270]
-	(No symbol) [0x00007FF64AE8E54F]
-	(No symbol) [0x00007FF64AE89224]
-	(No symbol) [0x00007FF64AE8935B]
-	(No symbol) [0x00007FF64AE79B94]
-=======
-<status status="PASS" start="2024-04-12T04:15:16.435732" elapsed="0.001042"/>
-</kw>
-<kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-04-12T04:15:16.437822" level="INFO">Opening browser 'chrome' to base url 'None'.</msg>
-<arg>browser=${BROWSER}</arg>
-<arg>options=${BROWSER_OPTIONS}</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-04-12T04:15:16.436774" elapsed="2.841740"/>
-</kw>
-<kw name="Go To" owner="SeleniumLibrary">
-<msg time="2024-04-12T04:15:19.279076" level="INFO">Opening url 'https://localhost:7207/'</msg>
-<arg>${url}</arg>
-<doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="PASS" start="2024-04-12T04:15:19.279076" elapsed="1.591259"/>
-</kw>
-<status status="PASS" start="2024-04-12T04:15:16.434684" elapsed="4.435651"/>
-</kw>
-<test id="s1-s1-s1-s1-t1" name="View Products in Cart" line="28">
+<test id="s1-s1-s1-s1-t1" name="View Products in Cart" line="35">
 <kw name="Given Open the browser" owner="resource">
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-04-12T04:15:20.872753" level="INFO">Opening browser 'chrome' to base url 'None'.</msg>
+<msg time="2024-04-12T04:32:23.862826" level="INFO">Opening browser 'headlesschrome' to base url 'None'.</msg>
 <arg>browser=${BROWSER}</arg>
 <arg>options=${BROWSER_OPTIONS}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-04-12T04:15:20.872252" elapsed="2.758907"/>
+<status status="PASS" start="2024-04-12T04:32:23.862324" elapsed="3.740609"/>
 </kw>
 <kw name="Go To" owner="SeleniumLibrary">
-<msg time="2024-04-12T04:15:23.632091" level="INFO">Opening url 'https://localhost:7207/'</msg>
+<msg time="2024-04-12T04:32:27.603936" level="INFO">Opening url 'https://localhost:7207/'</msg>
 <arg>${url}</arg>
 <doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="PASS" start="2024-04-12T04:15:23.631589" elapsed="14.252899"/>
+<status status="PASS" start="2024-04-12T04:32:27.603536" elapsed="116.667978"/>
 </kw>
 <kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<msg time="2024-04-12T04:34:30.783700" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-3.png"&gt;&lt;img src="selenium-screenshot-3.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2024-04-12T04:34:30.803252" level="FAIL">Text 'Välkommen till Majorna Gaming' did not appear in 5 seconds.</msg>
 <arg>Välkommen till Majorna Gaming</arg>
 <doc>Waits until ``text`` appears on the current page.</doc>
-<status status="PASS" start="2024-04-12T04:15:37.885491" elapsed="1.043775"/>
+<status status="FAIL" start="2024-04-12T04:34:24.271948" elapsed="6.582988">Text 'Välkommen till Majorna Gaming' did not appear in 5 seconds.</status>
 </kw>
 <tag>VG_Test1_browser</tag>
 <doc>Browser</doc>
-<status status="PASS" start="2024-04-12T04:15:20.871828" elapsed="18.058282"/>
+<status status="FAIL" start="2024-04-12T04:32:23.861868" elapsed="126.995527">Text 'Välkommen till Majorna Gaming' did not appear in 5 seconds.</status>
 </kw>
 <kw name="When I am able to see Cart" owner="resource">
-<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
-<arg>//a[normalize-space()='Kundvagn']</arg>
-<doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="PASS" start="2024-04-12T04:15:38.933276" elapsed="1.016268"/>
-</kw>
 <tag>Cart</tag>
 <doc>Browser</doc>
-<status status="PASS" start="2024-04-12T04:15:38.932841" elapsed="1.016703"/>
+<status status="NOT RUN" start="2024-04-12T04:34:31.096134" elapsed="0.004511"/>
 </kw>
-<kw name="Then I click on Cart" owner="resource">
-<kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2024-04-12T04:15:39.950605" level="INFO">Clicking element '//a[normalize-space()='Kundvagn']'.</msg>
-<msg time="2024-04-12T04:15:43.244501" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-2.png"&gt;&lt;img src="selenium-screenshot-2.png" width="800px"&gt;&lt;/a&gt;</msg>
-<msg time="2024-04-12T04:15:43.244501" level="FAIL">ElementClickInterceptedException: Message: element click intercepted: Element is not clickable at point (150, 620)
-  (Session info: chrome=123.0.6312.107)
-Stacktrace:
-	GetHandleVerifier [0x00007FF674FB7032+63090]
-	(No symbol) [0x00007FF674F22C82]
-	(No symbol) [0x00007FF674DBEC65]
-	(No symbol) [0x00007FF674E0BB34]
-	(No symbol) [0x00007FF674E09954]
-	(No symbol) [0x00007FF674E07164]
-	(No symbol) [0x00007FF674E05EF9]
-	(No symbol) [0x00007FF674DFA708]
-	(No symbol) [0x00007FF674E26FDA]
-	(No symbol) [0x00007FF674DFA00A]
-	(No symbol) [0x00007FF674E271F0]
-	(No symbol) [0x00007FF674E43412]
-	(No symbol) [0x00007FF674E26D83]
-	(No symbol) [0x00007FF674DF83A8]
-	(No symbol) [0x00007FF674DF9441]
-	GetHandleVerifier [0x00007FF6753B25AD+4238317]
-	GetHandleVerifier [0x00007FF6753EF70D+4488525]
-	GetHandleVerifier [0x00007FF6753E79EF+4456495]
-	GetHandleVerifier [0x00007FF675090576+953270]
-	(No symbol) [0x00007FF674F2E54F]
-	(No symbol) [0x00007FF674F29224]
-	(No symbol) [0x00007FF674F2935B]
-	(No symbol) [0x00007FF674F19B94]
-	BaseThreadInitThunk [0x00007FFB64B82784+20]
-	RtlUserThreadStart [0x00007FFB669E0C31+33]
-</msg>
-<arg>//a[normalize-space()='Kundvagn']</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="FAIL" start="2024-04-12T04:15:39.950605" elapsed="3.491171">ElementClickInterceptedException: Message: element click intercepted: Element is not clickable at point (150, 620)
-  (Session info: chrome=123.0.6312.107)
-Stacktrace:
-	GetHandleVerifier [0x00007FF674FB7032+63090]
-	(No symbol) [0x00007FF674F22C82]
-	(No symbol) [0x00007FF674DBEC65]
-	(No symbol) [0x00007FF674E0BB34]
-	(No symbol) [0x00007FF674E09954]
-	(No symbol) [0x00007FF674E07164]
-	(No symbol) [0x00007FF674E05EF9]
-	(No symbol) [0x00007FF674DFA708]
-	(No symbol) [0x00007FF674E26FDA]
-	(No symbol) [0x00007FF674DFA00A]
-	(No symbol) [0x00007FF674E271F0]
-	(No symbol) [0x00007FF674E43412]
-	(No symbol) [0x00007FF674E26D83]
-	(No symbol) [0x00007FF674DF83A8]
-	(No symbol) [0x00007FF674DF9441]
-	GetHandleVerifier [0x00007FF6753B25AD+4238317]
-	GetHandleVerifier [0x00007FF6753EF70D+4488525]
-	GetHandleVerifier [0x00007FF6753E79EF+4456495]
-	GetHandleVerifier [0x00007FF675090576+953270]
-	(No symbol) [0x00007FF674F2E54F]
-	(No symbol) [0x00007FF674F29224]
-	(No symbol) [0x00007FF674F2935B]
-	(No symbol) [0x00007FF674F19B94]
-	BaseThreadInitThunk [0x00007FFB64B82784+20]
-	RtlUserThreadStart [0x00007FFB669E0C31+33]
-</status>
-</kw>
+<kw name="And I click on Cart" owner="resource">
 <tag>Cart</tag>
 <doc>Browser</doc>
-<status status="FAIL" start="2024-04-12T04:15:39.949544" elapsed="3.492232">ElementClickInterceptedException: Message: element click intercepted: Element is not clickable at point (150, 620)
-  (Session info: chrome=123.0.6312.107)
-Stacktrace:
-	GetHandleVerifier [0x00007FF674FB7032+63090]
-	(No symbol) [0x00007FF674F22C82]
-	(No symbol) [0x00007FF674DBEC65]
-	(No symbol) [0x00007FF674E0BB34]
-	(No symbol) [0x00007FF674E09954]
-	(No symbol) [0x00007FF674E07164]
-	(No symbol) [0x00007FF674E05EF9]
-	(No symbol) [0x00007FF674DFA708]
-	(No symbol) [0x00007FF674E26FDA]
-	(No symbol) [0x00007FF674DFA00A]
-	(No symbol) [0x00007FF674E271F0]
-	(No symbol) [0x00007FF674E43412]
-	(No symbol) [0x00007FF674E26D83]
-	(No symbol) [0x00007FF674DF83A8]
-	(No symbol) [0x00007FF674DF9441]
-	GetHandleVerifier [0x00007FF6753B25AD+4238317]
-	GetHandleVerifier [0x00007FF6753EF70D+4488525]
-	GetHandleVerifier [0x00007FF6753E79EF+4456495]
-	GetHandleVerifier [0x00007FF675090576+953270]
-	(No symbol) [0x00007FF674F2E54F]
-	(No symbol) [0x00007FF674F29224]
-	(No symbol) [0x00007FF674F2935B]
-	(No symbol) [0x00007FF674F19B94]
-	BaseThreadInitThunk [0x00007FFB64B82784+20]
-	RtlUserThreadStart [0x00007FFB669E0C31+33]
-</status>
+<status status="NOT RUN" start="2024-04-12T04:34:31.280123" elapsed="0.000000"/>
 </kw>
-<status status="FAIL" start="2024-04-12T04:15:20.870747" elapsed="22.572090">ElementClickInterceptedException: Message: element click intercepted: Element is not clickable at point (150, 620)
-  (Session info: chrome=123.0.6312.107)
-Stacktrace:
-	GetHandleVerifier [0x00007FF674FB7032+63090]
-	(No symbol) [0x00007FF674F22C82]
-	(No symbol) [0x00007FF674DBEC65]
-	(No symbol) [0x00007FF674E0BB34]
-	(No symbol) [0x00007FF674E09954]
-	(No symbol) [0x00007FF674E07164]
-	(No symbol) [0x00007FF674E05EF9]
-	(No symbol) [0x00007FF674DFA708]
-	(No symbol) [0x00007FF674E26FDA]
-	(No symbol) [0x00007FF674DFA00A]
-	(No symbol) [0x00007FF674E271F0]
-	(No symbol) [0x00007FF674E43412]
-	(No symbol) [0x00007FF674E26D83]
-	(No symbol) [0x00007FF674DF83A8]
-	(No symbol) [0x00007FF674DF9441]
-	GetHandleVerifier [0x00007FF6753B25AD+4238317]
-	GetHandleVerifier [0x00007FF6753EF70D+4488525]
-	GetHandleVerifier [0x00007FF6753E79EF+4456495]
-	GetHandleVerifier [0x00007FF675090576+953270]
-	(No symbol) [0x00007FF674F2E54F]
-	(No symbol) [0x00007FF674F29224]
-	(No symbol) [0x00007FF674F2935B]
-	(No symbol) [0x00007FF674F19B94]
->>>>>>> Dev-Test
-	BaseThreadInitThunk [0x00007FFB64B82784+20]
-	RtlUserThreadStart [0x00007FFB669E0C31+33]
-</status>
+<kw name="Then I can see the Products in the cart" owner="resource">
+<tag>Cart</tag>
+<doc>Browser</doc>
+<status status="NOT RUN" start="2024-04-12T04:34:31.317264" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2024-04-12T04:32:23.859817" elapsed="127.490551">Text 'Välkommen till Majorna Gaming' did not appear in 5 seconds.</status>
 </test>
 <doc>test for Majorna Gaming Store</doc>
-<<<<<<< HEAD
-<status status="FAIL" start="2024-04-12T04:03:48.981861" elapsed="6.726836">Suite setup failed:
-WebDriverException: Message: unknown error: net::ERR_CONNECTION_REFUSED
-  (Session info: chrome=123.0.6312.107)
-Stacktrace:
-	GetHandleVerifier [0x00007FF64AF17032+63090]
-	(No symbol) [0x00007FF64AE82C82]
-	(No symbol) [0x00007FF64AD1EC65]
-	(No symbol) [0x00007FF64AD1AC1A]
-	(No symbol) [0x00007FF64AD0D514]
-	(No symbol) [0x00007FF64AD0E8F8]
-	(No symbol) [0x00007FF64AD0D7FF]
-	(No symbol) [0x00007FF64AD0D104]
-	(No symbol) [0x00007FF64AD0D021]
-	(No symbol) [0x00007FF64AD0B0A8]
-	(No symbol) [0x00007FF64AD0B8BC]
-	(No symbol) [0x00007FF64AD214AD]
-	(No symbol) [0x00007FF64ADA3D67]
-	(No symbol) [0x00007FF64AD86FDA]
-	(No symbol) [0x00007FF64ADA3412]
-	(No symbol) [0x00007FF64AD86D83]
-	(No symbol) [0x00007FF64AD583A8]
-	(No symbol) [0x00007FF64AD59441]
-	GetHandleVerifier [0x00007FF64B3125AD+4238317]
-	GetHandleVerifier [0x00007FF64B34F70D+4488525]
-	GetHandleVerifier [0x00007FF64B3479EF+4456495]
-	GetHandleVerifier [0x00007FF64AFF0576+953270]
-	(No symbol) [0x00007FF64AE8E54F]
-	(No symbol) [0x00007FF64AE89224]
-	(No symbol) [0x00007FF64AE8935B]
-	(No symbol) [0x00007FF64AE79B94]
-	BaseThreadInitThunk [0x00007FFB64B82784+20]
-	RtlUserThreadStart [0x00007FFB669E0C31+33]
-</status>
+<status status="FAIL" start="2024-04-12T04:30:34.520956" elapsed="238.162447"/>
 </suite>
-<status status="FAIL" start="2024-04-12T04:03:48.978729" elapsed="6.732058"/>
+<status status="FAIL" start="2024-04-12T04:30:34.517487" elapsed="238.250231"/>
 </suite>
-<status status="FAIL" start="2024-04-12T04:03:48.975600" elapsed="6.736243"/>
+<status status="FAIL" start="2024-04-12T04:30:34.514940" elapsed="238.553296"/>
 </suite>
-<status status="FAIL" start="2024-04-12T04:03:48.941312" elapsed="6.771572"/>
-=======
-<status status="FAIL" start="2024-04-12T04:15:15.879811" elapsed="27.565155"/>
-</suite>
-<status status="FAIL" start="2024-04-12T04:15:15.877730" elapsed="27.569345"/>
-</suite>
-<status status="FAIL" start="2024-04-12T04:15:15.875640" elapsed="27.572488"/>
-</suite>
-<status status="FAIL" start="2024-04-12T04:15:15.836861" elapsed="27.612375"/>
->>>>>>> Dev-Test
+<status status="FAIL" start="2024-04-12T04:30:34.346994" elapsed="239.034588"/>
 </suite>
 <statistics>
 <total>

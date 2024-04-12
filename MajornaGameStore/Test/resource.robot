@@ -7,11 +7,7 @@ Library     Collections
 *** Variables ***
 
 ${url}      https://localhost:7207/
-<<<<<<< HEAD
-${BROWSER}      headless chrome
-=======
-${BROWSER}      chrome
->>>>>>> Dev-Test
+${BROWSER}      headlesschrome
 ${BROWSER_OPTIONS}  add_argument("--no-sandbox"); add_argument("window-size=1920,1080")
 
 
@@ -54,7 +50,6 @@ I can see the Product Page
     [Tags]      Products
     Wait Until Page Contains    Produkter
 
-<<<<<<< HEAD
 I can add product to cart directly
     [Documentation]     Browser
     [Tags]      Products
@@ -67,7 +62,7 @@ Check the product in the cart
     Click Element        //a[normalize-space()='Kundvagn']
     Wait Until Page Contains Element    //p[normalize-space()='1 x Counter-Strike (819 SEK) - 819']    10s
     Wait Until Page Contains Element    //input[@id='quantity']
-=======
+
 Verify Product List Is Visible
     [Documentation]     Browser
     [Tags]      Products
@@ -75,7 +70,6 @@ Verify Product List Is Visible
     Element Should Be Visible    css=.item-container
     Close Browser
 
->>>>>>> Dev-Test
     
 I am able to see Cart
     [Documentation]     Browser
@@ -90,7 +84,7 @@ I click on Cart
 I can see the Products in the cart
     [Documentation]     Browser
     [Tags]      Cart
-    Wait Until Page Contains    //p[normalize-space()='1 x Counter-Strike (819 SEK) - 819']
+    Wait Until Page Contains    //p[normalize-space()='1 x Counter-Strike (819 SEK) - 819']    20s
 
 I can increase the product quantity
     [Documentation]     Browser

@@ -53,7 +53,7 @@ public static class ProductMapper
         {
             Id = dto.Id,
             Name = dto.Name,
-            Price = dto.Price,
+            Price = dto.Price * 10,
             ProductTypeId = dto.ProductTypeId,
             DiscountId = dto.DiscountId,
             Description = dto.Description,
@@ -110,7 +110,7 @@ public static class ProductMapper
         {
             Id = entity.Id,
             Name = entity.Name,
-            Price = entity.Price,
+            Price = entity.Price / 10,
             ProductTypeId = entity.ProductTypeId,
             DiscountId = entity.DiscountId,
             Description = entity.Description,

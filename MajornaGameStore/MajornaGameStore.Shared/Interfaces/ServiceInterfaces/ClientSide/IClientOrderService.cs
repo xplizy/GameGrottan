@@ -1,6 +1,8 @@
-﻿namespace MajornaGameStore.Shared.Interfaces.ServiceInterfaces.ClientSide;
+﻿using MajornaGameStore.Shared.Dtos;
 
-public interface IClientOrderService
+namespace MajornaGameStore.Shared.Interfaces.ServiceInterfaces.ClientSide;
+
+public interface IClientOrderService : IService<OrderDto, string>
 {
     
 }

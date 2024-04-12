@@ -4,10 +4,11 @@ using MajornaGameStore.Shared.Interfaces.ServiceInterfaces.ClientSide;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 namespace MajornaGameStore.Shared.Models.ViewModels;
 
-public class CartViewModel(IClientCartService cartService, IPaymentHttpClient paymentHttpClient) : ViewModelBase<CartItemDto, string>(cartService)
+public class CartViewModel(IClientCartService cartService, IPaymentHttpClient paymentHttpClient, IClientOrderService orderService) : ViewModelBase<CartItemDto, string>(cartService)
 {
     private readonly IClientCartService _cartService = cartService;
     private readonly IPaymentHttpClient _paymentHttpClient = paymentHttpClient;
+    private readonly IClientOrderService _orderService = orderService;
 
     public async Task RemoveFromCart(string id)
     {
@@ -22,8 +23,8 @@ public class CartViewModel(IClientCartService cartService, IPaymentHttpClient pa
     {
         var paymentRequest = new CreatePaymentRequest();
         paymentRequest.Products = Models;
-        paymentRequest.CancelRedirectUrl = "https://localhost:7207/checkout";
-        paymentRequest.SuccessRedirectUrl = "https://localhost:7207/fail";
+        paymentRequest.CancelRedirectUrl = "https://localhost:7207/fail";
+        paymentRequest.SuccessRedirectUrl = "https://localhost:7207/checkout";
         var checkoutUrl = await _paymentHttpClient.CreatePayment(paymentRequest);
 
         Models.Clear();

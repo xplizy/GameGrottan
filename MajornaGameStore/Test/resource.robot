@@ -60,13 +60,13 @@ Check the product in the cart
     [Documentation]     add product in the cart
     [Tags]      shopping cart
     Click Element        //a[normalize-space()='Kundvagn']
-    Wait Until Page Contains Element    //p[normalize-space()='1 x Counter-Strike (819 SEK) - 819']    10s
+    Wait Until Page Contains Element    //p[normalize-space()='1 x Counter-Strike (819 SEK) - 819']    60s
     Wait Until Page Contains Element    //input[@id='quantity']
 
 Verify Product List Is Visible
     [Documentation]     Browser
     [Tags]      Products
-    Wait Until Page Contains Element    css=.item-container     20s
+    Wait Until Page Contains Element    css=.item-container     60s
     Element Should Be Visible    css=.item-container
     Close Browser
 

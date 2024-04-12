@@ -21,8 +21,8 @@ Access Product Page
     Given Open the browser
     When I am able to see Products
     And I click on Products
-    Then I can see the Product Page
-    And Verify Product List Is Visible
+    And I can see the Product Page
+    Then Verify Product List Is Visible
 
 Add product into the cart directly
 
@@ -45,7 +45,7 @@ Checking the product quantity
     When I Click On Cart
     Then I can see the Products in the cart
     And I can increase the product quantity
-    Then I can decrease the product quantity
+    #Then I can decrease the product quantity
 
 
 

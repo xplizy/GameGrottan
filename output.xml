@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.0 (Python 3.12.1 on win32)" generated="2024-04-11T13:42:42.067263" rpa="false" schemaversion="5">
+<robot generator="Robot 7.0 (Python 3.12.1 on win32)" generated="2024-04-12T04:03:48.937112" rpa="false" schemaversion="5">
 <suite id="s1" name="Iths-Majornagaming6" source="C:\Users\ls930499\source\repos\iths-majornagaming6">
 <suite id="s1-s1" name="MajornaGameStore" source="C:\Users\ls930499\source\repos\iths-majornagaming6\MajornaGameStore">
 <suite id="s1-s1-s1" name="Test" source="C:\Users\ls930499\source\repos\iths-majornagaming6\MajornaGameStore\Test">
@@ -8,100 +8,205 @@
 <kw name="Set Selenium Speed" owner="SeleniumLibrary">
 <arg>1</arg>
 <doc>Sets the delay that is waited after each Selenium command.</doc>
-<status status="PASS" start="2024-04-11T13:42:42.490760" elapsed="0.000000"/>
+<status status="PASS" start="2024-04-12T04:03:49.421618" elapsed="0.000541"/>
 </kw>
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-04-11T13:42:42.491762" level="INFO">Opening browser 'headlesschrome' to base url 'None'.</msg>
+<msg time="2024-04-12T04:03:49.423122" level="INFO">Opening browser 'headless chrome' to base url 'None'.</msg>
 <arg>browser=${BROWSER}</arg>
 <arg>options=${BROWSER_OPTIONS}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-04-11T13:42:42.491762" elapsed="4.876796"/>
+<status status="PASS" start="2024-04-12T04:03:49.422621" elapsed="1.975486"/>
 </kw>
 <kw name="Go To" owner="SeleniumLibrary">
-<msg time="2024-04-11T13:42:47.369561" level="INFO">Opening url 'https://localhost:7207/'</msg>
+<msg time="2024-04-12T04:03:51.398553" level="INFO">Opening url 'https://localhost:7207/'</msg>
+<msg time="2024-04-12T04:03:55.622428" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-9.png"&gt;&lt;img src="selenium-screenshot-9.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2024-04-12T04:03:55.622428" level="FAIL">WebDriverException: Message: unknown error: net::ERR_CONNECTION_REFUSED
+  (Session info: chrome=123.0.6312.107)
+Stacktrace:
+	GetHandleVerifier [0x00007FF64AF17032+63090]
+	(No symbol) [0x00007FF64AE82C82]
+	(No symbol) [0x00007FF64AD1EC65]
+	(No symbol) [0x00007FF64AD1AC1A]
+	(No symbol) [0x00007FF64AD0D514]
+	(No symbol) [0x00007FF64AD0E8F8]
+	(No symbol) [0x00007FF64AD0D7FF]
+	(No symbol) [0x00007FF64AD0D104]
+	(No symbol) [0x00007FF64AD0D021]
+	(No symbol) [0x00007FF64AD0B0A8]
+	(No symbol) [0x00007FF64AD0B8BC]
+	(No symbol) [0x00007FF64AD214AD]
+	(No symbol) [0x00007FF64ADA3D67]
+	(No symbol) [0x00007FF64AD86FDA]
+	(No symbol) [0x00007FF64ADA3412]
+	(No symbol) [0x00007FF64AD86D83]
+	(No symbol) [0x00007FF64AD583A8]
+	(No symbol) [0x00007FF64AD59441]
+	GetHandleVerifier [0x00007FF64B3125AD+4238317]
+	GetHandleVerifier [0x00007FF64B34F70D+4488525]
+	GetHandleVerifier [0x00007FF64B3479EF+4456495]
+	GetHandleVerifier [0x00007FF64AFF0576+953270]
+	(No symbol) [0x00007FF64AE8E54F]
+	(No symbol) [0x00007FF64AE89224]
+	(No symbol) [0x00007FF64AE8935B]
+	(No symbol) [0x00007FF64AE79B94]
+	BaseThreadInitThunk [0x00007FFB64B82784+20]
+	RtlUserThreadStart [0x00007FFB669E0C31+33]
+</msg>
 <arg>${url}</arg>
 <doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="PASS" start="2024-04-11T13:42:47.369561" elapsed="6.496349"/>
+<status status="FAIL" start="2024-04-12T04:03:51.398553" elapsed="4.307014">WebDriverException: Message: unknown error: net::ERR_CONNECTION_REFUSED
+  (Session info: chrome=123.0.6312.107)
+Stacktrace:
+	GetHandleVerifier [0x00007FF64AF17032+63090]
+	(No symbol) [0x00007FF64AE82C82]
+	(No symbol) [0x00007FF64AD1EC65]
+	(No symbol) [0x00007FF64AD1AC1A]
+	(No symbol) [0x00007FF64AD0D514]
+	(No symbol) [0x00007FF64AD0E8F8]
+	(No symbol) [0x00007FF64AD0D7FF]
+	(No symbol) [0x00007FF64AD0D104]
+	(No symbol) [0x00007FF64AD0D021]
+	(No symbol) [0x00007FF64AD0B0A8]
+	(No symbol) [0x00007FF64AD0B8BC]
+	(No symbol) [0x00007FF64AD214AD]
+	(No symbol) [0x00007FF64ADA3D67]
+	(No symbol) [0x00007FF64AD86FDA]
+	(No symbol) [0x00007FF64ADA3412]
+	(No symbol) [0x00007FF64AD86D83]
+	(No symbol) [0x00007FF64AD583A8]
+	(No symbol) [0x00007FF64AD59441]
+	GetHandleVerifier [0x00007FF64B3125AD+4238317]
+	GetHandleVerifier [0x00007FF64B34F70D+4488525]
+	GetHandleVerifier [0x00007FF64B3479EF+4456495]
+	GetHandleVerifier [0x00007FF64AFF0576+953270]
+	(No symbol) [0x00007FF64AE8E54F]
+	(No symbol) [0x00007FF64AE89224]
+	(No symbol) [0x00007FF64AE8935B]
+	(No symbol) [0x00007FF64AE79B94]
+	BaseThreadInitThunk [0x00007FFB64B82784+20]
+	RtlUserThreadStart [0x00007FFB669E0C31+33]
+</status>
 </kw>
-<status status="PASS" start="2024-04-11T13:42:42.489756" elapsed="11.376154"/>
+<status status="FAIL" start="2024-04-12T04:03:49.419613" elapsed="6.285954">WebDriverException: Message: unknown error: net::ERR_CONNECTION_REFUSED
+  (Session info: chrome=123.0.6312.107)
+Stacktrace:
+	GetHandleVerifier [0x00007FF64AF17032+63090]
+	(No symbol) [0x00007FF64AE82C82]
+	(No symbol) [0x00007FF64AD1EC65]
+	(No symbol) [0x00007FF64AD1AC1A]
+	(No symbol) [0x00007FF64AD0D514]
+	(No symbol) [0x00007FF64AD0E8F8]
+	(No symbol) [0x00007FF64AD0D7FF]
+	(No symbol) [0x00007FF64AD0D104]
+	(No symbol) [0x00007FF64AD0D021]
+	(No symbol) [0x00007FF64AD0B0A8]
+	(No symbol) [0x00007FF64AD0B8BC]
+	(No symbol) [0x00007FF64AD214AD]
+	(No symbol) [0x00007FF64ADA3D67]
+	(No symbol) [0x00007FF64AD86FDA]
+	(No symbol) [0x00007FF64ADA3412]
+	(No symbol) [0x00007FF64AD86D83]
+	(No symbol) [0x00007FF64AD583A8]
+	(No symbol) [0x00007FF64AD59441]
+	GetHandleVerifier [0x00007FF64B3125AD+4238317]
+	GetHandleVerifier [0x00007FF64B34F70D+4488525]
+	GetHandleVerifier [0x00007FF64B3479EF+4456495]
+	GetHandleVerifier [0x00007FF64AFF0576+953270]
+	(No symbol) [0x00007FF64AE8E54F]
+	(No symbol) [0x00007FF64AE89224]
+	(No symbol) [0x00007FF64AE8935B]
+	(No symbol) [0x00007FF64AE79B94]
+	BaseThreadInitThunk [0x00007FFB64B82784+20]
+	RtlUserThreadStart [0x00007FFB669E0C31+33]
+</status>
 </kw>
-<test id="s1-s1-s1-s1-t1" name="Access Product Page" line="15">
-<kw name="Given Open the browser" owner="resource">
-<kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-04-11T13:42:53.867913" level="INFO">Opening browser 'headlesschrome' to base url 'None'.</msg>
-<arg>browser=${BROWSER}</arg>
-<arg>options=${BROWSER_OPTIONS}</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-04-11T13:42:53.867913" elapsed="2.862330"/>
-</kw>
-<kw name="Go To" owner="SeleniumLibrary">
-<msg time="2024-04-11T13:42:56.731246" level="INFO">Opening url 'https://localhost:7207/'</msg>
-<arg>${url}</arg>
-<doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="PASS" start="2024-04-11T13:42:56.731246" elapsed="7.703590"/>
-</kw>
-<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
-<arg>Välkommen till Majorna Gaming</arg>
-<doc>Waits until ``text`` appears on the current page.</doc>
-<status status="PASS" start="2024-04-11T13:43:04.434836" elapsed="1.871809"/>
-</kw>
-<tag>VG_Test1_browser</tag>
-<doc>Browser</doc>
-<status status="PASS" start="2024-04-11T13:42:53.866911" elapsed="12.439734"/>
-</kw>
-<kw name="When I am able to see Products" owner="resource">
-<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
-<arg>//a[normalize-space()='Produkter']</arg>
-<doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="PASS" start="2024-04-11T13:43:06.307647" elapsed="1.014609"/>
-</kw>
-<tag>Products</tag>
-<doc>Browser</doc>
-<status status="PASS" start="2024-04-11T13:43:06.307647" elapsed="1.014609"/>
-</kw>
-<kw name="And I click on Products" owner="resource">
-<kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2024-04-11T13:43:07.323257" level="INFO">Clicking element '//a[normalize-space()='Produkter']'.</msg>
-<arg>//a[normalize-space()='Produkter']</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-04-11T13:43:07.323257" elapsed="2.224457"/>
-</kw>
-<tag>Products</tag>
-<doc>Browser</doc>
-<status status="PASS" start="2024-04-11T13:43:07.322757" elapsed="2.224957"/>
-</kw>
-<kw name="Then I can see the Product Page" owner="resource">
-<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
-<arg>Produkter</arg>
-<doc>Waits until ``text`` appears on the current page.</doc>
-<status status="PASS" start="2024-04-11T13:43:09.548717" elapsed="1.012436"/>
-</kw>
-<tag>Products</tag>
-<doc>Browser</doc>
-<status status="PASS" start="2024-04-11T13:43:09.548717" elapsed="1.012436"/>
-</kw>
-<status status="PASS" start="2024-04-11T13:42:53.865910" elapsed="16.699755"/>
+<test id="s1-s1-s1-s1-t1" name="Add product into the cart directly" line="22">
+<status status="FAIL" start="2024-04-12T04:03:55.705567" elapsed="0.001042">Parent suite setup failed:
+WebDriverException: Message: unknown error: net::ERR_CONNECTION_REFUSED
+  (Session info: chrome=123.0.6312.107)
+Stacktrace:
+	GetHandleVerifier [0x00007FF64AF17032+63090]
+	(No symbol) [0x00007FF64AE82C82]
+	(No symbol) [0x00007FF64AD1EC65]
+	(No symbol) [0x00007FF64AD1AC1A]
+	(No symbol) [0x00007FF64AD0D514]
+	(No symbol) [0x00007FF64AD0E8F8]
+	(No symbol) [0x00007FF64AD0D7FF]
+	(No symbol) [0x00007FF64AD0D104]
+	(No symbol) [0x00007FF64AD0D021]
+	(No symbol) [0x00007FF64AD0B0A8]
+	(No symbol) [0x00007FF64AD0B8BC]
+	(No symbol) [0x00007FF64AD214AD]
+	(No symbol) [0x00007FF64ADA3D67]
+	(No symbol) [0x00007FF64AD86FDA]
+	(No symbol) [0x00007FF64ADA3412]
+	(No symbol) [0x00007FF64AD86D83]
+	(No symbol) [0x00007FF64AD583A8]
+	(No symbol) [0x00007FF64AD59441]
+	GetHandleVerifier [0x00007FF64B3125AD+4238317]
+	GetHandleVerifier [0x00007FF64B34F70D+4488525]
+	GetHandleVerifier [0x00007FF64B3479EF+4456495]
+	GetHandleVerifier [0x00007FF64AFF0576+953270]
+	(No symbol) [0x00007FF64AE8E54F]
+	(No symbol) [0x00007FF64AE89224]
+	(No symbol) [0x00007FF64AE8935B]
+	(No symbol) [0x00007FF64AE79B94]
+	BaseThreadInitThunk [0x00007FFB64B82784+20]
+	RtlUserThreadStart [0x00007FFB669E0C31+33]
+</status>
 </test>
 <doc>test for Majorna Gaming Store</doc>
-<status status="PASS" start="2024-04-11T13:42:42.104435" elapsed="28.464238"/>
+<status status="FAIL" start="2024-04-12T04:03:48.981861" elapsed="6.726836">Suite setup failed:
+WebDriverException: Message: unknown error: net::ERR_CONNECTION_REFUSED
+  (Session info: chrome=123.0.6312.107)
+Stacktrace:
+	GetHandleVerifier [0x00007FF64AF17032+63090]
+	(No symbol) [0x00007FF64AE82C82]
+	(No symbol) [0x00007FF64AD1EC65]
+	(No symbol) [0x00007FF64AD1AC1A]
+	(No symbol) [0x00007FF64AD0D514]
+	(No symbol) [0x00007FF64AD0E8F8]
+	(No symbol) [0x00007FF64AD0D7FF]
+	(No symbol) [0x00007FF64AD0D104]
+	(No symbol) [0x00007FF64AD0D021]
+	(No symbol) [0x00007FF64AD0B0A8]
+	(No symbol) [0x00007FF64AD0B8BC]
+	(No symbol) [0x00007FF64AD214AD]
+	(No symbol) [0x00007FF64ADA3D67]
+	(No symbol) [0x00007FF64AD86FDA]
+	(No symbol) [0x00007FF64ADA3412]
+	(No symbol) [0x00007FF64AD86D83]
+	(No symbol) [0x00007FF64AD583A8]
+	(No symbol) [0x00007FF64AD59441]
+	GetHandleVerifier [0x00007FF64B3125AD+4238317]
+	GetHandleVerifier [0x00007FF64B34F70D+4488525]
+	GetHandleVerifier [0x00007FF64B3479EF+4456495]
+	GetHandleVerifier [0x00007FF64AFF0576+953270]
+	(No symbol) [0x00007FF64AE8E54F]
+	(No symbol) [0x00007FF64AE89224]
+	(No symbol) [0x00007FF64AE8935B]
+	(No symbol) [0x00007FF64AE79B94]
+	BaseThreadInitThunk [0x00007FFB64B82784+20]
+	RtlUserThreadStart [0x00007FFB669E0C31+33]
+</status>
 </suite>
-<status status="PASS" start="2024-04-11T13:42:42.099421" elapsed="28.473765"/>
+<status status="FAIL" start="2024-04-12T04:03:48.978729" elapsed="6.732058"/>
 </suite>
-<status status="PASS" start="2024-04-11T13:42:42.096414" elapsed="28.487299"/>
+<status status="FAIL" start="2024-04-12T04:03:48.975600" elapsed="6.736243"/>
 </suite>
-<status status="PASS" start="2024-04-11T13:42:42.070272" elapsed="28.526977"/>
+<status status="FAIL" start="2024-04-12T04:03:48.941312" elapsed="6.771572"/>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="0" skip="0">All Tests</stat>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="Iths-Majornagaming6">Iths-Majornagaming6</stat>
-<stat pass="1" fail="0" skip="0" id="s1-s1" name="MajornaGameStore">Iths-Majornagaming6.MajornaGameStore</stat>
-<stat pass="1" fail="0" skip="0" id="s1-s1-s1" name="Test">Iths-Majornagaming6.MajornaGameStore.Test</stat>
-<stat pass="1" fail="0" skip="0" id="s1-s1-s1-s1" name="Test">Iths-Majornagaming6.MajornaGameStore.Test.Test</stat>
+<stat pass="0" fail="1" skip="0" id="s1" name="Iths-Majornagaming6">Iths-Majornagaming6</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s1" name="MajornaGameStore">Iths-Majornagaming6.MajornaGameStore</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s1-s1" name="Test">Iths-Majornagaming6.MajornaGameStore.Test</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s1-s1-s1" name="Test">Iths-Majornagaming6.MajornaGameStore.Test.Test</stat>
 </suite>
 </statistics>
 <errors>

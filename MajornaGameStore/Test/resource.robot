@@ -7,7 +7,7 @@ Library     Collections
 *** Variables ***
 
 ${url}      https://localhost:7207/
-${BROWSER}      headlesschrome
+${BROWSER}      headless chrome
 ${BROWSER_OPTIONS}  add_argument("--no-sandbox"); add_argument("window-size=1920,1080")
 
 
@@ -53,12 +53,20 @@ I can see the Product Page
 I can add product to cart directly
     [Documentation]     Browser
     [Tags]      Products
-    Wait Until Page Contains Element    
+    Wait Until Page Contains Element    //a[normalize-space()='Counter-Strike']        20s
+    Click Button    //div[2]//div[1]//div[2]//button[1]
+
+Check the product in the cart
+    [Documentation]     add product in the cart
+    [Tags]      shopping cart
+    Click Element        //a[normalize-space()='Kundvagn']
+    Wait Until Page Contains Element    //p[normalize-space()='1 x Counter-Strike (819 SEK) - 819']    10s
+    Wait Until Page Contains Element    //input[@id='quantity']
     
 I am able to see Cart
     [Documentation]     Browser
     [Tags]      Cart
-    Wait Until Page Contains Element   //a[normalize-space()='Kundvagn']
+    Wait Until Element Is Visible  //a[normalize-space()='Kundvagn']    timeout=10s
 
 I click on Cart
     [Documentation]     Browser
@@ -68,20 +76,21 @@ I click on Cart
 I can see the Products in the cart
     [Documentation]     Browser
     [Tags]      Cart
-    Wait Until Page Contains    Elden Ring
+    Wait Until Page Contains    //p[normalize-space()='1 x Counter-Strike (819 SEK) - 819']
 
-Select the product to increase the quantity
+I can increase the product quantity
     [Documentation]     Browser
     [Tags]      shopping cart
-    Wait Until Element Is Visible    //a[normalize-space()='Elden Ring']
-    Click Element    id=quantity
-    #Select From List By Index    //div[2]//form[1]//input[1]   7
+    Wait Until Element Is Visible    //p[normalize-space()='1 x Counter-Strike (819 SEK) - 819']    20s
+    Click Element    //input[@id='quantity']
+    Select From List By Index    //div[2]//form[1]//input[1]   7
     
-#Select the product to decrease the quantity
-    #[Documentation]     Browser
-    #[Tags]      shopping cart
-    #Click Button    //div[2]//form[1]//input[1]
-    #Select From List By Index    //div[2]//form[1]//input[1]    2
+I can decrease the product quantity
+    [Documentation]     Browser
+    [Tags]      shopping cart
+    Wait Until Element Is Visible    //p[normalize-space()='1 x Counter-Strike (819 SEK) - 819']    20s
+    Click Button    //input[@id='quantity']
+    Select From List By Index    //div[2]//form[1]//input[1]    2
 
 
 

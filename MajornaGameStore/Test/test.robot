@@ -24,12 +24,13 @@ Add product into the cart directly
     Given Open The Browser
     When I click on Products
     And I can add product to cart directly
+    And Check the product in the cart
 
 View Products in Cart
     Given Open the browser
     When I am able to see Cart
-    Then I click on Cart
-    #Then I can see the Products in the cart
+    And I click on Cart
+    Then I can see the Products in the cart
 
 Checking the product quantity
     [Documentation]    Checking the product quantity by increasing the value
@@ -37,9 +38,9 @@ Checking the product quantity
 
     Given open the browser
     When I Click On Cart
-    Then Select the product to increase the quantity
-    #And I can increase the product quantity
-    #Then I can decrease the product quantity
+    Then I can see the Products in the cart
+    And I can increase the product quantity
+    Then I can decrease the product quantity
 
 
 

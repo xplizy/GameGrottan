@@ -5,6 +5,7 @@
 @using MajornaGameStore.Shared.Interfaces.ServiceInterfaces.ClientSide
 @using MajornaGameStore.Shared.Models.ViewModels
 @using Microsoft.EntityFrameworkCore.Infrastructure
+@inject NavigationManager NavManager
 @inject CartViewModel ViewModel
 
 <h3>Kundvagn</h3>
@@ -28,6 +29,9 @@ else
         </Virtualize>
         <li class="list-group-item-dark">
             <p>Totalt: Sek @ViewModel.Models.Sum(item => item.Price * item.Quantity)</p>
+            <button class="btn btn-sucess" @onclick="async () => await GoToPayment() ">Gå till betalning</button>
+            <p>@_checkoutString</p>
+
         </li>
     </ul>
 }
@@ -38,14 +42,12 @@ else
 @code {
 
     bool _pageLoading = true;
-
-    // async Task RemoveFromCart(ICartItem itemToRemove)
-    // {
-    //     if (itemToRemove is CartProductDto product)
-    //     {
-    //         ViewModel.RemoveFromCart()
-    //     }
-    // }
+    string _checkoutString = string.Empty;
+    async Task GoToPayment()
+    {
+        _checkoutString = await ViewModel.GoToPayment();
+        NavManager.NavigateTo(_checkoutString);
+    }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {

@@ -7,7 +7,11 @@ Library     Collections
 *** Variables ***
 
 ${url}      https://localhost:7207/
+<<<<<<< HEAD
 ${BROWSER}      headless chrome
+=======
+${BROWSER}      chrome
+>>>>>>> Dev-Test
 ${BROWSER_OPTIONS}  add_argument("--no-sandbox"); add_argument("window-size=1920,1080")
 
 
@@ -50,6 +54,7 @@ I can see the Product Page
     [Tags]      Products
     Wait Until Page Contains    Produkter
 
+<<<<<<< HEAD
 I can add product to cart directly
     [Documentation]     Browser
     [Tags]      Products
@@ -62,6 +67,15 @@ Check the product in the cart
     Click Element        //a[normalize-space()='Kundvagn']
     Wait Until Page Contains Element    //p[normalize-space()='1 x Counter-Strike (819 SEK) - 819']    10s
     Wait Until Page Contains Element    //input[@id='quantity']
+=======
+Verify Product List Is Visible
+    [Documentation]     Browser
+    [Tags]      Products
+    Wait Until Page Contains Element    css=.item-container     20s
+    Element Should Be Visible    css=.item-container
+    Close Browser
+
+>>>>>>> Dev-Test
     
 I am able to see Cart
     [Documentation]     Browser
@@ -91,6 +105,26 @@ I can decrease the product quantity
     Wait Until Element Is Visible    //p[normalize-space()='1 x Counter-Strike (819 SEK) - 819']    20s
     Click Button    //input[@id='quantity']
     Select From List By Index    //div[2]//form[1]//input[1]    2
+
+
+I am able to see the landing page with Welcome message
+    [Documentation]     Browser
+    [Tags]      Home Page
+    Wait Until Page Contains    Välkommen till Majorna Gaming
+
+I am able to see the logo
+    [Documentation]     Browser
+    [Tags]      Home Page
+    Wait Until Page Contains Element    //img[@alt='Majorna Gaming Logo']
+
+I can see the links
+    [Documentation]     Browser
+    [Tags]      Home Page
+    Wait Until Page Contains Element    //a[@class='nav-link active']
+
+
+
+
 
 
 

@@ -1,11 +1,19 @@
 .page {
+    height: 100%;
     position: relative;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    /*min-height: 100vh;*/
     overflow-y: auto;
 }
 
+.smaller-font {
+    font-size: 0.8rem;
+}
+
+.footer-border {
+    border-top: 1px solid #31485a;
+}
 
 main {
     flex: 1;
@@ -41,23 +49,20 @@ main {
         text-overflow: ellipsis;
     }
 
-.bottom-row {
+/*.bottom-row {
     background-color: black;
     border-top: 1px solid #31485a;
     height: auto;
-    /*max-height: 3.5rem;*/
+    max-height: 3.5rem;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     position: fixed;
+    position: relative;
     bottom: 0;
     width: 100vw;
-    /*width: 100vw;
-        font-size: går ej
-    */
     font-size: 5px;
-   
-}
+}*/
    
 
     .bottom-row > a {

@@ -11,6 +11,11 @@ Verify Blazorapp running
     Go To   ${url}
     Wait Until Page Contains    Välkommen till Majorna Gaming
 
+Access Landing Page
+    Given Open the browser
+    When I am able to see the landing page with Welcome message
+    And I am able to see the logo
+    Then I can see the links
 
 Access Product Page
 
@@ -18,6 +23,7 @@ Access Product Page
     When I am able to see Products
     And I click on Products
     Then I can see the Product Page
+    And Verify Product List Is Visible
 
 Add product into the cart directly
 
@@ -41,6 +47,7 @@ Checking the product quantity
     Then I can see the Products in the cart
     And I can increase the product quantity
     Then I can decrease the product quantity
+
 
 
 

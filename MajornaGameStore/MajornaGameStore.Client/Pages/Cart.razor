@@ -19,17 +19,18 @@ else
 {
     <ul class="list-group-">
         <Virtualize Items="ViewModel.Models">
-            <li class="list-group-item-dark">
-                <p>@context.Quantity x @context.Name (@context.Price SEK) - @(context.Price * context.Quantity)</p>
-                <button class="btn btn-danger" @onclick="async () => await ViewModel.RemoveFromCart(context.Id)">Remove</button>
-                    <InputNumber id="quantity" @bind-Value="context.Quantity"
-                                 class="form-control" style="width: 70px" Enableminmax="true" Min="1" />
-               
+            <li class="list-group-item-dark" style="display: flex; align-items: center;">
+                <InputNumber id="quantity" @bind-Value="context.Quantity"
+                             class="form-control" style="width: 70px; margin: 10px;" Enableminmax="true" Min="1" />
+                <p>@context.Quantity x @context.Name (@context.Price SEK) - @(context.Price * context.Quantity) SEK</p>
+                <button class="btn btn-danger" style="margin-left: 20px" @onclick="async () => await ViewModel.RemoveFromCart(context.Id)">Ta bort</button>
+
+
             </li>
         </Virtualize>
         <li class="list-group-item-dark">
             <p>Totalt: Sek @ViewModel.Models.Sum(item => item.Price * item.Quantity)</p>
-            <button class="btn btn-sucess" @onclick="async () => await GoToPayment() ">Gå till betalning</button>
+            <button class="btn btn-success" @onclick="async () => await GoToPayment() ">Gå till betalning</button>
 
         </li>
     </ul>

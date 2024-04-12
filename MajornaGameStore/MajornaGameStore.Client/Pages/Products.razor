@@ -21,9 +21,6 @@ else
                 <div class="item-image-wrapper"><img src="@context.ImageLink" class="item-image" style="width: 100%; height: auto;"/></div>
                 <div class="item-name">
                     <h5><a>@context.Name</a></h5>
-                    @*<button class="btn-add" @onclick="@(() => AddToCart(item))">
-                Lägg Till I Kundvagn
-                </button> *@
                     <button class="btn-add" @onclick="@(async () => await ViewModel.AddToCartAsync(context, 1))">
                         Lägg Till I Kundvagn
                     </button>

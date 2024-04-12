@@ -4,11 +4,10 @@ using MajornaGameStore.Shared.Interfaces.ServiceInterfaces.ClientSide;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 namespace MajornaGameStore.Shared.Models.ViewModels;
 
-public class CartViewModel(IClientCartService cartService, IPaymentHttpClient paymentHttpClient, IClientOrderService orderService) : ViewModelBase<CartItemDto, string>(cartService)
+public class CartViewModel(IClientCartService cartService, IPaymentHttpClient paymentHttpClient) : ViewModelBase<CartItemDto, string>(cartService)
 {
     private readonly IClientCartService _cartService = cartService;
     private readonly IPaymentHttpClient _paymentHttpClient = paymentHttpClient;
-    private readonly IClientOrderService _orderService = orderService;
 
     public async Task RemoveFromCart(string id)
     {

@@ -57,15 +57,14 @@ a, .btn-link {
 .LanInfo1 {
     position: absolute;
     margin-top: 180px;
-    margin-right: 25px;
+    margin-right: 1px;
     text-align: center;
     border: 3px solid #9400d3;
 }
 .LanInfo2 {
     position: absolute;
     margin-top: 100px;
-    margin-right: 500px;
-    margin-left: 600px;
+    margin-left: 862px;
     text-align: center;
     border: 3px solid #9400d3;
     width: 300px;

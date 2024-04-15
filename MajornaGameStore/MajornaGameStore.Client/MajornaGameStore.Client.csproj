@@ -38,7 +38,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <_ContentIncludedByDefault Remove="Layout\Footer.razor" />
     <_ContentIncludedByDefault Remove="Pages\Cart.razor" />
   </ItemGroup>
 
@@ -56,10 +55,6 @@
     <Content Update="wwwroot\Images\MajornaLanTP.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <UpToDateCheckInput Remove="Layout\Footer.razor" />
   </ItemGroup>
 
 </Project>

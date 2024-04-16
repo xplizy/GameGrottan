@@ -51,6 +51,7 @@ a, .btn-link {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
+    margin-top: 10px;
 }
 
 .LanInfo1 {
@@ -64,7 +65,7 @@ a, .btn-link {
     position: absolute;
     margin-top: 100px;
     margin-right: 500px;
-    margin-left: 830px;
+    margin-left: 600px;
     text-align: center;
     border: 3px solid #9400d3;
     width: 300px;

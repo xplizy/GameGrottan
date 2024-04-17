@@ -1,6 +1,8 @@
-﻿namespace MajornaGameStore.Shared.Interfaces.ServiceInterfaces.ClientSide;
+﻿using MajornaGameStore.Shared.Dtos;
 
-public interface IEventDetailService
+namespace MajornaGameStore.Shared.Interfaces.ServiceInterfaces.ClientSide;
+
+public interface IEventDetailService : IService<EventDto, int>
 {
     
 }

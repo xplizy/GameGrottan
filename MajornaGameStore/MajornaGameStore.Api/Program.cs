@@ -8,12 +8,16 @@ using MajornaGameStore.DataAccess.Sql.Repositories;
 using MajornaGameStore.Shared.Interfaces.RepositoryInterfaces;
 using MajornaGameStore.Shared.Interfaces.ServiceInterfaces;
 using Microsoft.AspNetCore.Hosting.Server;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Stripe;
+using System;
 using DiscountService = MajornaGameStore.DataAccess.Services.DiscountService;
 using EventService = MajornaGameStore.DataAccess.Services.EventService;
 using ProductService = MajornaGameStore.DataAccess.Services.ProductService;
 using ReviewService = MajornaGameStore.DataAccess.Services.ReviewService;
+
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -28,6 +32,13 @@ var connectionString = builder.Configuration.GetConnectionString("majornaDbCloud
 builder.Services.AddDbContext<MajornaDbContext>(
     options =>
         options.UseSqlServer(connectionString));
+
+builder.Services.AddAuthentication(IdentityConstants.ApplicationScheme).AddIdentityCookies();
+builder.Services.AddAuthorizationBuilder();
+
+builder.Services.AddIdentityCore<User>()
+    .AddEntityFrameworkStores<MajornaDbContext>()
+    .AddApiEndpoints();
 
 builder.Services
     .AddScoped<IProductRepository, ProductRepository>()
@@ -62,19 +73,37 @@ builder.Services.AddOptions<StripeConfig>().BindConfiguration(nameof(StripeConfi
 
 builder.Services.AddScoped<MajornaGameStore.Api.Stripe.StripeClient>();
 
-//StripeConfiguration.ApiKey = builder.Configuration["Stripe:SecretKey"];
+
+
 
 
 ////add cors for no errors later on
+///TODO: Ta bort tror jag. Behåll den under//jrm
+//builder.Services.AddCors(options =>
+//{
+//    options.AddDefaultPolicy(builder =>
+//    {
+//        builder.AllowAnyOrigin()
+//            .AllowAnyHeader()
+//            .AllowAnyMethod();
+//    });
+//});
+
+//TODO: Ändra origin till den hostade adressen när hemsidan är hostad
 builder.Services.AddCors(options =>
 {
-    options.AddDefaultPolicy(builder =>
-    {
-        builder.AllowAnyOrigin()
-            .AllowAnyHeader()
-            .AllowAnyMethod();
-    });
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+        policy =>
+        {
+            //länk till clientens
+            policy.WithOrigins("https://localhost:7207/")
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowCredentials();
+        });
 });
+
+
 
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 //builder.Services.AddControllers();
@@ -89,10 +118,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-//enligt instruktioner so that asp.net can activate these services
-app.UseCors();
-//app.UseRouting();
 
+
+app.UseCors(MyAllowSpecificOrigins);
+app.MapIdentityApi<User>();
+app.UseAuthorization();
 
 app.UseHttpsRedirection();
 

@@ -1,15 +1,28 @@
 @import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
 body {
-    background-color: black;
-    color: white; /* Om du vill ändra textfärgen till vitt för att kontrastera bättre med den svarta bakgrunden */
-}
+    
+    
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 
+
+    background-size: cover;
+    background-color: rgba(0, 0, 128, .65);
+    background-image: url(../Images/bg-image.jpeg);
+    background-blend-mode: multiply;
+    background-size: 100%;
+
+}
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    height: 100vh;
-    /*max-height: 100vh;*/
 }
+footer{
+    margin-top: auto;
+}
+
+
 
 h1:focus {
     outline: none;
@@ -24,65 +37,9 @@ a, .btn-link {
     background-color: #1b6ec2;
     border-color: #1861ac;
 }
-.wrapper {
-    position: relative;
-    margin-top: -100px
-}
-.page-background-class {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-image: url(../Images/MajornaLanBG.webp);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-.LanLogoTP {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-}
-.MainText {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    margin-top: 10px;
-}
-
-.LanInfo1 {
-    position: absolute;
-    margin-top: 180px;
-    margin-right: 1px;
-    text-align: center;
-    border: 3px solid #9400d3;
-}
-.LanInfo2 {
-    position: absolute;
-    margin-top: 100px;
-    margin-left: 862px;
-    text-align: center;
-    border: 3px solid #9400d3;
-    width: 300px;
-}
-
-
-.LanInfo {
-    margin-top: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    clear: both;
-    letter-spacing: 3px;
-    text-align: center;
-    border: 5px solid #9400d3;
-}
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 .content {
@@ -162,7 +119,6 @@ a, .btn-link {
     .loading-progress-text:after {
         content: var(--blazor-load-percentage-text, "Loading");
     }
-
 
 code {
     color: #c02d76;

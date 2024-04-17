@@ -26,6 +26,7 @@ builder.Services
     .AddSingleton<IClientCartService, ClientCartService>()
     .AddScoped<IClientProductService, ClientProductService>();
 
+builder.Services.AddBlazorBootstrap();
 
 await builder.Build().RunAsync();
 

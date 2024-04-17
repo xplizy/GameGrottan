@@ -1,4 +1,31 @@
 ﻿@page "/eventandlan"
+@inject EventsViewModel ViewModel
+
+@if (_pageLoading)
+{
+    <p>Loading...</p>
+    <Spinner/>
+}
+else
+{
+    <Virtualize Items="ViewModel.Models">
+    </Virtualize>
+}
+
+
+
+@code
+{
+    bool _pageLoading = true;
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await ViewModel.OnInit();
+        _pageLoading = false;
+        StateHasChanged();
+
+         await base.OnAfterRenderAsync(firstRender);
+    }
+}
 
 @* <PageTitle>Event and LAN</PageTitle>
 

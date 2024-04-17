@@ -1,6 +1,8 @@
 ﻿@page "/eventandlan"
 @inject EventsViewModel ViewModel
 
+<PageTitle>Events and LAN</PageTitle>
+
 @if (_pageLoading)
 {
     <p>Loading...</p>
@@ -17,6 +19,8 @@ else
 @code
 {
     bool _pageLoading = true;
+    @*
+    
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         await ViewModel.OnInit();
@@ -24,7 +28,7 @@ else
         StateHasChanged();
 
          await base.OnAfterRenderAsync(firstRender);
-    }
+    }*@
 }
 
 @* <PageTitle>Event and LAN</PageTitle>

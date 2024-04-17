@@ -1,15 +1,38 @@
-﻿using MajornaGameStore.Shared.Dtos;
+﻿
+using MajornaGameStore.Shared.Dtos;
 using MajornaGameStore.Shared.Interfaces.ServiceInterfaces.ClientSide;
 
 namespace MajornaGameStore.Shared.Models.ViewModels;
 
-public class EventsViewModel : ViewModelBase<EventDto, int>
+public class EventsViewModel(IClientEventsService eventService, IClientCartService cartService) : ViewModelBase<EventDto, int>(eventService)
 {
-    private readonly IClientEventsService _eventsService;
-    public EventsViewModel(IClientEventsService eventsService) : base(eventsService)
-    {
-        _eventsService = eventsService;
-    }
+    private readonly IClientEventsService _eventService = eventService;
+    private readonly IClientCartService _cartService = cartService;
 
+    public async Task AddToCartAsync(EventDto eventDto)
+    {
+        var cartItems = await cartService.GetAllAsync();
+        foreach (var item in cartItems)
+        {
+            if (item is CartTicketDto)
+            {
+                CartTicketDto cartTicket = (CartTicketDto)item;
+
+                if (cartTicket.EventId == eventDto.Id)
+                {
+                    return;
+                }
+
+            }
+        }
+
+        var cartItem = new CartTicketDto
+        {
+            Name = eventDto.Name,
+            Price = eventDto.Price,
+            EventId = eventDto.Id
+        };
+        await cartService.AddAsync(cartItem);
+    }
 
 }

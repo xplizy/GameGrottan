@@ -29,8 +29,6 @@ builder.Services.AddDbContext<MajornaDbContext>(
     options =>
         options.UseSqlServer(connectionString));
 
-builder.Services.AddScoped<MajornaDbContext>();
-
 builder.Services
     .AddScoped<IProductRepository, ProductRepository>()
     .AddScoped<ITypeRepository, TypeRepository>()

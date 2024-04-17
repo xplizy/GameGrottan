@@ -9,11 +9,11 @@ public class ProductRepository(MajornaDbContext context) : RepositoryBase<Produc
     public override async Task<ICollection<Product>> GetAllAsync()
     {
         var products = await _context.Products
-            .Include(p => p.Screenshots)
-            .Include(p => p.Developers)
-            .Include(p => p.Publishers)
-            .Include(p => p.Reviews)
-            .Include(p => p.Tags)
+            //.Include(p => p.Screenshots)
+            //.Include(p => p.Developers)
+            //.Include(p => p.Publishers)
+            //.Include(p => p.Reviews)
+            //.Include(p => p.Tags)
             .ToListAsync();
 
         return products;

@@ -3,9 +3,9 @@ using MajornaGameStore.Shared.Dtos;
 
 namespace MajornaGameStore.Api.Extensions;
 
-public class UserExtenstions
+public static class UserExtenstions
 {
-    public static IEndpointRouteBuilder MapProductEndPoints(this IEndpointRouteBuilder app)
+    public static IEndpointRouteBuilder MapUserEndPoints(this IEndpointRouteBuilder app)
     {
         var group = app.MapGroup("/manage");
 
@@ -16,17 +16,12 @@ public class UserExtenstions
 
     public static async Task<IResult> GetRoleInfoByEmail(UserService userService, string email)
     {
-        var products = await userService.GetRolesByEmail(email);
+        var roles = await userService.GetRolesByEmail(email);
 
-        if (products is null)
+        if (roles is null)
             return Results.NotFound($"User with email {email} does not exist");
 
-        var productDtos = new List<ProductDto>();
-        foreach (var product in products)
-        {
-            var dto = await product.MapToDtoAsync();
-        }
 
-        return Results.Ok(productDtos);
+        return Results.Ok(roles);
     }
 }

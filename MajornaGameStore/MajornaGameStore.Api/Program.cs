@@ -52,7 +52,8 @@ builder.Services
     .AddScoped<IEventTypeRepository, EventTypeRepository>()
     .AddScoped<IReviewRepository, ReviewRepository>()
     .AddScoped<IEventTypeRepository, EventTypeRepository>()
-    .AddScoped<IOrderRepository, OrderRepository>();
+    .AddScoped<IOrderRepository, OrderRepository>()
+    .AddScoped<IUserRepository, UserRepository>();
 
 builder.Services
     .AddScoped<ProductService>()
@@ -67,6 +68,7 @@ builder.Services
     .AddScoped<TagService>()
     .AddScoped<ReviewService>()
     .AddScoped<EventTypeService>()
+    .AddScoped<UserService>()
 .AddScoped<OrderService>();
 
 builder.Services.AddOptions<StripeConfig>().BindConfiguration(nameof(StripeConfig));

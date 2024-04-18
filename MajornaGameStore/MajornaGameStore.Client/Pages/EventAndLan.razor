@@ -1,6 +1,33 @@
 ﻿@page "/eventandlan"
+@* @inject EventsViewModel ViewModel *@
 
-<PageTitle>Event and LAN</PageTitle>
+@* @if (_pageLoading)
+{
+    <p>Loading...</p>
+    <Spinner/>
+}
+else
+{
+    <Virtualize Items="ViewModel.Models">
+    </Virtualize>
+}
+ *@
+
+
+@code
+{
+    // bool _pageLoading = true;
+    // protected override async Task OnAfterRenderAsync(bool firstRender)
+    // {
+    //     await ViewModel.OnInit();
+    //     _pageLoading = false;
+    //     StateHasChanged();
+
+    //      await base.OnAfterRenderAsync(firstRender);
+    // }
+}
+
+@* <PageTitle>Event and LAN</PageTitle>
 
 <div class="wrapper">
     <div class="page-background-class">
@@ -50,5 +77,5 @@
     <p>
         Är du intresserad? Skicka din anmälan med ditt namn och efternamn info@gamergrottan.se. Betalning sker på plats. 100:- kr för inträde.
     </p>
-</div>
+</div> *@
 

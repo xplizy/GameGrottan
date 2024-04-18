@@ -20,9 +20,15 @@ public static class ProductExtensions
         group.MapGet("/tag/{tagId}", GetProductsByTagIdAsync);
         group.MapGet("/discounts", GetAllProductsWithDiscountsAsync);
         group.MapGet("/discounts/{discountId}", GetProductsByDiscountId);
-        group.MapPost("/", AddProductAsync);
-        group.MapPut("/", UpdateProductAsync);
-        group.MapDelete("/{id}", DeleteProductAsync);
+
+        group.MapPost("/", AddProductAsync)
+            .RequireAuthorization();
+
+        group.MapPut("/", UpdateProductAsync)
+            .RequireAuthorization();
+
+        group.MapDelete("/{id}", DeleteProductAsync)
+            .RequireAuthorization();
         return app;
     }
 
@@ -128,13 +134,13 @@ public static class ProductExtensions
     {
         var products = await productService.GetAllAsync();
 
-        var productDtos = new List<ProductDto>();
-        foreach (var product in products)
-        {
-            var dto = await product.MapToDtoAsync();
-            productDtos.Add(dto);
-        }
-        return Results.Ok(productDtos);
+        //var productDtos = new List<ProductDto>();
+        //foreach (var product in products)
+        //{
+        //    var dto = await product.MapToDtoAsync();
+        //    productDtos.Add(dto);
+        //}
+        return Results.Ok(products);
 
     }
     public static async Task<IResult> GetProductByIdAsync(ProductService productService, int id)

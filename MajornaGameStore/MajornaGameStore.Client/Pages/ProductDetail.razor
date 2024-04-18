@@ -1,0 +1,17 @@
+﻿@page "/productDetail/{productId:int}"
+@inject ProductDetailViewModel ViewModel
+<h3>ProductDetail</h3>
+
+
+
+@code {
+
+    [Parameter]
+    public int ProductId { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await base.OnAfterRenderAsync(firstRender);
+    }
+
+}

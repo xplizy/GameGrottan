@@ -11,7 +11,7 @@ public static class EventTypeExtension
         var group = app.MapGroup("/eventTypes");
 
 
-        group.MapPost("/", AddEventType);
+        group.MapPost("/", AddEventType).RequireAuthorization();
         return app;
     }
 

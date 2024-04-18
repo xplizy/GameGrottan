@@ -31,6 +31,15 @@ Welcome to your new app.
     async Task Authenticate()
     {
         var customAuthProvider = (CookieAuthenticationStateProvider)AuthStateProvider;
-        await customAuthProvider.LoginAndGetAuthenticationState(LoginModel);
+        var success = await customAuthProvider.LoginAndGetAuthenticationState(LoginModel);
+
+        if (success)
+        {
+            //If admin redirect to admin page, if user redirect to userpage
+        }
+        else
+        {
+            //let user know login failed
+        }
     }
 }

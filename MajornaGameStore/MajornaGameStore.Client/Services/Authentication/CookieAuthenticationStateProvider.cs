@@ -47,7 +47,7 @@ public class CookieAuthenticationStateProvider(HttpClient httpClient) : Authenti
         }
     }
 
-    public async Task LoginAndGetAuthenticationState(LoginDto loginDto)
+    public async Task<bool> LoginAndGetAuthenticationState(LoginDto loginDto)
     {
 
         var jsonContent = new StringContent(JsonSerializer.Serialize(loginDto), Encoding.UTF8, "application/json");
@@ -59,8 +59,15 @@ public class CookieAuthenticationStateProvider(HttpClient httpClient) : Authenti
         var userResponse = await httpClient.SendAsync(requestMessage);
 
         if (userResponse.IsSuccessStatusCode)
+        {
+
             NotifyAuthenticationStateChanged(GetAuthenticationStateAsync());
+            return true;
+        }
         else
-            return;
+        {
+
+            return false;
+        }
     }
 }

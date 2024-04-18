@@ -9,7 +9,7 @@ public class EventsViewModel(IClientEventsService eventService, IClientCartServi
     private readonly IClientEventsService _eventService = eventService;
     private readonly IClientCartService _cartService = cartService;
 
-    public async Task AddToCartAsync(EventDto eventDto)
+    public async Task AddToCartAsync(EventDto eventDto, int quantity)
     {
         var cartItems = await cartService.GetAllAsync();
         foreach (var item in cartItems)
@@ -20,6 +20,7 @@ public class EventsViewModel(IClientEventsService eventService, IClientCartServi
 
                 if (cartTicket.EventId == eventDto.Id)
                 {
+                    item.Quantity += quantity;
                     return;
                 }
 
@@ -30,7 +31,8 @@ public class EventsViewModel(IClientEventsService eventService, IClientCartServi
         {
             Name = eventDto.Name,
             Price = eventDto.Price,
-            EventId = eventDto.Id
+            EventId = eventDto.Id,
+            Quantity = quantity
         };
         await cartService.AddAsync(cartItem);
     }

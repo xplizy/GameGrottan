@@ -17,14 +17,14 @@ else
         <Virtualize Items="ViewModel.Models">
 
             <li class="list-group-item">
-                <p>
+                <p class="h5">
                     @context.Name
                 </p>
                 <p>
                     @context.Description (@context.Price KR)
                 </p>
                 <button class="btn-detailpage" style="margin-left: 20px" @onclick="@(async () => GoToDetailsAsync(context))" >Mer om eventet</button>
-                <button class="btn-add" @onclick="@(async () => await ViewModel.AddToCartAsync(context))">Köp</button>
+                <button class="btn-add" @onclick="@(async () => await ViewModel.AddToCartAsync(context, 1))">Köp</button>
             </li>
         </Virtualize>
         </ul>

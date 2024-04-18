@@ -6,7 +6,7 @@ Library     Collections
 
 *** Variables ***
 
-${url}      https://localhost:7207/
+${url}      https://majornagamestore-staging.azurewebsites.net/
 ${BROWSER}      headlesschrome
 ${BROWSER_OPTIONS}  add_argument("--no-sandbox"); add_argument("window-size=1920,1080")
 

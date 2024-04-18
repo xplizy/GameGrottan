@@ -10,8 +10,8 @@ public class EventDetailViewModel(IClientEventsService detailService) : ViewMode
 
     public EventDto SelectedEvent { get; set; }
 
-    public override async Task OnInit()
+    public  async Task OnInit(int id)
     {
-        SelectedEvent = await _eventDetailService.GetByIdAsync(19);
+        SelectedEvent = await _eventDetailService.GetByIdAsync(id);
     }
 }

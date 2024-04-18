@@ -1,4 +1,4 @@
-﻿@page "/eventDetail"
+﻿@page "/eventDetail/{Id}"
 @using MajornaGameStore.Client.Services
 @inject EventDetailViewModel ViewModel
 
@@ -27,14 +27,15 @@ else
 @code {
     bool _pageLoading = true;
 
+    [Parameter]
+    public string Id { get; set; }
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        if (firstRender)
+        if (!string.IsNullOrEmpty(Id))
         {
-            await ViewModel.OnInit();
+            await ViewModel.OnInit(int.Parse(Id));
             _pageLoading = false;
-            StateHasChanged();
-            await base.OnAfterRenderAsync(firstRender);
         }
         
     }

@@ -23,14 +23,14 @@ else
                 <p>
                     @context.Description (@context.Price KR)
                 </p>
-                <button class="btn-detailpage" style="margin-left: 20px" @onclick="@(async () => GoToDetailsAsync(context))" >Mer om eventet</button>
+                    <button class="btn-detailpage" style="margin-left: 20px" @onclick="@(async () => await GoToDetailsAsync(context.Id))">Mer om eventet</button>
                 <button class="btn-add btn-success" @onclick="@(async () => await ViewModel.AddToCartAsync(context, 1))">Köp</button>
             </li>
         </Virtualize>
         </ul>
     </div>
 }
- *@
+ 
 
 
 @code
@@ -45,12 +45,12 @@ else
             StateHasChanged();
         }
 
-        @*await base.OnAfterRenderAsync(firstRender);*@
+        await base.OnAfterRenderAsync(firstRender);
     }
 
-    private void GoToDetailsAsync(EventDto events)
+    private async Task GoToDetailsAsync(int id)
     {
-        NavManager.NavigateTo("/EventDetail{id}");
+        NavManager.NavigateTo("/eventDetail{Id}");
     }
 }
 

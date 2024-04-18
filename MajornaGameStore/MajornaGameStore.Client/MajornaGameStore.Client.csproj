@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -41,6 +41,7 @@
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Pages\Cart.razor" />
     <_ContentIncludedByDefault Remove="Pages\EventDetail.razor" />
+    <_ContentIncludedByDefault Remove="Pages\TestPage1.razor" />
   </ItemGroup>
 
   <ItemGroup>
@@ -61,6 +62,10 @@
 
   <ItemGroup>
     <UpToDateCheckInput Remove="Pages\EventDetail.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\TestPage1.razor" />
   </ItemGroup>
 
 </Project>

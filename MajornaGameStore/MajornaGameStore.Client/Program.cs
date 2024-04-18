@@ -19,6 +19,7 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https:/
 
 builder.Services
     .AddScoped<ProductViewModel>()
+    .AddScoped<EventsViewModel>()
     .AddScoped<CartViewModel>();
 
 //TODO: Lägg till éfter 1345 Create HTTP client to make a call to backend

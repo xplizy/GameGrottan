@@ -26,7 +26,9 @@ builder.Services.AddScoped<IPaymentHttpClient, PaymentHttpClient>();
 
 builder.Services
     .AddSingleton<IClientCartService, ClientCartService>()
-    .AddScoped<IClientProductService, ClientProductService>();
+    .AddScoped<IClientProductService, ClientProductService>()
+    .AddScoped<IClientEventsService, ClientEventsService>()
+    .AddScoped<IClientCartService, ClientCartService>();
 
 builder.Services.AddScoped<AuthenticationStateProvider, CookieAuthenticationStateProvider>();
 builder.Services.AddAuthorizationCore();

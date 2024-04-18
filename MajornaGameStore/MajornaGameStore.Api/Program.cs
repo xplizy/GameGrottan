@@ -76,19 +76,6 @@ builder.Services.AddScoped<MajornaGameStore.Api.Stripe.StripeClient>();
 
 
 
-
-////add cors for no errors later on
-///TODO: Ta bort tror jag. Behåll den under//jrm
-//builder.Services.AddCors(options =>
-//{
-//    options.AddDefaultPolicy(builder =>
-//    {
-//        builder.AllowAnyOrigin()
-//            .AllowAnyHeader()
-//            .AllowAnyMethod();
-//    });
-//});
-
 ////TODO: Ändra origin till den hostade adressen när hemsidan är hostad
 builder.Services.AddCors(options =>
 {

@@ -35,4 +35,5 @@ public class ProductViewModel(IClientProductService productService, IClientCartS
 
         await cartService.AddAsync(cartItem);
     }
+
 }

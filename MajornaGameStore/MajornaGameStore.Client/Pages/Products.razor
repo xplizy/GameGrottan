@@ -5,6 +5,7 @@
 @using MajornaGameStore.Shared.Interfaces
 @using MajornaGameStore.Shared.Models.ViewModels
 @inject ProductViewModel ViewModel
+@inject NavigationManager NavManager
 <PageTitle>Products</PageTitle>
 
 @if (_contentLoading)
@@ -16,22 +17,25 @@
 else
 {
     <div class="row" style="display: flex; flex-wrap: wrap;">
-    <Virtualize Items="ViewModel.Models">
-        <div class="col-md-3" style="flex: 0 0 25%;">
-            <div class="item-container">
-                <div class="item-image-wrapper"><img src="@context.ImageLink" class="item-image" style="width: 100%; height: auto;"/></div>
-                <div class="item-name">
-                    <h5><a>@context.Name</a></h5>
-                    <button class="btn-add" @onclick="@(async () => await ViewModel.AddToCartAsync(context, 1))">
-                        Lägg Till I Kundvagn
-                    </button>
+        <Virtualize Items="ViewModel.Models">
+            <div class="col-md-3" style="flex: 0 0 25%;">
+                <div class="item-container">
+                    <div class="item-image-wrapper">
+                        <img src="@context.ImageLink" class="item-image" style="width: 100%; height: auto;" @onclick="@(async () => GoToDetailsAsync(context))" />
+                    </div>
+                    <div class="item-name">
+                        <h5><a>@context.Name</a></h5>
+                        <button class="btn-add" @onclick="@(async () => await ViewModel.AddToCartAsync(context, 1))">
+                            Lägg Till I Kundvagn
+                        </button>
+                    </div>
                 </div>
-            </div>
                 
-            <div class="item-price">Sek @(context.Price)</div>
-        </div>
-    </Virtualize>
+                <div class="item-price">Sek @(context.Price)</div>
+            </div>
+        </Virtualize>
     </div>
+
 }
 
 
@@ -49,6 +53,9 @@ else
         }
     }
 
-
+    private void GoToDetailsAsync(ProductDto product)
+    {
+        NavManager.NavigateTo("/productDetail");
+    }
 
 }

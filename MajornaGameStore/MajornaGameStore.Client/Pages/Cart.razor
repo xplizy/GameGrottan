@@ -1,4 +1,4 @@
-﻿@page "/Cart"
+﻿
 @using MajornaGameStore.DataAccess.Entities
 @using MajornaGameStore.Shared.Dtos
 @using MajornaGameStore.Client.Services
@@ -8,7 +8,6 @@
 @inject NavigationManager NavManager
 @inject CartViewModel ViewModel
 
-<h3>Kundvagn</h3>
 
 
 @if (_pageLoading)
@@ -17,9 +16,9 @@
 }
 else
 {
-    <ul class="list-group-">
+    <ul class="list-group">
         <Virtualize Items="ViewModel.Models">
-            <li class="list-group-item-dark" style="display: flex; align-items: center;">
+            <li class="list-group-item" style="display: flex; align-items: center;">
                 <InputNumber id="quantity" @bind-Value="context.Quantity"
                              class="form-control" style="width: 70px; margin: 10px;" Enableminmax="true" Min="1" />
                 <p>@context.Quantity x @context.Name (@context.Price SEK) - @(context.Price * context.Quantity) SEK</p>
@@ -28,7 +27,7 @@ else
 
             </li>
         </Virtualize>
-        <li class="list-group-item-dark">
+        <li class="list-group-item">
             <p>Totalt: Sek @ViewModel.Models.Sum(item => item.Price * item.Quantity)</p>
             <button class="btn btn-success" @onclick="async () => await GoToPayment() ">Gå till betalning</button>
 

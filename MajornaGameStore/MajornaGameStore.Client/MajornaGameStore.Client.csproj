@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -12,9 +12,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Blazor.Bootstrap" Version="2.1.0" />
     <PackageReference Include="BlazorIcons.Core" Version="2.0.0" />
-    <PackageReference Include="Blazorise.Icons.FontAwesome" Version="1.5.1" />
     <PackageReference Include="JsonConverter.Newtonsoft.Json" Version="0.5.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="8.0.4" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.1" PrivateAssets="all" />
   </ItemGroup>
@@ -39,6 +40,8 @@
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Pages\Cart.razor" />
+    <_ContentIncludedByDefault Remove="Pages\EventDetail.razor" />
+    <_ContentIncludedByDefault Remove="Pages\TestPage1.razor" />
   </ItemGroup>
 
   <ItemGroup>
@@ -46,12 +49,23 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="wwwroot\Images\bg-image.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Update="wwwroot\Images\MajornaLanBG.webp">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Update="wwwroot\Images\MajornaLanTP.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\EventDetail.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\TestPage1.razor" />
   </ItemGroup>
 
 </Project>

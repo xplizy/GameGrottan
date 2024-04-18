@@ -1,0 +1,82 @@
+﻿@using MajornaGameStore.Client.Pages
+<nav class="navbar navbar-expand-md navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/"><img src="Images/MAJORNA-GAMING.png" style="width: 80px;" alt="Majorna Gaming Logo" /></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse container-fluid" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                        <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> 
+                        <p class="h4">Hem</p>
+                    </NavLink>
+                </li>
+                <li class="nav-item">
+                    <NavLink class="nav-link" href="products">
+                        <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span>
+                        <p class="h4">Spel</p>
+                    </NavLink>
+                </li>
+                <li class="nav-item">
+                    <NavLink class="nav-link" href="eventandlan">
+                        <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> 
+                        <p class="h4">Events</p>
+                    </NavLink>
+                </li>
+                <li class="nav-item">
+                    <NavLink class="nav-link" href="about">
+                        <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span>
+                        <p class="h4">Om oss</p>
+                    </NavLink>
+                </li>
+                
+            </ul>
+        </div>
+
+    </div>
+
+    <span class="navbar-text">
+
+        <button class="btn btn-info" @onclick="OnShowModalClick">
+                <Icon Name="IconName.Cart3" Size="IconSize.x1"></Icon> 0
+            </button>
+        
+    </span>
+    <span class="navbar-text">
+        
+        <button class="btn btn-info" @onclick="OnShowModalClick">
+            <Icon Name="IconName.Person" Size="IconSize.x1"></Icon>
+        </button>
+    </span>
+    
+    
+    
+</nav>
+
+<Modal @ref="modal" Title="Kundvagn" Size="ModalSize.Large">
+    <BodyTemplate>
+
+        <Cart></Cart>
+    </BodyTemplate>
+    
+</Modal>
+
+@code {
+
+
+    private Modal modal;
+
+    private async Task OnShowModalClick()
+    {
+        await modal?.ShowAsync();
+    }
+
+    private async Task OnHideModalClick()
+    {
+        await modal?.HideAsync();
+    }
+
+
+}

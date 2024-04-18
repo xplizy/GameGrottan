@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.0 (Python 3.12.1 on win32)" generated="2024-04-11T11:14:31.947795" rpa="false" schemaversion="5">
+<robot generator="Robot 7.0 (Python 3.12.1 on win32)" generated="2024-04-12T10:40:15.619221" rpa="false" schemaversion="5">
 <suite id="s1" name="Iths-Majornagaming6" source="C:\Users\ls930499\source\repos\iths-majornagaming6">
 <suite id="s1-s1" name="MajornaGameStore" source="C:\Users\ls930499\source\repos\iths-majornagaming6\MajornaGameStore">
 <suite id="s1-s1-s1" name="Test" source="C:\Users\ls930499\source\repos\iths-majornagaming6\MajornaGameStore\Test">
@@ -8,90 +8,102 @@
 <kw name="Set Selenium Speed" owner="SeleniumLibrary">
 <arg>1</arg>
 <doc>Sets the delay that is waited after each Selenium command.</doc>
-<status status="PASS" start="2024-04-11T11:14:32.323403" elapsed="0.000540"/>
+<status status="PASS" start="2024-04-12T10:40:16.014556" elapsed="0.001004"/>
 </kw>
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-04-11T11:14:32.324907" level="INFO">Opening browser 'headlesschrome' to base url 'None'.</msg>
+<msg time="2024-04-12T10:40:16.016563" level="INFO">Opening browser 'headlesschrome' to base url 'None'.</msg>
 <arg>browser=${BROWSER}</arg>
 <arg>options=${BROWSER_OPTIONS}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-04-11T11:14:32.324405" elapsed="2.913489"/>
+<status status="PASS" start="2024-04-12T10:40:16.015560" elapsed="1.524926"/>
 </kw>
 <kw name="Go To" owner="SeleniumLibrary">
-<msg time="2024-04-11T11:14:35.238969" level="INFO">Opening url 'https://localhost:7207/'</msg>
+<msg time="2024-04-12T10:40:17.541991" level="INFO">Opening url 'https://localhost:7207/'</msg>
 <arg>${url}</arg>
 <doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="PASS" start="2024-04-11T11:14:35.238969" elapsed="7.784689"/>
+<status status="PASS" start="2024-04-12T10:40:17.540987" elapsed="4.731388"/>
 </kw>
-<status status="PASS" start="2024-04-11T11:14:32.322902" elapsed="10.701829"/>
+<status status="PASS" start="2024-04-12T10:40:16.013555" elapsed="6.258820"/>
 </kw>
-<test id="s1-s1-s1-s1-t1" name="View Products in Cart" line="22">
-<kw name="Given Open the browser" owner="resource">
+<test id="s1-s1-s1-s1-t1" name="Remove item from the cart" line="50">
+<kw name="Given open the browser" owner="resource">
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-04-11T11:14:43.026844" level="INFO">Opening browser 'headlesschrome' to base url 'None'.</msg>
+<msg time="2024-04-12T10:40:22.273378" level="INFO">Opening browser 'headlesschrome' to base url 'None'.</msg>
 <arg>browser=${BROWSER}</arg>
 <arg>options=${BROWSER_OPTIONS}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-04-11T11:14:43.026844" elapsed="2.451958"/>
+<status status="PASS" start="2024-04-12T10:40:22.273378" elapsed="1.463244"/>
 </kw>
 <kw name="Go To" owner="SeleniumLibrary">
-<msg time="2024-04-11T11:14:45.478802" level="INFO">Opening url 'https://localhost:7207/'</msg>
+<msg time="2024-04-12T10:40:23.737682" level="INFO">Opening url 'https://localhost:7207/'</msg>
 <arg>${url}</arg>
 <doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="PASS" start="2024-04-11T11:14:45.478802" elapsed="8.035754"/>
+<status status="PASS" start="2024-04-12T10:40:23.737682" elapsed="1.288991"/>
 </kw>
 <kw name="Wait Until Page Contains" owner="SeleniumLibrary">
 <arg>Välkommen till Majorna Gaming</arg>
+<arg>10s</arg>
 <doc>Waits until ``text`` appears on the current page.</doc>
-<status status="PASS" start="2024-04-11T11:14:53.514556" elapsed="1.022998"/>
+<status status="PASS" start="2024-04-12T10:40:25.027175" elapsed="3.859121"/>
 </kw>
 <tag>VG_Test1_browser</tag>
 <doc>Browser</doc>
-<status status="PASS" start="2024-04-11T11:14:43.026819" elapsed="11.510735"/>
+<status status="PASS" start="2024-04-12T10:40:22.273378" elapsed="6.612918"/>
 </kw>
-<kw name="When I am able to see Cart" owner="resource">
-<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
-<arg>//a[normalize-space()='Kundvagn']</arg>
-<doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="PASS" start="2024-04-11T11:14:54.540562" elapsed="1.018368"/>
-</kw>
-<tag>Cart</tag>
-<doc>Browser</doc>
-<status status="PASS" start="2024-04-11T11:14:54.540562" elapsed="1.018368"/>
-</kw>
-<kw name="Then I click on Cart" owner="resource">
+<kw name="When I Click On Cart" owner="resource">
 <kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2024-04-11T11:14:55.560434" level="INFO">Clicking element '//a[normalize-space()='Kundvagn']'.</msg>
+<msg time="2024-04-12T10:40:28.887299" level="INFO">Clicking element '//a[normalize-space()='Kundvagn']'.</msg>
 <arg>//a[normalize-space()='Kundvagn']</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-04-11T11:14:55.559971" elapsed="2.188713"/>
+<status status="PASS" start="2024-04-12T10:40:28.887299" elapsed="2.180409"/>
 </kw>
 <tag>Cart</tag>
 <doc>Browser</doc>
-<status status="PASS" start="2024-04-11T11:14:55.559431" elapsed="2.189253"/>
+<status status="PASS" start="2024-04-12T10:40:28.886296" elapsed="2.181412"/>
 </kw>
-<status status="PASS" start="2024-04-11T11:14:43.024731" elapsed="14.723953"/>
+<kw name="Then I can see the Products in the cart" owner="resource">
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<msg time="2024-04-12T10:42:12.545346" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-6.png"&gt;&lt;img src="selenium-screenshot-6.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2024-04-12T10:42:12.545846" level="FAIL">Text '//p[normalize-space()='1 x Counter-Strike (819 SEK) - 819']' did not appear in 1 minute 40 seconds.</msg>
+<arg>//p[normalize-space()='1 x Counter-Strike (819 SEK) - 819']</arg>
+<arg>100s</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="FAIL" start="2024-04-12T10:40:31.068713" elapsed="101.541658">Text '//p[normalize-space()='1 x Counter-Strike (819 SEK) - 819']' did not appear in 1 minute 40 seconds.</status>
+</kw>
+<tag>Cart</tag>
+<doc>Browser</doc>
+<status status="FAIL" start="2024-04-12T10:40:31.067708" elapsed="101.542663">Text '//p[normalize-space()='1 x Counter-Strike (819 SEK) - 819']' did not appear in 1 minute 40 seconds.</status>
+</kw>
+<kw name="And I can remove the product" owner="resource">
+<tag>Home Page</tag>
+<doc>Browser</doc>
+<status status="NOT RUN" start="2024-04-12T10:42:12.611374" elapsed="0.000000"/>
+</kw>
+<doc>Remove the item in the cart</doc>
+<tag>Remove product</tag>
+<status status="FAIL" start="2024-04-12T10:40:22.272375" elapsed="110.338999">Text '//p[normalize-space()='1 x Counter-Strike (819 SEK) - 819']' did not appear in 1 minute 40 seconds.</status>
 </test>
 <doc>test for Majorna Gaming Store</doc>
-<status status="PASS" start="2024-04-11T11:14:31.982831" elapsed="25.766898"/>
+<status status="FAIL" start="2024-04-12T10:40:15.680035" elapsed="116.932341"/>
 </suite>
-<status status="PASS" start="2024-04-11T11:14:31.980736" elapsed="25.770029"/>
+<status status="FAIL" start="2024-04-12T10:40:15.676995" elapsed="116.936382"/>
 </suite>
-<status status="PASS" start="2024-04-11T11:14:31.978622" elapsed="25.773190"/>
+<status status="FAIL" start="2024-04-12T10:40:15.671981" elapsed="116.942398"/>
 </suite>
-<status status="PASS" start="2024-04-11T11:14:31.950943" elapsed="25.801904"/>
+<status status="FAIL" start="2024-04-12T10:40:15.625237" elapsed="116.990145"/>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="0" skip="0">All Tests</stat>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
 </total>
 <tag>
+<stat pass="0" fail="1" skip="0">Remove product</stat>
 </tag>
 <suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="Iths-Majornagaming6">Iths-Majornagaming6</stat>
-<stat pass="1" fail="0" skip="0" id="s1-s1" name="MajornaGameStore">Iths-Majornagaming6.MajornaGameStore</stat>
-<stat pass="1" fail="0" skip="0" id="s1-s1-s1" name="Test">Iths-Majornagaming6.MajornaGameStore.Test</stat>
-<stat pass="1" fail="0" skip="0" id="s1-s1-s1-s1" name="Test">Iths-Majornagaming6.MajornaGameStore.Test.Test</stat>
+<stat pass="0" fail="1" skip="0" id="s1" name="Iths-Majornagaming6">Iths-Majornagaming6</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s1" name="MajornaGameStore">Iths-Majornagaming6.MajornaGameStore</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s1-s1" name="Test">Iths-Majornagaming6.MajornaGameStore.Test</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s1-s1-s1" name="Test">Iths-Majornagaming6.MajornaGameStore.Test.Test</stat>
 </suite>
 </statistics>
 <errors>

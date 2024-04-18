@@ -20,23 +20,49 @@ public class ClientProductService(HttpClient httpClient) : IClientProductService
 
     }
 
-    public Task<ProductDto?> GetByIdAsync(int id)
+    public async Task<ProductDto?> GetByIdAsync(int id)
     {
-        throw new NotImplementedException();
+        var response = await _httpClient.GetAsync($"/products/{id}");
+
+        if (response.IsSuccessStatusCode == false)
+            return null;
+
+        var result = await response.Content.ReadFromJsonAsync<ProductDto>();
+
+        return result;
     }
 
-    public Task<ProductDto> AddAsync(ProductDto entity)
+    public async Task<ProductDto> AddAsync(ProductDto entity)
     {
-        throw new NotImplementedException();
+        var response = await _httpClient.PostAsJsonAsync($"/products", entity);
+
+        if (response.IsSuccessStatusCode == false) 
+            return null;
+
+        var result = await response.Content.ReadFromJsonAsync<ProductDto>();
+        return result;
     }
 
-    public Task<bool> UpdateAsync(ProductDto entity)
+    public async Task<bool> UpdateAsync(ProductDto entity)
     {
-        throw new NotImplementedException();
+        var response = await _httpClient.PostAsJsonAsync($"/products", entity);
+
+        if (response.IsSuccessStatusCode == false)
+            return false;
+
+        var result = await response.Content.ReadFromJsonAsync<ProductDto>();
+        return true;
     }
 
-    public Task<bool> DeleteAsync(int id)
+    public async Task<bool> DeleteAsync(int id)
     {
-        throw new NotImplementedException();
+        var response = await _httpClient.DeleteAsync($"/products/{id}");
+
+        if ( response.IsSuccessStatusCode == false) 
+            return false;
+
+        var result = await response.Content.ReadFromJsonAsync<ProductDto>();
+
+        return true;
     }
 }

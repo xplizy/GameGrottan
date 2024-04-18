@@ -7,4 +7,11 @@ namespace MajornaGameStore.Shared.Models.ViewModels;
 public class EventDetailViewModel(IClientEventsService detailService) : ViewModelBase<EventDto, int>(detailService)
 {
     private readonly IClientEventsService _eventDetailService = detailService;
+
+    public EventDto SelectedEvent { get; set; }
+
+    public override async Task OnInit()
+    {
+        SelectedEvent = await _eventDetailService.GetByIdAsync(19);
+    }
 }

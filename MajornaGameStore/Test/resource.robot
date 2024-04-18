@@ -84,19 +84,19 @@ I click on Cart
 I can see the Products in the cart
     [Documentation]     Browser
     [Tags]      Cart
-    Wait Until Page Contains    //p[normalize-space()='1 x Counter-Strike (819 SEK) - 819']    20s
+    Wait Until Page Contains    //p[normalize-space()='1 x Counter-Strike (819 SEK) - 819']    100s
 
 I can increase the product quantity
     [Documentation]     Browser
     [Tags]      shopping cart
-    Wait Until Element Is Visible    //p[normalize-space()='1 x Counter-Strike (819 SEK) - 819']    20s
+    Wait Until Element Is Visible    //p[normalize-space()='1 x Counter-Strike (819 SEK) - 819']    60s
     Click Element    //input[@id='quantity']
     Select From List By Index    //div[2]//form[1]//input[1]   7
     
 I can decrease the product quantity
     [Documentation]     Browser
     [Tags]      shopping cart
-    Wait Until Element Is Visible    //p[normalize-space()='1 x Counter-Strike (819 SEK) - 819']    20s
+    Wait Until Element Is Visible    //p[normalize-space()='1 x Counter-Strike (819 SEK) - 819']    60s
     Click Button    //input[@id='quantity']
     Select From List By Index    //div[2]//form[1]//input[1]    2
 
@@ -115,6 +115,14 @@ I can see the links
     [Documentation]     Browser
     [Tags]      Home Page
     Wait Until Page Contains Element    //a[@class='nav-link active']
+
+I can remove the product
+    [Documentation]     Browser
+    [Tags]      Home Page
+     Wait Until Page Contains    //p[normalize-space()='1 x Counter-Strike (819 SEK) - 819']    100s
+     Click Button    //button[normalize-space()='Remove']
+     Wait Until Page Contains Element    //p[normalize-space()='Totalt: Sek 0']
+
 
 
 

@@ -47,6 +47,16 @@ Checking the product quantity
     And I can increase the product quantity
     #Then I can decrease the product quantity
 
+Remove item from the cart
+    [Documentation]    Remove the item in the cart
+    [Tags]    Remove product
+
+    Given open the browser
+    When I Click On Cart
+    Then I can see the Products in the cart
+    And I can remove the product
+
+
 
 
 

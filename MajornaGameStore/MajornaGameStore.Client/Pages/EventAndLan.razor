@@ -1,5 +1,7 @@
 ﻿@page "/eventandlan"
-@* @inject EventsViewModel ViewModel *@
+@inject NavigationManager NavManager
+@inject EventsViewModel ViewModel
+
 
 <PageTitle>Events and LAN</PageTitle>
 
@@ -10,10 +12,27 @@
 }
 else
 {
-    <Virtualize Items="ViewModel.Models">
-    </Virtualize>
+    <div class="row">
+        <ul class="list-group">
+        <Virtualize Items="ViewModel.Models">
+
+            <li class="list-group-item">
+                <p>
+                    @context.Name
+                </p>
+                <p>
+                    @context.Description (@context.Price KR)
+                </p>
+                <button class="btn-detailpage" @onclick="@(async () => GoToDetailsAsync(context))" >Mer om eventet</button>
+                <button class="btn-add" @onclick="@(async () => await ViewModel.AddToCartAsync(context))">Köp</button>
+            </li>
+        </Virtualize>
+        </ul>
+    </div>
+
+    
 }
- *@
+
 
 
 @code
@@ -21,11 +40,19 @@ else
     bool _pageLoading = true;
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        await ViewModel.OnInit();
-        _pageLoading = false;
-        StateHasChanged();
+        if (firstRender)
+        {
+            await ViewModel.OnInit();
+            _pageLoading = false;
+            StateHasChanged();
+        }
 
-         await base.OnAfterRenderAsync(firstRender);
+        @*await base.OnAfterRenderAsync(firstRender);*@
+    }
+
+    private void GoToDetailsAsync(EventDto events)
+    {
+        NavManager.NavigateTo("/EventDetail");
     }
 }
 

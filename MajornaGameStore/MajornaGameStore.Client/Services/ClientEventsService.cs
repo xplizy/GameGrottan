@@ -22,9 +22,16 @@ public class ClientEventsService(HttpClient httpClient) : IClientEventsService
         return result.ToList();
     }
 
-    public Task<EventDto?> GetByIdAsync(int id)
+    public async Task<EventDto?> GetByIdAsync(int id)
     {
-        throw new NotImplementedException();
+        var response = await _httpClient.GetAsync($"/events/{id}");
+        if (response.IsSuccessStatusCode == false)
+        {
+            return null;
+        }
+
+        var result = await response.Content.ReadFromJsonAsync<EventDto>();
+        return result;
 
     }
 

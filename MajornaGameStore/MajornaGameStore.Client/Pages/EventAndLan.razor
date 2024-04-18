@@ -24,7 +24,7 @@ else
                     @context.Description (@context.Price KR)
                 </p>
                 <button class="btn-detailpage" style="margin-left: 20px" @onclick="@(async () => GoToDetailsAsync(context))" >Mer om eventet</button>
-                <button class="btn-add" @onclick="@(async () => await ViewModel.AddToCartAsync(context, 1))">Köp</button>
+                <button class="btn-add btn-success" @onclick="@(async () => await ViewModel.AddToCartAsync(context, 1))">Köp</button>
             </li>
         </Virtualize>
         </ul>
@@ -50,7 +50,7 @@ else
 
     private void GoToDetailsAsync(EventDto events)
     {
-        NavManager.NavigateTo("/EventDetail");
+        NavManager.NavigateTo("/EventDetail{id}");
     }
 }
 

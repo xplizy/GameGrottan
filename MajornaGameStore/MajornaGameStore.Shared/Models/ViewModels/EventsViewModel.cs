@@ -37,4 +37,6 @@ public class EventsViewModel(IClientEventsService eventService, IClientCartServi
         await cartService.AddAsync(cartItem);
     }
 
+
+
 }

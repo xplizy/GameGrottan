@@ -30,7 +30,7 @@ else
         </ul>
     </div>
 }
- *@
+ 
 
 
 @code
@@ -45,7 +45,7 @@ else
             StateHasChanged();
         }
 
-        @*await base.OnAfterRenderAsync(firstRender);*@
+        await base.OnAfterRenderAsync(firstRender);
     }
 
     private void GoToDetailsAsync(EventDto events)

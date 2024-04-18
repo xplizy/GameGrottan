@@ -1,4 +1,6 @@
-﻿namespace MajornaGameStore.Shared.Dtos;
+﻿using MajornaGameStore.DataAccess.Entities;
+
+namespace MajornaGameStore.Shared.Dtos;
 
 public class EventDto
 {

@@ -1,30 +1,57 @@
 ﻿@page "/eventandlan"
-@* @inject EventsViewModel ViewModel *@
+@inject NavigationManager NavManager
+@inject EventsViewModel ViewModel
 
-@* @if (_pageLoading)
+
+<PageTitle>Events and LAN</PageTitle>
+
+@if (_pageLoading)
 {
     <p>Loading...</p>
     <Spinner/>
 }
 else
 {
-    <Virtualize Items="ViewModel.Models">
-    </Virtualize>
+    <div class="row">
+        <ul class="list-group">
+        <Virtualize Items="ViewModel.Models">
+
+            <li class="list-group-item">
+                <p class="h5">
+                    @context.Name
+                </p>
+                <p>
+                    @context.Description (@context.Price KR)
+                </p>
+                <button class="btn-detailpage" style="margin-left: 20px" @onclick="@(async () => GoToDetailsAsync(context))" >Mer om eventet</button>
+                <button class="btn-add btn-success" @onclick="@(async () => await ViewModel.AddToCartAsync(context, 1))">Köp</button>
+            </li>
+        </Virtualize>
+        </ul>
+    </div>
 }
  *@
 
 
 @code
 {
-    // bool _pageLoading = true;
-    // protected override async Task OnAfterRenderAsync(bool firstRender)
-    // {
-    //     await ViewModel.OnInit();
-    //     _pageLoading = false;
-    //     StateHasChanged();
+    bool _pageLoading = true;
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await ViewModel.OnInit();
+            _pageLoading = false;
+            StateHasChanged();
+        }
 
-    //      await base.OnAfterRenderAsync(firstRender);
-    // }
+        @*await base.OnAfterRenderAsync(firstRender);*@
+    }
+
+    private void GoToDetailsAsync(EventDto events)
+    {
+        NavManager.NavigateTo("/EventDetail{id}");
+    }
 }
 
 @* <PageTitle>Event and LAN</PageTitle>

@@ -6,7 +6,7 @@ namespace MajornaGameStore.Client.Services;
 
 public class ClientEventsService(HttpClient httpClient) : IClientEventsService
 {
-    private readonly HttpClient _httpClient;
+    private readonly HttpClient _httpClient = httpClient;
 
     public async Task<ICollection<EventDto>> GetAllAsync()
     {

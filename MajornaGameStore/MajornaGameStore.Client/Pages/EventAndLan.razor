@@ -23,14 +23,12 @@ else
                 <p>
                     @context.Description (@context.Price KR)
                 </p>
-                <button class="btn-detailpage" @onclick="@(async () => GoToDetailsAsync(context))" >Mer om eventet</button>
+                <button class="btn-detailpage" style="margin-left: 20px" @onclick="@(async () => GoToDetailsAsync(context))" >Mer om eventet</button>
                 <button class="btn-add" @onclick="@(async () => await ViewModel.AddToCartAsync(context))">Köp</button>
             </li>
         </Virtualize>
         </ul>
     </div>
-
-    
 }
 
 

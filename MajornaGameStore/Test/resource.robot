@@ -38,12 +38,12 @@ I can see the layout on landing page
 I am able to see Products
     [Documentation]     Browser
     [Tags]      Products
-    Wait Until Page Contains Element    //a[normalize-space()='Produkter']
+    Wait Until Page Contains Element    //p[normalize-space()='Spel']
     
 I click on Products
     [Documentation]     Browser
     [Tags]      Products
-    Click Element    //a[normalize-space()='Produkter']
+    Click Element    //p[normalize-space()='Spel']
 
 I can see the Product Page
     [Documentation]     Browser
@@ -79,7 +79,7 @@ I am able to see Cart
 I click on Cart
     [Documentation]     Browser
     [Tags]      Cart
-    Click Element        //a[normalize-space()='Kundvagn']
+    Click Element        //i[@class='bi bi-cart3 fs-1']
 
 I can see the Products in the cart
     [Documentation]     Browser

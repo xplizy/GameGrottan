@@ -1,12 +1,44 @@
-﻿@page "/EventDetail"
+﻿@page "/eventDetail/{Id}"
+@using MajornaGameStore.Client.Services
 @inject EventDetailViewModel ViewModel
 
-<h3>EventDetail</h3>
+
+@if (_pageLoading)
+{
+    <Spinner/>
+}
+else
+{
+    <div class="event-page">
+        <img src="Images/MAJORNA-LAN.png" style="float: left; margin-right: 20px"/>
+        <div style="float: left">
+            <p> @ViewModel.SelectedEvent.Name</p>
+            <p> Beskrivning: @ViewModel.SelectedEvent.Description</p>
+            <p> Entre pris: @ViewModel.SelectedEvent.Price kr per person</p>
+            <p> Start Datum: @ViewModel.SelectedEvent.Start</p>
+            <p> Slut Datum: @ViewModel.SelectedEvent.End</p>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+    
+}
+
 
 @code {
+    bool _pageLoading = true;
+
+    [Parameter]
+    public string Id { get; set; }
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        await base.OnAfterRenderAsync(firstRender);
+        if (!string.IsNullOrEmpty(Id))
+        {
+            await ViewModel.OnInit(int.Parse(Id));
+            _pageLoading = false;
+        }
+        
     }
 
+  
 }

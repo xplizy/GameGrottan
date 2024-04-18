@@ -20,6 +20,7 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https:/
 builder.Services
     .AddScoped<ProductViewModel>()
     .AddScoped<EventsViewModel>()
+    .AddScoped<EventDetailViewModel>()
     .AddScoped<CartViewModel>();
 
 builder.Services.AddScoped<IPaymentHttpClient, PaymentHttpClient>();

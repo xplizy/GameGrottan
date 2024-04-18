@@ -4,7 +4,7 @@ using MajornaGameStore.Shared.Interfaces.ServiceInterfaces.ClientSide;
 
 namespace MajornaGameStore.Shared.Models.ViewModels;
 
-public class EventDetailViewModel(IEventDetailService detailService) : ViewModelBase<EventDto, int>(detailService)
+public class EventDetailViewModel(IClientEventsService detailService) : ViewModelBase<EventDto, int>(detailService)
 {
-    private readonly IEventDetailService _eventDetailService = detailService;
+    private readonly IClientEventsService _eventDetailService = detailService;
 }

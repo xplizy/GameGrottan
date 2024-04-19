@@ -3,14 +3,20 @@
 <AuthorizeView Roles="Administrator">
     <Authorized>
         <AdminMenu/>
+        <div class="admin-content">
+            
+            @Body
+
+           
+        </div>
     </Authorized>
     <NotAuthorized>
         <NavBar/>
+        <div class="main-content">
+            @Body
+        </div>
     </NotAuthorized>
 </AuthorizeView>
 
 
-<div class="main-content">
-    @Body
-</div>
 @*Footer can be found in index.html*@

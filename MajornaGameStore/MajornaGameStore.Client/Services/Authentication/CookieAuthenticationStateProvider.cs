@@ -170,7 +170,8 @@ public class CookieAuthenticationStateProvider : AuthenticationStateProvider, IA
     {
         var rolesResponse = await _httpClient.GetAsync("roles");
 
-        rolesResponse.EnsureSuccessStatusCode();
+        if (rolesResponse.IsSuccessStatusCode == false)
+            return false;
 
         var rolesJson = await rolesResponse.Content.ReadAsStringAsync();
 

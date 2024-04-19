@@ -1,5 +1,13 @@
 ﻿@inherits LayoutComponentBase
-<NavBar/>
+
+<AuthorizeView Roles="Administrator">
+    <Authorized>
+        <AdminMenu/>
+    </Authorized>
+    <NotAuthorized>
+        <NavBar/>
+    </NotAuthorized>
+</AuthorizeView>
 
 
 <div class="main-content">

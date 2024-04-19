@@ -22,18 +22,12 @@ Open the browser
     [Tags]      VG_Test1_browser
     Open Browser    browser=${BROWSER}  options=${BROWSER_OPTIONS}
     Go To   ${url}
-    #Wait Until Page Contains    Välkommen till Majorna Gaming    60s
+    Wait Until Page Contains    Hem        60s
     
 I can see the address on landing page
     [Documentation]     Browser
     [Tags]      VG_Test1_browser
-    Wait Until Page Contains Element    //span[contains(text(),'GameGrottan Majorna')]
-
-I can see the layout on landing page
-    [Documentation]     Browser
-    [Tags]      VG_Test1_browser
-    Wait Until Page Contains Element    //div[@class='Logo']//img
-
+    Wait Until Page Contains Element    //p[normalize-space()='GameGrottan Majorna']        60s
 
 I am able to see Products
     [Documentation]     Browser
@@ -70,7 +64,6 @@ Verify Product List Is Visible
     Element Should Be Visible    css=.item-container
     Close Browser
 
-    
 I am able to see Cart
     [Documentation]     Browser
     [Tags]      Cart

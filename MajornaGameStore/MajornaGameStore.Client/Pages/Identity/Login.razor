@@ -20,20 +20,21 @@
                 <h1>Logga in</h1>
             </div>
 
-            
-                <div class="mb-3">
-                    <InputText @bind-Value="email" Placeholder="Användarnamn" class="form-control mb-3"/>
-                </div>
-                <div class="mb-3">
-                    <input class="form-control" type="password" placeholder="Lösenord" @bind="password"/>
-                </div>
-                <div class="mb-3">
-                    <button class="btn btn-primary" @onclick="DoLoginAsync">Logga in</button>
-                </div>
-            
+
+            <div class="mb-3">
+                <InputText @bind-Value="email" id="usernameField" Placeholder="Användarnamn" class="form-control mb-3" />
+            </div>
+            <div class="mb-3">
+                <input class="form-control" id="passwordField" type="password" placeholder="Lösenord" @bind="password" />
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-primary" id="loginBtn" @onclick="DoLoginAsync">Logga in</button>
+            </div>
+
+
 
         </div>
-        
+
     </NotAuthorized>
 </AuthorizeView>
 
@@ -81,5 +82,5 @@
             errorList = result.ErrorList;
         }
     }
-  
+
 }

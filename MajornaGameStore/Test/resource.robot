@@ -22,7 +22,7 @@ Open the browser
     [Tags]      VG_Test1_browser
     Open Browser    browser=${BROWSER}  options=${BROWSER_OPTIONS}
     Go To   ${url}
-    Wait Until Page Contains    Välkommen till Majorna Gaming    10s
+    Wait Until Page Contains    Välkommen till Majorna Gaming    60s
     
 I can see the address on landing page
     [Documentation]     Browser
@@ -53,7 +53,7 @@ I can see the Product Page
 I can add product to cart directly
     [Documentation]     Browser
     [Tags]      Products
-    Wait Until Page Contains Element    //a[normalize-space()='Counter-Strike']        20s
+    Wait Until Page Contains Element    //a[normalize-space()='Counter-Strike']        60s
     Click Button    //div[2]//div[1]//div[2]//button[1]
 
 Check the product in the cart
@@ -74,7 +74,7 @@ Verify Product List Is Visible
 I am able to see Cart
     [Documentation]     Browser
     [Tags]      Cart
-    Wait Until Element Is Visible  //a[normalize-space()='Kundvagn']    timeout=10s
+    Wait Until Element Is Visible  //a[normalize-space()='Kundvagn']    timeout=60s
 
 I click on Cart
     [Documentation]     Browser

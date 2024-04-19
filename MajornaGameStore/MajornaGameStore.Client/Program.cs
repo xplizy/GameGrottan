@@ -15,6 +15,24 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 
 //builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
+builder.Services.AddTransient<CookieHandler>();
+
+builder.Services.AddAuthorizationCore();
+
+builder.Services.AddScoped<AuthenticationStateProvider, CookieAuthenticationStateProvider>();
+
+builder.Services.AddScoped(
+    sp => (IAccountManagement)sp.GetRequiredService<AuthenticationStateProvider>());
+
+builder.Services.AddScoped(sp =>
+    new HttpClient { BaseAddress = new Uri("https://localhost:7207" ?? "http://localhost:5241") });
+
+builder.Services.AddHttpClient(
+        "Auth",
+        opt => opt.BaseAddress = new Uri("https://localhost:7190" ?? "http://localhost:5102"))
+    .AddHttpMessageHandler<CookieHandler>();
+
+//TODO: Kan vara så att denna nedan stör ut autentisering. Testa o se
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:7190") });
 
 builder.Services
@@ -30,8 +48,6 @@ builder.Services
     .AddScoped<IClientEventsService, ClientEventsService>()
     .AddScoped<IClientCartService, ClientCartService>();
 
-builder.Services.AddScoped<AuthenticationStateProvider, CookieAuthenticationStateProvider>();
-builder.Services.AddAuthorizationCore();
 
 builder.Services.AddBlazorBootstrap();
 

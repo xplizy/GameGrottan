@@ -99,7 +99,7 @@ builder.Services.AddCors(
     options => options.AddPolicy(
         name: "MyAllowSpecificOrigins",
         policy => policy.WithOrigins([builder.Configuration["BackendUrl"] ?? "http://localhost:5102",
-            builder.Configuration["FrontendUrl"]])
+            builder.Configuration["FrontendUrl"] ?? "http://localhost:5241"])
             .AllowAnyMethod()
             .AllowAnyHeader()
             .AllowCredentials()));

@@ -1,44 +1,85 @@
 ﻿@page "/login"
-@inject AuthenticationStateProvider AuthStateProvider
+@inject IAccountManagement Acct
 
 <PageTitle>Logga in</PageTitle>
 
-<div class="card p-3 mb-3">
-    <div class="mb-3">
-        <h1>Logga in</h1>
-    </div>
+<AuthorizeView>
+    <Authorized>
+        <div class="alert alert-success">You're logged in as @context.User.Identity?.Name.</div>
+    </Authorized>
+    <NotAuthorized>
+        @if (errors)
+        {
+            @foreach (var error in errorList)
+            {
+                <div class="alert alert-danger">@error</div>
+            }
+        }
+        <div class="card p-3 mb-3">
+            <div class="mb-3">
+                <h1>Logga in</h1>
+            </div>
 
-    <EditForm Model="LoginModel" OnSubmit="Authenticate">
-        <div class="mb-3">
-            <InputText @bind-Value="LoginModel.Email" Placeholder="Användarnamn" class="form-control mb-3"/>
-        </div>
-        <div class="mb-3">
-            <input class="form-control" type="password" placeholder="Lösenord" @bind="LoginModel.Password"/>
-        </div>
-        <div class="mb-3">
-            <button type="submit" class="btn btn-primary">Logga in</button>
-        </div>
-    </EditForm>
+            
+                <div class="mb-3">
+                    <InputText @bind-Value="email" Placeholder="Användarnamn" class="form-control mb-3"/>
+                </div>
+                <div class="mb-3">
+                    <input class="form-control" type="password" placeholder="Lösenord" @bind="password"/>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-primary" @onclick="DoLoginAsync">Logga in</button>
+                </div>
+            
 
-</div>
+        </div>
+        
+    </NotAuthorized>
+</AuthorizeView>
+
+
 
 @code
 {
-    LoginDto LoginModel = new();
-    
 
-    async Task Authenticate()
+    private bool success, errors;
+    private string email = string.Empty;
+    private string password = string.Empty;
+    private string[] errorList = [];
+
+    public async Task DoLoginAsync()
     {
-        var customAuthProvider = (CookieAuthenticationStateProvider)AuthStateProvider;
-        var success = await customAuthProvider.LoginAndGetAuthenticationState(LoginModel);
+        success = errors = false;
+        errorList = [];
 
-        if (success)
+        if (string.IsNullOrWhiteSpace(email))
         {
-            //If admin redirect to admin page, if user redirect to userpage
+            errors = true;
+            errorList = ["Email is required."];
+
+            return;
+        }
+
+        if (string.IsNullOrWhiteSpace(password))
+        {
+            errors = true;
+            errorList = ["Password is required."];
+
+            return;
+        }
+
+        var result = await Acct.LoginAsync(email, password);
+
+        if (result.Succeeded)
+        {
+            success = true;
+            email = password = string.Empty;
         }
         else
         {
-            //let user know login failed
+            errors = true;
+            errorList = result.ErrorList;
         }
     }
+  
 }

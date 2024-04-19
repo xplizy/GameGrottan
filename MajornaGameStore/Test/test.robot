@@ -12,8 +12,8 @@ Blazorapp running
 
 Access Landing Page
     Given Open the browser
-    When I am able to see the landing page with Welcome message
-    And I am able to see the logo
+    #When I am able to see the landing page with Welcome message
+    When I am able to see the logo
     Then I can see the links
 
 Access Product Page

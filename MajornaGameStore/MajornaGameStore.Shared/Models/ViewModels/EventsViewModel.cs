@@ -1,6 +1,9 @@
 ﻿
+using System.ComponentModel;
+using MajornaGameStore.DataAccess.Services;
 using MajornaGameStore.Shared.Dtos;
 using MajornaGameStore.Shared.Interfaces.ServiceInterfaces.ClientSide;
+using Microsoft.AspNetCore.Components;
 
 namespace MajornaGameStore.Shared.Models.ViewModels;
 
@@ -8,6 +11,7 @@ public class EventsViewModel(IClientEventsService eventService, IClientCartServi
 {
     private readonly IClientEventsService _eventService = eventService;
     private readonly IClientCartService _cartService = cartService;
+    
 
     public async Task AddToCartAsync(EventDto eventDto, int quantity)
     {
@@ -34,9 +38,9 @@ public class EventsViewModel(IClientEventsService eventService, IClientCartServi
             EventId = eventDto.Id,
             Quantity = quantity
         };
+
         await cartService.AddAsync(cartItem);
     }
 
-
-
+    
 }

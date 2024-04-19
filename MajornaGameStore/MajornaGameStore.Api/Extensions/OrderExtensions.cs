@@ -12,10 +12,11 @@ public static class OrderExtensions
     {
         var group = app.MapGroup("/orders");
 
-        group.MapGet("/", GetAllOrdersAsync).RequireAuthorization();
-        group.MapGet("/{id}", GetOrderByIdAsync).RequireAuthorization();
-        group.MapPost("/", AddOrderAsync).RequireAuthorization();
-        group.MapDelete("/{id}", DeleteOrderAsync).RequireAuthorization();
+        group.MapGet("/", GetAllOrdersAsync).RequireAuthorization(policy => policy.RequireRole("Administrator")); 
+        group.MapGet("/{id}", GetOrderByIdAsync).RequireAuthorization(policy => policy.RequireRole("Administrator")); 
+        group.MapPost("/", AddOrderAsync).RequireAuthorization(policy => policy.RequireRole("Administrator")); 
+        group.MapDelete("/{id}", DeleteOrderAsync).RequireAuthorization(policy => policy.RequireRole("Administrator")); 
+        //TODO: Implement get by userId
         return app;
     }
 

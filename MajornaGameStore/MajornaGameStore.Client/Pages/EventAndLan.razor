@@ -13,20 +13,21 @@
 else
 {
     <div class="row">
+        <h3>Kommande LAN & Events</h3>
         <ul class="list-group">
-        <Virtualize Items="ViewModel.Models">
+            <Virtualize Items="ViewModel.Models">
 
-            <li class="list-group-item">
-                <p class="h5">
-                    @context.Name
-                </p>
-                <p>
-                    @context.Description (@context.Price KR)
-                </p>
+                <li class="list-group-item">
+                    <p class="h5">
+                        @context.Name
+                    </p>
+                    <p>
+                        @context.Description (@context.Price KR)
+                    </p>
                     <button id="Goto" class="btn-detailpage" style="margin-left: 20px" @onclick="@(async () => await GoToDetailsAsync(context.Id))">Mer om eventet</button>
-                <button id="addcart" class="btn-add btn-success" @onclick="@(async () => await ViewModel.AddToCartAsync(context, 1))">Köp</button>
-            </li>
-        </Virtualize>
+                    <button id="addcart" class="btn-add btn-success" @onclick="@(async () => await ViewModel.AddToCartAsync(context, 1))">Köp</button>
+                </li>
+            </Virtualize>
         </ul>
     </div>
 }

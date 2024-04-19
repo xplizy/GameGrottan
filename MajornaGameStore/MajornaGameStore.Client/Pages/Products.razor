@@ -20,19 +20,23 @@ else
     <div class="row" style="display: flex; flex-wrap: wrap;">
         <Virtualize Items="ViewModel.Models">
             <div class="col-md-3" style="flex: 0 0 25%;">
-                <div class="item-container">
+                <div class="item-container" style="margin-bottom: 20px">
                     <div class="item-image-wrapper">
                         <img src="@context.ImageLink" class="item-image" style="width: 100%; height: auto;" @onclick="@(async () => GoToDetailsAsync(context))" />
                     </div>
+                    
                     <div class="item-name">
                         <h5><a>@context.Name</a></h5>
-                        <button class="btn-add" @onclick="@(async () => await ViewModel.AddToCartAsync(context, 1))">
-                            Lägg Till I Kundvagn
+                        <div class="item-details d-flex alignt-items-center justify-content-between">
+                        <div class="item-price" style="margin-left: 5px" >Sek @(context.Price)</div>
+                        <button class="btn-add" style="margin-right: 5px" @onclick="@(async () => await ViewModel.AddToCartAsync(context, 1))">
+                            Lägg I Kundvagn
                         </button>
+                        </div>
                     </div>
+                
                 </div>
                 
-                <div class="item-price">Sek @(context.Price)</div>
             </div>
         </Virtualize>
     </div>

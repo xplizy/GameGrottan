@@ -7,6 +7,7 @@ using MajornaGameStore.Shared.Dtos;
 using MajornaGameStore.Shared.Interfaces.ServiceInterfaces.ClientSide;
 using Microsoft.AspNetCore.Components.Authorization;
 using System.Net.Http;
+using MajornaGameStore.DataAccess.Entities;
 using MajornaGameStore.Shared.Models.Identity;
 
 namespace MajornaGameStore.Client.Services.Authentication;
@@ -163,6 +164,27 @@ public class CookieAuthenticationStateProvider : AuthenticationStateProvider, IA
         catch { }
 
         return new AuthenticationState(user);
+    }
+
+    public async Task<bool> IsAdmin()
+    {
+        var rolesResponse = await _httpClient.GetAsync("roles");
+
+        rolesResponse.EnsureSuccessStatusCode();
+
+        var rolesJson = await rolesResponse.Content.ReadAsStringAsync();
+
+        var roles = JsonSerializer.Deserialize<RoleClaim[]>(rolesJson, jsonSerializerOptions);
+
+        foreach (var roleClaim in roles)
+        {
+            if (roleClaim.Value == "Administrator")
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public async Task LogoutAsync()

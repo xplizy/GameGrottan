@@ -1,4 +1,6 @@
-﻿@using MajornaGameStore.Client.Pages
+﻿@inject IAccountManagement Acct
+
+
 <nav class="navbar navbar-expand-md navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="/"><img src="Images/MAJORNA-GAMING.png" style="width: 80px;" alt="Majorna Gaming Logo" /></a>
@@ -44,15 +46,24 @@
             </button>
         
     </span>
-    <span class="navbar-text">
-        <NavLink class="nav-link" href="/login">
-            <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span>
+    <AuthorizeView>
+        <NotAuthorized>
+            <span class="navbar-text">
+                <NavLink class="nav-link" href="/login">
+                    <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span>
             
-                <Icon Name="IconName.Person" Size="IconSize.x1"></Icon>
+                    <Icon Name="IconName.Person" Size="IconSize.x1"></Icon>
             
-        </NavLink>
+                </NavLink>
         
-    </span>
+            </span>
+        </NotAuthorized>
+        <Authorized>
+            <button class="btn" @onclick="Acct.LogoutAsync">
+                <Icon Name="IconName.BoxArrowLeft" Size="IconSize.x1"></Icon> 
+            </button>
+        </Authorized>
+    </AuthorizeView>
     
     
     

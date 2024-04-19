@@ -1,9 +1,22 @@
 ﻿@inherits LayoutComponentBase
-<NavBar/>
 
+<AuthorizeView Roles="Administrator">
+    <Authorized>
+        <AdminMenu/>
+        <div class="admin-content">
+            
+            @Body
 
-<div class="main-content">
-    @Body
-</div>
+           
+        </div>
+    </Authorized>
+    <NotAuthorized>
+        <NavBar/>
+        <div class="main-content">
+            @Body
+        </div>
+    </NotAuthorized>
+</AuthorizeView>
+
 
 @*Footer can be found in index.html*@

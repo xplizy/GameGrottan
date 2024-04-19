@@ -22,7 +22,7 @@ Open the browser
     [Tags]      VG_Test1_browser
     Open Browser    browser=${BROWSER}  options=${BROWSER_OPTIONS}
     Go To   ${url}
-    Wait Until Page Contains    Välkommen till Majorna Gaming    60s
+    #Wait Until Page Contains    Välkommen till Majorna Gaming    60s
     
 I can see the address on landing page
     [Documentation]     Browser

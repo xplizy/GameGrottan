@@ -1,9 +1,12 @@
 ﻿@page "/eventandlan"
+@using MajornaGameStore.DataAccess.Entities
+@using Microsoft.EntityFrameworkCore.Metadata.Internal
 @inject NavigationManager NavManager
 @inject EventsViewModel ViewModel
 
 
 <PageTitle>Events and LAN</PageTitle>
+
 
 @if (_pageLoading)
 {
@@ -25,11 +28,20 @@ else
                         @context.Description (@context.Price KR)
                     </p>
                     <button id="Goto" class="btn-detailpage" style="margin-left: 20px" @onclick="@(async () => await GoToDetailsAsync(context.Id))">Mer om eventet</button>
-                    <button id="addcart" class="btn-add btn-success" @onclick="@(async () => await ViewModel.AddToCartAsync(context, 1))">Köp</button>
+                    <button id="addcart" class="btn-add btn-success" @onclick="@(async () => await AddToCartAsync(context))">Köp</button>
                 </li>
+                <Modal @ref="successModal" Title="@context.Name" Size="ModalSize.Small">
+                    <BodyTemplate>
+                        <p style="color: black;">har lagts till i varukorgen</p>
+                    </BodyTemplate>
+
+                </Modal>
             </Virtualize>
         </ul>
     </div>
+
+    
+
 }
  
 
@@ -37,6 +49,10 @@ else
 @code
 {
     bool _pageLoading = true;
+    Modal successModal;
+    Timer timer;
+    bool modalVisible = false;
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
@@ -49,10 +65,30 @@ else
         await base.OnAfterRenderAsync(firstRender);
     }
 
+    
+
+    private async Task AddToCartAsync(EventDto eventDto)
+    {
+        await ViewModel.AddToCartAsync(eventDto, 1);
+
+        successModal.ShowAsync();
+        modalVisible = true;
+
+        timer = new Timer(async (_) =>
+        {
+            await successModal.HideAsync();
+            modalVisible = false;
+            StateHasChanged();
+        }, null, 1500, Timeout.Infinite);
+    }
+
+
     private async Task GoToDetailsAsync(int Id)
     {
         NavManager.NavigateTo($"/eventDetail/{Id}");
     }
+
+    
 }
 
 @* <PageTitle>Event and LAN</PageTitle>

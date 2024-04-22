@@ -5,6 +5,7 @@ using System;
 using MajornaGameStore.DataAccess.Entities;
 using MajornaGameStore.Shared.Dtos;
 using MajornaGameStore.Shared.Mappers;
+using System.Text.Json;
 
 namespace MajornaGameStore.Api.Extensions;
 
@@ -150,9 +151,10 @@ public static class ProductExtensions
         if (product is null)
             return Results.NotFound($"Product with id {id} does not exist.");
 
-        //TODO: Find iyt why nothing gets sent
+        string x = JsonSerializer.Serialize(product);
         //return Results.Ok(await product.MapToDtoAsync());
-        return Results.Ok(product);
+        //TODO: Find out why nothing gets sent
+        return Results.Ok(x);
 
     }
 }

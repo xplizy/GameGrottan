@@ -1,7 +1,6 @@
 ﻿@page "/eventDetail/{Id}"
 @using MajornaGameStore.Client.Services
 @inject EventDetailViewModel ViewModel
-@inject EventsViewModel ViewModel2
 
 
 @if (_pageLoading)
@@ -18,7 +17,7 @@ else
             <p> Entre pris: @ViewModel.SelectedEvent.Price kr per person</p>
             <p> Start Datum: @ViewModel.SelectedEvent.Start</p>
             <p> Slut Datum: @ViewModel.SelectedEvent.End</p>
-            <button class="btn-add btn-success" @onclick="@(async () => await ViewModel2.AddToCartAsync(@ViewModel.SelectedEvent, 1))">Köp</button>
+            <button class="btn-add btn-success" @onclick="@(async () => await ViewModel.AddToCartAsync(@ViewModel.SelectedEvent, 1))">Köp</button>
         </div>
         <div style="clear: both"></div>
     </div>

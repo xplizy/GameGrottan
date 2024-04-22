@@ -98,11 +98,20 @@ builder.Services.AddScoped<MajornaGameStore.Api.Stripe.StripeClient>();
 builder.Services.AddCors(
     options => options.AddPolicy(
         name: "MyAllowSpecificOrigins",
-        policy => policy.WithOrigins([builder.Configuration["BackendUrl"] ?? "http://localhost:5102",
-            builder.Configuration["FrontendUrl"] ?? "http://localhost:5241"])
+        policy => policy.WithOrigins(["https://majornaggapi.azurewebsites.net", builder.Configuration["BackendUrl"] ?? "http://localhost:5102",
+                "https://majornagamestore-staging.azurewebsites.net", builder.Configuration["FrontendUrl"] ?? "http://localhost:5241"])
             .AllowAnyMethod()
             .AllowAnyHeader()
             .AllowCredentials()));
+
+//builder.Services.AddCors(
+//    options => options.AddPolicy(
+//        name: "MyAllowSpecificOrigins",
+//        policy => policy.WithOrigins([builder.Configuration["BackendUrl"] ?? "http://localhost:5102",
+//                builder.Configuration["FrontendUrl"] ?? "http://localhost:5241"])
+//            .AllowAnyMethod()
+//            .AllowAnyHeader()
+//            .AllowCredentials()));
 
 
 
@@ -113,15 +122,15 @@ builder.Services.AddRouting(options => options.LowercaseUrls = true);
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-//if (app.Environment.IsDevelopment())
-//{
+//Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
 app.UseSwagger();
 app.UseSwaggerUI();
 
-//    //await using var scope = app.Services.CreateAsyncScope();
-//    //await SeedUserData.InitializeAsync(scope.ServiceProvider);
-//}
+    await using var scope = app.Services.CreateAsyncScope();
+    await SeedUserData.InitializeAsync(scope.ServiceProvider);
+}
 
 
 

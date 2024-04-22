@@ -1,4 +1,5 @@
-﻿using MajornaGameStore.Shared.CreatePayments;
+﻿using MajornaGameStore.DataAccess.Entities;
+using MajornaGameStore.Shared.CreatePayments;
 using MajornaGameStore.Shared.Dtos;
 using MajornaGameStore.Shared.Interfaces.ServiceInterfaces.ClientSide;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
@@ -8,7 +9,8 @@ public class CartViewModel(IClientCartService cartService, IPaymentHttpClient pa
 {
     private readonly IClientCartService _cartService = cartService;
     private readonly IPaymentHttpClient _paymentHttpClient = paymentHttpClient;
-
+    public int ItemCount { get; private set; }
+    public event EventHandler CartUpdated;
     public async Task RemoveFromCart(string id)
     {
         await _cartService.DeleteAsync(id);
@@ -16,6 +18,12 @@ public class CartViewModel(IClientCartService cartService, IPaymentHttpClient pa
         var itemFromCart = Models.Find(i => i.Id == id);
         Models.Remove(itemFromCart!);
 
+    }
+
+    public void UpdateItemCount()
+    {
+        ItemCount = Models.Sum(item => item.Quantity);
+        CartUpdated?.Invoke(this, EventArgs.Empty);
     }
 
     public async Task<string> GoToPayment()

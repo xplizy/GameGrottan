@@ -30,12 +30,21 @@ else
     [Parameter]
     public string Id { get; set; }
 
+    private int eventId;
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        if (!string.IsNullOrEmpty(Id))
+        if (firstRender)
         {
-            await ViewModel.OnInit(int.Parse(Id));
-            _pageLoading = false;
+            if (int.TryParse(Id, out eventId))
+            {
+                await ViewModel.OnInite(eventId);
+                _pageLoading = false;
+                StateHasChanged();
+                await base.OnAfterRenderAsync(firstRender);
+            }
+           
+            
         }
         
     }

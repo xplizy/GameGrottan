@@ -3,6 +3,7 @@ using MajornaGameStore.Api.Stripe;
 using MajornaGameStore.DataAccess.Entities;
 using MajornaGameStore.DataAccess.Mongo;
 using MajornaGameStore.DataAccess.Services;
+using MajornaGameStore.DataAccess;
 using MajornaGameStore.DataAccess.Sql;
 using MajornaGameStore.DataAccess.Sql.Repositories;
 using MajornaGameStore.Shared.Interfaces.RepositoryInterfaces;
@@ -12,6 +13,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Stripe;
 using System;
+using MajornaGameStore.Shared;
 using DiscountService = MajornaGameStore.DataAccess.Services.DiscountService;
 using EventService = MajornaGameStore.DataAccess.Services.EventService;
 using ProductService = MajornaGameStore.DataAccess.Services.ProductService;
@@ -37,6 +39,7 @@ builder.Services.AddAuthentication(IdentityConstants.ApplicationScheme).AddIdent
 builder.Services.AddAuthorizationBuilder();
 
 builder.Services.AddIdentityCore<User>()
+    .AddRoles<Role>()
     .AddEntityFrameworkStores<MajornaDbContext>()
     .AddApiEndpoints();
 
@@ -52,7 +55,8 @@ builder.Services
     .AddScoped<IEventTypeRepository, EventTypeRepository>()
     .AddScoped<IReviewRepository, ReviewRepository>()
     .AddScoped<IEventTypeRepository, EventTypeRepository>()
-    .AddScoped<IOrderRepository, OrderRepository>();
+    .AddScoped<IOrderRepository, OrderRepository>()
+    .AddScoped<IUserRepository, UserRepository>();
 
 builder.Services
     .AddScoped<ProductService>()
@@ -67,6 +71,7 @@ builder.Services
     .AddScoped<TagService>()
     .AddScoped<ReviewService>()
     .AddScoped<EventTypeService>()
+    .AddScoped<UserService>()
 .AddScoped<OrderService>();
 
 builder.Services.AddOptions<StripeConfig>().BindConfiguration(nameof(StripeConfig));
@@ -76,32 +81,29 @@ builder.Services.AddScoped<MajornaGameStore.Api.Stripe.StripeClient>();
 
 
 
-
-////add cors for no errors later on
-///TODO: Ta bort tror jag. Behåll den under//jrm
+////TODO: Ändra origin till den hostade adressen när hemsidan är hostad
 //builder.Services.AddCors(options =>
 //{
-//    options.AddDefaultPolicy(builder =>
-//    {
-//        builder.AllowAnyOrigin()
-//            .AllowAnyHeader()
-//            .AllowAnyMethod();
-//    });
+//    options.AddPolicy(name: MyAllowSpecificOrigins,
+//        policy =>
+//        {
+//            //länk till clientens
+//            policy.WithOrigins("https://localhost:7207")
+//                .AllowAnyHeader()
+//                .AllowAnyMethod()
+//                .AllowCredentials();
+//        });
 //});
 
-////TODO: Ändra origin till den hostade adressen när hemsidan är hostad
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy(name: MyAllowSpecificOrigins,
-        policy =>
-        {
-            //länk till clientens
-            policy.WithOrigins("https://localhost:7207")
-                .AllowAnyHeader()
-                .AllowAnyMethod()
-                .AllowCredentials();
-        });
-});
+builder.Services.AddCors(
+    options => options.AddPolicy(
+        name: "MyAllowSpecificOrigins",
+        policy => policy.WithOrigins([builder.Configuration["BackendUrl"] ?? "http://localhost:5102",
+            builder.Configuration["FrontendUrl"] ?? "http://localhost:5241"])
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .AllowCredentials()));
+
 
 
 
@@ -112,16 +114,20 @@ builder.Services.AddRouting(options => options.LowercaseUrls = true);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+//if (app.Environment.IsDevelopment())
+//{
+app.UseSwagger();
+app.UseSwaggerUI();
+
+//    //await using var scope = app.Services.CreateAsyncScope();
+//    //await SeedUserData.InitializeAsync(scope.ServiceProvider);
+//}
 
 
 
-app.UseCors(MyAllowSpecificOrigins);
 app.MapIdentityApi<User>();
+app.UseCors("MyAllowSpecificOrigins");
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.UseHttpsRedirection();
@@ -132,6 +138,7 @@ app.MapEventEndPoints();
 app.MapEventTypeEndPoints();
 app.MapOrderEndPoints();
 app.MapPaymentsEndPoints();
+app.MapUserEndPoints();
 //app.MapControllers();
 
 app.Run();

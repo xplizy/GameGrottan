@@ -22,13 +22,13 @@ public static class ProductExtensions
         group.MapGet("/discounts/{discountId}", GetProductsByDiscountId);
 
         group.MapPost("/", AddProductAsync)
-            .RequireAuthorization();
+            .RequireAuthorization(policy => policy.RequireRole("Administrator")); ;
 
         group.MapPut("/", UpdateProductAsync)
-            .RequireAuthorization();
+            .RequireAuthorization(policy => policy.RequireRole("Administrator")); ;
 
         group.MapDelete("/{id}", DeleteProductAsync)
-            .RequireAuthorization();
+            .RequireAuthorization(policy => policy.RequireRole("Administrator")); ;
         return app;
     }
 

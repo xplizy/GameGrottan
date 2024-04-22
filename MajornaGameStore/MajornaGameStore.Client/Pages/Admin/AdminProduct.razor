@@ -31,12 +31,22 @@ else
 }
 
 <Modal @ref="modal" Title="Redigera produkt" Size="ModalSize.Large">
-    <HeaderTemplate>
-        <h2>@ViewModel.SelectedProduct.Name</h2>
-    </HeaderTemplate>
+    
     <BodyTemplate>
+        <div class="card p-3 mb-3">
+            <EditForm Model="ViewModel.SelectedProduct" OnValidSubmit="ViewModel.SaveUpdateChangesAsync">
+                <DataAnnotationsValidator/>
+                <div class="mb-3">
+                    <p>Produktens namn: @ViewModel.SelectedProduct.Name</p>
+                    <InputText type="text" class="form-control"  Placeholder="Ändra namn" @bind-Value="ViewModel.EditName"></InputText>
+                    <ValidationMessage For="() => ViewModel.SelectedProduct.Name"></ValidationMessage>
+                </div>
+            </EditForm>
+            
 
+        </div>
         
+
     </BodyTemplate>
     <FooterTemplate>
         <Button class="btn-success">Spara</Button>

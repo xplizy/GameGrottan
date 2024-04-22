@@ -150,6 +150,9 @@ public static class ProductExtensions
         if (product is null)
             return Results.NotFound($"Product with id {id} does not exist.");
 
-        return Results.Ok(await product.MapToDtoAsync());
+        //TODO: Find iyt why nothing gets sent
+        //return Results.Ok(await product.MapToDtoAsync());
+        return Results.Ok(product);
+
     }
 }

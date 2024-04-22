@@ -1,6 +1,7 @@
 ﻿using MajornaGameStore.DataAccess.Entities;
 using MajornaGameStore.Shared.Dtos;
 using MajornaGameStore.Shared.Interfaces.RepositoryInterfaces;
+using System.Security.Cryptography;
 
 namespace MajornaGameStore.DataAccess.Services;
 
@@ -25,9 +26,9 @@ public class ProductService(IProductRepository repository,
             .ToList()
             .Where(p => p.ProductTypeId == productTypeId)
             .ToList();
-
         return productsByType;
     }
+
 
     public async Task<ICollection<Product>?> GetAllProductsByTagId(int tagId)
     {

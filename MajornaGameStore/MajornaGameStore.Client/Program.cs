@@ -59,7 +59,9 @@ builder.Services
     .AddSingleton<IClientCartService, ClientCartService>()
     .AddScoped<IClientProductService, ClientProductService>()
     .AddScoped<IClientEventsService, ClientEventsService>()
-    .AddScoped<IClientCartService, ClientCartService>();
+    .AddScoped<IClientCartService, ClientCartService>()
+    .AddScoped<IClientTypeService, ClientTypeService>()
+    .AddScoped<IClientDiscountService, ClientDiscountService>();
 
 
 builder.Services.AddBlazorBootstrap();

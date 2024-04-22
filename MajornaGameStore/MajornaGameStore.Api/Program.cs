@@ -148,6 +148,8 @@ app.MapEventTypeEndPoints();
 app.MapOrderEndPoints();
 app.MapPaymentsEndPoints();
 app.MapUserEndPoints();
+app.MapDiscountEndPoints();
+app.MapProductTypeEndpoints();
 //app.MapControllers();
 
 app.Run();

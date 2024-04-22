@@ -4,39 +4,51 @@ using MajornaGameStore.Shared.Interfaces.ServiceInterfaces.ClientSide;
 
 namespace MajornaGameStore.Shared.Models.ViewModels;
 
-public class AdminProductViewModel(IClientProductService service) : ViewModelBase<ProductDto, int>(service)
+public class AdminProductViewModel(IClientProductService service, 
+    IClientTypeService typeService, 
+    IClientDiscountService discountService) : ViewModelBase<ProductDto, int>(service)
 {
     private readonly IClientProductService _productDetailService = service;
+    private readonly IClientTypeService _typeService = typeService;
+    private readonly IClientDiscountService _discountService = discountService;
 
 
     //TODO: kolla om vi ska använda product eller productdto för den nedan
     public Product NewProduct { get; set; }
 
-    public Product SelectedProduct { get; set; }
+    public ProductModel SelectedProduct { get; set; }
 
-    #region EditProductProperties
-
-    public string EditName { get; set; } = string.Empty;
-    public double EditPrice { get; set; }
-    public int EditProductTypeId { get; set; }
-    public int EditDiscountId { get; set; } = 1;
-    public string EditDescription { get; set; } = string.Empty;
-    public string EditLanguages { get; set; } = string.Empty;
-    public string EditImageLink { get; set; } = string.Empty;
-    public string EditPcRequirements { get; set; } = string.Empty;
-    public DateTime EditReleaseDate { get; set; } = new DateTime();
-    public List<Developer> EditDevelopers { get; set; } = new();
-    public List<Publisher> EditPublishers { get; set; } = new();
-    public List<Screenshot> EditScreenshots { get; set; } = new();
-    public List<Tag> EditTags { get; set; } = new();
-    public int AgeRating { get; set; }
-
-    #endregion
+  
 
 
     public async Task SetSelectedProduct(int id)
     {
-        SelectedProduct = await _productDetailService.GetFullInfoByIdAsync(id);
+        var selectedProd = await _productDetailService.GetFullInfoByIdAsync(id);
+
+        //TODO: implementera null checkar för dessa två nedan
+        var productType = await typeService.GetByIdAsync(selectedProd.ProductTypeId);
+        var discount = await discountService.GetByIdAsync(selectedProd.DiscountId);
+
+        SelectedProduct = new ProductModel()
+        {
+            Name = selectedProd.Name,
+            Price = selectedProd.Price,
+            ProductType = productType,
+            Discount = discount,
+            Description = selectedProd.Description,
+            Languages = selectedProd.Languages,
+            ImageLink = selectedProd.ImageLink,
+            PcRequirements = selectedProd.PcRequirements,
+            ReleaseDate = selectedProd.ReleaseDate,
+            Developers = selectedProd.Developers,
+            Publishers = selectedProd.Publishers,
+            Screenshots = selectedProd.Screenshots,
+            Tags = selectedProd.Tags,
+            Reviews = selectedProd.Reviews,
+            AgeRating = selectedProd.AgeRating
+        };
+
+
     }
 
     public async Task SaveUpdateChangesAsync()

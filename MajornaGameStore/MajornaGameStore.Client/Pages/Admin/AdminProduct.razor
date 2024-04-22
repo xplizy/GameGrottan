@@ -38,10 +38,42 @@ else
                 <DataAnnotationsValidator/>
                 <div class="mb-3">
                     <p>Produktens namn: @ViewModel.SelectedProduct.Name</p>
-                    <InputText type="text" class="form-control"  Placeholder="Ändra namn" @bind-Value="ViewModel.EditName"></InputText>
-                    <ValidationMessage For="() => ViewModel.SelectedProduct.Name"></ValidationMessage>
+                    <InputText type="text" class="form-control"  Placeholder="Redigera namn" @bind-Value="ViewModel.SelectedProduct.Name"/>
+                    <ValidationMessage For="() => ViewModel.SelectedProduct.Name"/>
                 </div>
+                <div class="mb-3">
+                    <p>Pris: @ViewModel.SelectedProduct.Price</p>
+                    <InputNumber type="double" class="form-control" Placeholder="Redigera pris" @bind-Value="ViewModel.SelectedProduct.Price"/>
+                    <ValidationMessage For="() => ViewModel.SelectedProduct.Price"/>
+                </div> 
+                <div class="mb-3">
+                    <p>Produkttyp: @ViewModel.SelectedProduct.ProductType.Name</p>
+                    <InputText type="text" class="form-control" Placeholder="Redigera produkttyp" @bind-Value="ViewModel.SelectedProduct.ProductType.Name" />
+                    <ValidationMessage For="() => ViewModel.SelectedProduct.ProductType.Name"/>
+                </div>
+                <div class="mb-3">
+                    <p>Beskrivning: @ViewModel.SelectedProduct.Description</p>
+                    <InputTextArea type="text" class="form-control" Placeholder="Redigera beskrivning" @bind-Value="ViewModel.SelectedProduct.Description" />
+                    <ValidationMessage For="() => ViewModel.SelectedProduct.Description" />
+                </div>
+                <div class="mb-3">
+                    <p>Språk: @ViewModel.SelectedProduct.Languages</p>
+                    <InputText type="text" class="form-control" Placeholder="Redigera språk" @bind-Value="ViewModel.SelectedProduct.Languages" />
+                    <ValidationMessage For="() => ViewModel.SelectedProduct.Languages" />
+                </div>
+                <div class="mb-3">
+                    <p>Systemkrav: @ViewModel.SelectedProduct.PcRequirements</p>
+                    <InputTextArea type="text" class="form-control" Placeholder="Redigera systemkrav" @bind-Value="ViewModel.SelectedProduct.PcRequirements" />
+                    <ValidationMessage For="() => ViewModel.SelectedProduct.PcRequirements" />
+                </div>
+                @* <div class="mb-3">
+                    <p>Utgivningsdatum: @ViewModel.SelectedProduct.ReleaseDate</p>
+                    <InputDate type="text" class="form-control" Placeholder="Redigera utgivningsdatum" @bind-Value="ViewModel.SelectedProduct.ReleaseDate" />
+                    <ValidationMessage For="() => ViewModel.SelectedProduct.ReleaseDate" />
+                </div> *@
             </EditForm>
+            @*REA nedan*@
+            @*Bild?*@
             
 
         </div>

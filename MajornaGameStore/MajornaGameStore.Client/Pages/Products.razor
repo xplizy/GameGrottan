@@ -28,16 +28,19 @@ else
                     <div class="item-name">
                         <h5><a>@context.Name</a></h5>
                         <div class="item-details d-flex alignt-items-center justify-content-between">
-                        <div class="item-price" style="margin-left: 5px" >Sek @(context.Price)</div>
-                        <button id="addToCartBtn" class="btn-add" style="margin-right: 5px" @onclick="@(async () => await ViewModel.AddToCartAsync(context, 1))">
-                            Lägg I Kundvagn
-                        </button>
+                            <div class="item-price" style="margin-left: 5px" >Sek @(context.Price)</div>
+                            <button id="addToCartBtn" class="btn-add" style="margin-right: 5px" @onclick="@(async () => await ViewModel.AddToCartAsync(context, 1))">
+                                Lägg I Kundvagn
+                            </button>
                         </div>
                     </div>
                 
                 </div>
                 
             </div>
+            <Modal>
+
+            </Modal>
         </Virtualize>
     </div>
 
@@ -48,6 +51,10 @@ else
 @code
 {
     bool _contentLoading = true;
+    Modal successModal;
+    Timer timer;
+    bool modalVisible = false;
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
@@ -57,6 +64,7 @@ else
             StateHasChanged();
         }
     }
+
 
     private void GoToDetailsAsync(ProductDto product)
     {

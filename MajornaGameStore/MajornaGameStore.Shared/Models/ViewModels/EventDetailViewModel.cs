@@ -11,7 +11,7 @@ public class EventDetailViewModel(IClientEventsService detailService, IClientCar
 
     public EventDto SelectedEvent { get; set; }
 
-    public  async Task OnInite(int id)
+    public async Task OnInite(int id)
     {
         SelectedEvent = await _eventDetailService.GetByIdAsync(id);
     }

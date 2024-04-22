@@ -12,6 +12,7 @@
 }
 else
 {
+    <Toasts class="p-3" Messages="messages" AutoHide="true" Delay="3000" Placement="ToastsPlacement.TopRight" />
     <div class="row">
         <ul class="list-group">
         <Virtualize Items="ViewModel.Models">
@@ -24,7 +25,9 @@ else
                     @context.Description (@context.Price KR)
                 </p>
                     <button id="Goto" class="btn-detailpage" style="margin-left: 20px" @onclick="@(async () => await GoToDetailsAsync(context.Id))">Mer om eventet</button>
-                <button id="addcart" class="btn-add btn-success" @onclick="@(async () => await ViewModel.AddToCartAsync(context, 1))">Köp</button>
+                <button class="btn btn-success" @onclick="@(async () => { await ViewModel.AddToCartAsync(context, 1); ShowMessage(ToastType.Success); })">
+                    Lägg Till I Kundvagn
+                </button>
             </li>
         </Virtualize>
         </ul>
@@ -52,57 +55,16 @@ else
     {
         NavManager.NavigateTo($"/eventDetail/{Id}");
     }
+    List<ToastMessage> messages = new List<ToastMessage>();
+
+    private void ShowMessage(ToastType toastType) => messages.Add(CreateToastMessage(toastType));
+
+    private ToastMessage CreateToastMessage(ToastType toastType)
+        => new ToastMessage
+            {
+                Type = toastType,
+                HelpText = $"{DateTime.Now}",
+                Message = $"Produkt tillagd i kundvagn!",
+            };
 }
-
-@* <PageTitle>Event and LAN</PageTitle>
-
-<div class="wrapper">
-    <div class="page-background-class">
-        <div class="LanLogoTP">
-            <img src="/Images/MajornaLanTP.png" />
-        </div>
-        <div class="LanInfo1">
-            <p>
-                Datum: Fre 26 - 17:00 Till Sön 28 - 18:00
-            </p>
-            <p>
-                Plats: Ebbe Lieberathsgatan 18C : Göteborg
-            </p>
-        </div> 
-        <div class="LanInfo2">
-            <p>
-                Turneringar:
-            </p>
-            <p>
-                League Of Legends: Lör 27 - 17:00
-            </p>
-            <p>
-                Counter-Strike 2: Lör 27 - 20:00
-            </p>
-            <p>
-                Hearthstone: Lör 27 - 15:00
-            </p>
-        </div>
-    </div>
-
-</div>
-<div class="LanInfo">
-    <p>
-        Majorna Gaming Lan är en spännande samling av spelentusiaster och tekniknördar som samlas för en helg av intensivt spelande och gemenskap.
-    </p>
-    <p>
-        Under detta LAN-event kommer deltagarna att kunna delta i spännande turneringar i tre populära spel: Counter-Strike 2, League of Legends och HearthStone.
-    </p>
-    <p>
-        Från episka strider på virtuella slagfält till taktiska kampstrategier och magiska dueller, det här lanet har något för alla spelare oavsett intresse eller skicklighetsnivå.
-    </p>
-
-    <p>
-        Förutom turneringar finns det också möjligheter för deltagarna att mingla, byta erfarenheter och kanske till och med knyta nya vänskapsband. Majorna Gaming Lan är mer än bara ett LAN-event; det är en plats där passion för spel möter gemenskap och äventyr.
-    </p>
-    
-    <p>
-        Är du intresserad? Skicka din anmälan med ditt namn och efternamn info@gamergrottan.se. Betalning sker på plats. 100:- kr för inträde.
-    </p>
-</div> *@
 

@@ -46,6 +46,7 @@ builder.Services
     .AddScoped<ProductViewModel>()
     .AddScoped<EventsViewModel>()
     .AddScoped<EventDetailViewModel>()
+    .AddScoped<ProductDetailViewModel>()
     .AddScoped<CartViewModel>();
 
 builder.Services.AddScoped<IPaymentHttpClient, PaymentHttpClient>();

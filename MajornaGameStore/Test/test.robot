@@ -56,6 +56,26 @@ Remove item from the cart
     Then I can see the Products in the cart
     And I can remove the product
 
+Access Event Page
+    [Documentation]    Access Event Page
+    [Tags]  Events
+    Given open the browser
+    When I Click on Event
+    Then I should be able to see all events
+
+Login to admin page with valid credentials
+    [Documentation]    Login with valid credentials
+    [Tags]  Admin_Login
+    Log in with right credentials       ${admin_username}      ${password}
+    Logout
+
+Login to admin page with invalid credentials
+    [Documentation]    Login with invalid credentials
+    [Tags]  Admin_Login
+    Log in with wrong credentials       ${admin_username}      ${invalid_password}
+
+
+
 
 
 

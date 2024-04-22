@@ -1,4 +1,5 @@
 ﻿using System.Net.Http.Json;
+using MajornaGameStore.DataAccess.Entities;
 using MajornaGameStore.Shared.Dtos;
 using MajornaGameStore.Shared.Interfaces.ServiceInterfaces.ClientSide;
 
@@ -28,6 +29,18 @@ public class ClientProductService(HttpClient httpClient) : IClientProductService
             return null;
 
         var result = await response.Content.ReadFromJsonAsync<ProductDto>();
+
+        return result;
+    }
+
+    public async Task<Product?> GetFullInfoByIdAsync(int id)
+    {
+        var response = await _httpClient.GetAsync($"/products/{id}");
+
+        if (response.IsSuccessStatusCode == false)
+            return null;
+
+        var result = await response.Content.ReadFromJsonAsync<Product>();
 
         return result;
     }

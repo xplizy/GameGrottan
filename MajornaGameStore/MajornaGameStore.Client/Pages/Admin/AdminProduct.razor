@@ -1,0 +1,90 @@
+﻿@page "/adminproduct"
+@inject IAccountManagement Acct
+@inject NavigationManager NavigationManager
+@inject AdminProductViewModel ViewModel
+
+
+
+@if (_pageLoading)
+{
+    <div class="text-center">
+        <p>Laddar in produkter ...</p>
+        <Spinner/>
+    </div>
+}
+else
+{
+    <div class="card p-3 mb-3">
+        <h3 class="text-center mb-3">Välj en produkt att redigera</h3>
+        
+        <ul class="list-group">
+            <Virtualize Items="ViewModel.Models">
+                <li class="list-group-item">
+                    <p>@context.Name</p>
+                    <Button class="btn-primary" @onclick="async () => await OnShowModalClick(context.Id)">Redigera</Button>
+                    <Button class="btn-danger">Radera</Button>
+                </li>
+            </Virtualize>
+        </ul>
+
+    </div>
+}
+
+<Modal @ref="modal" Title="Redigera produkt" Size="ModalSize.Large">
+    <HeaderTemplate>
+        <h2>@ViewModel.SelectedProduct.Name</h2>
+    </HeaderTemplate>
+    <BodyTemplate>
+
+        
+    </BodyTemplate>
+    <FooterTemplate>
+        <Button class="btn-success">Spara</Button>
+    </FooterTemplate>
+
+</Modal>
+
+
+@code {
+    bool _pageLoading = true;
+    private Modal modal;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+
+        var isIadmin = await Acct.IsAdmin();
+
+        if (isIadmin == false)
+        {
+            //TODO: Skapa "errorpage" eller "notfound" och navigera dit istället
+            NavigationManager.NavigateTo("/");
+        }
+
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await base.OnAfterRenderAsync(firstRender);
+
+        if (firstRender)
+        {
+            await ViewModel.OnInit();
+            _pageLoading = false;
+            StateHasChanged();
+        }
+    }
+
+
+    private async Task OnShowModalClick(int selectedProductId)
+    {
+        await ViewModel.SetSelectedProduct(selectedProductId);
+        await modal?.ShowAsync();
+    }
+
+    private async Task OnHideModalClick()
+    {
+        await modal?.HideAsync();
+    }
+
+}

@@ -4,9 +4,9 @@ using MajornaGameStore.Shared.Interfaces.ServiceInterfaces.ClientSide;
 
 namespace MajornaGameStore.Shared.Models.ViewModels;
 
-public class ProductDetailViewModel(IClientProductDetailService service) : ViewModelBase<ProductDto, int>(service)
+public class ProductDetailViewModel(IClientProductService service) : ViewModelBase<ProductDto, int>(service)
 {
-    private readonly IClientProductDetailService _productDetailService = service;
+    private readonly IClientProductService _productDetailService = service;
     public ProductDto Product { get; private set; }
 
     public async Task LoadProductAsync(int productId)

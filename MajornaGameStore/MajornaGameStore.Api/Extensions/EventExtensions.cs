@@ -13,9 +13,9 @@ public static class EventExtensions
 
         group.MapGet("/", GetAllEventsAsync);
         group.MapGet("/{id}", GetEventsByIdAsync);
-        group.MapPut("/{id}", UpdateEvent).RequireAuthorization();
-        group.MapPost("/", AddEvent).RequireAuthorization();
-        group.MapDelete("/{id}", DeleteEvent).RequireAuthorization();
+        group.MapPut("/{id}", UpdateEvent).RequireAuthorization(policy => policy.RequireRole("Administrator")); ;
+        group.MapPost("/", AddEvent).RequireAuthorization(policy => policy.RequireRole("Administrator")); ;
+        group.MapDelete("/{id}", DeleteEvent).RequireAuthorization(policy => policy.RequireRole("Administrator")); ;
         return app;
     }
 

@@ -6,11 +6,13 @@ namespace MajornaGameStore.Shared.Models.ViewModels;
 
 public class AdminProductViewModel(IClientProductService service, 
     IClientTypeService typeService, 
-    IClientDiscountService discountService) : ViewModelBase<ProductDto, int>(service)
+    IClientDiscountService discountService,
+    IClientDeveloperService developerService) : ViewModelBase<ProductDto, int>(service)
 {
     private readonly IClientProductService _productDetailService = service;
     private readonly IClientTypeService _typeService = typeService;
     private readonly IClientDiscountService _discountService = discountService;
+    private readonly IClientDeveloperService _developerService = developerService;
 
 
     //TODO: kolla om vi ska använda product eller productdto för den nedan
@@ -22,7 +24,7 @@ public class AdminProductViewModel(IClientProductService service,
     public List<ProductType> ProductTypes { get; set; } = new();
     public int SelectedProductTypeUpdateId { get; set; } = 0;
 
-
+    public Developer NewDeveloper { get; set; } = new();
 
     public async Task SetSelectedProduct(int id)
     {
@@ -67,7 +69,7 @@ public class AdminProductViewModel(IClientProductService service,
         SelectedProduct.Developers.Remove(dev);
     }
 
-    public async Task AddNewDeveloperToProduct(string Developer)
+    public async Task AddNewDeveloperToProduct()
     {
 
     }

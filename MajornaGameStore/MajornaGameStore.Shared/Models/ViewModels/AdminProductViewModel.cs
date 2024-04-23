@@ -1,4 +1,5 @@
 ﻿using MajornaGameStore.DataAccess.Entities;
+using MajornaGameStore.DataAccess.Services;
 using MajornaGameStore.Shared.Dtos;
 using MajornaGameStore.Shared.Interfaces.ServiceInterfaces.ClientSide;
 
@@ -7,7 +8,8 @@ namespace MajornaGameStore.Shared.Models.ViewModels;
 public class AdminProductViewModel(IClientProductService service, 
     IClientTypeService typeService, 
     IClientDiscountService discountService,
-    IClientDeveloperService developerService) : ViewModelBase<ProductDto, int>(service)
+    IClientDeveloperService developerService,
+    IClientPublisherService PublisherService) : ViewModelBase<ProductDto, int>(service)
 {
     private readonly IClientProductService _productDetailService = service;
     private readonly IClientTypeService _typeService = typeService;
@@ -25,6 +27,7 @@ public class AdminProductViewModel(IClientProductService service,
     public int SelectedProductTypeUpdateId { get; set; } = 0;
 
     public Developer NewDeveloper { get; set; } = new();
+    public Publisher NewPublisher { get; set; } = new();
 
     public async Task SetSelectedProduct(int id)
     {
@@ -68,10 +71,23 @@ public class AdminProductViewModel(IClientProductService service,
     {
         SelectedProduct.Developers.Remove(dev);
     }
-
-    public async Task AddNewDeveloperToProduct()
+    public async Task RemovePublisherAsync(Publisher publisher)
     {
+        SelectedProduct.Publishers.Remove(publisher);
+    }
 
+    public async Task AddNewDeveloperToProductAsync()
+    {
+        var newDev = await _developerService.AddAsync(NewDeveloper);
+        SelectedProduct.Developers.Add(newDev);
+        NewDeveloper = new();
+    }
+
+    public async Task AddNewPublisherToProductAsync()
+    {
+        var newDev = await _publisherService.AddAsync(NewPublisher);
+        SelectedProduct.Publishers.Add(NewPublisher);
+        NewPublisher = new();
     }
 
     public async Task UpdateProductTypeAsync()

@@ -101,23 +101,45 @@ else
                 {
                     <li class="list-group-item">
                        @dev.Name
-                        <Button class="btn-danger" @onclick="async () => await ViewModel.RemoveDeveloperAsync(dev)">
+                        <Button class="btn-danger" id="removeDevBtn" @onclick="async () => await ViewModel.RemoveDeveloperAsync(dev)">
                             <Icon Name="IconName.Trash"></Icon>
                         </Button>
                     </li>
                     
                 }
-                
-                    
-                
             </ul>
             <p>Lägg till en spelutvecklare:</p>
-            <InputText placeholder="Spelutvecklarens namn"></InputText>
+            <InputText type="text" placeholder="Spelutvecklarens namn"
+                       id="createNewDevNameField"
+                       class="form-control mb-3"
+                       @bind-Value="ViewModel.NewDeveloper.Name"></InputText>
             <Button class="btn-success" id="editProdDevUpdateBtn"
-                    @onclick="ViewModel.UpdateProductTypeAsync">Uppdatera produkttyp</Button>
+                    @onclick="ViewModel.AddNewDeveloperToProductAsync">Lägg till ny spelutvecklare</Button>
 
         </div>
-            @*ProduktTyp*@
+        <div class="card p-3 mb-3">
+            <h3>Redigera utgivare</h3>
+            <ul class="list-group" id="editProdPublisherList">
+                @foreach (var publisher in ViewModel.SelectedProduct.Publishers)
+                {
+                    <li class="list-group-item">
+                        @publisher.Name
+                        <Button class="btn-danger" id="removePublisherBtn" @onclick="async () => await ViewModel.RemovePublisherAsync(publisher)">
+                            <Icon Name="IconName.Trash"></Icon>
+                        </Button>
+                    </li>
+                    
+                }
+            </ul>
+            <p>Lägg till en utgivare:</p>
+            <InputText type="text" placeholder="Utgivarens namn"
+                       id="createNewPublisherNameField"
+                       class="form-control mb-3"
+                       @bind-Value="ViewModel.NewPublisher.Name"></InputText>
+            <Button class="btn-success" id="editProdPublisherUpdateBtn"
+                    @onclick="ViewModel.AddNewPublisherToProductAsync">Lägg till ny spelutvecklare</Button>
+
+        </div>
             @*REA nedan*@
             @*Bild?*@
         

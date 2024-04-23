@@ -1,5 +1,5 @@
 # Zip .Api project artifacts
-Compress-Archive -Path "$(Build.ArtifactStagingDirectory)/MajornaGameStore/MajornaGameStore.Api/bin/$(BuildConfiguration)/*" -DestinationPath "$(Build.ArtifactStagingDirectory)/MajornaGameStore/MajornaGameStore.Api/api.zip" -Force
+Compress-Archive -Path "$env:BUILD_ARTIFACTSTAGINGDIRECTORY/MajornaGameStore/MajornaGameStore.Api/bin/$(BuildConfiguration)/*" -DestinationPath "$env:BUILD_ARTIFACTSTAGINGDIRECTORY/MajornaGameStore/MajornaGameStore.Api/api.zip" -Force
 
 # Zip .DataAccess project artifacts
-Compress-Archive -Path "$(Build.ArtifactStagingDirectory)/MajornaGameStore/MajornaGameStore.DataAccess/bin/$(BuildConfiguration)/*" -DestinationPath "$(Build.ArtifactStagingDirectory)/MajornaGameStore/MajornaGameStore.DataAccess/dataaccess.zip" -Force
+Compress-Archive -Path "$env:BUILD_ARTIFACTSTAGINGDIRECTORY/MajornaGameStore/MajornaGameStore.DataAccess/bin/$(BuildConfiguration)/*" -DestinationPath "$env:BUILD_ARTIFACTSTAGINGDIRECTORY/MajornaGameStore/MajornaGameStore.DataAccess/dataaccess.zip" -Force

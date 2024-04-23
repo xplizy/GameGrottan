@@ -99,10 +99,13 @@ else
             <ul class="list-group" id="editProdDevList">
                 @foreach (var dev in ViewModel.SelectedProduct.Developers)
                 {
-                    <li class="list-group-item"></li>
-                    <Button class="btn-danger" @onclick="async () => await ViewModel.RemoveDeveloperAsync(dev)">
-                        <Icon Name="IconName.Trash"></Icon>
-                    </Button>
+                    <li class="list-group-item">
+                       @dev.Name
+                        <Button class="btn-danger" @onclick="async () => await ViewModel.RemoveDeveloperAsync(dev)">
+                            <Icon Name="IconName.Trash"></Icon>
+                        </Button>
+                    </li>
+                    
                 }
             </ul>
             <Button class="btn-success" id="editProdDevUpdateBtn"

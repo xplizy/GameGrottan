@@ -9,6 +9,10 @@ Library     Collections
 ${url}      https://majornagamestore-staging.azurewebsites.net/
 ${BROWSER}      headlesschrome
 ${BROWSER_OPTIONS}  add_argument("--no-sandbox"); add_argument("window-size=1920,1080")
+${admin_username}    admin@gamegrottan.com
+${password}     GameGrottan2024!
+${user_username}     user@user.user
+${invalid_password}     GameGrottan!
 
 
 *** Keywords ***
@@ -115,6 +119,45 @@ I can remove the product
      Wait Until Page Contains    //p[normalize-space()='1 x Counter-Strike (819 SEK) - 819']    100s
      Click Button    //button[normalize-space()='Remove']
      Wait Until Page Contains Element    //p[normalize-space()='Totalt: Sek 0']
+     
+I Click on Event
+    [Documentation]     Event details
+    [Tags]      Home Page
+    Wait Until Page Contains Element    //p[normalize-space()='Events']
+    Click Element    //p[normalize-space()='Events']
+    Wait Until Page Contains    Niklas Tjohoo Lan
+
+I should be able to see all events
+    [Documentation]     Event details
+    [Tags]      Events
+    Element Should Be Visible    //p[normalize-space()='Niklas Tjohoo Lan']     timeout=10s
+    Element Should Be Visible    //p[normalize-space()='string']    timeout=10s
+    Close Browser
+
+Log in with right credentials
+    [Documentation]    Admin login page
+    [Tags]      Test_Admin_login
+    [Arguments]     ${admin_username}     ${password}
+    Click Element    //i[@class='bi bi-person fs-1']
+    Input Text    //input[@id='usernameField']    ${admin_username}
+    Input Password    //input[@id='passwordField']    ${password}
+    Click Button    //button[@id='loginBtn']
+    Wait Until Page Contains Element    //*[@id="navbarNavDropdown"]/ul/li[1]/a/p
+
+Logout
+    [Documentation]    Admin logout page
+    [Tags]      Test_Admin_logout
+    Click Element    //i[@class='bi bi-box-arrow-left fs-1']
+
+Log in with wrong credentials
+    [Documentation]    Admin login page
+    [Tags]      Test_Admin_login
+    [Arguments]     ${admin_username}     ${invalid_password}
+    Click Element    //i[@class='bi bi-person fs-1']
+    Input Text    //input[@id='usernameField']    ${admin_username}
+    Input Password    //input[@id='passwordField']    ${invalid_password}
+    Click Button    //button[@id='loginBtn']
+    Wait Until Page Contains    Invalid email and/or password.
 
 
 

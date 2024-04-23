@@ -1,4 +1,5 @@
 ﻿@inject IAccountManagement Acct
+@inject CartViewModel ViewModel
 
 
 
@@ -44,7 +45,7 @@
     <span class="navbar-text">
 
         <button class="btn btn-info" @onclick="OnShowModalClick">
-                <Icon Name="IconName.Cart3" Size="IconSize.x1"></Icon> 0
+                <Icon Name="IconName.Cart3" Size="IconSize.x1"></Icon> @ViewModel.ItemCount
             </button>
         
     </span>

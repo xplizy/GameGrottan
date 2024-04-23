@@ -150,6 +150,7 @@ app.MapPaymentsEndPoints();
 app.MapUserEndPoints();
 app.MapDiscountEndPoints();
 app.MapProductTypeEndpoints();
+app.MapDeveloperEndPoints();
 //app.MapControllers();
 
 app.Run();

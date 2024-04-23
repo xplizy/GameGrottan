@@ -5,7 +5,7 @@ namespace MajornaGameStore.Api.Extensions;
 
 public static class DeveloperExtensions
 {
-    public static IEndpointRouteBuilder MapProductTypeEndpoints(this IEndpointRouteBuilder app)
+    public static IEndpointRouteBuilder MapDeveloperEndPoints(this IEndpointRouteBuilder app)
     {
         var group = app.MapGroup("/developers");
 

@@ -13,15 +13,42 @@ var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
+
+
 //builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
-builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://majornaggapi.azurewebsites.net") });
+builder.Services.AddTransient<CookieHandler>();
+
+builder.Services.AddAuthorizationCore();
+
+builder.Services.AddScoped<AuthenticationStateProvider, CookieAuthenticationStateProvider>();
+
+builder.Services.AddScoped(
+    sp => (IAccountManagement)sp.GetRequiredService<AuthenticationStateProvider>());
+
+//builder.Services.AddScoped(sp =>
+//    new HttpClient { BaseAddress = new Uri("https://majornagamestore-staging.azurewebsites.net/") });
+
+//builder.Services.AddHttpClient(
+//        "Auth",
+//        opt => opt.BaseAddress = new Uri("https://majornaggapi.azurewebsites.net"))
+//    .AddHttpMessageHandler<CookieHandler>();
+
+builder.Services.AddHttpClient(
+        "Auth",
+        opt => opt.BaseAddress = new Uri("https://localhost:7190"))
+    .AddHttpMessageHandler<CookieHandler>();
+
+builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:7190") });
+
 
 builder.Services
     .AddScoped<ProductViewModel>()
+    .AddScoped<EventsViewModel>()
+    .AddScoped<EventDetailViewModel>()
+    .AddScoped<ProductDetailViewModel>()
     .AddScoped<CartViewModel>();
 
-//TODO: Lägg till éfter 1345 Create HTTP client to make a call to backend
 builder.Services.AddScoped<IPaymentHttpClient, PaymentHttpClient>();
 
 builder.Services
@@ -30,8 +57,6 @@ builder.Services
     .AddScoped<IClientEventsService, ClientEventsService>()
     .AddScoped<IClientCartService, ClientCartService>();
 
-builder.Services.AddScoped<AuthenticationStateProvider, CookieAuthenticationStateProvider>();
-builder.Services.AddAuthorizationCore();
 
 builder.Services.AddBlazorBootstrap();
 

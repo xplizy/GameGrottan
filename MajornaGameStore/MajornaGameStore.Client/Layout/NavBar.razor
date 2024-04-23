@@ -1,5 +1,7 @@
 ﻿@using MajornaGameStore.Client.Pages
-<link rel="stylesheet" href="styles.css" />
+@inject IAccountManagement Acct
+@inject CartViewModel ViewModel
+@*<link rel="stylesheet" href="styles.css" />*@
 <nav class="navbar navbar-expand-md navbar-dark">
     <div class="container-fluid d-flex justify-content-between align-items-center">
         <a class="navbar-brand" href="/">
@@ -113,24 +115,38 @@
                         <p class="h4">Om oss</p>
                     </NavLink>
                 </li>
-               
                 
             </ul>
         </div>
 
     </div>
+
+    <span class="navbar-text">
+
+        <button class="btn btn-info" @onclick="OnShowModalClick">
+                <Icon Name="IconName.Cart3" Size="IconSize.x1"></Icon> 0
+            </button>
+        
+    </span>
+    <AuthorizeView>
+    <NotAuthorized>
+        <span class="navbar-text">
+            <NavLink class="nav-link" href="/login">
+                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span>
+        
+                <Icon Name="IconName.Person" Size="IconSize.x1"></Icon>
+        
+            </NavLink>
+    
+        </span>
+    </NotAuthorized>
+    <Authorized>
+        <button class="btn" id="LogOutBtn" @onclick="Acct.LogoutAsync">
+            <Icon Name="IconName.BoxArrowLeft" Size="IconSize.x1"></Icon> 
+        </button>
+    </Authorized>
+</AuthorizeView>
    
-    <!---->
-    <div class="navbar-text">
-        <button class="navbar-button btn btn-info" @onclick="OnShowModalClick">
-            <Icon class="navbar-icon" Name="IconName.Cart3" Size="IconSize.x1"></Icon> 0
-        </button>
-    </div>
-    <div class="navbar-text">
-        <button class="navbar-button btn btn-info" @onclick="OnShowModalClick">
-            <Icon class="navbar-icon" Name="IconName.Person" Size="IconSize.x1"></Icon>
-        </button>
-    </div>
     
     
     

@@ -119,6 +119,9 @@ namespace MajornaGameStore.DataAccess.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
+                    b.Property<int>("SpotsLeft")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("EventTypeId");
@@ -373,6 +376,11 @@ namespace MajornaGameStore.DataAccess.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasMaxLength(13)
+                        .HasColumnType("nvarchar(13)");
+
                     b.Property<string>("Name")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -389,6 +397,10 @@ namespace MajornaGameStore.DataAccess.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityRole");
+
+                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -471,11 +483,20 @@ namespace MajornaGameStore.DataAccess.Migrations
                     b.Property<string>("RoleId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasMaxLength(34)
+                        .HasColumnType("nvarchar(34)");
+
                     b.HasKey("UserId", "RoleId");
 
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUserRole<string>");
+
+                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -525,6 +546,20 @@ namespace MajornaGameStore.DataAccess.Migrations
                     b.HasIndex("TagsId");
 
                     b.ToTable("ProductTag");
+                });
+
+            modelBuilder.Entity("MajornaGameStore.DataAccess.Entities.Role", b =>
+                {
+                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityRole");
+
+                    b.HasDiscriminator().HasValue("Role");
+                });
+
+            modelBuilder.Entity("MajornaGameStore.DataAccess.Entities.UserRole", b =>
+                {
+                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUserRole<string>");
+
+                    b.HasDiscriminator().HasValue("UserRole");
                 });
 
             modelBuilder.Entity("DeveloperProduct", b =>
@@ -617,7 +652,7 @@ namespace MajornaGameStore.DataAccess.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
                     b.HasOne("MajornaGameStore.DataAccess.Entities.User", null)
-                        .WithMany()
+                        .WithMany("Claims")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -626,7 +661,7 @@ namespace MajornaGameStore.DataAccess.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.HasOne("MajornaGameStore.DataAccess.Entities.User", null)
-                        .WithMany()
+                        .WithMany("Logins")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -639,18 +674,12 @@ namespace MajornaGameStore.DataAccess.Migrations
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("MajornaGameStore.DataAccess.Entities.User", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
                     b.HasOne("MajornaGameStore.DataAccess.Entities.User", null)
-                        .WithMany()
+                        .WithMany("Tokens")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -686,6 +715,25 @@ namespace MajornaGameStore.DataAccess.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("MajornaGameStore.DataAccess.Entities.UserRole", b =>
+                {
+                    b.HasOne("MajornaGameStore.DataAccess.Entities.Role", "Role")
+                        .WithMany("UserRoles")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MajornaGameStore.DataAccess.Entities.User", "User")
+                        .WithMany("UserRoles")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Role");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("MajornaGameStore.DataAccess.Entities.Discount", b =>
                 {
                     b.Navigation("Products");
@@ -710,7 +758,20 @@ namespace MajornaGameStore.DataAccess.Migrations
 
             modelBuilder.Entity("MajornaGameStore.DataAccess.Entities.User", b =>
                 {
+                    b.Navigation("Claims");
+
+                    b.Navigation("Logins");
+
                     b.Navigation("Reviews");
+
+                    b.Navigation("Tokens");
+
+                    b.Navigation("UserRoles");
+                });
+
+            modelBuilder.Entity("MajornaGameStore.DataAccess.Entities.Role", b =>
+                {
+                    b.Navigation("UserRoles");
                 });
 #pragma warning restore 612, 618
         }

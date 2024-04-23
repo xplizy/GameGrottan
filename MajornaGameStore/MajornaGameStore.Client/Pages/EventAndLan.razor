@@ -48,6 +48,7 @@ else
 
 @code
 {
+    EventDto eventDto = new EventDto();
     bool _pageLoading = true;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -67,6 +68,7 @@ else
     {
         NavManager.NavigateTo($"/eventDetail/{Id}");
     }
+
     List<ToastMessage> messages = new List<ToastMessage>();
 
     private void ShowMessage(ToastType toastType) => messages.Add(CreateToastMessage(toastType));
@@ -78,5 +80,8 @@ else
                 HelpText = $"{DateTime.Now}",
                 Message = $"Produkt tillagd i kundvagn!",
             };
+
+
+
 }
 

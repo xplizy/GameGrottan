@@ -66,11 +66,18 @@ else
                     <InputTextArea type="text" class="form-control" Placeholder="Redigera systemkrav" @bind-Value="ViewModel.SelectedProduct.PcRequirements" />
                     <ValidationMessage For="() => ViewModel.SelectedProduct.PcRequirements" />
                 </div>
-                @* <div class="mb-3">
-                    <p>Utgivningsdatum: @ViewModel.SelectedProduct.ReleaseDate</p>
-                    <InputDate type="text" class="form-control" Placeholder="Redigera utgivningsdatum" @bind-Value="ViewModel.SelectedProduct.ReleaseDate" />
+                <div class="mb-3">
+                    <p>Redigera utgivningsdatum: @ViewModel.SelectedProduct.ReleaseDate.ToShortDateString()</p>
+                    <DateInput class="form-control" 
+                               Placeholder="Redigera utgivningsdatum"
+                               @bind-Value="ViewModel.SelectedProduct.ReleaseDate" />
                     <ValidationMessage For="() => ViewModel.SelectedProduct.ReleaseDate" />
-                </div> *@
+                </div>
+                <div class="mb-3">
+                    <p>Pris: @ViewModel.SelectedProduct.Price</p>
+                    <InputNumber type="double" class="form-control" Placeholder="Redigera pris" @bind-Value="ViewModel.SelectedProduct.Price" />
+                    <ValidationMessage For="() => ViewModel.SelectedProduct.Price" />
+                </div>
             </EditForm>
             @*REA nedan*@
             @*Bild?*@

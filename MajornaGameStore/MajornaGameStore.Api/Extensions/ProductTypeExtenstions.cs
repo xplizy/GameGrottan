@@ -10,6 +10,7 @@ public static class ProductTypeExtenstions
         var group = app.MapGroup("/product-types");
 
         group.MapGet("/{id}", GetByIdAsync);
+        group.MapGet("/", GetAllAsync);
 
 
         return app;
@@ -21,4 +22,12 @@ public static class ProductTypeExtenstions
 
         return type;
     }
+    private static async Task<List<ProductType>> GetAllAsync(ProductTypeService service)
+    {
+        var types = await service.GetAllAsync();
+
+        return types.ToList();
+    }
+
+
 }

@@ -23,6 +23,7 @@ public class AdminProductViewModel(IClientProductService service,
     public int SelectedProductTypeUpdateId { get; set; } = 0;
 
 
+
     public async Task SetSelectedProduct(int id)
     {
         var selectedProd = await _productDetailService.GetFullInfoByIdAsync(id);
@@ -64,6 +65,11 @@ public class AdminProductViewModel(IClientProductService service,
     public async Task RemoveDeveloperAsync(Developer dev)
     {
         SelectedProduct.Developers.Remove(dev);
+    }
+
+    public async Task AddNewDeveloperToProduct(string Developer)
+    {
+
     }
 
     public async Task UpdateProductTypeAsync()

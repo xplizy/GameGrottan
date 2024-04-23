@@ -26,9 +26,8 @@ public class EventsViewModel(IClientEventsService eventService, IClientCartServi
                 if (cartTicket.EventId == eventDto.Id)
                 {
                     item.Quantity += quantity;
-                    eventDto.SpotsLeft--;
+                    eventDto.SpotsLeft -= quantity;
                     return;
-                    
                 }
 
             }
@@ -43,13 +42,59 @@ public class EventsViewModel(IClientEventsService eventService, IClientCartServi
         };
 
         await cartService.AddAsync(cartItem);
+
+        //if (eventDto.SpotsLeft > 0)
+        //{
+        //    eventDto.SpotsLeft -= quantity;
+        //    if (eventDto.SpotsLeft < 0)
+        //    {
+        //        eventDto.SpotsLeft = 0;
+        //    }
+        //}
     }
 
-    public async Task AlmostSoldOut(EventDto eventDto, int spotsLeft, int quantity)
+    public async Task<int> SpotsLeftAsync(EventDto eventDto)
     {
+        var cartItems = await cartService.GetAllAsync();
+        var spotsLeft = eventDto.SpotsLeft;
 
+        foreach (var item in cartItems)
+        {
+            if (item is CartTicketDto cartTicket && cartTicket.EventId == eventDto.Id)
+            {
+                spotsLeft -= cartTicket.Quantity;
+            }
+        }
+        return spotsLeft;
     }
-   
+
+    //private EventDto eventDto = new EventDto();
+
+    //public async Task AlmostSoldOut(EventDto eventDto, int quantity)
+    //{
+    //    var cartItems = await cartService.GetAllAsync();
+    //    var spotsLeft = this.eventDto.SpotsLeft;
+
+    //    foreach (var item in cartItems)
+    //    {
+    //        if (item is CartTicketDto cartTicket && cartTicket.EventId == eventDto.Id)
+    //        {
+    //            cartTicket.Quantity += quantity;
+    //            //eventDto.SpotsLeft -= quantity;
+    //            spotsLeft -= quantity;
+    //            spotsLeft--;
+
+    //            if (spotsLeft < 0)
+    //            {
+    //                spotsLeft = 0;
+    //            }
+    //            return;
+
+    //        }
+    //    }
+
+    //}
+
 
 
 }

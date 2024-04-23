@@ -4,7 +4,6 @@
 @inject NavigationManager NavManager
 @inject EventsViewModel ViewModel
 
-
 <PageTitle>Events and LAN</PageTitle>
 
 
@@ -22,19 +21,22 @@ else
             <Virtualize Items="ViewModel.Models">
 
                 <li class="list-group-item">
-                    <p class="h5">
+                    <dl>
+                    <dt>
                         @context.Name
-                    </p>
-                    <p>
-                        @context.Description 
-                    </p>
-                    <p>
-                        @context.Price KR 
-                    </p>
+                    </dt>
+                    <dd>
+                        - @context.Description
+                    </dd>
+                    <dt>
+                        @context.Price KR
+                    </dt>
+                    </dl>
                     <div>
-                    <button id="Goto" class="btn-detailpage" style="margin-left: 20px" @onclick="@(async () => await GoToDetailsAsync(context.Id))">Mer om eventet</button>
-                    <button id="addcart" class="btn-add btn-success" @onclick="@(async () => await ViewModel.AddToCartAsync(context, 1))">Köp</button>
-                    <div style="margin-left: 25px;">@eventDto.SpotsLeft biljetter kvar!</div>
+                        <button id="Goto" class="btn-detailpage" style="margin-left: 20px" @onclick="@(async () => await GoToDetailsAsync(context.Id))">Mer om eventet</button>
+                        <button id="addcart" class="btn-add btn-success" @onclick="@(async () => await ViewModel.AddToCartAsync(context, 1))">Köp</button>
+
+                        <div style="margin-left: 25px; color: darkred">@context.SpotsLeft biljetter kvar!</div>
                     </div>
                 </li>
             </Virtualize>
@@ -49,9 +51,8 @@ else
 
 @code
 {
-    EventDto eventDto = new EventDto();
     bool _pageLoading = true;
-
+    
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)

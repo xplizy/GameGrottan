@@ -39,8 +39,13 @@ public static class EventExtensions
 
     }
 
-    public static async Task<IResult> UpdateEvent(EventService eventService, Event entity)
+    public static async Task<IResult> UpdateEvent(EventService eventService, Event entity, int id)
     {
+        var eventFromDb = await eventService.GetByIdAsync(id);
+
+        if(eventFromDb is null)
+            return Results.NotFound();
+
         var events = await eventService.UpdateAsync(entity);
 
         if (events is false)

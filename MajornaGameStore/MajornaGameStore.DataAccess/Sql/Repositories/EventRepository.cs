@@ -20,6 +20,7 @@ public class EventRepository(MajornaDbContext context) : RepositoryBase<Event, i
         eventFromDb.EventStart = entity.EventStart;
         eventFromDb.EventEnd = entity.EventEnd;
         eventFromDb.Users = entity.Users;
+        eventFromDb.SpotsLeft = entity.SpotsLeft;
 
         await _context.SaveChangesAsync();
         return true;

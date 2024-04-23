@@ -9,18 +9,25 @@
 }
 else
 {
-    <div class="event-page">
-        <img src="Images/MAJORNA-LAN.png" style="float: left; margin-right: 20px"/>
-        <div style="float: left">
-            <h4> @ViewModel.SelectedEvent.Name</h4>
-            <p> Beskrivning: @ViewModel.SelectedEvent.Description</p>
-            <p> Entre pris: @ViewModel.SelectedEvent.Price kr per person</p>
-            <p> Start Datum: @ViewModel.SelectedEvent.Start</p>
-            <p> Slut Datum: @ViewModel.SelectedEvent.End</p>
-            <button class="btn-add btn-success" @onclick="@(async () => await ViewModel.AddToCartAsync(@ViewModel.SelectedEvent, 1))">Köp</button>
+    <Toasts class="p-3" Messages="messages" AutoHide="true" Delay="3000" Placement="ToastsPlacement.TopRight" />
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="event-details">
+                    <h2>@ViewModel.SelectedEvent.Name</h2>
+                    <p><strong>Beskrivning:</strong> @ViewModel.SelectedEvent.Description</p>
+                    <p><strong>Entre pris:</strong> @ViewModel.SelectedEvent.Price</p>
+                    <p><strong>Start Datum:</strong> @ViewModel.SelectedEvent.Start</p>
+                    <p><strong>Slut Datum:</strong> @ViewModel.SelectedEvent.End</p>
+                    <button class="btn btn-success" @onclick="@(async () => { await ViewModel.AddToCartAsync(ViewModel.SelectedEvent, 1); ShowMessage(ToastType.Success); })">Lägg till I Kundvagn</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <img src="Images/MAJORNA-LAN.png" class="img-fluid rounded" style="max-height: 400px;" alt="Majorna Lan" />
+            </div>
         </div>
-        <div style="clear: both"></div>
     </div>
+
     
 }
 
@@ -49,6 +56,16 @@ else
         }
         
     }
+    List<ToastMessage> messages = new List<ToastMessage>();
 
+    private void ShowMessage(ToastType toastType) => messages.Add(CreateToastMessage(toastType));
+
+    private ToastMessage CreateToastMessage(ToastType toastType)
+        => new ToastMessage
+        {
+            Type = toastType,
+            HelpText = $"{DateTime.Now}",
+            Message = $"Produkt tillagd i kundvagn!",
+        };
   
 }

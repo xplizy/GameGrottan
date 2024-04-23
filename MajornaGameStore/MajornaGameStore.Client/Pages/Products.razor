@@ -28,6 +28,7 @@ else
                     
                     <div class="item-name">
                         <h5><a>@context.Name</a></h5>
+                        <div class="item-price" style="margin-left: 5px">Sek @(context.Price)</div>
                         <button class="btn btn-success" @onclick="@(async () => { await ViewModel.AddToCartAsync(context, 1); ShowMessage(ToastType.Success); })">
                             Lägg Till I Kundvagn
                         </button>

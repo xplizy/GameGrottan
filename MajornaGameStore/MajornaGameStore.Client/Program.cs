@@ -62,7 +62,8 @@ builder.Services
     .AddScoped<IClientCartService, ClientCartService>()
     .AddScoped<IClientTypeService, ClientTypeService>()
     .AddScoped<IClientDiscountService, ClientDiscountService>()
-    .AddScoped<IClientDeveloperService, ClientDeveloperService>();
+    .AddScoped<IClientDeveloperService, ClientDeveloperService>()
+    .AddScoped<IClientPublisherService, ClientPublisherService>();
 
 
 builder.Services.AddBlazorBootstrap();

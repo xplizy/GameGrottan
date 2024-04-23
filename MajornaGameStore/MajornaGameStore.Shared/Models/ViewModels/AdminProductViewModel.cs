@@ -9,12 +9,13 @@ public class AdminProductViewModel(IClientProductService service,
     IClientTypeService typeService, 
     IClientDiscountService discountService,
     IClientDeveloperService developerService,
-    IClientPublisherService PublisherService) : ViewModelBase<ProductDto, int>(service)
+    IClientPublisherService publisherService) : ViewModelBase<ProductDto, int>(service)
 {
     private readonly IClientProductService _productDetailService = service;
     private readonly IClientTypeService _typeService = typeService;
     private readonly IClientDiscountService _discountService = discountService;
     private readonly IClientDeveloperService _developerService = developerService;
+    private readonly IClientPublisherService _publisherService = publisherService;
 
 
     //TODO: kolla om vi ska använda product eller productdto för den nedan

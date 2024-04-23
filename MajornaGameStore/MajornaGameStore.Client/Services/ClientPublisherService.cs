@@ -18,14 +18,14 @@ public class ClientPublisherService(IHttpClientFactory factory) : IClientPublish
         throw new NotImplementedException();
     }
 
-    public Task<Publisher> AddAsync(Publisher entity)
+    public async Task<Publisher> AddAsync(Publisher entity)
     {
-        var response = await _httpClient.PostAsJsonAsync($"/developers", entity);
+        var response = await _httpClient.PostAsJsonAsync($"/publishers", entity);
 
         if (response.IsSuccessStatusCode == false)
             return null;
 
-        var result = await response.Content.ReadFromJsonAsync<Developer>();
+        var result = await response.Content.ReadFromJsonAsync<Publisher>();
 
         return result;
     }

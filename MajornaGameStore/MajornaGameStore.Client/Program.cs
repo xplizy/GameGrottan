@@ -63,7 +63,8 @@ builder.Services
     .AddScoped<IClientTypeService, ClientTypeService>()
     .AddScoped<IClientDiscountService, ClientDiscountService>()
     .AddScoped<IClientDeveloperService, ClientDeveloperService>()
-    .AddScoped<IClientPublisherService, ClientPublisherService>();
+    .AddScoped<IClientPublisherService, ClientPublisherService>()
+    .AddScoped<IClientTagService, ClientTagService>();
 
 
 builder.Services.AddBlazorBootstrap();

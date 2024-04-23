@@ -152,6 +152,7 @@ app.MapDiscountEndPoints();
 app.MapProductTypeEndpoints();
 app.MapDeveloperEndPoints();
 app.MapPublisherEndPoints();
+app.MapProductTagEndpoints();
 //app.MapControllers();
 
 app.Run();

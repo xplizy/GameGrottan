@@ -9,13 +9,15 @@ public class AdminProductViewModel(IClientProductService service,
     IClientTypeService typeService, 
     IClientDiscountService discountService,
     IClientDeveloperService developerService,
-    IClientPublisherService publisherService) : ViewModelBase<ProductDto, int>(service)
+    IClientPublisherService publisherService,
+    IClientTagService tagService) : ViewModelBase<ProductDto, int>(service)
 {
     private readonly IClientProductService _productDetailService = service;
     private readonly IClientTypeService _typeService = typeService;
     private readonly IClientDiscountService _discountService = discountService;
     private readonly IClientDeveloperService _developerService = developerService;
     private readonly IClientPublisherService _publisherService = publisherService;
+    private readonly IClientTagService _tagService = tagService;
 
 
     //TODO: kolla om vi ska använda product eller productdto för den nedan
@@ -23,9 +25,10 @@ public class AdminProductViewModel(IClientProductService service,
 
     public ProductModel SelectedProduct { get; set; }
 
-
     public List<ProductType> ProductTypes { get; set; } = new();
+    public List<Tag> ProductTags { get; set; } = new();
     public int SelectedProductTypeUpdateId { get; set; } = 0;
+    public int SelectedTagToUpdateId { get; set; } = 0;
 
     public Developer NewDeveloper { get; set; } = new();
     public Publisher NewPublisher { get; set; } = new();
@@ -65,7 +68,9 @@ public class AdminProductViewModel(IClientProductService service,
     {
         await base.OnInit();
         var types = await _typeService.GetAllAsync();
+        var tags = await _tagService.GetAllAsync();
         ProductTypes.AddRange(types);
+        ProductTags.AddRange(tags);
     }
 
     public async Task RemoveDeveloperAsync(Developer dev)
@@ -76,11 +81,16 @@ public class AdminProductViewModel(IClientProductService service,
     {
         SelectedProduct.Publishers.Remove(publisher);
     }
+    public async Task RemoveTagAsync(Tag tag)
+    {
+        SelectedProduct.Tags.Remove(tag);
+    }
 
     public async Task AddNewDeveloperToProductAsync()
     {
         var newDev = await _developerService.AddAsync(NewDeveloper);
         SelectedProduct.Developers.Add(newDev);
+        await SaveUpdateChangesAsync();
         NewDeveloper = new();
     }
 
@@ -88,7 +98,17 @@ public class AdminProductViewModel(IClientProductService service,
     {
         var newDev = await _publisherService.AddAsync(NewPublisher);
         SelectedProduct.Publishers.Add(NewPublisher);
+        await SaveUpdateChangesAsync();
         NewPublisher = new();
+    }
+    public async Task UpdateProductTagAsync()
+    {
+        if (SelectedTagToUpdateId == 0)
+            return;
+        var tag = ProductTags.Find(t => t.Id == SelectedTagToUpdateId);
+        SelectedProduct.Tags.Add(tag);
+        await SaveUpdateChangesAsync();
+        SelectedTagToUpdateId = 0;
     }
 
     public async Task UpdateProductTypeAsync()

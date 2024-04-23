@@ -140,6 +140,35 @@ else
                     @onclick="ViewModel.AddNewPublisherToProductAsync">Lägg till ny spelutvecklare</Button>
 
         </div>
+        <div class="card p-3 mb-3">
+            <h3>Redigera produkttaggar</h3>
+            <p>Nuvarande produkttaggar: </p>
+            <ul class="list-group" id="editProdTagsList">
+                @foreach (var tag in ViewModel.SelectedProduct.Tags)
+                {
+                    <li class="list-group-item">
+                        @tag.Name
+                        <Button class="btn-danger" id="removeTagBtn" @onclick="async () => await ViewModel.RemoveTagAsync(tag)">
+                            <Icon Name="IconName.Trash"></Icon>
+                        </Button>
+                    </li>
+
+                }
+            </ul>
+            <p>Lägg till ny tag från listan nedan:</p>
+            <InputSelect id="editProdTag" class="form-select mb-3" @bind-Value="ViewModel.SelectedTagToUpdateId">
+                <option value="0">Välj en tag</option>
+                @foreach (var type in ViewModel.ProductTags)
+                {
+                    <option value="@type.Id">@type.Name</option>
+                }
+            </InputSelect>
+            <Button class="btn-success" id="editProdTagUpdateSaveBtn"
+                    @onclick="ViewModel.UpdateProductTagAsync">
+                Lägg till tag
+            </Button>
+
+        </div>
             @*REA nedan*@
             @*Bild?*@
         

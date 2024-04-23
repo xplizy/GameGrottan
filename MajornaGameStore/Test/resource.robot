@@ -159,6 +159,15 @@ Log in with wrong credentials
     Click Button    //button[@id='loginBtn']
     Wait Until Page Contains    Invalid email and/or password.
 
+Login with valid credential for User
+    [Documentation]    User login page
+    [Tags]      Test_Admin_login
+    [Arguments]     ${admin_username}     ${password}
+    Click Element    //i[@class='bi bi-person fs-1']
+    Input Text    //input[@id='usernameField']    ${admin_username}
+    Input Password    //input[@id='passwordField']    ${password}
+    Click Button    //button[@id='loginBtn']
+    Wait Until Page Contains Element    //*[@id="navbarNavDropdown"]/ul/li[1]/a/p
 
 
 

@@ -34,9 +34,12 @@ else
                     </dl>
                     <div>
                         <button id="Goto" class="btn-detailpage" style="margin-left: 20px" @onclick="@(async () => await GoToDetailsAsync(context.Id))">Mer om eventet</button>
-                        <button id="addcart" class="btn-add btn-success" @onclick="@(async () => await ViewModel.AddToCartAsync(context, 1))">Köp</button>
-
+                        @if (context.SpotsLeft >= 1)
+                        {
+                            <button id="addcart" class="btn-add btn-success" @onclick="@(async () => await ViewModel.AddToCartAsync(context, 1))">Köp</button>
+                        }
                         <div style="margin-left: 25px; color: darkred">@context.SpotsLeft biljetter kvar!</div>
+                        
                     </div>
                 </li>
             </Virtualize>

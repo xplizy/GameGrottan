@@ -4,6 +4,7 @@ using MajornaGameStore.DataAccess.Services;
 using MajornaGameStore.Shared.Dtos;
 using MajornaGameStore.Shared.Interfaces.ServiceInterfaces.ClientSide;
 using Microsoft.AspNetCore.Components;
+using Microsoft.Extensions.Logging;
 
 namespace MajornaGameStore.Shared.Models.ViewModels;
 
@@ -25,7 +26,9 @@ public class EventsViewModel(IClientEventsService eventService, IClientCartServi
                 if (cartTicket.EventId == eventDto.Id)
                 {
                     item.Quantity += quantity;
+                    eventDto.SpotsLeft--;
                     return;
+                    
                 }
 
             }
@@ -42,6 +45,11 @@ public class EventsViewModel(IClientEventsService eventService, IClientCartServi
         await cartService.AddAsync(cartItem);
     }
 
-    
-    
+    public async Task AlmostSoldOut(EventDto eventDto, int spotsLeft, int quantity)
+    {
+
+    }
+   
+
+
 }

@@ -18,7 +18,9 @@ public class AdminProductViewModel(IClientProductService service,
 
     public ProductModel SelectedProduct { get; set; }
 
-    public List<ProductType> ProductTypes { get; set; }
+
+    public List<ProductType> ProductTypes { get; set; } = new();
+    public int SelectedProductTypeUpdateId { get; set; } = 0;
 
 
     public async Task SetSelectedProduct(int id)
@@ -31,6 +33,7 @@ public class AdminProductViewModel(IClientProductService service,
 
         SelectedProduct = new ProductModel()
         {
+            Id = selectedProd.Id,
             Name = selectedProd.Name,
             Price = selectedProd.Price,
             ProductType = productType,
@@ -54,9 +57,24 @@ public class AdminProductViewModel(IClientProductService service,
     public override async Task OnInit()
     {
         await base.OnInit();
-        await 
+        var types = await _typeService.GetAllAsync();
+        ProductTypes.AddRange(types);
     }
 
+    public async Task RemoveDeveloperAsync(Developer dev)
+    {
+        SelectedProduct.Developers.Remove(dev);
+    }
+
+    public async Task UpdateProductTypeAsync()
+    {
+        if (SelectedProductTypeUpdateId == 0)
+            return;
+        var type = ProductTypes.Find(t => t.Id == SelectedProductTypeUpdateId);
+        SelectedProduct.ProductType = type;
+        await SaveUpdateChangesAsync();
+        SelectedProductTypeUpdateId = 0;
+    }
     public async Task SaveUpdateChangesAsync()
     {
 

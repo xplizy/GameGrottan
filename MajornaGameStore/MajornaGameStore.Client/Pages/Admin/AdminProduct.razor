@@ -37,53 +37,81 @@ else
             <EditForm Model="ViewModel.SelectedProduct" OnValidSubmit="ViewModel.SaveUpdateChangesAsync">
                 <DataAnnotationsValidator/>
                 <div class="mb-3">
+                    <h3>Redigera allmän info om produkten</h3>
+                </div>
+                <div class="mb-3">
                     <p>Redigera produktens namn: </p>
-                    <InputText type="text" class="form-control"  Placeholder="Redigera namn" @bind-Value="ViewModel.SelectedProduct.Name"/>
+                    <InputText type="text" class="form-control" id="editProdName" Placeholder="Redigera namn" @bind-Value="ViewModel.SelectedProduct.Name"/>
                     <ValidationMessage For="() => ViewModel.SelectedProduct.Name"/>
                 </div>
                 <div class="mb-3">
                     <p>Redigera pris: </p>
-                    <InputNumber type="double" class="form-control" Placeholder="Redigera pris" @bind-Value="ViewModel.SelectedProduct.Price"/>
+                    <InputNumber type="double" class="form-control" id="editProdPrice" Placeholder="Redigera pris" @bind-Value="ViewModel.SelectedProduct.Price"/>
                     <ValidationMessage For="() => ViewModel.SelectedProduct.Price"/>
                 </div> 
                 <div class="mb-3">
-                    <p>Redigera produkttyp: </p>
-                    <InputText type="text" class="form-control" Placeholder="Redigera produkttyp" @bind-Value="ViewModel.SelectedProduct.ProductType.Name" />
-                    <ValidationMessage For="() => ViewModel.SelectedProduct.ProductType.Name"/>
-                </div>
-                <div class="mb-3">
                     <p>Redigera beskrivning: </p>
-                    <InputTextArea type="text" class="form-control" Placeholder="Redigera beskrivning" @bind-Value="ViewModel.SelectedProduct.Description" />
+                    <InputTextArea type="text" class="form-control" id="editProdDesc" Placeholder="Redigera beskrivning" @bind-Value="ViewModel.SelectedProduct.Description" />
                     <ValidationMessage For="() => ViewModel.SelectedProduct.Description" />
                 </div>
                 <div class="mb-3">
                     <p>Redigera tillgängliga språk:</p>
-                    <InputText type="text" class="form-control" Placeholder="Redigera språk" @bind-Value="ViewModel.SelectedProduct.Languages" />
+                    <InputText type="text" class="form-control" id="editProdLang" Placeholder="Redigera språk" @bind-Value="ViewModel.SelectedProduct.Languages" />
                     <ValidationMessage For="() => ViewModel.SelectedProduct.Languages" />
                 </div>
                 <div class="mb-3">
                     <p>Redigera systemkrav: </p>
-                    <InputTextArea type="text" class="form-control" Placeholder="Redigera systemkrav" @bind-Value="ViewModel.SelectedProduct.PcRequirements" />
+                    <InputTextArea type="text" class="form-control" id="editProdSpecs" Placeholder="Redigera systemkrav" @bind-Value="ViewModel.SelectedProduct.PcRequirements" />
                     <ValidationMessage For="() => ViewModel.SelectedProduct.PcRequirements" />
                 </div>
                 <div class="mb-3">
                     <p>Redigera utgivningsdatum: </p>
                     <DateInput class="form-control" 
-                               Placeholder="Redigera utgivningsdatum"
+                               Placeholder="Redigera utgivningsdatum" id="editProdDate"
                                @bind-Value="ViewModel.SelectedProduct.ReleaseDate" />
                     <ValidationMessage For="() => ViewModel.SelectedProduct.ReleaseDate" />
                 </div>
                 <div class="mb-3">
-                    <p>Redigera pris:</p>
-                    <InputNumber type="int" class="form-control" Placeholder="Redigera åldersgräns" @bind-Value="ViewModel.SelectedProduct.AgeRating" />
+                    <p>Redigera åldersgräns:</p>
+                    <InputNumber type="int" class="form-control" id="editProdAgeRating"  Placeholder="Redigera åldersgräns" @bind-Value="ViewModel.SelectedProduct.AgeRating" />
                     <ValidationMessage For="() => ViewModel.SelectedProduct.AgeRating" />
                 </div>
+                <button type="submit" id="editProdGeneralSave" class="btn btn-success">Uppdatera allmän info</button>
             </EditForm>
-            @*REA nedan*@
-            @*Bild?*@
-            
+        </div>
+        <div class="card p-3 mb-3">
+            <h3>Redigera produktkategori</h3>
+            <p>Nuvarande produktkategori: @ViewModel.SelectedProduct.ProductType</p>
+            <p>Välj ny produktkategori från listan nedan:</p>
+            <InputSelect id="editProdType" class="form-select mb-3" @bind-Value="ViewModel.SelectedProductTypeUpdateId">
+                <option value="0">Välj en kategori</option>
+                @foreach (var type in ViewModel.ProductTypes)
+                {
+                    <option value="@type.Id">@type.Name</option>
+                }
+            </InputSelect>
+            <Button class="btn-success" id="editProdTypeUpdateSaveBtn"
+                    @onclick="ViewModel.UpdateProductTypeAsync">Uppdatera produkttyp</Button>
 
         </div>
+        <div class="card p-3 mb-3">
+            <h3>Redigera spelutvecklare</h3>
+            <ul class="list-group" id="editProdDevList">
+                @foreach (var dev in ViewModel.SelectedProduct.Developers)
+                {
+                    <li class="list-group-item"></li>
+                    <Button class="btn-danger" @onclick="async () => await ViewModel.RemoveDeveloperAsync(dev)">
+                        <Icon Name="IconName.Trash"></Icon>
+                    </Button>
+                }
+            </ul>
+            <Button class="btn-success" id="editProdDevUpdateBtn"
+                    @onclick="ViewModel.UpdateProductTypeAsync">Uppdatera produkttyp</Button>
+
+        </div>
+            @*ProduktTyp*@
+            @*REA nedan*@
+            @*Bild?*@
         
 
     </BodyTemplate>

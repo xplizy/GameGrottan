@@ -11,7 +11,7 @@
 @if (_pageLoading)
 {
     <p>Loading...</p>
-    <Spinner/>
+    <Spinner />
 }
 else
 {
@@ -28,30 +28,21 @@ else
                         @context.Description (@context.Price KR)
                     </p>
                     <button id="Goto" class="btn-detailpage" style="margin-left: 20px" @onclick="@(async () => await GoToDetailsAsync(context.Id))">Mer om eventet</button>
-                    <button id="addcart" class="btn-add btn-success" @onclick="@(async () => await AddToCartAsync(context))">Köp</button>
+                    <button id="addcart" class="btn-add btn-success" @onclick="@(async () => await ViewModel.AddToCartAsync(context, 1))">Köp</button>
                 </li>
-                <Modal @ref="successModal" Title="@context.Name" Size="ModalSize.Small">
-                    <BodyTemplate>
-                        <p style="color: black;">har lagts till i varukorgen</p>
-                    </BodyTemplate>
-
-                </Modal>
             </Virtualize>
         </ul>
     </div>
 
-    
+
 
 }
- 
+
 
 
 @code
 {
     bool _pageLoading = true;
-    Modal successModal;
-    Timer timer;
-    bool modalVisible = false;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -65,30 +56,13 @@ else
         await base.OnAfterRenderAsync(firstRender);
     }
 
-    
-
-    private async Task AddToCartAsync(EventDto eventDto)
-    {
-        await ViewModel.AddToCartAsync(eventDto, 1);
-
-        successModal.ShowAsync();
-        modalVisible = true;
-
-        timer = new Timer(async (_) =>
-        {
-            await successModal.HideAsync();
-            modalVisible = false;
-            StateHasChanged();
-        }, null, 1500, Timeout.Infinite);
-    }
-
 
     private async Task GoToDetailsAsync(int Id)
     {
         NavManager.NavigateTo($"/eventDetail/{Id}");
     }
 
-    
+
 }
 
 @* <PageTitle>Event and LAN</PageTitle>
@@ -105,7 +79,7 @@ else
             <p>
                 Plats: Ebbe Lieberathsgatan 18C : Göteborg
             </p>
-        </div> 
+        </div>
         <div class="LanInfo2">
             <p>
                 Turneringar:
@@ -137,7 +111,7 @@ else
     <p>
         Förutom turneringar finns det också möjligheter för deltagarna att mingla, byta erfarenheter och kanske till och med knyta nya vänskapsband. Majorna Gaming Lan är mer än bara ett LAN-event; det är en plats där passion för spel möter gemenskap och äventyr.
     </p>
-    
+
     <p>
         Är du intresserad? Skicka din anmälan med ditt namn och efternamn info@gamergrottan.se. Betalning sker på plats. 100:- kr för inträde.
     </p>

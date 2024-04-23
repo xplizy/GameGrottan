@@ -8,9 +8,16 @@ public class ClientTypeService(IHttpClientFactory factory) : IClientTypeService
 {
 
     private readonly HttpClient _httpClient = factory.CreateClient("Auth");
-    public Task<ICollection<ProductType>> GetAllAsync()
+    public async Task<ICollection<ProductType>?> GetAllAsync()
     {
-        throw new NotImplementedException();
+        var response = await _httpClient.GetAsync("product-types");
+
+        if (response.IsSuccessStatusCode == false)
+            return null;
+
+        var result = await response.Content.ReadFromJsonAsync<List<ProductType>>();
+
+        return result;
     }
 
     public async Task<ProductType?> GetByIdAsync(int id)

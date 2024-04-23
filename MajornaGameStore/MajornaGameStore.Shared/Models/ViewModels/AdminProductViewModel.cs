@@ -18,7 +18,7 @@ public class AdminProductViewModel(IClientProductService service,
 
     public ProductModel SelectedProduct { get; set; }
 
-  
+    public List<ProductType> ProductTypes { get; set; }
 
 
     public async Task SetSelectedProduct(int id)
@@ -49,6 +49,12 @@ public class AdminProductViewModel(IClientProductService service,
         };
 
 
+    }
+
+    public override async Task OnInit()
+    {
+        await base.OnInit();
+        await 
     }
 
     public async Task SaveUpdateChangesAsync()

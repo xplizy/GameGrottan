@@ -1,19 +1,17 @@
 @import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
 body {
-    
-    
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-
-
     background-size: cover;
     background-color: rgba(0, 0, 128, .65);
-    background-image: url(../Images/bg-image.jpeg);
-    background-blend-mode: multiply;
+    /*background-image: url(https://majornastorage.blob.core.windows.net/images/ArcadeGG.png);*/
+    /*background-image: url(https://majornastorage.blob.core.windows.net/images/arcadebackrp.jpg);*/
+    /*background-image: url(https://majornastorage.blob.core.windows.net/images/344351.jpg);*/
+    background-image: url(https://majornastorage.blob.core.windows.net/images/neon-lines-abstract-glowing-lines.jpg); 
+    /*background-blend-mode: multiply;*/
     background-size: 100%;
-
 }
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -123,3 +121,53 @@ a, .btn-link {
 code {
     color: #c02d76;
 }
+
+
+@keyframes zoomIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+@keyframes slideTop {
+    0% {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+@keyframes slideBottom {
+    0% {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.navbar-brand {
+
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    animation: zoomIn 1s ease forwards;
+    animation-delay: 1s;
+}
+
+.nav-link {
+    opacity: 0;
+    animation: zoomIn 1s ease forwards;
+    animation-delay: 1.5s;
+}
+

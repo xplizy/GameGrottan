@@ -27,10 +27,6 @@ public class EventsViewModel(IClientEventsService eventService, IClientCartServi
                 {
                     item.Quantity += quantity;
                     eventDto.SpotsLeft -= quantity;
-                    if (eventDto.SpotsLeft is 0)
-                    {
-                        return;
-                    }
                     return;
                 }
 
@@ -48,7 +44,10 @@ public class EventsViewModel(IClientEventsService eventService, IClientCartServi
         await cartService.AddAsync(cartItem);
 
 
-        
+        if (eventDto.SpotsLeft is 0)
+        {
+            return;
+        }
 
     }
 

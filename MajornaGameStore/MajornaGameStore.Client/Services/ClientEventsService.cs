@@ -6,9 +6,9 @@ using SharpCompress.Common;
 
 namespace MajornaGameStore.Client.Services;
 
-public class ClientEventsService(HttpClient httpClient) : IClientEventsService
+public class ClientEventsService(IHttpClientFactory factory) : IClientEventsService
 {
-    private readonly HttpClient _httpClient = httpClient;
+    private readonly HttpClient _httpClient = factory.CreateClient(name:"Auth");
 
     public async Task<ICollection<EventDto>> GetAllAsync()
     {

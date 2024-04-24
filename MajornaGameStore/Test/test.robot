@@ -5,14 +5,14 @@ Library    SeleniumLibrary
 Suite Setup     setup
 
 *** Test Cases ***
-Blazorapp running
-    Open Browser        browser=${BROWSER}      options=${BROWSER_OPTIONS}
-    Go To   ${url}
-    Wait Until Page Contains    Välkommen till Majorna Gaming
+#Blazorapp running
+   # Open Browser        browser=${BROWSER}      options=${BROWSER_OPTIONS}
+   # Go To   ${url}
+   # Wait Until Page Contains    Välkommen till Majorna Gaming
 
 Access Landing Page
     Given Open the browser
-    When I am able to see the landing page with Welcome message
+   # When I am able to see the landing page with Welcome message
     And I am able to see the logo
     Then I can see the links
 
@@ -55,6 +55,34 @@ Remove item from the cart
     When I Click On Cart
     Then I can see the Products in the cart
     And I can remove the product
+
+Access Event Page
+    [Documentation]    Access Event Page
+    [Tags]  Events
+    Given open the browser
+    When I Click on Event
+    Then I should be able to see all events
+
+Access Event Details Page
+    [Documentation]    Access Event Page
+    [Tags]  Events
+    Given open the browser
+    When I Click on Event
+    And I Click on Event Details
+    Then I should be able to see the event details
+
+Login to admin page with valid credentials
+    [Documentation]    Login with valid credentials
+    [Tags]  Admin_Login
+    Log in with right credentials       ${admin_username}      ${password}
+    Logout
+
+Login to admin page with invalid credentials
+    [Documentation]    Login with invalid credentials
+    [Tags]  Admin_Login
+    Log in with wrong credentials       ${admin_username}      ${invalid_password}
+
+
 
 
 

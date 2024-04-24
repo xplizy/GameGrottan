@@ -17,23 +17,26 @@
 }
 else
 {
+    <Toasts class="p-3" Messages="messages" AutoHide="true" Delay="3000" Placement="ToastsPlacement.TopRight" />
     <div class="row" style="display: flex; flex-wrap: wrap;">
         <Virtualize Items="ViewModel.Models">
             <div class="col-md-3" style="flex: 0 0 25%;">
-                <div class="item-container">
+                <div class="item-container" style="margin-bottom: 65px">
                     <div class="item-image-wrapper">
-                        <img src="@context.ImageLink" class="item-image" style="width: 100%; height: auto;" @onclick="@(async () => GoToDetailsAsync(context))" />
+                        <img src="@context.ImageLink" class="item-image" style="width: 100%; height: auto;" @onclick="@(async () => GoToDetailsAsync(context.Id))" />
                     </div>
+                    
                     <div class="item-name">
                         <h5><a>@context.Name</a></h5>
-                        <button class="btn-add" @onclick="@(async () => await ViewModel.AddToCartAsync(context, 1))">
+                        <div class="item-price" style="margin-left: 5px">Sek @(context.Price)</div>
+                        <button class="btn btn-success" @onclick="@(async () => { await ViewModel.AddToCartAsync(context, 1); ShowMessage(ToastType.Success); })">
                             Lägg Till I Kundvagn
                         </button>
                     </div>
                 </div>
                 
-                <div class="item-price">Sek @(context.Price)</div>
             </div>
+       
         </Virtualize>
     </div>
 
@@ -44,6 +47,7 @@ else
 @code
 {
     bool _contentLoading = true;
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
@@ -54,9 +58,20 @@ else
         }
     }
 
-    private void GoToDetailsAsync(ProductDto product)
+    private async Task GoToDetailsAsync(int Id)
     {
-        NavManager.NavigateTo("/productDetail");
+        NavManager.NavigateTo($"/productDetail/{Id}");
     }
 
+    List<ToastMessage> messages = new List<ToastMessage>();
+
+    private void ShowMessage(ToastType toastType) => messages.Add(CreateToastMessage(toastType));
+
+    private ToastMessage CreateToastMessage(ToastType toastType)
+        => new ToastMessage
+        {
+            Type = toastType,
+            HelpText = $"{DateTime.Now}",
+            Message = $"Produkt tillagd i kundvagn!",
+        };
 }

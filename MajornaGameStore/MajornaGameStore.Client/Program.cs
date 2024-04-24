@@ -26,21 +26,14 @@ builder.Services.AddScoped<AuthenticationStateProvider, CookieAuthenticationStat
 builder.Services.AddScoped(
     sp => (IAccountManagement)sp.GetRequiredService<AuthenticationStateProvider>());
 
-//builder.Services.AddScoped(sp =>
-//    new HttpClient { BaseAddress = new Uri("https://majornaggapi.azurewebsites.net") });
-
-//builder.Services.AddHttpClient(
-//        "Auth",
-//        opt => opt.BaseAddress = new Uri("https://majornaggapi.azurewebsites.net"))
-//    .AddHttpMessageHandler<CookieHandler>();
-
 builder.Services.AddScoped(sp =>
-    new HttpClient { BaseAddress = new Uri("https://localhost:7190") });
+    new HttpClient { BaseAddress = new Uri("https://majornaggapi.azurewebsites.net/") });
 
 builder.Services.AddHttpClient(
         "Auth",
-        opt => opt.BaseAddress = new Uri("https://localhost:7190"))
+        opt => opt.BaseAddress = new Uri("https://majornaggapi.azurewebsites.net"))
     .AddHttpMessageHandler<CookieHandler>();
+
 
 
 
@@ -48,9 +41,9 @@ builder.Services
     .AddScoped<ProductViewModel>()
     .AddScoped<EventsViewModel>()
     .AddScoped<EventDetailViewModel>()
+    .AddScoped<ProductDetailViewModel>()
     .AddScoped<CartViewModel>()
     .AddScoped<AdminProductViewModel>();
-
 builder.Services.AddScoped<IPaymentHttpClient, PaymentHttpClient>();
 
 builder.Services

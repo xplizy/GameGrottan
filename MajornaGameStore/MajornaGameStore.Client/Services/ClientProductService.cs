@@ -77,4 +77,15 @@ public class ClientProductService(IHttpClientFactory factory) : IClientProductSe
 
         return true;
     }
+    public async Task<Product?> GetFullInfoByIdAsync(int id)
+    {
+        var response = await _httpClient.GetAsync($"/products/{id}");
+
+        if (response.IsSuccessStatusCode == false)
+            return null;
+
+        var result = await response.Content.ReadFromJsonAsync<Product>();
+
+        return result;
+    }
 }

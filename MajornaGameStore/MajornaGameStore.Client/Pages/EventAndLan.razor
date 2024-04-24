@@ -1,41 +1,75 @@
 ﻿@page "/eventandlan"
+@using MajornaGameStore.DataAccess.Entities
+@using Microsoft.EntityFrameworkCore.Metadata.Internal
 @inject NavigationManager NavManager
 @inject EventsViewModel ViewModel
 
-
 <PageTitle>Events and LAN</PageTitle>
+
 
 @if (_pageLoading)
 {
     <p>Loading...</p>
-    <Spinner/>
+    <Spinner />
 }
 else
 {
+    <Toasts class="p-3" Messages="messages" AutoHide="true" Delay="3000" Placement="ToastsPlacement.TopRight" />
+    <div class="container">
     <div class="row">
-        <ul class="list-group">
-        <Virtualize Items="ViewModel.Models">
-
-            <li class="list-group-item">
-                <p class="h5">
-                    @context.Name
-                </p>
-                <p>
-                    @context.Description (@context.Price KR)
-                </p>
-                    <button id="Goto" class="btn-detailpage" style="margin-left: 20px" @onclick="@(async () => await GoToDetailsAsync(context.Id))">Mer om eventet</button>
-                <button id="addcart" class="btn-add btn-success" @onclick="@(async () => await ViewModel.AddToCartAsync(context, 1))">Köp</button>
-            </li>
-        </Virtualize>
-        </ul>
+        <h3 class="text-center">Kommande LAN & Events</h3>
+        <div class="col-md-8 offset-md-2">
+            <ul class="list-group">
+                <Virtualize Items="ViewModel.Models">
+                    <li class="list-group-item mb-3">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <dl>
+                                    <dt>
+                                        @context.Name
+                                    </dt>
+                                    <dd>
+                                        - @context.Description  
+                                    </dd>
+                                    <dd>
+                                        - @context.Price KR
+                                    </dd>
+                                    <dd>
+                                        - Datum: @context.Start 
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div class="col-md-6 text-right">
+                                <button id="Goto" class="btn btn-outline-primary" style="margin-right: 10px" @onclick="@(async () => await GoToDetailsAsync(context.Id))">Mer Om Event</button>
+                                @if (context.SpotsLeft >= 1)
+                                {
+                                    <button id="addcart" class="btn btn-outline-success ml-2" @onclick="@(async () => await ViewModel.AddToCartAsync(context, 1))">Lägg Till I Kundvagn</button>
+                                }
+                                @if (context.SpotsLeft == 0)
+                                          {
+                                              <button id="disabledBtn" class="btn btn-outline-secondary disabled">Lägg Till I Kundvagn</button>
+                                          }
+                                
+                                <div  style="align-items:flex-end; color: darkred">@context.SpotsLeft biljetter kvar!</div>
+                            </div>
+                        </div>
+                    </li>
+                </Virtualize>
+            </ul>
+        </div>
     </div>
+    </div>
+
+
+
 }
- 
+
 
 
 @code
 {
     bool _pageLoading = true;
+    
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
@@ -48,61 +82,25 @@ else
         await base.OnAfterRenderAsync(firstRender);
     }
 
+
     private async Task GoToDetailsAsync(int Id)
     {
         NavManager.NavigateTo($"/eventDetail/{Id}");
     }
+
+    List<ToastMessage> messages = new List<ToastMessage>();
+
+    private void ShowMessage(ToastType toastType) => messages.Add(CreateToastMessage(toastType));
+
+    private ToastMessage CreateToastMessage(ToastType toastType)
+        => new ToastMessage
+            {
+                Type = toastType,
+                HelpText = $"{DateTime.Now}",
+                Message = $"Produkt tillagd i kundvagn!",
+            };
+
+
+
 }
-
-@* <PageTitle>Event and LAN</PageTitle>
-
-<div class="wrapper">
-    <div class="page-background-class">
-        <div class="LanLogoTP">
-            <img src="/Images/MajornaLanTP.png" />
-        </div>
-        <div class="LanInfo1">
-            <p>
-                Datum: Fre 26 - 17:00 Till Sön 28 - 18:00
-            </p>
-            <p>
-                Plats: Ebbe Lieberathsgatan 18C : Göteborg
-            </p>
-        </div> 
-        <div class="LanInfo2">
-            <p>
-                Turneringar:
-            </p>
-            <p>
-                League Of Legends: Lör 27 - 17:00
-            </p>
-            <p>
-                Counter-Strike 2: Lör 27 - 20:00
-            </p>
-            <p>
-                Hearthstone: Lör 27 - 15:00
-            </p>
-        </div>
-    </div>
-
-</div>
-<div class="LanInfo">
-    <p>
-        Majorna Gaming Lan är en spännande samling av spelentusiaster och tekniknördar som samlas för en helg av intensivt spelande och gemenskap.
-    </p>
-    <p>
-        Under detta LAN-event kommer deltagarna att kunna delta i spännande turneringar i tre populära spel: Counter-Strike 2, League of Legends och HearthStone.
-    </p>
-    <p>
-        Från episka strider på virtuella slagfält till taktiska kampstrategier och magiska dueller, det här lanet har något för alla spelare oavsett intresse eller skicklighetsnivå.
-    </p>
-
-    <p>
-        Förutom turneringar finns det också möjligheter för deltagarna att mingla, byta erfarenheter och kanske till och med knyta nya vänskapsband. Majorna Gaming Lan är mer än bara ett LAN-event; det är en plats där passion för spel möter gemenskap och äventyr.
-    </p>
-    
-    <p>
-        Är du intresserad? Skicka din anmälan med ditt namn och efternamn info@gamergrottan.se. Betalning sker på plats. 100:- kr för inträde.
-    </p>
-</div> *@
 

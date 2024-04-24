@@ -27,7 +27,7 @@ builder.Services.AddScoped(
     sp => (IAccountManagement)sp.GetRequiredService<AuthenticationStateProvider>());
 
 //builder.Services.AddScoped(sp =>
-//    new HttpClient { BaseAddress = new Uri("https://majornagamestore-staging.azurewebsites.net/") });
+//    new HttpClient { BaseAddress = new Uri("https://majornaggapi.azurewebsites.net") });
 
 //builder.Services.AddHttpClient(
 //        "Auth",

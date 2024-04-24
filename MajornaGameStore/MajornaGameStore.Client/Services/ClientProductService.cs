@@ -5,9 +5,9 @@ using MajornaGameStore.Shared.Interfaces.ServiceInterfaces.ClientSide;
 
 namespace MajornaGameStore.Client.Services;
 
-public class ClientProductService(HttpClient httpClient) : IClientProductService
+public class ClientProductService(IHttpClientFactory factory) : IClientProductService
 {
-    private readonly HttpClient _httpClient = httpClient;
+    private readonly HttpClient _httpClient = factory.CreateClient(name:"Auth");
     public async Task<ICollection<ProductDto>> GetAllAsync()
     {
         var response = await _httpClient.GetAsync($"/products");
@@ -33,6 +33,18 @@ public class ClientProductService(HttpClient httpClient) : IClientProductService
         return result;
     }
 
+    public async Task<Product?> GetFullInfoByIdAsync(int id)
+    {
+        var response = await _httpClient.GetAsync($"/products/{id}");
+
+        if (response.IsSuccessStatusCode == false)
+            return null;
+
+        var result = await response.Content.ReadFromJsonAsync<Product>();
+
+        return result;
+    }
+
     public async Task<ProductDto> AddAsync(ProductDto entity)
     {
         var response = await _httpClient.PostAsJsonAsync($"/products", entity);
@@ -46,12 +58,11 @@ public class ClientProductService(HttpClient httpClient) : IClientProductService
 
     public async Task<bool> UpdateAsync(ProductDto entity)
     {
-        var response = await _httpClient.PostAsJsonAsync($"/products", entity);
+        var response = await _httpClient.PutAsJsonAsync($"/products", entity);
 
         if (response.IsSuccessStatusCode == false)
             return false;
 
-        var result = await response.Content.ReadFromJsonAsync<ProductDto>();
         return true;
     }
 
@@ -66,15 +77,5 @@ public class ClientProductService(HttpClient httpClient) : IClientProductService
 
         return true;
     }
-    public async Task<Product?> GetFullInfoByIdAsync(int id)
-    {
-        var response = await _httpClient.GetAsync($"/products/{id}");
 
-        if (response.IsSuccessStatusCode == false)
-            return null;
-
-        var result = await response.Content.ReadFromJsonAsync<Product>();
-
-        return result;
-    }
 }

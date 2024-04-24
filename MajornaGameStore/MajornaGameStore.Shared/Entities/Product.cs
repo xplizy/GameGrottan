@@ -13,7 +13,7 @@ public class Product : EntityBase<int>
     public string ImageLink { get; set; }
     public string PcRequirements { get; set; }
     public DateTime ReleaseDate { get; set; }
-    public ICollection<Developer> Developers { get; set; }
+    public virtual ICollection<Developer> Developers { get; set; }
     public ICollection<Publisher> Publishers { get; set; }
     public ICollection<Screenshot> Screenshots { get; set; }
     public ICollection<Tag> Tags { get; set; }

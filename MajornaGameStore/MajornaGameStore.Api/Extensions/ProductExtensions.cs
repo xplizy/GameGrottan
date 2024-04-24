@@ -5,6 +5,8 @@ using System;
 using MajornaGameStore.DataAccess.Entities;
 using MajornaGameStore.Shared.Dtos;
 using MajornaGameStore.Shared.Mappers;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace MajornaGameStore.Api.Extensions;
 
@@ -22,13 +24,13 @@ public static class ProductExtensions
         group.MapGet("/discounts/{discountId}", GetProductsByDiscountId);
 
         group.MapPost("/", AddProductAsync)
-            .RequireAuthorization(policy => policy.RequireRole("Administrator")); ;
+            .RequireAuthorization(policy => policy.RequireRole("Administrator"));
 
         group.MapPut("/", UpdateProductAsync)
-            .RequireAuthorization(policy => policy.RequireRole("Administrator")); ;
+            .RequireAuthorization(policy => policy.RequireRole("Administrator"));
 
         group.MapDelete("/{id}", DeleteProductAsync)
-            .RequireAuthorization(policy => policy.RequireRole("Administrator")); ;
+            .RequireAuthorization(policy => policy.RequireRole("Administrator")); 
         return app;
     }
 
@@ -150,6 +152,9 @@ public static class ProductExtensions
         if (product is null)
             return Results.NotFound($"Product with id {id} does not exist.");
 
-        return Results.Ok(await product.MapToDtoAsync());
+        //return Results.Ok(await product.MapToDtoAsync());
+        //TODO: Find out why nothing gets sent
+        return Results.Ok(product);
+
     }
 }

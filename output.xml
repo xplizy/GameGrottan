@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.0 (Python 3.12.1 on win32)" generated="2024-04-24T11:24:57.814250" rpa="false" schemaversion="5">
+<robot generator="Robot 7.0 (Python 3.12.1 on win32)" generated="2024-04-24T15:55:04.378791" rpa="false" schemaversion="5">
 <suite id="s1" name="Iths-Majornagaming6" source="C:\Users\ls930499\source\repos\iths-majornagaming6">
 <suite id="s1-s1" name="MajornaGameStore" source="C:\Users\ls930499\source\repos\iths-majornagaming6\MajornaGameStore">
 <suite id="s1-s1-s1" name="Test" source="C:\Users\ls930499\source\repos\iths-majornagaming6\MajornaGameStore\Test">
@@ -8,117 +8,106 @@
 <kw name="Set Selenium Speed" owner="SeleniumLibrary">
 <arg>1</arg>
 <doc>Sets the delay that is waited after each Selenium command.</doc>
-<status status="PASS" start="2024-04-24T11:24:58.130634" elapsed="0.000501"/>
+<status status="PASS" start="2024-04-24T15:55:04.705966" elapsed="0.000000"/>
 </kw>
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-04-24T11:24:58.131596" level="INFO">Opening browser 'chrome' to base url 'None'.</msg>
+<msg time="2024-04-24T15:55:04.705966" level="INFO">Opening browser 'chrome' to base url 'None'.</msg>
 <arg>browser=${BROWSER}</arg>
 <arg>options=${BROWSER_OPTIONS}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-04-24T11:24:58.131135" elapsed="1.361009"/>
+<status status="PASS" start="2024-04-24T15:55:04.705966" elapsed="1.567893"/>
 </kw>
 <kw name="Go To" owner="SeleniumLibrary">
-<msg time="2024-04-24T11:24:59.492645" level="INFO">Opening url 'https://localhost:7207/'</msg>
+<msg time="2024-04-24T15:55:06.274807" level="INFO">Opening url 'https://majornagamestore.azurewebsites.net/'</msg>
 <arg>${url}</arg>
 <doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="PASS" start="2024-04-24T11:24:59.492645" elapsed="4.582221"/>
+<status status="PASS" start="2024-04-24T15:55:06.274306" elapsed="2.603458"/>
 </kw>
-<status status="PASS" start="2024-04-24T11:24:58.129592" elapsed="5.945777"/>
+<status status="PASS" start="2024-04-24T15:55:04.704929" elapsed="4.172835"/>
 </kw>
-<test id="s1-s1-s1-s1-t1" name="Login with valid credentials(user)" line="79">
+<test id="s1-s1-s1-s1-t1" name="Login to admin page with valid credentials" line="73">
 <kw name="Open the browser" owner="resource">
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-04-24T11:25:04.085397" level="INFO">Opening browser 'chrome' to base url 'None'.</msg>
+<msg time="2024-04-24T15:55:08.879854" level="INFO">Opening browser 'chrome' to base url 'None'.</msg>
 <arg>browser=${BROWSER}</arg>
 <arg>options=${BROWSER_OPTIONS}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-04-24T11:25:04.080382" elapsed="1.376799"/>
+<status status="PASS" start="2024-04-24T15:55:08.878811" elapsed="1.745248"/>
 </kw>
 <kw name="Go To" owner="SeleniumLibrary">
-<msg time="2024-04-24T11:25:05.458183" level="INFO">Opening url 'https://localhost:7207/'</msg>
+<msg time="2024-04-24T15:55:10.625063" level="INFO">Opening url 'https://majornagamestore.azurewebsites.net/'</msg>
 <arg>${url}</arg>
 <doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="PASS" start="2024-04-24T11:25:05.457681" elapsed="4.555627"/>
+<status status="PASS" start="2024-04-24T15:55:10.624621" elapsed="4.522805"/>
 </kw>
 <kw name="Wait Until Page Contains" owner="SeleniumLibrary">
 <arg>Hem</arg>
 <arg>60s</arg>
 <doc>Waits until ``text`` appears on the current page.</doc>
-<status status="PASS" start="2024-04-24T11:25:10.013807" elapsed="1.023702"/>
+<status status="PASS" start="2024-04-24T15:55:15.147426" elapsed="4.077772"/>
 </kw>
 <tag>VG_Test1_browser</tag>
 <doc>Browser</doc>
-<status status="PASS" start="2024-04-24T11:25:04.078879" elapsed="6.958630"/>
+<status status="PASS" start="2024-04-24T15:55:08.878811" elapsed="10.346387"/>
 </kw>
 <kw name="Log in with right credentials" owner="resource">
 <kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2024-04-24T11:25:11.039014" level="INFO">Clicking element '//i[@class='bi bi-person fs-1']'.</msg>
+<msg time="2024-04-24T15:55:19.227355" level="INFO">Clicking element '//i[@class='bi bi-person fs-1']'.</msg>
 <arg>//i[@class='bi bi-person fs-1']</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-04-24T11:25:11.038512" elapsed="2.117970"/>
+<status status="PASS" start="2024-04-24T15:55:19.226270" elapsed="2.124130"/>
 </kw>
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2024-04-24T11:25:13.156986" level="INFO">Typing text 'user@user.user' into text field '//input[@id='usernameField']'.</msg>
+<msg time="2024-04-24T15:55:21.350400" level="INFO">Typing text 'admin@gamegrottan.com' into text field '//input[@id='usernameField']'.</msg>
 <arg>//input[@id='usernameField']</arg>
 <arg>${admin_username}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2024-04-24T11:25:13.156482" elapsed="3.202278"/>
+<status status="PASS" start="2024-04-24T15:55:21.350400" elapsed="3.163638"/>
 </kw>
 <kw name="Input Password" owner="SeleniumLibrary">
-<msg time="2024-04-24T11:25:16.359261" level="INFO">Typing password into text field '//input[@id='passwordField']'.</msg>
-<msg time="2024-04-24T11:25:18.402327" level="INFO">Temporally setting log level to: NONE</msg>
+<msg time="2024-04-24T15:55:24.514038" level="INFO">Typing password into text field '//input[@id='passwordField']'.</msg>
+<msg time="2024-04-24T15:55:26.590203" level="INFO">Temporally setting log level to: NONE</msg>
 <arg>//input[@id='passwordField']</arg>
 <arg>${password}</arg>
 <doc>Types the given password into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2024-04-24T11:25:16.358760" elapsed="3.149403"/>
+<status status="PASS" start="2024-04-24T15:55:24.514038" elapsed="3.163044"/>
 </kw>
 <kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2024-04-24T11:25:19.508699" level="INFO">Clicking button '//button[@id='loginBtn']'.</msg>
+<msg time="2024-04-24T15:55:27.677082" level="INFO">Clicking button '//button[@id='loginBtn']'.</msg>
 <arg>//button[@id='loginBtn']</arg>
 <doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2024-04-24T11:25:19.508163" elapsed="5.112796"/>
+<status status="PASS" start="2024-04-24T15:55:27.677082" elapsed="5.092920"/>
 </kw>
 <kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
 <arg>//*[@id="navbarNavDropdown"]/ul/li[1]/a/p</arg>
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="PASS" start="2024-04-24T11:25:24.620959" elapsed="1.019877"/>
+<status status="PASS" start="2024-04-24T15:55:32.770002" elapsed="1.012331"/>
 </kw>
-<arg>${user}</arg>
+<arg>${admin_username}</arg>
 <arg>${password}</arg>
 <tag>Test_Admin_login</tag>
 <doc>Admin login page</doc>
-<status status="PASS" start="2024-04-24T11:25:11.038023" elapsed="14.602813"/>
-</kw>
-<kw name="Logout" owner="resource">
-<kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2024-04-24T11:25:25.641841" level="INFO">Clicking element '//i[@class='bi bi-box-arrow-left fs-1']'.</msg>
-<arg>//i[@class='bi bi-box-arrow-left fs-1']</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-04-24T11:25:25.641841" elapsed="2.061982"/>
-</kw>
-<tag>Test_Admin_logout</tag>
-<doc>Admin logout page</doc>
-<status status="PASS" start="2024-04-24T11:25:25.641355" elapsed="2.062468"/>
+<status status="PASS" start="2024-04-24T15:55:19.226270" elapsed="14.556063"/>
 </kw>
 <doc>Login with valid credentials</doc>
-<tag>User_Login</tag>
-<status status="PASS" start="2024-04-24T11:25:04.075870" elapsed="23.628460"/>
+<tag>Admin_Login</tag>
+<status status="PASS" start="2024-04-24T15:55:08.877764" elapsed="24.904569"/>
 </test>
 <doc>test for Majorna Gaming Store</doc>
-<status status="PASS" start="2024-04-24T11:24:57.851349" elapsed="29.854986"/>
+<status status="PASS" start="2024-04-24T15:55:04.413056" elapsed="29.370311"/>
 </suite>
-<status status="PASS" start="2024-04-24T11:24:57.849344" elapsed="29.858996"/>
+<status status="PASS" start="2024-04-24T15:55:04.412013" elapsed="29.373443"/>
 </suite>
-<status status="PASS" start="2024-04-24T11:24:57.847339" elapsed="29.862428"/>
+<status status="PASS" start="2024-04-24T15:55:04.409929" elapsed="29.376571"/>
 </suite>
-<status status="PASS" start="2024-04-24T11:24:57.817258" elapsed="29.893510"/>
+<status status="PASS" start="2024-04-24T15:55:04.383989" elapsed="29.403551"/>
 </suite>
 <statistics>
 <total>
 <stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
-<stat pass="1" fail="0" skip="0">User_Login</stat>
+<stat pass="1" fail="0" skip="0">Admin_Login</stat>
 </tag>
 <suite>
 <stat pass="1" fail="0" skip="0" id="s1" name="Iths-Majornagaming6">Iths-Majornagaming6</stat>

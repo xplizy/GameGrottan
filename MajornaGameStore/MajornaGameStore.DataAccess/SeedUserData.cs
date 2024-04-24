@@ -34,10 +34,10 @@ public class SeedUserData
         using var context = new MajornaDbContext(serviceProvider.GetRequiredService<DbContextOptions<MajornaDbContext>>());
 
         //Kanske ta bort denna check
-        //if (context.Users.Any())
-        //{
-        //    return;
-        //}
+        if (context.Users.Any())
+        {
+            return;
+        }
 
         var userStore = new UserStore<User>(context);
         var password = new PasswordHasher<User>();

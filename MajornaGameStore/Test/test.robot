@@ -31,30 +31,29 @@ Add product into the cart directly
     And I can add product to cart directly
     And Check the product in the cart
 
-View Products in Cart
-    Given Open the browser
-    #When I am able to see Cart
-    When I click on Cart
-    Then I can see the Products in the cart
 
 Checking the product quantity
     [Documentation]    Checking the product quantity by increasing the value
     [Tags]    product quantity
 
     Given open the browser
-    When I Click On Cart
-    #Then I can see the Products in the cart
+    When I click on Products
+    And I can add product to cart directly
+    And Check the product in the cart
     And I can increase the product quantity
-    #Then I can decrease the product quantity
+    And I can decrease the product quantity
+    Then Verify that the price changes accordingly
+
 
 Remove item from the cart
     [Documentation]    Remove the item in the cart
     [Tags]    Remove product
 
     Given open the browser
-    When I Click On Cart
-    Then I can see the Products in the cart
-    And I can remove the product
+    When I click on Products
+    And I can add product to cart directly
+    And Check the product in the cart
+    Then I can remove the product
 
 Access Event Page
     [Documentation]    Access Event Page

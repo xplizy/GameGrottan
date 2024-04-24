@@ -16,10 +16,18 @@ else
                 <div class="event-details">
                     <h2>@ViewModel.SelectedEvent.Name</h2>
                     <p><strong>Beskrivning:</strong> @ViewModel.SelectedEvent.Description</p>
-                    <p><strong>Entre pris:</strong> @ViewModel.SelectedEvent.Price</p>
+                    <p><strong>Entre pris:</strong> @ViewModel.SelectedEvent.Price KR</p>
                     <p><strong>Start Datum:</strong> @ViewModel.SelectedEvent.Start</p>
                     <p><strong>Slut Datum:</strong> @ViewModel.SelectedEvent.End</p>
-                    <button class="btn btn-success" @onclick="@(async () => { await ViewModel.AddToCartAsync(ViewModel.SelectedEvent, 1); ShowMessage(ToastType.Success); })">Lägg till I Kundvagn</button>
+                    @if (ViewModel.SelectedEvent.SpotsLeft >= 1)
+                    {
+                        <button id="addToCart" class="btn btn-success" @onclick="@(async () => { await ViewModel.AddToCartAsync(ViewModel.SelectedEvent, 1); ShowMessage(ToastType.Success); })">Lägg till I Kundvagn</button>
+                    }
+                    @if (ViewModel.SelectedEvent.SpotsLeft == 0)
+                    {
+                        <button id="disabledBtn" class="btn btn-outline-secondary disabled">Lägg Till I Kundvagn</button>
+                    }
+                    <div style="color: darkred">@ViewModel.SelectedEvent.SpotsLeft biljetter kvar!</div>
                 </div>
             </div>
             <div class="col-md-4">

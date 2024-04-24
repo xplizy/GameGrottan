@@ -1,0 +1,97 @@
+﻿@page "/AdminEventPage"
+@inject EventsViewModel ViewModel
+
+@if (_pageLoading)
+{
+    <p>Loading...</p>
+    <Spinner/>
+}
+else
+{
+   
+    <Button Color="ButtonColor.Primary" @onclick="OnShowModalClick">Skapa nytt Event</Button>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <ul class="list-group">
+                    <Virtualize Items="ViewModel.Models">
+                        <li class="list-group-item mb-3">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h5>@context.Name</h5>
+                                    <p>@context.Description (@context.Price KR)</p>
+                                    <Button Color="ButtonColor.Info" @onclick="() => ViewModel.UpdateEventInDb(newEvent, newEvent.Id)">Uppdatera Event</Button>
+                                    <Button Color="ButtonColor.Danger" @onclick="() => ViewModel.DeleteEventInDb(newEvent.Id)">Ta bort Event</Button>
+                                </div>
+                            </div>
+                        </li>
+                    </Virtualize>
+                </ul>
+            </div>
+        </div>
+    </div>
+}
+
+<Modal @ref="modal" Title="EventMaker">
+    <BodyTemplate>
+        <form>
+            <div class="form-group">
+                <label style="color: black" for="EventName">Namn</label>
+                <InputText type="text" class="form-control" id="EventName" placeholder="Skriv event namnet här" @bind-Value="newEvent.Name"/>
+                
+                <label style="color: black" for="EventDesc">Beskrivning</label>
+                <InputTextArea type="text" class="form-control" id="EventDesc" placeholder="Skriv eventets beskrivning här" @bind-Value="newEvent.Description" />
+                
+                <label style="color: black" for="EventPrice">Pris</label>
+                <InputNumber TValue="double" @bind-Value="newEvent.Price" />
+                
+                <label style="color: black" for="Eventspots">Platser</label>
+                <InputNumber TValue="int" @bind-Value="newEvent.SpotsLeft" />
+                
+                <label style="color: black" for="EventStart">Start Datum</label>
+                <DateInput TValue="DateTime" @bind-Value="newEvent.Start" Placeholder="Skriv in Start Datum" />
+
+                <label style="color: black" for="EventEnd">Slut Datum</label>
+                <DateInput TValue="DateTime" @bind-Value="newEvent.End" Placeholder="Skriv in Slut Datum" />
+            </div>
+
+        </form>
+    </BodyTemplate>
+    <FooterTemplate>
+        <Button Color="ButtonColor.Secondary" @onclick="OnHideModalClick">Avbryt</Button>
+        <Button Color="ButtonColor.Primary" @onclick="@(async () => { await ViewModel.AddToDB(newEvent); await OnHideModalClick(); })">Spara Eventet</Button>
+    </FooterTemplate>
+</Modal>
+ 
+
+
+@code
+{
+    bool _pageLoading = true;
+
+    EventDto newEvent = new EventDto();
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await ViewModel.OnInit();
+            _pageLoading = false;
+            StateHasChanged();
+        }
+
+        await base.OnAfterRenderAsync(firstRender);
+    }
+
+    private Modal modal = default!;
+
+    private async Task OnShowModalClick()
+    {
+        await modal.ShowAsync();
+    }
+
+    private async Task OnHideModalClick()
+    {
+        await modal.HideAsync();
+    }
+}

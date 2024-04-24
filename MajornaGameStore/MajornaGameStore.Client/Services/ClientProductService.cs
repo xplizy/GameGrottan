@@ -35,7 +35,7 @@ public class ClientProductService(HttpClient httpClient) : IClientProductService
 
     public async Task<ProductDto> AddAsync(ProductDto entity)
     {
-        var response = await _httpClient.PostAsJsonAsync($"/products", entity);
+        var response = await _httpClient.PutAsJsonAsync($"/products", entity);
 
         if (response.IsSuccessStatusCode == false) 
             return null;

@@ -30,7 +30,7 @@ else
                                 <div class="col-md-6 text-right">
                                     <button id="Goto" class="btn btn-outline-primary" @onclick="@(async () => await GoToDetailsAsync(context.Id))">Mer om eventet</button>
                                     <button class="btn btn-success ml-2" @onclick="@(async () => { await ViewModel.AddToCartAsync(context, 1); ShowMessage(ToastType.Success); })">Lägg Till I Kundvagn</button>
-                                </div>
+                                    </div>
                             </div>
                         </li>
                     </Virtualize>

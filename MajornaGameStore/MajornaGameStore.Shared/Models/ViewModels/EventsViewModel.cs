@@ -45,10 +45,7 @@ public class EventsViewModel(IClientEventsService eventService, IClientCartServi
         await cartService.AddAsync(cartItem);
     }
 
-    public async Task AlmostSoldOut(EventDto eventDto, int spotsLeft, int quantity)
-    {
-
-    }
+    
    
 
 

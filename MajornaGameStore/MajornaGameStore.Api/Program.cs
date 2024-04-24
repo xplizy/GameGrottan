@@ -98,8 +98,7 @@ builder.Services.AddScoped<MajornaGameStore.Api.Stripe.StripeClient>();
 builder.Services.AddCors(
     options => options.AddPolicy(
         name: "MyAllowSpecificOrigins",
-        policy => policy.WithOrigins("https://majornagamestore.azurewebsites.net", "https://majornaggapi.azurewebsites.net", [builder.Configuration["BackendUrl"] ?? "http://localhost:5102",
-            builder.Configuration["FrontendUrl"] ?? "http://localhost:5241"])
+        policy => policy.WithOrigins("https://majornagamestore.azurewebsites.net", "https://majornaggapi.azurewebsites.net")
             .AllowAnyMethod()
             .AllowAnyHeader()
             .AllowCredentials()));

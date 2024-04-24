@@ -27,7 +27,7 @@ builder.Services.AddScoped(
     sp => (IAccountManagement)sp.GetRequiredService<AuthenticationStateProvider>());
 
 //builder.Services.AddScoped(sp =>
-//    new HttpClient { BaseAddress = new Uri("https://majornagamestore-staging.azurewebsites.net/") });
+//    new HttpClient { BaseAddress = new Uri("https://majornaggapi.azurewebsites.net") });
 
 //builder.Services.AddHttpClient(
 //        "Auth",
@@ -36,10 +36,10 @@ builder.Services.AddScoped(
 
 builder.Services.AddHttpClient(
         "Auth",
-        opt => opt.BaseAddress = new Uri("https://localhost:7190"))
+        opt => opt.BaseAddress = new Uri("https://majornaggapi.azurewebsites.net"))
     .AddHttpMessageHandler<CookieHandler>();
 
-builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:7190") });
+builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://majornaggapi.azurewebsites.net") });
 
 
 builder.Services

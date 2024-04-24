@@ -4,7 +4,6 @@
 @inject NavigationManager NavManager
 @inject EventsViewModel ViewModel
 
-
 <PageTitle>Events and LAN</PageTitle>
 
 
@@ -17,30 +16,46 @@ else
 {
     <Toasts class="p-3" Messages="messages" AutoHide="true" Delay="3000" Placement="ToastsPlacement.TopRight" />
     <div class="container">
-        <div class="row">
-            <div class="col-md-8 offset-md-2">
-                <ul class="list-group">
-                    <Virtualize Items="ViewModel.Models">
-                        <li class="list-group-item mb-3">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <h5>@context.Name</h5>
-                                    <p>@context.Description (@context.Price KR)</p>
-                                    <p>
-                                        Start Tid: @context.Start  <br/> Slut Tid: @context.End
-                                    </p>
-                                </div>
-                                <div class="col-md-6 text-right">
-                                    <button id="Goto" class="btn btn-outline-primary" @onclick="@(async () => await GoToDetailsAsync(context.Id))">Mer om eventet</button>
-                                    <button class="btn btn-success ml-2" @onclick="@(async () => { await ViewModel.AddToCartAsync(context, 1); ShowMessage(ToastType.Success); })">Lägg Till I Kundvagn</button>
-                                </div>
+    <div class="row">
+        <h3>Kommande LAN & Events</h3>
+        <div class="col-md-8 offset-md-2">
+            <ul class="list-group">
+                <Virtualize Items="ViewModel.Models">
+                    <li class="list-group-item mb-3">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <dl>
+                                    <dt>
+                                        @context.Name
+                                    </dt>
+                                    <dd>
+                                            - @context.Description  ( @context.Price KR )
+                                    </dd>
+                                    <dd>
+                                        - Datum: @context.Start 
+                                    </dd>
+                                        <dd>
+                                            - Slut: @context.End
+                                        </dd>
+                                </dl>
                             </div>
-                        </li>
-                    </Virtualize>
-                </ul>
-            </div>
+                            <div class="col-md-6 text-right">
+                                <button id="Goto" class="btn btn-outline-primary" style="margin-left: 10px" @onclick="@(async () => await GoToDetailsAsync(context.Id))">Mer Om Event</button>
+                                @if (context.SpotsLeft >= 1)
+                                {
+                                    <button id="addcart" class="btn-add btn-success ml-2" @onclick="@(async () => await ViewModel.AddToCartAsync(context, 1))">Lägg Till I Kundvagn</button>
+                                }
+                                <div style="margin-left: 25px; color: darkred">@context.SpotsLeft biljetter kvar!</div>
+                            </div>
+                        </div>
+                    </li>
+                </Virtualize>
+            </ul>
         </div>
     </div>
+    </div>
+
+
 
 }
 
@@ -48,9 +63,8 @@ else
 
 @code
 {
-    EventDto eventDto = new EventDto();
     bool _pageLoading = true;
-
+    
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)

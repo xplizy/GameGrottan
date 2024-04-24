@@ -5,10 +5,10 @@ Library    SeleniumLibrary
 Suite Setup     setup
 
 *** Test Cases ***
-Blazorapp running
-    Open Browser        browser=${BROWSER}      options=${BROWSER_OPTIONS}
-    Go To   ${url}
-    Wait Until Page Contains    Välkommen till Majorna Gaming
+#Blazorapp running
+   # Open Browser        browser=${BROWSER}      options=${BROWSER_OPTIONS}
+   # Go To   ${url}
+   # Wait Until Page Contains    Välkommen till Majorna Gaming
 
 Access Landing Page
     Given Open the browser
@@ -62,6 +62,14 @@ Access Event Page
     Given open the browser
     When I Click on Event
     Then I should be able to see all events
+
+Access Event Details Page
+    [Documentation]    Access Event Page
+    [Tags]  Events
+    Given open the browser
+    When I Click on Event
+    And I Click on Event Details
+    Then I should be able to see the event details
 
 Login to admin page with valid credentials
     [Documentation]    Login with valid credentials

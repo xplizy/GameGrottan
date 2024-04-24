@@ -81,13 +81,13 @@ builder.Services.AddScoped<MajornaGameStore.Api.Stripe.StripeClient>();
 
 
 
-////TODO: ƒndra origin till den hostade adressen n‰r hemsidan ‰r hostad
+////TODO: √Ñndra origin till den hostade adressen n√§r hemsidan √§r hostad
 //builder.Services.AddCors(options =>
 //{
 //    options.AddPolicy(name: MyAllowSpecificOrigins,
 //        policy =>
 //        {
-//            //l‰nk till clientens
+//            //l√§nk till clientens
 //            policy.WithOrigins("https://localhost:7207")
 //                .AllowAnyHeader()
 //                .AllowAnyMethod()
@@ -98,12 +98,20 @@ builder.Services.AddScoped<MajornaGameStore.Api.Stripe.StripeClient>();
 builder.Services.AddCors(
     options => options.AddPolicy(
         name: "MyAllowSpecificOrigins",
-        policy => policy.WithOrigins([builder.Configuration["BackendUrl"] ?? "http://localhost:5102",
-            builder.Configuration["FrontendUrl"] ?? "http://localhost:5241"])
+        policy => policy.WithOrigins("https://majornaggapi.azurewebsites.net", "https://majornagamestore.azurewebsites.net")
             .AllowAnyMethod()
             .AllowAnyHeader()
             .AllowCredentials()));
 
+/* builder.Services.AddCors(
+    options => options.AddPolicy(
+        name: "MyAllowSpecificOrigins",
+        policy => policy.WithOrigins("https://majornagamestore.azurewebsites.net", "https://majornaggapi.azurewebsites.net", [builder.Configuration["BackendUrl"] ?? "http://localhost:5102",
+            builder.Configuration["FrontendUrl"] ?? "http://localhost:5241"])
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .AllowCredentials()));
+*/
 
 
 

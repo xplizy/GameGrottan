@@ -1,4 +1,6 @@
-﻿namespace MajornaGameStore.Shared.Interfaces.ServiceInterfaces;
+﻿using MajornaGameStore.DataAccess.Entities;
+
+namespace MajornaGameStore.Shared.Interfaces.ServiceInterfaces;
 
 public interface IService<TEntity, TId>
 {

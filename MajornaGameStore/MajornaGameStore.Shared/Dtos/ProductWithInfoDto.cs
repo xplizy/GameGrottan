@@ -1,4 +1,6 @@
-﻿namespace MajornaGameStore.Shared.Dtos;
+﻿using MajornaGameStore.DataAccess.Entities;
+
+namespace MajornaGameStore.Shared.Dtos;
 
 public class ProductWithInfoDto
 {
@@ -13,11 +15,11 @@ public class ProductWithInfoDto
         public string ImageLink { get; set; }
         public string PcRequirements { get; set; }
         public DateTime ReleaseDate { get; set; }
-        public ICollection<string> DeveloperNames { get; set; }
-        public ICollection<string> PublisherNames { get; set; }
-        public ICollection<string> ScreenshotLinks { get; set; }
-        public ICollection<string> TagNames { get; set; }
-        public ICollection<int> ReviewIds { get; set; }
+        public ICollection<DeveloperDto> Developers { get; set; }
+        public ICollection<PublisherDto> Publishers { get; set; }
+        public ICollection<Screenshot> Screenshots { get; set; }
+        public ICollection<TagDto> Tags { get; set; }
+        public ICollection<Review> Review { get; set; }
 
         public int AgeRating { get; set; }
     

@@ -6,8 +6,8 @@ Library     Collections
 
 *** Variables ***
 
-${url}      https://localhost:7207/
-${BROWSER}      chrome
+${url}      https://majornagamestore.azurewebsites.net/
+${BROWSER}      headlesschrome
 ${BROWSER_OPTIONS}  add_argument("--no-sandbox"); add_argument("window-size=1920,1080")
 ${admin_username}    admin@gamegrottan.com
 ${password}     GameGrottan2024!
@@ -133,6 +133,20 @@ I should be able to see all events
     Element Should Be Visible    //p[normalize-space()='Niklas Tjohoo Lan']     timeout=10s
     Element Should Be Visible    //p[normalize-space()='string']    timeout=10s
     Close Browser
+
+I Click on Event Details
+    [Documentation]     Event details
+    [Tags]      Home Page
+    Wait Until Page Contains Element    //p[normalize-space()='Events']
+    Click Element    //p[normalize-space()='Events']
+    Wait Until Page Contains    Niklas Tjohoo Lan
+    Click Element    //*[@id="Goto"]
+    
+I should be able to see the event details
+    [Documentation]     Event details
+    [Tags]      Events
+    Wait Until Page Contains    Beskrivning: Best lan EVER
+    Wait Until Page Contains    Start Datum:
 
 Log in with right credentials
     [Documentation]    Admin login page

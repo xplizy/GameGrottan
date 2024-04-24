@@ -95,16 +95,14 @@ builder.Services.AddScoped<MajornaGameStore.Api.Stripe.StripeClient>();
 //        });
 //});
 
+
 builder.Services.AddCors(
-    builder.Services.AddCors(
-        options => options.AddPolicy(
-            name: "MyAllowSpecificOrigins",
-            policy => policy.WithOrigins("https://majornaggapi.azurewebsites.net", "https://majornagamestore.azurewebsites.net")
-                .AllowAnyMethod()
-                .AllowAnyHeader()
-                .AllowCredentials()));
-
-
+    options => options.AddPolicy(
+        name: "MyAllowSpecificOrigins",
+        policy => policy.WithOrigins("https://majornaggapi.azurewebsites.net", "https://majornagamestore.azurewebsites.net")
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .AllowCredentials()));
 
 
 builder.Services.AddRouting(options => options.LowercaseUrls = true);

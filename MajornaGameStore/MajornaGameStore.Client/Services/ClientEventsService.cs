@@ -39,7 +39,7 @@ public class ClientEventsService(HttpClient httpClient) : IClientEventsService
 
     public async Task<EventDto> AddAsync(EventDto entity)
     {
-        var response = await _httpClient.PutAsJsonAsync($"/events", entity);
+        var response = await _httpClient.PostAsJsonAsync($"/events", entity);
 
         if (response.IsSuccessStatusCode == false)
             return null;
@@ -50,7 +50,7 @@ public class ClientEventsService(HttpClient httpClient) : IClientEventsService
 
     public async Task<bool> UpdateAsync(EventDto entity)
     {
-        var response = await _httpClient.PostAsJsonAsync($"/events", entity);
+        var response = await _httpClient.PutAsJsonAsync($"/events", entity);
 
         if (response.IsSuccessStatusCode == false)
             return false;

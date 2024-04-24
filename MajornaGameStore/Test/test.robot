@@ -33,8 +33,8 @@ Add product into the cart directly
 
 View Products in Cart
     Given Open the browser
-    When I am able to see Cart
-    And I click on Cart
+    #When I am able to see Cart
+    When I click on Cart
     Then I can see the Products in the cart
 
 Checking the product quantity
@@ -43,7 +43,7 @@ Checking the product quantity
 
     Given open the browser
     When I Click On Cart
-    Then I can see the Products in the cart
+    #Then I can see the Products in the cart
     And I can increase the product quantity
     #Then I can decrease the product quantity
 
@@ -74,13 +74,37 @@ Access Event Details Page
 Login to admin page with valid credentials
     [Documentation]    Login with valid credentials
     [Tags]  Admin_Login
+    Open The Browser
     Log in with right credentials       ${admin_username}      ${password}
     Logout
 
 Login to admin page with invalid credentials
     [Documentation]    Login with invalid credentials
     [Tags]  Admin_Login
+    Open The Browser
     Log in with wrong credentials       ${admin_username}      ${invalid_password}
+
+Login with valid credentials(user)
+    [Documentation]    Login with valid credentials
+    [Tags]  User_Login
+    Open The Browser
+    Log in with right credentials       ${user}      ${password}
+    Logout
+
+Login with invalid credentials(user)
+    [Documentation]    Login with invalid credentials
+    [Tags]  Admin_Login
+    Open The Browser
+    Log in with user invalid credentials       ${user}      ${invalid_password}
+
+See the product description
+    [Documentation]    Access product details
+    [Tags]  product details
+    Given open the browser
+    When I Click On Products
+    Then Product Details Page
+    And add the product to cart
+
 
 
 

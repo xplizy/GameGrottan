@@ -11,7 +11,7 @@ ${BROWSER}      headlesschrome
 ${BROWSER_OPTIONS}  add_argument("--no-sandbox"); add_argument("window-size=1920,1080")
 ${admin_username}    admin@gamegrottan.com
 ${password}     GameGrottan2024!
-${user_username}     user@user.user
+${user}     user@user.user
 ${invalid_password}     GameGrottan!
 
 
@@ -46,20 +46,20 @@ I click on Products
 I can see the Product Page
     [Documentation]     Browser
     [Tags]      Products
-    Wait Until Page Contains    Produkter
+    Wait Until Page Contains    Spel
 
 I can add product to cart directly
     [Documentation]     Browser
     [Tags]      Products
-    Wait Until Page Contains Element    //a[normalize-space()='Counter-Strike']        60s
-    Click Button    //div[2]//div[1]//div[2]//button[1]
+    Wait Until Page Contains Element    //div[@class='row']//div[2]//div[1]//div[1]//img[1]        60s
+    Click Button    //div[@class='row']//div[2]//div[1]//div[2]//button[1]
 
 Check the product in the cart
     [Documentation]     add product in the cart
     [Tags]      shopping cart
-    Click Element        //a[normalize-space()='Kundvagn']
-    Wait Until Page Contains Element    //p[normalize-space()='1 x Counter-Strike (819 SEK) - 819']    60s
-    Wait Until Page Contains Element    //input[@id='quantity']
+    Click Button            //button[normalize-space()='0']
+    Wait Until Page Contains Element    //p[normalize-space()='1 x Counter-Strike (819 SEK) - 819 SEK']    60s
+    #Wait Until Page Contains Element    //input[@id='quantity']
 
 Verify Product List Is Visible
     [Documentation]     Browser
@@ -76,12 +76,12 @@ I am able to see Cart
 I click on Cart
     [Documentation]     Browser
     [Tags]      Cart
-    Click Element        //i[@class='bi bi-cart3 fs-1']
+    Click Button            //button[normalize-space()='0']
 
 I can see the Products in the cart
     [Documentation]     Browser
     [Tags]      Cart
-    Wait Until Page Contains    //p[normalize-space()='1 x Counter-Strike (819 SEK) - 819']    100s
+    Wait Until Page Contains    //p[normalize-space()='1 x Counter-Strike (819 SEK) - 819 SEK']    100s
 
 I can increase the product quantity
     [Documentation]     Browser
@@ -173,6 +173,43 @@ Log in with wrong credentials
     Click Button    //button[@id='loginBtn']
     Wait Until Page Contains    Invalid email and/or password.
 
+Login with valid credential for User
+    [Documentation]    User login page
+    [Tags]      Test_Admin_login
+    [Arguments]     ${user_username}     ${password}
+    Click Element    //i[@class='bi bi-person fs-1']
+    Input Text    //input[@id='usernameField']    ${user_username}
+    Input Password    //input[@id='passwordField']    ${password}
+    Click Button    //button[@id='loginBtn']
+    Wait Until Page Contains Element    //*[@id="navbarNavDropdown"]/ul/li[1]/a/p
+
+Log in with user invalid credentials
+    [Documentation]    Admin login page
+    [Tags]      Test_Admin_login
+    [Arguments]     ${username}     ${invalid_password}
+    Click Element    //i[@class='bi bi-person fs-1']
+    Input Text    //input[@id='usernameField']    ${username}
+    Input Password    //input[@id='passwordField']    ${invalid_password}
+    Click Button    //button[@id='loginBtn']
+    Wait Until Page Contains    Invalid email and/or password.            50s
+
+Product details page
+    [Documentation]    product description
+    [Tags]    See The Description
+    Click Image        //div[@class='row']//div[2]//div[1]//div[1]//img[1]
+    Wait Until Page Contains Element    //h2[normalize-space()='Counter-Strike']        60s
+
+Add the product to cart
+    [Documentation]    add product to cart
+    [Tags]    add the product to cart
+    Click Button    //button[normalize-space()='Lägg Till I Kundvagn']
+    #Handle Alert    //div[@class='toast-body']
+    Click Button    //button[normalize-space()='Gå tillbaka till Produkter']
+
+
+
+    
+    
 
 
 

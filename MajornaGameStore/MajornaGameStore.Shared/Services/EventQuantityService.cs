@@ -28,6 +28,7 @@ public class EventQuantityService(IEventQuantityRepository eventQuantityReposito
         return eventQuantity;
     }
 
+
     public async Task<EventQuantity> AddAsync(EventQuantity entity)
     {
         var eventQuantityReturnedWithId = await _eventQuantityRepository.AddAsync(entity, EventQuantityCollection);

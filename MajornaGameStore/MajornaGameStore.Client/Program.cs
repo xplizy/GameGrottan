@@ -42,8 +42,6 @@ builder.Services.AddHttpClient(
         opt => opt.BaseAddress = new Uri("https://localhost:7190"))
     .AddHttpMessageHandler<CookieHandler>();
 
-//TODO: Kan vara så att denna nedan stör ut autentisering. Testa o se
-//builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:7190") });
 
 
 builder.Services

@@ -12,7 +12,7 @@ public class AdminProductViewModel(IClientProductService service,
     IClientPublisherService publisherService,
     IClientTagService tagService) : ViewModelBase<ProductDto, int>(service)
 {
-    private readonly IClientProductService _productDetailService = service;
+    private readonly IClientProductService _productService = service;
     private readonly IClientTypeService _typeService = typeService;
     private readonly IClientDiscountService _discountService = discountService;
     private readonly IClientDeveloperService _developerService = developerService;
@@ -35,7 +35,7 @@ public class AdminProductViewModel(IClientProductService service,
 
     public async Task SetSelectedProduct(int id)
     {
-        var selectedProd = await _productDetailService.GetFullInfoByIdAsync(id);
+        var selectedProd = await _productService.GetFullInfoByIdAsync(id);
 
         //TODO: implementera null checkar för dessa två nedan
         var productType = await typeService.GetByIdAsync(selectedProd.ProductTypeId);
@@ -76,14 +76,20 @@ public class AdminProductViewModel(IClientProductService service,
     public async Task RemoveDeveloperAsync(Developer dev)
     {
         SelectedProduct.Developers.Remove(dev);
+        await SaveUpdateChangesAsync();
+
     }
     public async Task RemovePublisherAsync(Publisher publisher)
     {
         SelectedProduct.Publishers.Remove(publisher);
+        await SaveUpdateChangesAsync();
+
     }
     public async Task RemoveTagAsync(Tag tag)
     {
         SelectedProduct.Tags.Remove(tag);
+        await SaveUpdateChangesAsync();
+
     }
 
     public async Task AddNewDeveloperToProductAsync()
@@ -96,8 +102,8 @@ public class AdminProductViewModel(IClientProductService service,
 
     public async Task AddNewPublisherToProductAsync()
     {
-        var newDev = await _publisherService.AddAsync(NewPublisher);
-        SelectedProduct.Publishers.Add(NewPublisher);
+        var newPub = await _publisherService.AddAsync(NewPublisher);
+        SelectedProduct.Publishers.Add(newPub);
         await SaveUpdateChangesAsync();
         NewPublisher = new();
     }
@@ -122,6 +128,28 @@ public class AdminProductViewModel(IClientProductService service,
     }
     public async Task SaveUpdateChangesAsync()
     {
+        var dto = new ProductDto()
+        {
+            Id = SelectedProduct.Id,
+            Name = SelectedProduct.Name,
+            Price = SelectedProduct.Price,
+            ProductTypeId = SelectedProduct.ProductType.Id,
+            DiscountId = SelectedProduct.Discount.Id,
+            Description = SelectedProduct.Description,
+            Languages = SelectedProduct.Languages,
+            ImageLink = SelectedProduct.ImageLink,
+            PcRequirements = SelectedProduct.PcRequirements,
+            ReleaseDate = SelectedProduct.ReleaseDate,
+            DeveloperIds = SelectedProduct.Developers.Select(d => d.Id).ToList(),
+            PublisherIds = SelectedProduct.Publishers.Select(p => p.Id).ToList(),
+            ScreenshotIds = SelectedProduct.Screenshots.Select(s => s.Id).ToList(),
+            TagIds = SelectedProduct.Tags.Select(t => t.Id).ToList(),
+            ReviewIds = SelectedProduct.Reviews.Select(r => r.Id).ToList(),
+            AgeRating = SelectedProduct.AgeRating
+        };
+
+        var success = await _productService.UpdateAsync(dto);
+        
 
     }
 

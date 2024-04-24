@@ -6,8 +6,8 @@ Library     Collections
 
 *** Variables ***
 
-${url}      https://localhost:7207/
-${BROWSER}      chrome
+${url}      https://majornagamestore.azurewebsites.net/
+${BROWSER}      headlesschrome
 ${BROWSER_OPTIONS}  add_argument("--no-sandbox"); add_argument("window-size=1920,1080")
 ${admin_username}    admin@gamegrottan.com
 ${password}     GameGrottan2024!

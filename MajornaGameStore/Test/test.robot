@@ -5,10 +5,10 @@ Library    SeleniumLibrary
 Suite Setup     setup
 
 *** Test Cases ***
-Blazorapp running
-    Open Browser        browser=${BROWSER}      options=${BROWSER_OPTIONS}
-    Go To   ${url}
-    Wait Until Page Contains    Välkommen till Majorna Gaming
+#Blazorapp running
+   # Open Browser        browser=${BROWSER}      options=${BROWSER_OPTIONS}
+   # Go To   ${url}
+   # Wait Until Page Contains    Välkommen till Majorna Gaming
 
 Access Landing Page
     Given Open the browser

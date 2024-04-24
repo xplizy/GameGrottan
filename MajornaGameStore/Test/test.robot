@@ -63,6 +63,14 @@ Access Event Page
     When I Click on Event
     Then I should be able to see all events
 
+Access Event Details Page
+    [Documentation]    Access Event Page
+    [Tags]  Events
+    Given open the browser
+    When I Click on Event
+    And I Click on Event Details
+    Then I should be able to see the event details
+
 Login to admin page with valid credentials
     [Documentation]    Login with valid credentials
     [Tags]  Admin_Login

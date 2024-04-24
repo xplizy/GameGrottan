@@ -36,8 +36,10 @@
                 color: #ffffff; /* Vit textfärg */
                 padding: 0px; /* Ger knappen lite utrymme */
                 border-radius: 5px; /* Rundar kanterna på knappen */
-                transition: all 0.2s; /* Gör övergångseffekten smidig för alla egenskaper */
+                transition: all 0.1s; /* Gör övergångseffekten smidig för alla egenskaper */
             }
+
+           
 
             .nav-link:hover {
                  background: linear-gradient(135deg, #00ffd1, #fa05f1); /* När musen hålls över knappen ändras bakgrundsfärgen till den första färgen i gradienten */
@@ -45,6 +47,7 @@
                  transform: translateX(5px); /* Flytta texten 5px åt höger när musen hovras över */
                  border: solid;
             }
+
             
             .navbar-text {
                 display: flex;
@@ -67,7 +70,7 @@
                 width: 80px;
                 height: 80px;
                 margin-right: 50px ;
-                border-radius: 100px;
+                border-radius:50px;
                 position: relative;
             }
 
@@ -117,63 +120,51 @@
                 </li>
                 
             </ul>
+            <div class="d-flex">
+                <span class="navbar-text mr-3">
+                    <button class="btn btn-info navbar-button" @onclick="OnShowModalClick">
+                        <Icon Name="IconName.Cart3" Size="IconSize.x1" class="navbar-icon"></Icon> 0
+                    </button>
+                </span>
+                <AuthorizeView>
+                    <NotAuthorized>
+                        <span class="navbar-text">
+                            <NavLink class="" href="/login">
+                                <button class="btn btn-info navbar-button">
+                                    <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span>
+                                    <Icon Name="IconName.Person" Size="IconSize.x1" class="navbar-icon"></Icon>
+                                </button>
+                            </NavLink>
+                        </span>
+                    </NotAuthorized>
+                    <Authorized>
+                        <button class="btn btn-info navbar-button" id="LogOutBtn" @onclick="Acct.LogoutAsync">
+                            <Icon Name="IconName.BoxArrowLeft" Size="IconSize.x1" class="navbar-icon"></Icon>
+                        </button>
+                    </Authorized>
+                </AuthorizeView>
+            </div>
         </div>
-
     </div>
 
-    <span class="navbar-text">
-
-        <button class="btn btn-info" @onclick="OnShowModalClick">
-                <Icon Name="IconName.Cart3" Size="IconSize.x1"></Icon> 0
-            </button>
-        
-    </span>
-    <AuthorizeView>
-    <NotAuthorized>
-        <span class="navbar-text">
-            <NavLink class="nav-link" href="/login">
-                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span>
-        
-                <Icon Name="IconName.Person" Size="IconSize.x1"></Icon>
-        
-            </NavLink>
-    
-        </span>
-    </NotAuthorized>
-    <Authorized>
-        <button class="btn" id="LogOutBtn" @onclick="Acct.LogoutAsync">
-            <Icon Name="IconName.BoxArrowLeft" Size="IconSize.x1"></Icon> 
-        </button>
-    </Authorized>
-</AuthorizeView>
-   
-    
-    
-    
 </nav>
 
 <Modal @ref="modal" Title="Kundvagn" Size="ModalSize.Large">
     <BodyTemplate>
-
         <Cart></Cart>
     </BodyTemplate>
-    
 </Modal>
 
 @code {
-
-
     private Modal modal;
 
     private async Task OnShowModalClick()
     {
-        await modal?.ShowAsync();
+        await modal.ShowAsync();
     }
 
     private async Task OnHideModalClick()
     {
-        await modal?.HideAsync();
+        await modal.HideAsync();
     }
-
-
 }

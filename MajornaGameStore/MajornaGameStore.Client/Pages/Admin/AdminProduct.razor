@@ -219,6 +219,7 @@ else
 
     private async Task OnHideModalClick()
     {
+        await ViewModel.OnInit();
         await modal?.HideAsync();
     }
 

@@ -63,7 +63,6 @@ public class ClientProductService(IHttpClientFactory factory) : IClientProductSe
         if (response.IsSuccessStatusCode == false)
             return false;
 
-        var result = await response.Content.ReadFromJsonAsync<ProductDto>();
         return true;
     }
 

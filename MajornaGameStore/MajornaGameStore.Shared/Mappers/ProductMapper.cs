@@ -128,60 +128,60 @@ public static class ProductMapper
 
         return dto;
     }
-    public static async Task<ProductWithInfoDto> MapToDtoWithInfoAsync(this Product entity)
-    {
-        //Developers
-        var developerNames = new List<string>();
-        foreach (var entityDeveloper in entity.Developers)
-        {
-            developerNames.Add(entityDeveloper.Name);
-        }
-        //Publishers
-        var publisherNames = new List<string>();
-        foreach (var entityPublisher in entity.Publishers)
-        {
-            publisherNames.Add(entityPublisher.Name);
-        }
-        //Screenshots
-        var screenshotLinks = new List<string>();
-        foreach (var entityScreenshot in entity.Screenshots)
-        {
-            screenshotLinks.Add(entityScreenshot.Path);
-        }
-        //Tags
-        var tagNames = new List<string>();
-        foreach (var entityTag in entity.Tags)
-        {
-            tagNames.Add(entityTag.Name);
-        }
-        //Reviews
-        var reviewIds = new List<int>();
-        foreach (var entityReview in entity.Reviews)
-        {
-            reviewIds.Add(entityReview.Id);
-        }
-        var dto = new ProductWithInfoDto()
-        {
-            Id = entity.Id,
-            Name = entity.Name,
-            Price = entity.Price,
-            ProductTypeId = entity.ProductTypeId,
-            DiscountId = entity.DiscountId,
-            Description = entity.Description,
-            Languages = entity.Languages,
-            ImageLink = entity.ImageLink,
-            PcRequirements = entity.PcRequirements,
-            ReleaseDate = entity.ReleaseDate,
-            AgeRating = entity.AgeRating,
-            DeveloperNames = developerNames,
-            PublisherNames = publisherNames,
-            ScreenshotLinks = screenshotLinks,
-            TagNames = tagNames,
-            ReviewIds = reviewIds
-        };
+    //public static async Task<ProductWithInfoDto> MapToDtoWithInfoAsync(this Product entity)
+    //{
+    //    //Developers
+    //    var developerNames = new List<string>();
+    //    foreach (var entityDeveloper in entity.Developers)
+    //    {
+    //        developerNames.Add(entityDeveloper.Name);
+    //    }
+    //    //Publishers
+    //    var publisherNames = new List<string>();
+    //    foreach (var entityPublisher in entity.Publishers)
+    //    {
+    //        publisherNames.Add(entityPublisher.Name);
+    //    }
+    //    //Screenshots
+    //    var screenshotLinks = new List<string>();
+    //    foreach (var entityScreenshot in entity.Screenshots)
+    //    {
+    //        screenshotLinks.Add(entityScreenshot.Path);
+    //    }
+    //    //Tags
+    //    var tagNames = new List<string>();
+    //    foreach (var entityTag in entity.Tags)
+    //    {
+    //        tagNames.Add(entityTag.Name);
+    //    }
+    //    //Reviews
+    //    var reviewIds = new List<int>();
+    //    foreach (var entityReview in entity.Reviews)
+    //    {
+    //        reviewIds.Add(entityReview.Id);
+    //    }
+    //    var dto = new ProductWithInfoDto()
+    //    {
+    //        Id = entity.Id,
+    //        Name = entity.Name,
+    //        Price = entity.Price,
+    //        ProductTypeId = entity.ProductTypeId,
+    //        DiscountId = entity.DiscountId,
+    //        Description = entity.Description,
+    //        Languages = entity.Languages,
+    //        ImageLink = entity.ImageLink,
+    //        PcRequirements = entity.PcRequirements,
+    //        ReleaseDate = entity.ReleaseDate,
+    //        AgeRating = entity.AgeRating,
+    //        DeveloperNames = developerNames,
+    //        PublisherNames = publisherNames,
+    //        ScreenshotLinks = screenshotLinks,
+    //        TagNames = tagNames,
+    //        ReviewIds = reviewIds
+    //    };
 
-        return dto;
-    }
+    //    return dto;
+    //}
 }
 
 

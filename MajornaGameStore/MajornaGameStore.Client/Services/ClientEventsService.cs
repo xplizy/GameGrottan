@@ -2,6 +2,7 @@
 using MajornaGameStore.Shared.Dtos;
 using MajornaGameStore.Shared.Interfaces.ServiceInterfaces.ClientSide;
 using System.Net.Http.Json;
+using SharpCompress.Common;
 
 namespace MajornaGameStore.Client.Services;
 
@@ -36,18 +37,36 @@ public class ClientEventsService(HttpClient httpClient) : IClientEventsService
 
     }
 
-    public Task<EventDto> AddAsync(EventDto entity)
+    public async Task<EventDto> AddAsync(EventDto entity)
     {
-        throw new NotImplementedException();
+        var response = await _httpClient.PostAsJsonAsync($"/events", entity);
+
+        if (response.IsSuccessStatusCode == false)
+            return null;
+
+        var result = await response.Content.ReadFromJsonAsync<EventDto>();
+        return result;
     }
 
-    public Task<bool> UpdateAsync(EventDto entity)
+    public async Task<bool> UpdateAsync(EventDto entity)
     {
-        throw new NotImplementedException();
+        var response = await _httpClient.PutAsJsonAsync($"/events", entity);
+
+        if (response.IsSuccessStatusCode == false)
+            return false;
+
+        var result = await response.Content.ReadFromJsonAsync<EventDto>();
+        return true;
     }
 
-    public Task<bool> DeleteAsync(int id)
+    public async Task<bool> DeleteAsync(int id)
     {
-        throw new NotImplementedException();
+        var response = await _httpClient.DeleteAsync($"/events/{id}");
+
+        if (response.IsSuccessStatusCode == false)
+            return false;
+
+        var result = await response.Content.ReadFromJsonAsync<EventDto>();
+        return true;
     }
 }

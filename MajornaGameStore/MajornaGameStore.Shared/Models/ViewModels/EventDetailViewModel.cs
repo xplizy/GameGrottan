@@ -28,6 +28,7 @@ public class EventDetailViewModel(IClientEventsService detailService, IClientCar
                 if (cartTicket.EventId == eventDto.Id)
                 {
                     item.Quantity += quantity;
+                    eventDto.SpotsLeft--;
                     return;
                 }
 

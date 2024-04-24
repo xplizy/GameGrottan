@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.0 (Python 3.12.1 on win32)" generated="2024-04-23T09:43:58.478443" rpa="false" schemaversion="5">
+<robot generator="Robot 7.0 (Python 3.12.1 on win32)" generated="2024-04-24T11:24:57.814250" rpa="false" schemaversion="5">
 <suite id="s1" name="Iths-Majornagaming6" source="C:\Users\ls930499\source\repos\iths-majornagaming6">
 <suite id="s1-s1" name="MajornaGameStore" source="C:\Users\ls930499\source\repos\iths-majornagaming6\MajornaGameStore">
 <suite id="s1-s1-s1" name="Test" source="C:\Users\ls930499\source\repos\iths-majornagaming6\MajornaGameStore\Test">
@@ -8,569 +8,123 @@
 <kw name="Set Selenium Speed" owner="SeleniumLibrary">
 <arg>1</arg>
 <doc>Sets the delay that is waited after each Selenium command.</doc>
-<status status="PASS" start="2024-04-23T09:43:58.953975" elapsed="0.001002"/>
+<status status="PASS" start="2024-04-24T11:24:58.130634" elapsed="0.000501"/>
 </kw>
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-04-23T09:43:58.954977" level="INFO">Opening browser 'headlesschrome' to base url 'None'.</msg>
+<msg time="2024-04-24T11:24:58.131596" level="INFO">Opening browser 'chrome' to base url 'None'.</msg>
 <arg>browser=${BROWSER}</arg>
 <arg>options=${BROWSER_OPTIONS}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-04-23T09:43:58.954977" elapsed="1.490873"/>
+<status status="PASS" start="2024-04-24T11:24:58.131135" elapsed="1.361009"/>
 </kw>
 <kw name="Go To" owner="SeleniumLibrary">
-<msg time="2024-04-23T09:44:00.446851" level="INFO">Opening url 'https://majornagamestore-staging.azurewebsites.net/'</msg>
+<msg time="2024-04-24T11:24:59.492645" level="INFO">Opening url 'https://localhost:7207/'</msg>
 <arg>${url}</arg>
 <doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="PASS" start="2024-04-23T09:44:00.445850" elapsed="2.227661"/>
+<status status="PASS" start="2024-04-24T11:24:59.492645" elapsed="4.582221"/>
 </kw>
-<status status="PASS" start="2024-04-23T09:43:58.952967" elapsed="3.720544"/>
+<status status="PASS" start="2024-04-24T11:24:58.129592" elapsed="5.945777"/>
 </kw>
-<test id="s1-s1-s1-s1-t1" name="Blazorapp running" line="8">
+<test id="s1-s1-s1-s1-t1" name="Login with valid credentials(user)" line="79">
+<kw name="Open the browser" owner="resource">
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-04-23T09:44:02.688561" level="INFO">Opening browser 'headlesschrome' to base url 'None'.</msg>
+<msg time="2024-04-24T11:25:04.085397" level="INFO">Opening browser 'chrome' to base url 'None'.</msg>
 <arg>browser=${BROWSER}</arg>
 <arg>options=${BROWSER_OPTIONS}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-04-23T09:44:02.687058" elapsed="1.525073"/>
+<status status="PASS" start="2024-04-24T11:25:04.080382" elapsed="1.376799"/>
 </kw>
 <kw name="Go To" owner="SeleniumLibrary">
-<msg time="2024-04-23T09:44:04.214135" level="INFO">Opening url 'https://majornagamestore-staging.azurewebsites.net/'</msg>
+<msg time="2024-04-24T11:25:05.458183" level="INFO">Opening url 'https://localhost:7207/'</msg>
 <arg>${url}</arg>
 <doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="PASS" start="2024-04-23T09:44:04.213133" elapsed="3.879164"/>
-</kw>
-<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
-<msg time="2024-04-23T09:44:15.427914" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-4.png"&gt;&lt;img src="selenium-screenshot-4.png" width="800px"&gt;&lt;/a&gt;</msg>
-<msg time="2024-04-23T09:44:15.427914" level="FAIL">Text 'Välkommen till Majorna Gaming' did not appear in 5 seconds.</msg>
-<arg>Välkommen till Majorna Gaming</arg>
-<doc>Waits until ``text`` appears on the current page.</doc>
-<status status="FAIL" start="2024-04-23T09:44:08.094242" elapsed="7.386314">Text 'Välkommen till Majorna Gaming' did not appear in 5 seconds.</status>
-</kw>
-<status status="FAIL" start="2024-04-23T09:44:02.674512" elapsed="12.807046">Text 'Välkommen till Majorna Gaming' did not appear in 5 seconds.</status>
-</test>
-<test id="s1-s1-s1-s1-t2" name="Access Landing Page" line="13">
-<kw name="Given Open the browser" owner="resource">
-<kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-04-23T09:44:15.483563" level="INFO">Opening browser 'headlesschrome' to base url 'None'.</msg>
-<arg>browser=${BROWSER}</arg>
-<arg>options=${BROWSER_OPTIONS}</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-04-23T09:44:15.483563" elapsed="1.326712"/>
-</kw>
-<kw name="Go To" owner="SeleniumLibrary">
-<msg time="2024-04-23T09:44:16.810778" level="INFO">Opening url 'https://majornagamestore-staging.azurewebsites.net/'</msg>
-<arg>${url}</arg>
-<doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="PASS" start="2024-04-23T09:44:16.810778" elapsed="6.681633"/>
+<status status="PASS" start="2024-04-24T11:25:05.457681" elapsed="4.555627"/>
 </kw>
 <kw name="Wait Until Page Contains" owner="SeleniumLibrary">
 <arg>Hem</arg>
 <arg>60s</arg>
 <doc>Waits until ``text`` appears on the current page.</doc>
-<status status="PASS" start="2024-04-23T09:44:23.497423" elapsed="4.935468"/>
+<status status="PASS" start="2024-04-24T11:25:10.013807" elapsed="1.023702"/>
 </kw>
 <tag>VG_Test1_browser</tag>
 <doc>Browser</doc>
-<status status="PASS" start="2024-04-23T09:44:15.482560" elapsed="12.950331"/>
+<status status="PASS" start="2024-04-24T11:25:04.078879" elapsed="6.958630"/>
 </kw>
-<kw name="And I am able to see the logo" owner="resource">
-<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
-<arg>//img[@alt='Majorna Gaming Logo']</arg>
-<doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="PASS" start="2024-04-23T09:44:28.434953" elapsed="1.023657"/>
-</kw>
-<tag>Home Page</tag>
-<doc>Browser</doc>
-<status status="PASS" start="2024-04-23T09:44:28.434953" elapsed="1.023657"/>
-</kw>
-<kw name="Then I can see the links" owner="resource">
-<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
-<arg>//a[@class='nav-link active']</arg>
-<doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="PASS" start="2024-04-23T09:44:29.459613" elapsed="1.012221"/>
-</kw>
-<tag>Home Page</tag>
-<doc>Browser</doc>
-<status status="PASS" start="2024-04-23T09:44:29.458610" elapsed="1.013224"/>
-</kw>
-<status status="PASS" start="2024-04-23T09:44:15.482560" elapsed="14.990941"/>
-</test>
-<test id="s1-s1-s1-s1-t3" name="Access Product Page" line="19">
-<kw name="Given Open the browser" owner="resource">
-<kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-04-23T09:44:30.478553" level="INFO">Opening browser 'headlesschrome' to base url 'None'.</msg>
-<arg>browser=${BROWSER}</arg>
-<arg>options=${BROWSER_OPTIONS}</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-04-23T09:44:30.478553" elapsed="2.101780"/>
-</kw>
-<kw name="Go To" owner="SeleniumLibrary">
-<msg time="2024-04-23T09:44:32.580835" level="INFO">Opening url 'https://majornagamestore-staging.azurewebsites.net/'</msg>
-<arg>${url}</arg>
-<doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="PASS" start="2024-04-23T09:44:32.580835" elapsed="5.686993"/>
-</kw>
-<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
-<arg>Hem</arg>
-<arg>60s</arg>
-<doc>Waits until ``text`` appears on the current page.</doc>
-<status status="PASS" start="2024-04-23T09:44:38.267828" elapsed="3.699783"/>
-</kw>
-<tag>VG_Test1_browser</tag>
-<doc>Browser</doc>
-<status status="PASS" start="2024-04-23T09:44:30.477547" elapsed="11.490064"/>
-</kw>
-<kw name="When I am able to see Products" owner="resource">
-<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
-<arg>//p[normalize-space()='Spel']</arg>
-<doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="PASS" start="2024-04-23T09:44:41.969621" elapsed="1.020585"/>
-</kw>
-<tag>Products</tag>
-<doc>Browser</doc>
-<status status="PASS" start="2024-04-23T09:44:41.968586" elapsed="1.021620"/>
-</kw>
-<kw name="And I click on Products" owner="resource">
-<kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2024-04-23T09:44:42.990804" level="INFO">Clicking element '//p[normalize-space()='Spel']'.</msg>
-<arg>//p[normalize-space()='Spel']</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-04-23T09:44:42.990804" elapsed="2.104786"/>
-</kw>
-<tag>Products</tag>
-<doc>Browser</doc>
-<status status="PASS" start="2024-04-23T09:44:42.990804" elapsed="2.104786"/>
-</kw>
-<kw name="And I can see the Product Page" owner="resource">
-<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
-<msg time="2024-04-23T09:44:53.327558" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-5.png"&gt;&lt;img src="selenium-screenshot-5.png" width="800px"&gt;&lt;/a&gt;</msg>
-<msg time="2024-04-23T09:44:53.328563" level="FAIL">Text 'Produkter' did not appear in 5 seconds.</msg>
-<arg>Produkter</arg>
-<doc>Waits until ``text`` appears on the current page.</doc>
-<status status="FAIL" start="2024-04-23T09:44:45.096594" elapsed="8.232969">Text 'Produkter' did not appear in 5 seconds.</status>
-</kw>
-<tag>Products</tag>
-<doc>Browser</doc>
-<status status="FAIL" start="2024-04-23T09:44:45.095590" elapsed="8.233973">Text 'Produkter' did not appear in 5 seconds.</status>
-</kw>
-<kw name="Then Verify Product List Is Visible" owner="resource">
-<tag>Products</tag>
-<doc>Browser</doc>
-<status status="NOT RUN" start="2024-04-23T09:44:53.330566" elapsed="0.000000"/>
-</kw>
-<status status="FAIL" start="2024-04-23T09:44:30.475501" elapsed="22.856068">Text 'Produkter' did not appear in 5 seconds.</status>
-</test>
-<test id="s1-s1-s1-s1-t4" name="Add product into the cart directly" line="27">
-<kw name="Given Open The Browser" owner="resource">
-<kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-04-23T09:44:53.335612" level="INFO">Opening browser 'headlesschrome' to base url 'None'.</msg>
-<arg>browser=${BROWSER}</arg>
-<arg>options=${BROWSER_OPTIONS}</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-04-23T09:44:53.334613" elapsed="1.697048"/>
-</kw>
-<kw name="Go To" owner="SeleniumLibrary">
-<msg time="2024-04-23T09:44:55.032664" level="INFO">Opening url 'https://majornagamestore-staging.azurewebsites.net/'</msg>
-<arg>${url}</arg>
-<doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="PASS" start="2024-04-23T09:44:55.032664" elapsed="2.818437"/>
-</kw>
-<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
-<arg>Hem</arg>
-<arg>60s</arg>
-<doc>Waits until ``text`` appears on the current page.</doc>
-<status status="PASS" start="2024-04-23T09:44:57.851101" elapsed="5.756100"/>
-</kw>
-<tag>VG_Test1_browser</tag>
-<doc>Browser</doc>
-<status status="PASS" start="2024-04-23T09:44:53.334613" elapsed="10.273283"/>
-</kw>
-<kw name="When I click on Products" owner="resource">
-<kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2024-04-23T09:45:03.610884" level="INFO">Clicking element '//p[normalize-space()='Spel']'.</msg>
-<arg>//p[normalize-space()='Spel']</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-04-23T09:45:03.609882" elapsed="2.107753"/>
-</kw>
-<tag>Products</tag>
-<doc>Browser</doc>
-<status status="PASS" start="2024-04-23T09:45:03.609882" elapsed="2.107753"/>
-</kw>
-<kw name="And I can add product to cart directly" owner="resource">
-<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
-<msg time="2024-04-23T09:46:09.191480" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-6.png"&gt;&lt;img src="selenium-screenshot-6.png" width="800px"&gt;&lt;/a&gt;</msg>
-<msg time="2024-04-23T09:46:09.192483" level="FAIL">Element '//a[normalize-space()='Counter-Strike']' did not appear in 1 minute.</msg>
-<arg>//a[normalize-space()='Counter-Strike']</arg>
-<arg>60s</arg>
-<doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="FAIL" start="2024-04-23T09:45:05.720419" elapsed="63.473068">Element '//a[normalize-space()='Counter-Strike']' did not appear in 1 minute.</status>
-</kw>
-<kw name="Click Button" owner="SeleniumLibrary">
-<arg>//div[2]//div[1]//div[2]//button[1]</arg>
-<doc>Clicks the button identified by ``locator``.</doc>
-<status status="NOT RUN" start="2024-04-23T09:46:09.193487" elapsed="0.000000"/>
-</kw>
-<tag>Products</tag>
-<doc>Browser</doc>
-<status status="FAIL" start="2024-04-23T09:45:05.719376" elapsed="63.475113">Element '//a[normalize-space()='Counter-Strike']' did not appear in 1 minute.</status>
-</kw>
-<kw name="And Check the product in the cart" owner="resource">
-<tag>shopping cart</tag>
-<doc>add product in the cart</doc>
-<status status="NOT RUN" start="2024-04-23T09:46:09.196495" elapsed="0.000000"/>
-</kw>
-<status status="FAIL" start="2024-04-23T09:44:53.333574" elapsed="75.864926">Element '//a[normalize-space()='Counter-Strike']' did not appear in 1 minute.</status>
-</test>
-<test id="s1-s1-s1-s1-t5" name="View Products in Cart" line="34">
-<kw name="Given Open the browser" owner="resource">
-<kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-04-23T09:46:09.201508" level="INFO">Opening browser 'headlesschrome' to base url 'None'.</msg>
-<arg>browser=${BROWSER}</arg>
-<arg>options=${BROWSER_OPTIONS}</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-04-23T09:46:09.201508" elapsed="1.686728"/>
-</kw>
-<kw name="Go To" owner="SeleniumLibrary">
-<msg time="2024-04-23T09:46:10.889237" level="INFO">Opening url 'https://majornagamestore-staging.azurewebsites.net/'</msg>
-<arg>${url}</arg>
-<doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="PASS" start="2024-04-23T09:46:10.888236" elapsed="3.448063"/>
-</kw>
-<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
-<arg>Hem</arg>
-<arg>60s</arg>
-<doc>Waits until ``text`` appears on the current page.</doc>
-<status status="PASS" start="2024-04-23T09:46:14.336299" elapsed="6.416496"/>
-</kw>
-<tag>VG_Test1_browser</tag>
-<doc>Browser</doc>
-<status status="PASS" start="2024-04-23T09:46:09.200506" elapsed="11.552289"/>
-</kw>
-<kw name="When I am able to see Cart" owner="resource">
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<msg time="2024-04-23T09:47:23.044000" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-7.png"&gt;&lt;img src="selenium-screenshot-7.png" width="800px"&gt;&lt;/a&gt;</msg>
-<msg time="2024-04-23T09:47:23.045006" level="FAIL">Element '//a[normalize-space()='Kundvagn']' not visible after 1 minute.</msg>
-<arg>//a[normalize-space()='Kundvagn']</arg>
-<arg>timeout=60s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="FAIL" start="2024-04-23T09:46:20.755846" elapsed="62.290164">Element '//a[normalize-space()='Kundvagn']' not visible after 1 minute.</status>
-</kw>
-<tag>Cart</tag>
-<doc>Browser</doc>
-<status status="FAIL" start="2024-04-23T09:46:20.754799" elapsed="62.292244">Element '//a[normalize-space()='Kundvagn']' not visible after 1 minute.</status>
-</kw>
-<kw name="And I click on Cart" owner="resource">
-<tag>Cart</tag>
-<doc>Browser</doc>
-<status status="NOT RUN" start="2024-04-23T09:47:23.048012" elapsed="0.000000"/>
-</kw>
-<kw name="Then I can see the Products in the cart" owner="resource">
-<tag>Cart</tag>
-<doc>Browser</doc>
-<status status="NOT RUN" start="2024-04-23T09:47:23.049013" elapsed="0.000000"/>
-</kw>
-<status status="FAIL" start="2024-04-23T09:46:09.199501" elapsed="73.850515">Element '//a[normalize-space()='Kundvagn']' not visible after 1 minute.</status>
-</test>
-<test id="s1-s1-s1-s1-t6" name="Checking the product quantity" line="40">
-<kw name="Given open the browser" owner="resource">
-<kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-04-23T09:47:23.053027" level="INFO">Opening browser 'headlesschrome' to base url 'None'.</msg>
-<arg>browser=${BROWSER}</arg>
-<arg>options=${BROWSER_OPTIONS}</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-04-23T09:47:23.053027" elapsed="1.374815"/>
-</kw>
-<kw name="Go To" owner="SeleniumLibrary">
-<msg time="2024-04-23T09:47:24.428843" level="INFO">Opening url 'https://majornagamestore-staging.azurewebsites.net/'</msg>
-<arg>${url}</arg>
-<doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="PASS" start="2024-04-23T09:47:24.427842" elapsed="2.715828"/>
-</kw>
-<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
-<arg>Hem</arg>
-<arg>60s</arg>
-<doc>Waits until ``text`` appears on the current page.</doc>
-<status status="PASS" start="2024-04-23T09:47:27.144172" elapsed="5.492893"/>
-</kw>
-<tag>VG_Test1_browser</tag>
-<doc>Browser</doc>
-<status status="PASS" start="2024-04-23T09:47:23.052023" elapsed="9.585543"/>
-</kw>
-<kw name="When I Click On Cart" owner="resource">
-<kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2024-04-23T09:47:32.646136" level="INFO">Clicking element '//i[@class='bi bi-cart3 fs-1']'.</msg>
-<arg>//i[@class='bi bi-cart3 fs-1']</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-04-23T09:47:32.645635" elapsed="2.192011"/>
-</kw>
-<tag>Cart</tag>
-<doc>Browser</doc>
-<status status="PASS" start="2024-04-23T09:47:32.644132" elapsed="2.193514"/>
-</kw>
-<kw name="Then I can see the Products in the cart" owner="resource">
-<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
-<msg time="2024-04-23T09:49:17.388800" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-8.png"&gt;&lt;img src="selenium-screenshot-8.png" width="800px"&gt;&lt;/a&gt;</msg>
-<msg time="2024-04-23T09:49:17.388800" level="FAIL">Text '//p[normalize-space()='1 x Counter-Strike (819 SEK) - 819']' did not appear in 1 minute 40 seconds.</msg>
-<arg>//p[normalize-space()='1 x Counter-Strike (819 SEK) - 819']</arg>
-<arg>100s</arg>
-<doc>Waits until ``text`` appears on the current page.</doc>
-<status status="FAIL" start="2024-04-23T09:47:34.840157" elapsed="102.550649">Text '//p[normalize-space()='1 x Counter-Strike (819 SEK) - 819']' did not appear in 1 minute 40 seconds.</status>
-</kw>
-<tag>Cart</tag>
-<doc>Browser</doc>
-<status status="FAIL" start="2024-04-23T09:47:34.839656" elapsed="102.551150">Text '//p[normalize-space()='1 x Counter-Strike (819 SEK) - 819']' did not appear in 1 minute 40 seconds.</status>
-</kw>
-<kw name="And I can increase the product quantity" owner="resource">
-<tag>shopping cart</tag>
-<doc>Browser</doc>
-<status status="NOT RUN" start="2024-04-23T09:49:17.391807" elapsed="0.000000"/>
-</kw>
-<doc>Checking the product quantity by increasing the value</doc>
-<tag>product quantity</tag>
-<status status="FAIL" start="2024-04-23T09:47:23.051018" elapsed="114.341792">Text '//p[normalize-space()='1 x Counter-Strike (819 SEK) - 819']' did not appear in 1 minute 40 seconds.</status>
-</test>
-<test id="s1-s1-s1-s1-t7" name="Remove item from the cart" line="50">
-<kw name="Given open the browser" owner="resource">
-<kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-04-23T09:49:17.396820" level="INFO">Opening browser 'headlesschrome' to base url 'None'.</msg>
-<arg>browser=${BROWSER}</arg>
-<arg>options=${BROWSER_OPTIONS}</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-04-23T09:49:17.396820" elapsed="1.574002"/>
-</kw>
-<kw name="Go To" owner="SeleniumLibrary">
-<msg time="2024-04-23T09:49:18.971826" level="INFO">Opening url 'https://majornagamestore-staging.azurewebsites.net/'</msg>
-<arg>${url}</arg>
-<doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="PASS" start="2024-04-23T09:49:18.970822" elapsed="2.904645"/>
-</kw>
-<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
-<arg>Hem</arg>
-<arg>60s</arg>
-<doc>Waits until ``text`` appears on the current page.</doc>
-<status status="PASS" start="2024-04-23T09:49:21.875467" elapsed="7.662083"/>
-</kw>
-<tag>VG_Test1_browser</tag>
-<doc>Browser</doc>
-<status status="PASS" start="2024-04-23T09:49:17.395817" elapsed="12.142448"/>
-</kw>
-<kw name="When I Click On Cart" owner="resource">
-<kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2024-04-23T09:49:29.545281" level="INFO">Clicking element '//i[@class='bi bi-cart3 fs-1']'.</msg>
-<arg>//i[@class='bi bi-cart3 fs-1']</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-04-23T09:49:29.544285" elapsed="2.193977"/>
-</kw>
-<tag>Cart</tag>
-<doc>Browser</doc>
-<status status="PASS" start="2024-04-23T09:49:29.543277" elapsed="2.194985"/>
-</kw>
-<kw name="Then I can see the Products in the cart" owner="resource">
-<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
-<msg time="2024-04-23T09:51:13.970167" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-9.png"&gt;&lt;img src="selenium-screenshot-9.png" width="800px"&gt;&lt;/a&gt;</msg>
-<msg time="2024-04-23T09:51:13.970669" level="FAIL">Text '//p[normalize-space()='1 x Counter-Strike (819 SEK) - 819']' did not appear in 1 minute 40 seconds.</msg>
-<arg>//p[normalize-space()='1 x Counter-Strike (819 SEK) - 819']</arg>
-<arg>100s</arg>
-<doc>Waits until ``text`` appears on the current page.</doc>
-<status status="FAIL" start="2024-04-23T09:49:31.743277" elapsed="102.228394">Text '//p[normalize-space()='1 x Counter-Strike (819 SEK) - 819']' did not appear in 1 minute 40 seconds.</status>
-</kw>
-<tag>Cart</tag>
-<doc>Browser</doc>
-<status status="FAIL" start="2024-04-23T09:49:31.742273" elapsed="102.229898">Text '//p[normalize-space()='1 x Counter-Strike (819 SEK) - 819']' did not appear in 1 minute 40 seconds.</status>
-</kw>
-<kw name="And I can remove the product" owner="resource">
-<tag>Home Page</tag>
-<doc>Browser</doc>
-<status status="NOT RUN" start="2024-04-23T09:51:13.972672" elapsed="0.000504"/>
-</kw>
-<doc>Remove the item in the cart</doc>
-<tag>Remove product</tag>
-<status status="FAIL" start="2024-04-23T09:49:17.394816" elapsed="116.578862">Text '//p[normalize-space()='1 x Counter-Strike (819 SEK) - 819']' did not appear in 1 minute 40 seconds.</status>
-</test>
-<test id="s1-s1-s1-s1-t8" name="Access Event Page" line="59">
-<kw name="Given open the browser" owner="resource">
-<kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2024-04-23T09:51:13.976685" level="INFO">Opening browser 'headlesschrome' to base url 'None'.</msg>
-<arg>browser=${BROWSER}</arg>
-<arg>options=${BROWSER_OPTIONS}</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2024-04-23T09:51:13.976242" elapsed="1.471763"/>
-</kw>
-<kw name="Go To" owner="SeleniumLibrary">
-<msg time="2024-04-23T09:51:15.448005" level="INFO">Opening url 'https://majornagamestore-staging.azurewebsites.net/'</msg>
-<arg>${url}</arg>
-<doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="PASS" start="2024-04-23T09:51:15.448005" elapsed="2.707619"/>
-</kw>
-<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
-<arg>Hem</arg>
-<arg>60s</arg>
-<doc>Waits until ``text`` appears on the current page.</doc>
-<status status="PASS" start="2024-04-23T09:51:18.155624" elapsed="6.233381"/>
-</kw>
-<tag>VG_Test1_browser</tag>
-<doc>Browser</doc>
-<status status="PASS" start="2024-04-23T09:51:13.975683" elapsed="10.413322"/>
-</kw>
-<kw name="When I Click on Event" owner="resource">
-<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
-<arg>//p[normalize-space()='Events']</arg>
-<doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="PASS" start="2024-04-23T09:51:24.391012" elapsed="1.028706"/>
-</kw>
-<kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2024-04-23T09:51:25.421773" level="INFO">Clicking element '//p[normalize-space()='Events']'.</msg>
-<arg>//p[normalize-space()='Events']</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-04-23T09:51:25.420770" elapsed="2.124822"/>
-</kw>
-<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
-<msg time="2024-04-23T09:51:35.001638" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-10.png"&gt;&lt;img src="selenium-screenshot-10.png" width="800px"&gt;&lt;/a&gt;</msg>
-<msg time="2024-04-23T09:51:35.003644" level="FAIL">Text 'Niklas Tjohoo Lan' did not appear in 5 seconds.</msg>
-<arg>Niklas Tjohoo Lan</arg>
-<doc>Waits until ``text`` appears on the current page.</doc>
-<status status="FAIL" start="2024-04-23T09:51:27.546096" elapsed="7.459553">Text 'Niklas Tjohoo Lan' did not appear in 5 seconds.</status>
-</kw>
-<tag>Home Page</tag>
-<doc>Event details</doc>
-<status status="FAIL" start="2024-04-23T09:51:24.390009" elapsed="10.615640">Text 'Niklas Tjohoo Lan' did not appear in 5 seconds.</status>
-</kw>
-<kw name="Then I should be able to see all events" owner="resource">
-<tag>Events</tag>
-<doc>Event details</doc>
-<status status="NOT RUN" start="2024-04-23T09:51:35.008659" elapsed="0.000000"/>
-</kw>
-<doc>Access Event Page</doc>
-<tag>Events</tag>
-<status status="FAIL" start="2024-04-23T09:51:13.974677" elapsed="21.033982">Text 'Niklas Tjohoo Lan' did not appear in 5 seconds.</status>
-</test>
-<test id="s1-s1-s1-s1-t9" name="Login to admin page with valid credentials" line="66">
 <kw name="Log in with right credentials" owner="resource">
 <kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2024-04-23T09:51:35.011665" level="INFO">Clicking element '//i[@class='bi bi-person fs-1']'.</msg>
+<msg time="2024-04-24T11:25:11.039014" level="INFO">Clicking element '//i[@class='bi bi-person fs-1']'.</msg>
 <arg>//i[@class='bi bi-person fs-1']</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-04-23T09:51:35.010664" elapsed="2.158521"/>
+<status status="PASS" start="2024-04-24T11:25:11.038512" elapsed="2.117970"/>
 </kw>
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2024-04-23T09:51:37.169185" level="INFO">Typing text 'admin@gamegrottan.com' into text field '//input[@id='usernameField']'.</msg>
+<msg time="2024-04-24T11:25:13.156986" level="INFO">Typing text 'user@user.user' into text field '//input[@id='usernameField']'.</msg>
 <arg>//input[@id='usernameField']</arg>
 <arg>${admin_username}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2024-04-23T09:51:37.169185" elapsed="3.286826"/>
+<status status="PASS" start="2024-04-24T11:25:13.156482" elapsed="3.202278"/>
 </kw>
 <kw name="Input Password" owner="SeleniumLibrary">
-<msg time="2024-04-23T09:51:40.457013" level="INFO">Typing password into text field '//input[@id='passwordField']'.</msg>
-<msg time="2024-04-23T09:51:42.542814" level="INFO">Temporally setting log level to: NONE</msg>
+<msg time="2024-04-24T11:25:16.359261" level="INFO">Typing password into text field '//input[@id='passwordField']'.</msg>
+<msg time="2024-04-24T11:25:18.402327" level="INFO">Temporally setting log level to: NONE</msg>
 <arg>//input[@id='passwordField']</arg>
 <arg>${password}</arg>
 <doc>Types the given password into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2024-04-23T09:51:40.457013" elapsed="3.210748"/>
+<status status="PASS" start="2024-04-24T11:25:16.358760" elapsed="3.149403"/>
 </kw>
 <kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2024-04-23T09:51:43.669762" level="INFO">Clicking button '//button[@id='loginBtn']'.</msg>
+<msg time="2024-04-24T11:25:19.508699" level="INFO">Clicking button '//button[@id='loginBtn']'.</msg>
 <arg>//button[@id='loginBtn']</arg>
 <doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2024-04-23T09:51:43.668760" elapsed="5.172227"/>
+<status status="PASS" start="2024-04-24T11:25:19.508163" elapsed="5.112796"/>
 </kw>
 <kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
 <arg>//*[@id="navbarNavDropdown"]/ul/li[1]/a/p</arg>
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="PASS" start="2024-04-23T09:51:48.840987" elapsed="1.013810"/>
+<status status="PASS" start="2024-04-24T11:25:24.620959" elapsed="1.019877"/>
 </kw>
-<arg>${admin_username}</arg>
+<arg>${user}</arg>
 <arg>${password}</arg>
 <tag>Test_Admin_login</tag>
 <doc>Admin login page</doc>
-<status status="PASS" start="2024-04-23T09:51:35.010664" elapsed="14.844133"/>
+<status status="PASS" start="2024-04-24T11:25:11.038023" elapsed="14.602813"/>
 </kw>
 <kw name="Logout" owner="resource">
 <kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2024-04-23T09:51:49.857302" level="INFO">Clicking element '//i[@class='bi bi-box-arrow-left fs-1']'.</msg>
-<msg time="2024-04-23T09:51:52.777378" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-11.png"&gt;&lt;img src="selenium-screenshot-11.png" width="800px"&gt;&lt;/a&gt;</msg>
-<msg time="2024-04-23T09:51:52.777378" level="FAIL">Element with locator '//i[@class='bi bi-box-arrow-left fs-1']' not found.</msg>
+<msg time="2024-04-24T11:25:25.641841" level="INFO">Clicking element '//i[@class='bi bi-box-arrow-left fs-1']'.</msg>
 <arg>//i[@class='bi bi-box-arrow-left fs-1']</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="FAIL" start="2024-04-23T09:51:49.856805" elapsed="3.216435">Element with locator '//i[@class='bi bi-box-arrow-left fs-1']' not found.</status>
+<status status="PASS" start="2024-04-24T11:25:25.641841" elapsed="2.061982"/>
 </kw>
 <tag>Test_Admin_logout</tag>
 <doc>Admin logout page</doc>
-<status status="FAIL" start="2024-04-23T09:51:49.855800" elapsed="3.217440">Element with locator '//i[@class='bi bi-box-arrow-left fs-1']' not found.</status>
+<status status="PASS" start="2024-04-24T11:25:25.641355" elapsed="2.062468"/>
 </kw>
 <doc>Login with valid credentials</doc>
-<tag>Admin_Login</tag>
-<status status="FAIL" start="2024-04-23T09:51:35.009661" elapsed="18.064582">Element with locator '//i[@class='bi bi-box-arrow-left fs-1']' not found.</status>
-</test>
-<test id="s1-s1-s1-s1-t10" name="Login to admin page with invalid credentials" line="72">
-<kw name="Log in with wrong credentials" owner="resource">
-<kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2024-04-23T09:51:53.076296" level="INFO">Clicking element '//i[@class='bi bi-person fs-1']'.</msg>
-<arg>//i[@class='bi bi-person fs-1']</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2024-04-23T09:51:53.076296" elapsed="2.049531"/>
-</kw>
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2024-04-23T09:51:55.126545" level="INFO">Typing text 'admin@gamegrottan.com' into text field '//input[@id='usernameField']'.</msg>
-<arg>//input[@id='usernameField']</arg>
-<arg>${admin_username}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2024-04-23T09:51:55.126545" elapsed="3.200756"/>
-</kw>
-<kw name="Input Password" owner="SeleniumLibrary">
-<msg time="2024-04-23T09:51:58.327973" level="INFO">Typing password into text field '//input[@id='passwordField']'.</msg>
-<msg time="2024-04-23T09:52:00.383077" level="INFO">Temporally setting log level to: NONE</msg>
-<arg>//input[@id='passwordField']</arg>
-<arg>${invalid_password}</arg>
-<doc>Types the given password into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2024-04-23T09:51:58.327301" elapsed="3.116510"/>
-</kw>
-<kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2024-04-23T09:52:01.443811" level="INFO">Clicking button '//button[@id='loginBtn']'.</msg>
-<arg>//button[@id='loginBtn']</arg>
-<doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2024-04-23T09:52:01.443811" elapsed="5.151182"/>
-</kw>
-<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
-<msg time="2024-04-23T09:52:14.606666" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-12.png"&gt;&lt;img src="selenium-screenshot-12.png" width="800px"&gt;&lt;/a&gt;</msg>
-<msg time="2024-04-23T09:52:14.607168" level="FAIL">Text 'Invalid email and/or password.' did not appear in 5 seconds.</msg>
-<arg>Invalid email and/or password.</arg>
-<doc>Waits until ``text`` appears on the current page.</doc>
-<status status="FAIL" start="2024-04-23T09:52:06.595741" elapsed="8.014936">Text 'Invalid email and/or password.' did not appear in 5 seconds.</status>
-</kw>
-<arg>${admin_username}</arg>
-<arg>${invalid_password}</arg>
-<tag>Test_Admin_login</tag>
-<doc>Admin login page</doc>
-<status status="FAIL" start="2024-04-23T09:51:53.076296" elapsed="21.534883">Text 'Invalid email and/or password.' did not appear in 5 seconds.</status>
-</kw>
-<doc>Login with invalid credentials</doc>
-<tag>Admin_Login</tag>
-<status status="FAIL" start="2024-04-23T09:51:53.075292" elapsed="21.535887">Text 'Invalid email and/or password.' did not appear in 5 seconds.</status>
+<tag>User_Login</tag>
+<status status="PASS" start="2024-04-24T11:25:04.075870" elapsed="23.628460"/>
 </test>
 <doc>test for Majorna Gaming Store</doc>
-<status status="FAIL" start="2024-04-23T09:43:58.516670" elapsed="496.106635"/>
+<status status="PASS" start="2024-04-24T11:24:57.851349" elapsed="29.854986"/>
 </suite>
-<status status="FAIL" start="2024-04-23T09:43:58.515626" elapsed="496.109729"/>
+<status status="PASS" start="2024-04-24T11:24:57.849344" elapsed="29.858996"/>
 </suite>
-<status status="FAIL" start="2024-04-23T09:43:58.513621" elapsed="496.113741"/>
+<status status="PASS" start="2024-04-24T11:24:57.847339" elapsed="29.862428"/>
 </suite>
-<status status="FAIL" start="2024-04-23T09:43:58.481451" elapsed="496.146912"/>
+<status status="PASS" start="2024-04-24T11:24:57.817258" elapsed="29.893510"/>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="9" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
-<stat pass="0" fail="2" skip="0">Admin_Login</stat>
-<stat pass="0" fail="1" skip="0">Events</stat>
-<stat pass="0" fail="1" skip="0">product quantity</stat>
-<stat pass="0" fail="1" skip="0">Remove product</stat>
+<stat pass="1" fail="0" skip="0">User_Login</stat>
 </tag>
 <suite>
-<stat pass="1" fail="9" skip="0" id="s1" name="Iths-Majornagaming6">Iths-Majornagaming6</stat>
-<stat pass="1" fail="9" skip="0" id="s1-s1" name="MajornaGameStore">Iths-Majornagaming6.MajornaGameStore</stat>
-<stat pass="1" fail="9" skip="0" id="s1-s1-s1" name="Test">Iths-Majornagaming6.MajornaGameStore.Test</stat>
-<stat pass="1" fail="9" skip="0" id="s1-s1-s1-s1" name="Test">Iths-Majornagaming6.MajornaGameStore.Test.Test</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="Iths-Majornagaming6">Iths-Majornagaming6</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="MajornaGameStore">Iths-Majornagaming6.MajornaGameStore</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1-s1" name="Test">Iths-Majornagaming6.MajornaGameStore.Test</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1-s1-s1" name="Test">Iths-Majornagaming6.MajornaGameStore.Test.Test</stat>
 </suite>
 </statistics>
 <errors>

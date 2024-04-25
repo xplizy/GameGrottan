@@ -81,25 +81,11 @@ builder.Services.AddScoped<MajornaGameStore.Api.Stripe.StripeClient>();
 
 
 
-////TODO: Ändra origin till den hostade adressen när hemsidan är hostad
-//builder.Services.AddCors(options =>
-//{
-//    options.AddPolicy(name: MyAllowSpecificOrigins,
-//        policy =>
-//        {
-//            //länk till clientens
-//            policy.WithOrigins("https://localhost:7207")
-//                .AllowAnyHeader()
-//                .AllowAnyMethod()
-//                .AllowCredentials();
-//        });
-//});
-
 
 builder.Services.AddCors(
     options => options.AddPolicy(
         name: "MyAllowSpecificOrigins",
-        policy => policy.WithOrigins("https://majornaggapi.azurewebsites.net", "https://majornagamestore.azurewebsites.net")
+        policy => policy.WithOrigins("https://localhost:7207", "https://majornaggapi.azurewebsites.net", "https://majornagamestore.azurewebsites.net")
             .AllowAnyMethod()
             .AllowAnyHeader()
             .AllowCredentials()));

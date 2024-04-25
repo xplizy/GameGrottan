@@ -66,7 +66,8 @@ public class EventsViewModel(IClientEventsService eventService, IClientCartServi
             Start = eventDto.Start,
             End = eventDto.End
         };
-        await eventService.AddAsync(dbEvent);
+        var eventFromDb = await eventService.AddAsync(dbEvent);
+        Models.Add(eventFromDb);
 
     }
 
@@ -100,6 +101,11 @@ public class EventsViewModel(IClientEventsService eventService, IClientCartServi
                 Start = eventDto.Start,
                 End = eventDto.End
             };
+            if (dbEvent.TypeId == 0)
+            {
+                dbEvent.TypeId = 1;
+            }
+
             await eventService.UpdateAsync(dbEvent);
         }
     }

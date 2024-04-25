@@ -26,20 +26,15 @@ builder.Services.AddScoped<AuthenticationStateProvider, CookieAuthenticationStat
 builder.Services.AddScoped(
     sp => (IAccountManagement)sp.GetRequiredService<AuthenticationStateProvider>());
 
-//builder.Services.AddScoped(sp =>
-//    new HttpClient { BaseAddress = new Uri("https://majornaggapi.azurewebsites.net") });
-
-//builder.Services.AddHttpClient(
-//        "Auth",
-//        opt => opt.BaseAddress = new Uri("https://majornaggapi.azurewebsites.net"))
-//    .AddHttpMessageHandler<CookieHandler>();
+builder.Services.AddScoped(sp =>
+    new HttpClient { BaseAddress = new Uri("https://majornaggapi.azurewebsites.net/") });
 
 builder.Services.AddHttpClient(
         "Auth",
         opt => opt.BaseAddress = new Uri("https://majornaggapi.azurewebsites.net"))
     .AddHttpMessageHandler<CookieHandler>();
 
-builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://majornaggapi.azurewebsites.net") });
+
 
 
 builder.Services
@@ -47,15 +42,20 @@ builder.Services
     .AddScoped<EventsViewModel>()
     .AddScoped<EventDetailViewModel>()
     .AddScoped<ProductDetailViewModel>()
-    .AddScoped<CartViewModel>();
-
+    .AddScoped<CartViewModel>()
+    .AddScoped<AdminProductViewModel>();
 builder.Services.AddScoped<IPaymentHttpClient, PaymentHttpClient>();
 
 builder.Services
     .AddSingleton<IClientCartService, ClientCartService>()
     .AddScoped<IClientProductService, ClientProductService>()
     .AddScoped<IClientEventsService, ClientEventsService>()
-    .AddScoped<IClientCartService, ClientCartService>();
+    .AddScoped<IClientCartService, ClientCartService>()
+    .AddScoped<IClientTypeService, ClientTypeService>()
+    .AddScoped<IClientDiscountService, ClientDiscountService>()
+    .AddScoped<IClientDeveloperService, ClientDeveloperService>()
+    .AddScoped<IClientPublisherService, ClientPublisherService>()
+    .AddScoped<IClientTagService, ClientTagService>();
 
 
 builder.Services.AddBlazorBootstrap();

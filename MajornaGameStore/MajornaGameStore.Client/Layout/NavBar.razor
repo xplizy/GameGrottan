@@ -90,6 +90,32 @@
                 left: 50%; /* Behåller ikonen centrerad vid hovring */
             }
 
+            .search-form {
+                display: flex;
+                margin: 20px auto;
+                max-width: 400px;
+            }
+
+            .search-input {
+                flex: 1;
+                padding: 8px;
+                border: 1px solid #ccc;
+                border-radius: 5px 0 0 5px;
+            }
+
+            .search-button {
+                padding: 8px 15px;
+                background-color: #007bff;
+                color: grey;
+                border: 1px solid #007bff;
+                border-radius: 0 5px 5px 0;
+                cursor: pointer;
+            }
+
+                .search-button:hover {
+                    background-color: #0056b3;
+                }
+
         </style>
 
         <div class="collapse navbar-collapse container-fluid" id="navbarNavDropdown">
@@ -148,6 +174,10 @@
     </div>
 
 </nav>
+<form action="/search" method="GET" class="search-form">
+    <input type="text" name="query" placeholder="Sök här..." class="search-input">
+    <button type="submit" class="search-button">Sök</button>
+</form>
 
 <Modal @ref="modal" Title="Kundvagn" Size="ModalSize.Large">
     <BodyTemplate>

@@ -6,9 +6,9 @@ using SharpCompress.Common;
 
 namespace MajornaGameStore.Client.Services;
 
-public class ClientEventsService(HttpClient httpClient) : IClientEventsService
+public class ClientEventsService(IHttpClientFactory factory) : IClientEventsService
 {
-    private readonly HttpClient _httpClient = httpClient;
+    private readonly HttpClient _httpClient = factory.CreateClient(name:"Auth");
 
     public async Task<ICollection<EventDto>> GetAllAsync()
     {
@@ -50,12 +50,11 @@ public class ClientEventsService(HttpClient httpClient) : IClientEventsService
 
     public async Task<bool> UpdateAsync(EventDto entity)
     {
-        var response = await _httpClient.PutAsJsonAsync($"/events", entity);
+        var response = await _httpClient.PutAsJsonAsync($"/events/{entity.Id}", entity);
 
         if (response.IsSuccessStatusCode == false)
             return false;
 
-        var result = await response.Content.ReadFromJsonAsync<EventDto>();
         return true;
     }
 
@@ -66,7 +65,6 @@ public class ClientEventsService(HttpClient httpClient) : IClientEventsService
         if (response.IsSuccessStatusCode == false)
             return false;
 
-        var result = await response.Content.ReadFromJsonAsync<EventDto>();
         return true;
     }
 }

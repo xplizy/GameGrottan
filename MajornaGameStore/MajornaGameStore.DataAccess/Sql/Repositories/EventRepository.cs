@@ -16,6 +16,7 @@ public class EventRepository(MajornaDbContext context) : RepositoryBase<Event, i
         eventFromDb.Name = entity.Name;
         eventFromDb.Description = entity.Description;
         eventFromDb.Price = entity.Price;
+        eventFromDb.SpotsLeft = entity.SpotsLeft;
         eventFromDb.EventTypeId = entity.EventTypeId;
         eventFromDb.EventStart = entity.EventStart;
         eventFromDb.EventEnd = entity.EventEnd;
@@ -24,4 +25,6 @@ public class EventRepository(MajornaDbContext context) : RepositoryBase<Event, i
         await _context.SaveChangesAsync();
         return true;
     }
+
+   
 }

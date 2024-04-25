@@ -47,7 +47,7 @@ public class ClientProductService(IHttpClientFactory factory) : IClientProductSe
 
     public async Task<ProductDto> AddAsync(ProductDto entity)
     {
-        var response = await _httpClient.PutAsJsonAsync($"/products", entity);
+        var response = await _httpClient.PostAsJsonAsync($"/products", entity);
 
         if (response.IsSuccessStatusCode == false) 
             return null;
@@ -73,7 +73,6 @@ public class ClientProductService(IHttpClientFactory factory) : IClientProductSe
         if ( response.IsSuccessStatusCode == false) 
             return false;
 
-        var result = await response.Content.ReadFromJsonAsync<ProductDto>();
 
         return true;
     }

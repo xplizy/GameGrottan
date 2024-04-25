@@ -102,8 +102,20 @@ See the product description
     Then I can see the Product Details Page
     And Add the product to cart
 
+Search games
+    [Documentation]    Search games
+    [Tags]  search
+    Given Open the browser
+    When I click on Products
+    And I enter a search word
+    Then I should be able to see the results
 
-
+View the number of tickets left(Event)
+    [Documentation]    Number of tickets left
+    [Tags]  Event
+    Given Open the browser
+    When I Click on Event
+    Then I should be able to see the tickets left
 
 
 

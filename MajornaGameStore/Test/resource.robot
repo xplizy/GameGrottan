@@ -219,6 +219,24 @@ Add the product to cart
     Close Browser
 
 
+I enter a search word
+    [Documentation]    search products in a cart
+    [Tags]    search
+    #Click Element    //input[@id='GameSearch']
+    Input Text    //input[@id='GameSearch']    counter
+    Click Button    //button[@id='updateList']
+
+I should be able to see the results
+    [Documentation]    search products in a cart
+    [Tags]    search
+    Wait Until Page Contains    Counter-Strike
+    Wait Until Page Contains    Counter-Strike: Source
+
+I should be able to see the tickets left
+    [Documentation]    tickets left for an event
+    [Tags]    Event
+    Wait Until Page Contains    biljetter kvar!
+
 
     
     

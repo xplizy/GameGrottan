@@ -73,6 +73,9 @@ public static class ProductExtensions
         ReviewService reviewService,
         ProductDto newProductDto)
     {
+        if (newProductDto.DiscountId == 0)
+            newProductDto.DiscountId = 1;
+
         var newProduct = await newProductDto.MapToEntityAsync(developerService, publisherService, screenshotService,
             tagService, reviewService);
         var newlyAddedProduct = await productService.AddAsync(newProduct);

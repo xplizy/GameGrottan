@@ -59,6 +59,11 @@ public static class EventExtensions
     public static async Task<IResult> DeleteEvent(EventService eventService, int id)
     {
         var events = await eventService.DeleteAsync(id);
+
+        if (events == false)
+        {
+            return Results.NotFound($"No event with id {id} exists");
+        }
         return Results.Ok();
 
 

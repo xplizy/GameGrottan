@@ -7,8 +7,8 @@ Library     Collections
 *** Variables ***
 
 ${url}      https://majornagamestore.azurewebsites.net/
-${BROWSER}      headlesschrome
-${BROWSER_OPTIONS}  add_argument("--no-sandbox"); add_argument("window-size=1920,1080")
+${BROWSER}      chrome
+# ${BROWSER_OPTIONS}  add_argument("--no-sandbox"); add_argument("window-size=1920,1080")
 ${admin_username}    admin@gamegrottan.com
 ${password}     GameGrottan2024!
 ${user}     user@user.user
@@ -18,13 +18,13 @@ ${invalid_password}     GameGrottan!
 *** Keywords ***
 setup
     Set Selenium Speed    1    #används för att styra hastighet
-    Open Browser    browser=${BROWSER}  options=${BROWSER_OPTIONS}
+    Open Browser    browser=${BROWSER}
     Go To   ${url}
 
 Open the browser
     [Documentation]     Browser
-    [Tags]      VG_Test1_browser
-    Open Browser    browser=${BROWSER}  options=${BROWSER_OPTIONS}
+    [Tags]      Open Browser
+    Open Browser    browser=${BROWSER}  #options=${BROWSER_OPTIONS}
     Go To   ${url}
     Wait Until Page Contains    Hem        60s
     
@@ -51,15 +51,16 @@ I can see the Product Page
 I can add product to cart directly
     [Documentation]     Browser
     [Tags]      Products
-    Wait Until Page Contains Element    //div[@class='row']//div[2]//div[1]//div[1]//img[1]        60s
-    Click Button    //div[@class='row']//div[2]//div[1]//div[2]//button[1]
+    Wait Until Page Contains Element    //div[@id='app']//div[1]//div[1]//div[1]//img[1]        60s
+    Click Button    //div[@id='app']//div[1]//div[1]//div[2]//button[1]
 
 Check the product in the cart
     [Documentation]     add product in the cart
     [Tags]      shopping cart
     Click Button            //button[normalize-space()='0']
     Wait Until Page Contains    1 x Counter-Strike (8190 SEK) - 8190 SEK    60s
-    #Wait Until Page Contains Element    //input[@id='quantity']
+
+
 
 Verify Product List Is Visible
     [Documentation]     Browser
@@ -100,6 +101,7 @@ Verify that the price changes accordingly
     [Documentation]     Browser
     [Tags]      shopping cart
     Wait Until Page Contains    8190 SEK
+    Close Browser
     
 
 
@@ -117,12 +119,14 @@ I can see the links
     [Documentation]     Browser
     [Tags]      Home Page
     Wait Until Page Contains Element    //a[@class='nav-link active']
+    Close Browser
 
 I can remove the product
     [Documentation]     Browser
     [Tags]      Home Page
      Click Button    //button[normalize-space()='Ta bort']
      Wait Until Page Contains    Totalt: Sek 0
+     Close Browser
      
 I Click on Event
     [Documentation]     Event details
@@ -148,8 +152,9 @@ I Click on Event Details
 I should be able to see the event details
     [Documentation]     Event details
     [Tags]      Events
-    Wait Until Page Contains    Beskrivning: Best lan EVER
-    Wait Until Page Contains    Start Datum:
+    Wait Until Page Contains    Best lan EVER
+    Wait Until Page Contains    Entre pris: 200 KR
+    Close Browser
 
 Log in with right credentials
     [Documentation]    Admin login page
@@ -165,6 +170,7 @@ Logout
     [Documentation]    Admin logout page
     [Tags]      Test_Admin_logout
     Click Element    //i[@class='bi bi-box-arrow-left fs-1']
+    Close Browser
 
 Log in with wrong credentials
     [Documentation]    Admin login page
@@ -175,6 +181,7 @@ Log in with wrong credentials
     Input Password    //input[@id='passwordField']    ${invalid_password}
     Click Button    //button[@id='loginBtn']
     Wait Until Page Contains    Invalid email and/or password.
+    Close Browser
 
 Login with valid credential for User
     [Documentation]    User login page
@@ -194,12 +201,13 @@ Log in with user invalid credentials
     Input Text    //input[@id='usernameField']    ${username}
     Input Password    //input[@id='passwordField']    ${invalid_password}
     Click Button    //button[@id='loginBtn']
-    Wait Until Page Contains    Invalid email and/or password.            50s
+    Wait Until Page Contains    Invalid email and/or password.            20s
+    Close Browser
 
-Product details page
+I can see the Product Details Page
     [Documentation]    product description
     [Tags]    See The Description
-    Click Image        //div[@class='row']//div[2]//div[1]//div[1]//img[1]
+    Click Image     //*[@id="app"]/div[2]/div[2]/div[1]/div/div[1]/img
     Wait Until Page Contains Element    //h2[normalize-space()='Counter-Strike']        60s
 
 Add the product to cart
@@ -208,6 +216,7 @@ Add the product to cart
     Click Button    //button[normalize-space()='Lägg Till I Kundvagn']
     #Handle Alert    //div[@class='toast-body']
     Click Button    //button[normalize-space()='Gå tillbaka till Produkter']
+    Close Browser
 
 
 

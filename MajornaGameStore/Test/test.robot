@@ -35,8 +35,7 @@ Add product into the cart directly
 Checking the product quantity
     [Documentation]    Checking the product quantity by increasing the value
     [Tags]    product quantity
-
-    Given open the browser
+    Given Open the browser
     When I click on Products
     And I can add product to cart directly
     And Check the product in the cart
@@ -48,8 +47,7 @@ Checking the product quantity
 Remove item from the cart
     [Documentation]    Remove the item in the cart
     [Tags]    Remove product
-
-    Given open the browser
+    Given Open the browser
     When I click on Products
     And I can add product to cart directly
     And Check the product in the cart
@@ -58,14 +56,14 @@ Remove item from the cart
 Access Event Page
     [Documentation]    Access Event Page
     [Tags]  Events
-    Given open the browser
+    Given Open the browser
     When I Click on Event
     Then I should be able to see all events
 
 Access Event Details Page
     [Documentation]    Access Event Page
     [Tags]  Events
-    Given open the browser
+    Given Open the browser
     When I Click on Event
     And I Click on Event Details
     Then I should be able to see the event details
@@ -81,13 +79,13 @@ Login to admin page with invalid credentials
     [Documentation]    Login with invalid credentials
     [Tags]  Admin_Login
     Open The Browser
-    Log in with wrong credentials       ${admin_username}      ${invalid_password}
+    Log in with wrong credentials       ${admin_username}       ${invalid_password}
 
 Login with valid credentials(user)
     [Documentation]    Login with valid credentials
     [Tags]  User_Login
     Open The Browser
-    Log in with right credentials       ${user}      ${password}
+    Login with valid credential for User       ${user}      ${password}
     Logout
 
 Login with invalid credentials(user)
@@ -99,10 +97,10 @@ Login with invalid credentials(user)
 See the product description
     [Documentation]    Access product details
     [Tags]  product details
-    Given open the browser
+    Given Open the browser
     When I Click On Products
-    Then Product Details Page
-    And add the product to cart
+    Then I can see the Product Details Page
+    And Add the product to cart
 
 
 

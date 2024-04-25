@@ -16,6 +16,40 @@ else
 {
 
     <div class="card p-3 mb-3">
+        <Button id="addNewProdOpenModalBtn" class="btn-success mb-3" @onclick="OnShowModalClick2">Lägg till ny produkt</Button>
+
+        <Grid
+            TItem="ProductDto"
+            AllowSorting="true"
+            Class="table table-hover table-bordered table-striped"
+            DataProvider="ProductsDataProvider"
+            Responsive="true">
+
+            <GridColumn TItem="ProductDto" HeaderText="Id" SortKeySelector="item => item.Id">
+                @context.Id
+            </GridColumn>
+
+            <GridColumn TItem="ProductDto" HeaderText="Namn" SortKeySelector="item => item.Name">
+                @context.Name
+            </GridColumn>
+
+            <GridColumn TItem="ProductDto" HeaderText="Pris" SortKeySelector="item => item.Price">
+                @context.Price
+            </GridColumn>
+
+            <GridColumn TItem="ProductDto" HeaderText="Kategori Id" SortKeySelector="item => item.ProductTypeId">
+                @context.ProductTypeId
+                <Button class="btn-primary" @onclick="async () => await OnShowModalClick(context.Id)">Redigera</Button>
+                <Button class="btn-danger" id="DeleteProdBtn" @onclick="async () => await ViewModel.DeleteProductAsync(context.Id)">Radera</Button>
+            </GridColumn>
+
+
+
+        </Grid>
+    </div>
+
+
+    @* <div class="card p-3 mb-3">
         <Button id="addNewProdOpenModalBtn" class="btn-success" @onclick="OnShowModalClick2">Lägg till ny produkt</Button>
         <h3 class="text-center mb-3">Välj en produkt att redigera</h3>
 
@@ -24,12 +58,12 @@ else
                 <li class="list-group-item">
                     <p>@context.Name</p>
                     <Button class="btn-primary" @onclick="async () => await OnShowModalClick(context.Id)">Redigera</Button>
-                    <Button class="btn-danger">Radera</Button>
+                    <Button class="btn-danger" id="DeleteProdBtn" @onclick="async () => await ViewModel.DeleteProductAsync(context.Id)">Radera</Button>
                 </li>
             </Virtualize>
         </ul>
 
-    </div>
+    </div> *@
 }
 
 <Modal @ref="modal2" Title="Lägg till produkt" Size="ModalSize.Large">
@@ -176,6 +210,7 @@ else
             </Button>
 
         </div>
+        <Button class="btn-success" id="addNewProdBtn" @onclick="ViewModel.AddNewProductAsync">Lägg till produkt</Button>
         @*REA nedan*@
         @*Bild?*@
 
@@ -365,6 +400,10 @@ else
         }
     }
 
+    private async Task<GridDataProviderResult<ProductDto>> ProductsDataProvider(GridDataProviderRequest<ProductDto> request)
+    {
+        return await Task.FromResult(request.ApplyTo(ViewModel.Models));
+    }
 
     private async Task OnShowModalClick(int selectedProductId)
     {

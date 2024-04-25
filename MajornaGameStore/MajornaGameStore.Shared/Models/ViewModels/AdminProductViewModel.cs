@@ -184,7 +184,32 @@ public class AdminProductViewModel(IClientProductService service,
 
     public async Task AddNewProductAsync()
     {
+        var dto = new ProductDto()
+        {
+            Id = NewProduct.Id,
+            Name = NewProduct.Name,
+            Price = NewProduct.Price,
+            ProductTypeId = NewProduct.ProductType.Id,
+            DiscountId = NewProduct.Discount.Id,
+            Description = NewProduct.Description,
+            Languages = NewProduct.Languages,
+            ImageLink = NewProduct.ImageLink,
+            PcRequirements = NewProduct.PcRequirements,
+            ReleaseDate = NewProduct.ReleaseDate,
+            DeveloperIds = NewProduct.Developers.Select(d => d.Id).ToList(),
+            PublisherIds = NewProduct.Publishers.Select(p => p.Id).ToList(),
+            ScreenshotIds = NewProduct.Screenshots.Select(s => s.Id).ToList(),
+            TagIds = NewProduct.Tags.Select(t => t.Id).ToList(),
+            ReviewIds = NewProduct.Reviews.Select(r => r.Id).ToList(),
+            AgeRating = NewProduct.AgeRating
+        };
 
+        var productFromDb = await _productService.AddAsync(dto);
+        if (productFromDb is null)
+            return;
+
+        Models.Add(productFromDb);
+        NewProduct = new ProductModel();
     }
     public async Task SaveUpdateChangesAsync()
     {
@@ -194,7 +219,7 @@ public class AdminProductViewModel(IClientProductService service,
             Name = SelectedProduct.Name,
             Price = SelectedProduct.Price,
             ProductTypeId = SelectedProduct.ProductType.Id,
-            DiscountId = SelectedProduct.Discount.Id,
+            DiscountId = 1,
             Description = SelectedProduct.Description,
             Languages = SelectedProduct.Languages,
             ImageLink = SelectedProduct.ImageLink,
@@ -206,11 +231,23 @@ public class AdminProductViewModel(IClientProductService service,
             TagIds = SelectedProduct.Tags.Select(t => t.Id).ToList(),
             ReviewIds = SelectedProduct.Reviews.Select(r => r.Id).ToList(),
             AgeRating = SelectedProduct.AgeRating
+            
         };
 
         var success = await _productService.UpdateAsync(dto);
         
 
+    }
+
+    public async Task DeleteProductAsync(int id)
+    {
+        bool success = await _productService.DeleteAsync(id);
+
+        if (success)
+        {
+            var prod = Models.Find(p => p.Id == id);
+            Models.Remove(prod!);
+        }
     }
 
 }

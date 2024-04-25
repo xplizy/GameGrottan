@@ -31,30 +31,29 @@ Add product into the cart directly
     And I can add product to cart directly
     And Check the product in the cart
 
-View Products in Cart
-    Given Open the browser
-    When I am able to see Cart
-    And I click on Cart
-    Then I can see the Products in the cart
 
 Checking the product quantity
     [Documentation]    Checking the product quantity by increasing the value
     [Tags]    product quantity
 
     Given open the browser
-    When I Click On Cart
-    Then I can see the Products in the cart
+    When I click on Products
+    And I can add product to cart directly
+    And Check the product in the cart
     And I can increase the product quantity
-    #Then I can decrease the product quantity
+    And I can decrease the product quantity
+    Then Verify that the price changes accordingly
+
 
 Remove item from the cart
     [Documentation]    Remove the item in the cart
     [Tags]    Remove product
 
     Given open the browser
-    When I Click On Cart
-    Then I can see the Products in the cart
-    And I can remove the product
+    When I click on Products
+    And I can add product to cart directly
+    And Check the product in the cart
+    Then I can remove the product
 
 Access Event Page
     [Documentation]    Access Event Page
@@ -74,13 +73,37 @@ Access Event Details Page
 Login to admin page with valid credentials
     [Documentation]    Login with valid credentials
     [Tags]  Admin_Login
+    Open The Browser
     Log in with right credentials       ${admin_username}      ${password}
     Logout
 
 Login to admin page with invalid credentials
     [Documentation]    Login with invalid credentials
     [Tags]  Admin_Login
+    Open The Browser
     Log in with wrong credentials       ${admin_username}      ${invalid_password}
+
+Login with valid credentials(user)
+    [Documentation]    Login with valid credentials
+    [Tags]  User_Login
+    Open The Browser
+    Log in with right credentials       ${user}      ${password}
+    Logout
+
+Login with invalid credentials(user)
+    [Documentation]    Login with invalid credentials
+    [Tags]  Admin_Login
+    Open The Browser
+    Log in with user invalid credentials       ${user}      ${invalid_password}
+
+See the product description
+    [Documentation]    Access product details
+    [Tags]  product details
+    Given open the browser
+    When I Click On Products
+    Then Product Details Page
+    And add the product to cart
+
 
 
 

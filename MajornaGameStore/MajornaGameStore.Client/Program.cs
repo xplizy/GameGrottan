@@ -26,6 +26,19 @@ builder.Services.AddScoped<AuthenticationStateProvider, CookieAuthenticationStat
 builder.Services.AddScoped(
     sp => (IAccountManagement)sp.GetRequiredService<AuthenticationStateProvider>());
 
+https://localhost:7190
+
+#if DEBUG
+
+builder.Services.AddScoped(sp =>
+    new HttpClient { BaseAddress = new Uri("https://localhost:7190") });
+
+builder.Services.AddHttpClient(
+        "Auth",
+        opt => opt.BaseAddress = new Uri("https://localhost:7190"))
+    .AddHttpMessageHandler<CookieHandler>();
+#else
+
 builder.Services.AddScoped(sp =>
     new HttpClient { BaseAddress = new Uri("https://majornaggapi.azurewebsites.net/") });
 
@@ -33,8 +46,7 @@ builder.Services.AddHttpClient(
         "Auth",
         opt => opt.BaseAddress = new Uri("https://majornaggapi.azurewebsites.net"))
     .AddHttpMessageHandler<CookieHandler>();
-
-
+#endif
 
 
 builder.Services

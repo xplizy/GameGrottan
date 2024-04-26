@@ -31,11 +31,11 @@ https://localhost:7190
 #if DEBUG
 
 builder.Services.AddScoped(sp =>
-    new HttpClient { BaseAddress = new Uri("https://majornaggapi.azurewebsites.net") });
+    new HttpClient { BaseAddress = new Uri("https://localhost:7190") });
 
 builder.Services.AddHttpClient(
         "Auth",
-        opt => opt.BaseAddress = new Uri("https://majornaggapi.azurewebsites.net"))
+        opt => opt.BaseAddress = new Uri("https://localhost:7190"))
     .AddHttpMessageHandler<CookieHandler>();
 #else
 

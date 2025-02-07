@@ -5,14 +5,13 @@ body {
     display: flex;
     flex-direction: column;
     background-size: cover;
-    background-color: rgba(0, 0, 128, .65);
+    background-color: rgba(0, 0, 128, .75);
     /*background-image: url(https://majornastorage.blob.core.windows.net/images/ArcadeGG.png);*/
     /*background-image: url(https://majornastorage.blob.core.windows.net/images/arcadebackrp.jpg);*/
     /*background-image: url(https://majornastorage.blob.core.windows.net/images/344351.jpg);*/
     /*background-image: url(https://majornastorage.blob.core.windows.net/images/neon-lines-abstract-glowing-lines.jpg);*/
-    background-image: url(https://majornastorage.blob.core.windows.net/images/GameZoneGGLogoBackground.png);
-    /*background-image: url(https://majornastorage.blob.core.windows.net/images/TechnologyLinktreeBackground.png);*/
-    /*background-blend-mode: multiply;*/
+    background-image: url('../Images/GameZoneGGLogoBackground.png');
+    background-blend-mode: multiply;
     background-size: 100%;
 }
 html, body {
